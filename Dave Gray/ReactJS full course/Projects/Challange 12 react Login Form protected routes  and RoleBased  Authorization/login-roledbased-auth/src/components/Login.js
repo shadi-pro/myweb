@@ -1,14 +1,23 @@
-// The Login Form [Public route]  : 
+
+// The Login Form [Public route] +  adding the  history location  : 
 
 // A]  Importing section :  
-import { useRef, useState, useEffect, Fragment, useContext } from 'react'
+// import { useRef, useState, useEffect, Fragment, useContext } from 'react'
+import { useRef, useState, useEffect } from 'react'
 
-//  Import the defined context variable from {AuthProvider} file , as  a global variable : 
-import AuthContext from '../context/AuthProvider';
+//  Import the defined context variable from {AuthProvider} file , as  a global variable => [this step has been cancled due to  using cutom hook instead ] : 
+// import AuthContext from '../context/AuthProvider';
+
+//  Import  Custom hook function   to be used as short method of  context varailbe and   {useContext} hook : 
+import useAuth from '../hooks/useAuth';
 
 
-// import the {axios} to be  used  ot access the defined api :
-import axios  from '../api/axios' ; 
+// Import the {axios} to be  used  ot access the defined api :
+import axios from '../api/axios';
+
+// Imporging the  required  clases  to allow the histroy location navagation :  
+import { useLocation, useNavigate, Link } from 'react-router-dom';
+// -------------------------------------------------------------------------------------- 
 
 
 // B]  Variables and states defined before the [functional Component] :  
@@ -18,8 +27,20 @@ const LOGIN_URL = '/auth';
 
 // C] The functional Component :
 const Login = () => {
-  //  Extracting the {setAuth} child prop from the imported context [to be used to tore the authentication data ]  :
-  const { setAuth } = useContext(AuthContext);
+
+  //  Extracting the {setAuth} child prop from the imported [custom hook] (  that  return  defined useContext hook + context variable )  [to be used  within the authentication data ]  :
+  const { setAuth } = useAuth();
+
+  // Define a current location variable  :
+  const location = useLocation();
+
+  // Define a navigator variable   :
+  const navigate = useNavigate();
+
+  // [detect where the user come from  to navigate him to this path ] :  Define a boolean variable of value location path :
+  const from = location.state?.from?.pathname || "/";
+
+
 
   // Define a ref variable  to set focus on the  username input field : 
   const userRef = useRef();
@@ -80,10 +101,14 @@ const Login = () => {
       setAuth({ user, pwd, roles, accessToken })
 
 
-      // set the success state by a true [incase of not having a real backend point  ]   :
-      setSuccess(true)
+      // set the success state by a true [incase of not having a real backend point]  :
+      // setSuccess(true)
 
-      // setting both of input state value by empty values after successful submting :
+      //  using navigate[ to set the history of location as it saved in the {from} defined variable ]  instead of using the {setSuccess} state  as in the offline line mode  :
+      navigate(from, { replace: true });
+
+
+      // setting both of input state value by empty values after successful submiting :
       setUser('');
       setPwd('');
 
@@ -110,75 +135,76 @@ const Login = () => {
   }
 
   return (
-    <Fragment>
-      {
-        success ? (
-          // First rendered section about - incase the successful login -    :  
-          <section>
-            <h1>   You are logged in  successfully!  </h1>
-            <br />
-            <p>
-              <a href="#"> Go to Home page  </a>
-            </p>
-          </section>
-        ) : (
-          <section>
+    // using navigate[ to set the history of location as it saved in the {from} defined variable ]   instead of  using the {success}  and  will display  directrly the login Form    :
+    // <Fragment>
+    // {
+    //   success ? (
+    //     // First rendered section about - incase the successful login -    :  
+    //     <section>
+    //       <h1>   You are logged in  successfully!  </h1>
+    //       <br />
+    //       <p>
+    //         <a href="#"> Go to Home page  </a>
+    //       </p>
+    //     </section>
+    //   ) : (
+    <section>
 
-            {/*  The Error message to be displayed before the [Login Form] - if it is existed -  */}
-            <p
-              ref={errRef}
-              className={errMsg ? "errmsg" : "offscreen"}
-              aria-live="assertive"  // to make the browser screen able to read the text when get focus     
-            > {errMsg}   </p>
-
-
-            <form onSubmit={handleSubmit}   >
-              <label
-                htmlFor="username"
-              > Username :
-              </label>
-
-              <input
-                type='text'
-                id='username'
-                ref={userRef}
-                autoComplete="off"
-                onChange={(e) => setUser(e.target.value)}
-                value={user}
-                required
-              />
+      {/*  The Error message to be displayed before the [Login Form] - if it is existed -  */}
+      <p
+        ref={errRef}
+        className={errMsg ? "errmsg" : "offscreen"}
+        aria-live="assertive"  // to make the browser screen able to read the text when get focus     
+      > {errMsg}   </p>
 
 
-              <label
-                htmlFor="password"
-              > Password  :
-              </label>
+      <form onSubmit={handleSubmit}   >
+        <label
+          htmlFor="username"
+        > Username :
+        </label>
 
-              <input
-                type='password'
-                id='password'
-                onChange={(e) => setPwd(e.target.value)}
-                value={pwd}
-                required
-              />
-              <button>  Sign In   </button>
-            </form>
+        <input
+          type='text'
+          id='username'
+          ref={userRef}
+          autoComplete="off"
+          onChange={(e) => setUser(e.target.value)}
+          value={user}
+          required
+        />
 
 
-            {/*   Sign up section  */}
-            <p>
-              Need an Account ? <br />
-              <span className='line'>
-                {/*  this link will be replaced by react router in future  */}
-                <a href='#'> Sign up     </a>
-              </span>
-            </p>
+        <label
+          htmlFor="password"
+        > Password  :
+        </label>
 
-          </section>
-        )
+        <input
+          type='password'
+          id='password'
+          onChange={(e) => setPwd(e.target.value)}
+          value={pwd}
+          required
+        />
+        <button>  Sign In   </button>
+      </form>
 
-      }
-    </Fragment>
+
+      {/*   Sign up section  */}
+      <p>
+        Need an Account ? <br />
+        <span className='line'>
+
+          <Link to="/register">Sign Up</Link>
+
+        </span>
+      </p>
+
+    </section>
+    //   )
+    // }
+    // </Fragment>
 
   )
 }

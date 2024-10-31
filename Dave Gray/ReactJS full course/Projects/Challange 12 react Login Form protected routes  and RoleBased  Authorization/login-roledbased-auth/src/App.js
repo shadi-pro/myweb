@@ -7,7 +7,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 
-// 2] Importings    :   
+// 2] Importings section :   
 //  (a) The main wrapper component of all other components :      
 import Layout from './components/Layout';
 //  ---------------------------
@@ -32,7 +32,7 @@ import Missing from './components/Missing';
 // ------------------------------------
 
 
-// (2)  [Protected Routes]  pages :
+// (2) [Protected Routes]  pages :
 // a- The Home page [protected Route]  :
 import Home from './components/Home';
 
@@ -44,27 +44,57 @@ import Editor from './components/Editor';
 
 //  d- The Lounge page to be dispalyed for both Admin & Editor [protected Route]  :   
 import Lounge from './components/Lounge';
+// -----------------------
+
+// (3) Protector file  {RequireAuth}    : 
+import RequireAuth from './components/RequireAuth';
+
 
 
 function App() {
+
+  // Define server simulated object including the each type of user authorization  code   : 
+  const ROLES = {
+    'User': 2001,
+    'Admin': 5150,
+    'Editor': 1985
+  }
+
 
   return (
     <Routes>
       <Route path='/' element={<Layout />}  >
 
-        {/* 1-  Public Routes Group   */}
+        {/* a-  Public Routes Group   */}
         <Route path='login' element={<Login />} />
         <Route path='register' element={<Register />} />
         <Route path='linkpage' element={<LinkPage />} />
         <Route path='unauthorized' element={<Unauthorized />} />
 
-        {/* 2-  Proteced  Routes Group   */}
-        <Route path='/' element={<Home />} />
-        <Route path='admin' element={<Admin />} />
-        <Route path='editor' element={<Editor />} />
-        <Route path='lounge' element={<Lounge />} />
-        
-        {/* 3-  Catch All Route  */}
+
+        {/* b-  Protected  Routes Group [ by using  the imoprted protector file {RequireAuth} wit using  different roles as the added paramter {allowedRoles} as attriubte of each protected route wit array value       ]   */}
+
+        {/* 1-  Protected  Routes Gsroup [ Authorized for public {User} ]   */}
+        <Route element={<RequireAuth allowedRoles={[ROLES.User]} />} >
+          <Route path='/' element={<Home />} />
+        </Route>
+
+        {/* 2-  Protected  Routes Group [ Authorized for {Editor}   ]   */}
+        <Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />} >
+          <Route path='editor' element={<Editor />} />
+        </Route>
+
+        {/* 3-  Protected  Routes Group [  Authorized for {Admin} ]   */}
+        <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />} >
+          <Route path='admin' element={<Admin />} />
+        </Route>
+
+        {/* 4-  Protected  Routes Group [ Authorized for {Admin} & {Editor} ]   */}
+        <Route element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Editor]} />} >
+          <Route path='lounge' element={<Lounge />} />
+        </Route>
+
+        {/* c-  Catch All Public  Route   */}
         <Route path='*' element={<Missing />} />
 
       </Route>
@@ -75,4 +105,3 @@ function App() {
 export default App;
 
 
- 

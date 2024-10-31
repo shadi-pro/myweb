@@ -402,8 +402,8 @@
       <!-- About Section  -->
       <section class="about text-center wow bounceInLeft" data-wow-duration="2s" id="about">
           <div class="container">
-            <h2 class="h1" class="hidden-xs"> About Section =>  ReactJS Course about creating a react  [Login  From] with  Authentication process by using the [ ] library beside the  [Registaraion Form ] practical app <span><stron> main concept and applied application  </strong> </span> </h2>
-            <h3 class="visible-xs"> About Section => This lesson  about <strong>    Creating   [Login  From] with  Authentication process   by using the [ ] library beside the  [Registaraion Form ]  applied example    </strong> </span> </h3>
+            <h2 class="h1" class="hidden-xs"> About Section =>  ReactJS Course about creating a react  [Login  From] with  Authentication process by using the [ ] library beside the  [Registaraion Form ] practical app <span><stron> main concept and applied application with protected Routes    </strong> </span> </h2>
+            <h3 class="visible-xs"> About Section => This lesson  about <strong>    Creating   [Login From to login to servral protected Routes     ] with  Authentication process by using  [ ] library beside the previous  [Login  +  Registration Form] applied example    </strong> </span> </h3>
           </div>
       </section>
       <!-- ---------------------------------------- -->
@@ -1291,11 +1291,11 @@
                   <ol type="A">
                       <li> Main points of this lesson , React  Protected Routes  RoleBased Authorization  React Router v6  : <br>
                           <ol>
-                            <li> A] main concept , feature of  role based Authorization  [Login Form]   </li>
+                            <li> A] main concept , feature of Role based Authorization with protected Routes [Login Form] </li>
                             
-                            <li> B] main steps syntax of for creating  {Login Form with Role  Based login Auythorizataion } app  </li>
+                            <li> B] main steps syntax of for creating  {Login Form with Role Based login Authorization with protected Routes } app  </li>
                             
-                            <li> C] Vip notes about   {Login Form with Role  Based login Auythorizataion } app  </li> 
+                            <li> C] Vip notes about   {Login Form with Role Based login Authorizataion with protected Routes   } app  </li> 
                               
                           </ol>
                       </li> <br> <br>
@@ -1310,11 +1310,11 @@
                 <h3> 34 React Protected Routes  RoleBased Authorization  React Router v6 concept : </h3>
               </header>
               
-              <h1> A]  main concept , features or main components , used  tools  of  creating Registration Form Submit  :  </h1> <br>
+              <h1> A]  main concept , features or main components , used  tools  of  creating    [ Login Form] with protected Routs  Submit  :  </h1> <br>
 
                 <p> Main Concept :  <br>
-                   <ul> 
-                     <li> Combining the both previous [Login Form] & [Registeration Form] with one app of several inner pages  </li>
+                 <ul> 
+                     <li> Combining the both previous [Login Form] & [Registration Form] with one app of several inner pages with providing  protected routes autherization     </li>
                      <li> [Login Form] should be contlored [Roled based] information inserted with several levels of Authorizations  as next :  <br>
                        <ul> 
                           <li> [Admin]  =>   Sould be authorized to get access into all inner pages & [Admin page] , and NOT authorizierd to get access  into [ Editor page  ]     </li>
@@ -1324,15 +1324,15 @@
                     </li>
                      
                      
-                      <li> Creating a [Login Form] that using [Axios] api for creating the [post] process and submit user information for authetication   </li>
-                     <li>  The [Login Form] will provide the  Authentication by using both of the  [context]  &  [real endpoint of node server - will be provided withni Node course -]   </li>
-                     <li>  The [Login Form] will provide the  Authentication by using both of the  [context ]  &  [real endpoint of node server - will be provided withni Node course -]   </li>
+                    <li> Creating a [Login Form] that using [Axios] api for creating the [post] process and submit user information for authetication   </li>
+                    <li>  The [Login Form] will provide the  Authentication by using both of the  [context]  &  [real endpoint of node server - will be provided withni Node course -]   </li>
+                    <li>  The [Login Form] will provide the  Authentication by using both of the  [context ]  &  [real endpoint of node server - will be provided withni Node course -]   </li>
                    </ol>                
                 </p>  
                 <br>
 
                 <p> Main Features or components of the [ login Form]  :  <br>
-                  <p>  this form is about a Login Form with using  the folowing  frontend contents  :  <br>
+                  <p>  this form is about a Login Form with using  the following  frontend contents  :  <br>
                     <ol> 
                       <li> 1- Conditional successful login message   </li>
                       <li> 2- Login Form  :  <br>    
@@ -1351,7 +1351,7 @@
                 </p>  
                 <br>
                 
-                <p> Main Tools & Libraries requried for building the [Login Form] :  <br>
+                <p> Main Tools & Libraries requried for protecting the desired routers pages   :  <br>
                   <p>  This [Login Form] is about a Login Form with using  the folowing tools :  <br> 
                     <ol> 
                       <li> [Axios] library for asynchoronous responding process [post]         </li>
@@ -1362,208 +1362,117 @@
                 <br>   <hr> <br>
                 <!-- ------------------------------------------------------------- -->
  
-                <h1> B] main steps syntax of { Login Form + Submit } app  :  </h1> <br>
+                <h1> B] main steps syntax of protecting the desired routers of pages app  :  </h1> <br>
                   <p>  the syntax , as following   : <br>    
                       <ul>
-                        <li> 1] Required  Importing   :   <br>    
+                        <li> 1] [ hooks/useAuth.js ] : Creating a custom hook of  {useAuth}  for  reducing  the required  steps of uaing defined contex inside each protected route :   <br>    
                           <ol> 
-                            <li> a- Basic react state importings =>   { React, useState, useRef, useEffect, Fragment }  </li>  
-                            <li> b- [axios] library => for dynamic respoding to the assinged [api] and posting process </li> 
+                            <li> This  save  will save both steps of [importing {useContext}] + [import the context variable [AuthContext] ]  , and  will be have to import only the { Define the custom hook}  ,to be able to remove the following form inside each route file  : <br> 
+                              <ul> 
+                                  <li> Imported { useContext} hook   </li> 
+                                  <li> Imported {AuthContext} varaible  file    </li> 
+                              </ul> 
+                              <p> and instead of  preious (2) steps  will just imprt the custom hook defined function {useAuth} from  [ useAuth.js ] file inside  this route file   </p>                           
+                            </li>  
                           </ol>  
                         </li>  <br>
 
-                        <li> 2] Required Defintions and variables [  BEFORE the main functional component {Register()} ] :  <br>   
-                          <ol>
-                            <li> a- Validation variables definition   :   <br>  
-                              <ol>
-                                <li> Regular expression variables reqrured for validation of  both of [username input] & [ password input]  (the  matched input will be validated by custom  function )          </li> 
-                              </ol>
-                            </li>  <br>
-                            
-                            <li> b- Required api sub path {LOGIN_URL} variable :  <br> 
-                              <p>  The sub path value variable of register =>  be used in posting procees => [as extension with the after main {baseURL} of defined api    ]     </p>
-                            </li> 
-                          </ol>
+                        <li>  2] Modifying defined Routes inside  {app.js} => with  using protector file {RequiredAuth.js} & adding defined Roles that will protect our pages routes , by using the next procedures :  <br> 
+                            <p>   to use different  protector  route  with different role  , file as the next code :    <br>
+                              <code>
+
+                                <span  class="one" ></span>  define the protected route {Home} : Authorized for public {User} by assigning code of {2001} :   <br>
+                                <span  class="one" ></span>  &lt; Route element={ &lt; RequriAuth &gt; } allowedRoles={[ 2001 ]}  &gt;  <br>
+                                  <span  class="two" ></span>   &lt; Route path='/'   element={ &lt; Home  &gt; }  /&gt;   <br>
+                                <span  class="one" ></span>  &lt; /Route    &gt;  <br>
+                                
+
+                                <span  class="one" ></span>  define the protected route {Home} : Authorized for public { Editor }  by assigning code of {1985} :   :   <br>
+                                <span  class="one" ></span>  &lt; Route element={ &lt; RequriAuth &gt; } allowedRoles={[ 1985 ]}  &gt;  <br>
+                                  <span  class="two" ></span>   &lt; Route path='/admin'   element={ &lt; Admin  &gt; }  /&gt;   <br>
+                                <span  class="one" ></span>  &lt; /Route    &gt;  <br>
+
+                                <span  class="one" ></span>  define the protected route {Home} : Authorized for public { Admin }  by assigning code of {5150} :   :   <br>
+                                <span  class="one" ></span>  &lt; Route element={ &lt; RequriAuth &gt; }  allowedRoles={[5150]} &gt;  <br>
+                                  <span  class="two" ></span>   &lt; Route path='/editor'  element={ &lt; Editor &gt; }  /&gt;   <br>
+                                <span  class="one" ></span>  &lt; /Route    &gt;  <br>
+
+                                <span  class="one" ></span>  define the protected route {Home} : Authorized for public { Admin & Editor  }  by assigning both codes of {5150} & {1985} :   :   <br>
+                                <span  class="one" ></span>  &lt; Route element={ &lt; RequriAuth &gt; } allowedRoles={[ 1985, 5150 ]}  &gt;  <br>
+                                  <span  class="two" ></span>   &lt; Route path='/lounge'  element={ &lt; Lounge &gt; }  /&gt;   <br>
+                                <span  class="one" ></span>  &lt; /Route    &gt;  <br>
+                            </code>                                                                       
                         </li>
+                        
+                        <li>  3] Creating {components/RequriAuth.js} =>  the protector file that will protect our pages routes , by using the  next procedures :  <br>
+                          <p> // A] Importing section :  <br>
+                            <ul> 
+                              <li>  1- import the defind [custom hook] function  => to be use the short method of custom hook  - when ned to use  the inner prop inside the context -  : <br> 
+                                <code> 
+                                  <span  class="one" ></span> import useAuth from '../hooks/useAuth' ;  <br>
+                                </code>
+                              </li>   <br>
+                              
+                              <li>  2- import  several classes from the [react-router-dom]   : <br> 
+                                <code> 
+                                  <span  class="one" ></span> import { useLocation, Navigate, Outlet } from 'react-router-dom';  <br>
+                                </code>
+                              </li>   <br>
+                            </ul>
+                          </p>  <br>
 
-
-                        <li> C] Required Defintions and variables [ AFTER  the main functional component {Login()} ] : <br>
-                              <ol>
-                                <li> {userRef} =>  Define a [useRef] of username input ref [to be used in set focus on the uesername input field when page is being load] => [ wintint  the {ref}  attriutes  ] ]  </li>
-                                <li> {errRef }  => Define a [useRef] of error meassage as a 'uerRef'  [ to be used in focus on the error paragraph  of when it is occured  ] </li>
-                                <li> Define group of  variables [states] for controling [username] input field funtcions :<br> 
-                                     <ul>
-                                        <li> [user, setUser] empty string value -> state to  put the inserted username input field value      </li>
-                                        <li> [validName, setValidName] false boolean  value  => state to set validated value of the username input field value [within  the valdatiing useEffect method  ] </li>
-                                        <li> [userFocus, setUserFocus] => false boolean  value  => state to set validated  focus state value  of the username input field value [wintin  the  both of  [onFocus]  & [onBlur]  ]     </li> 
-                                     </ul>
-                                </li>  <br>
-
-                                <li> Define group of  variables [states] for controling [ password ] input field funtcions :<br> 
-                                     <ul>
-                                        <li> [pwd, setPwd] empty string value -> state to  put the inserted password input field value      </li>
-                                        <li> [validPwd, setValidPwd] false boolean  value  => state to set validated value of the password input field value [within  the valdatiing useEffect method  ] </li>
-                                        <li> [pwdFocus, setPwdFocus] => false boolean  value  => state to set validated  focus state value  of the pasowerd  input field value [wintin  the  both of  [onFocus]  & [onBlur]  ]     </li> 
-                                     </ul>
-                                </li>   <br> 
-
-                                <li> Define group of  variables [states] for controling [ matchedpassword ] input field funtcions :<br> 
-                                     <ul>
-                                        <li> [matchPwd, setMatchPwd] empty string value -> state to  put the inserted   confirmation pasword  input field value      </li>
-                                        <li> [validMatch, setValidMatch] false boolean  value  => state to set validated value of the confirmation password input field value [within  the valdatiing useEffect method  ] </li>
-                                        <li> [matchFocus, setMatchFocus] => false boolean  value  => state to set validated  focus state value  of the confirmation  pasowerd  input field value [wintin  the  both of  [onFocus]  & [onBlur]  ]     </li> 
-                                     </ul>
-                                </li>
-
-                                <li> Registration Error handling  state variable  [incase of the Submit error is existed  ] :   <br>
-                                    [errMsg, setErrMsg]  : to handle the  responded [error] message - > within  serveral  useEffect methods  , conditional  rednerings    
-                                </li>
-                                    
-                                    
-                                <li> Define submiting [state] successful registration handling [incase of the submit  secceded ] : <br>
-                                  [success, setSuccess] => to be set by inital value of [false]         
-                                </li>
-
-                                <li> Define the focusing method [useEffect] on the username input  by using useEffect [ when the component is page is loaded for the first rendering]   </li>
-                                
-                                <li> Define the [username input field Validating useEffect method ] + setting the [user state] as the dependecy of  useEffect [to respond each change]   </li>
-                                
-                                <li> Define the [[password] & [Checked password] input fields Validating method] + setting the [user] & [matchPwd] states as the dependecies of  useEffect [to respond each change]    </li>
-                                
-                                <li> Define a method of  setting an empty value for error message while of changing in any of states  of the Form  inputs [using the {setErrMsg} state setter function wiht  using   all of the states representing the inupt fileds [user, pwd, matchPwd]       ]     </li>
-                                
-                                <li> Define the {handleSubmit} method with adding anti-hacking checking [incase the user pased the validation processes of one of input(s) fields] , including  to the next  steps :  <br>
-                                    <ul>
-                                        <li> a- preventing default method :   </li> 
-                                        <li> b- Adding anithacking checking procedures [to prevent enabling submit button before validation ] , including :
-                                          <ol> 
-                                                <li>  1- Redefining the both of [regex validation] variables [user , password]  </li>
-                                                <li>  2- Checking for above defined [Regex validation] variables is not  existed [means  the validation has been passed ]    </li>
-                                          </ol>
-                                        </li> 
-
-                                        <li> c- [main Async - await respondging to the assigned api ] using the {try-catch} block , contianing  the next steps :  <rv>  
-                                          <ol> 
-                                              <li>  {try } :  Define the responding variable of [post] process with api using the api link of [REGISTER_URL] , with assign of all input fields states values   [input states] inside the (stringfy)  mehthod paremeters , as following :  <br> 
-                                                <p> 1- reponse variable   : <br>                                         
-                                                  <ul>
-                                                    <li> [user] parameter  => the username input state   </li>
-                                                    <li> [pwd] parameter => the  password  input state   </li>
-                                                    <li> {} method  => custom object of the post  =>   include  [header] property & [ withCredentials] property   </li>
-                                                  </ul> 
-                                                </p> <br>
-                                                
-                                                <p>   Priniting the   value of returned  form response [reponse.data] & [response.acessToken]      </p> 
-
-                                                <p>   Setting the state of [success] state by true  - incase of sucessful registartion submting - , to be used for rendering display  </p>
- 
-                                              </li>
-
-                                              <li>  {catch} : including (2) main  stepes  :  <br> 
-                                                  <ul> 
-                                                    <li> 1-  displaying differnet custo error message accorgding to the responded  types of error types ,  as folowing :  <br>
-                                                      <ol>
-                                                        <li> NO catched Error => [the {err} catch  paremeter retuned null ]  </li>
-                                                        <li>  {409} error  type  =>   the username has been taken by anther user    </li>
-                                                        <li> Any other type  of public error =>     </li>
-                                                      </ol> 
-                                                    </li> 
-                                                    
-                                                    <li> 2- Focusing on the generated error of [error paragraph] with in the script  , using  {errRef}  that asigned inside  this paragraph  </li>
-                                                  </ul>     
-                                                 
-                                              
-                                              </li>
-                                          </ol>
-                                        
-                                        </li> 
-                                    </ul> 
-
+                           
+                          <p>  // B] Define the main function for fetching the authorization level + protecting the Routes  + with using  {allowedRoles}  parameter to hold the role  code value by calling it inside the defined route wihtin the [App.js]   :  <br>
+                            <code>
+                              <span class="one" ></span> const RequireAuth = ({ allowedRoles }) => { <br>
+                                <span class="two" ></span> // 1-   Extracting the [auth] prop that defined inside the main context provider function , [by  using the imported custom hook]  : <br>
+                                <span class="two" ></span>   const {auth}  = useAuth() ; <br>
                                   
                                 
-                                </li>  
-                              </ol>                           
-                        </li> 
+                                <span class="two" ></span> // 2-     Define a extracted location variable [ the current location ] : : <br>
+                                <span class="two" ></span>   const location  = useLocation() ;  <br> <br>
+                                  
+                                
+                                <span class="two" ></span> /* 3-  return    the main { RequireAuth}  functional component of [ checking for roles] according to  the next nested  conditons :  <br>
+                                  <span class="three" ></span> 1-   if  the [ passed parameter {allowedRoles}  include a defined  Role  =>  then navigate to the protected children wraped routes inside the protector  {RequireAuth} route  ]  by return the {Outlet}  <br>  
+                                  <span class="three" ></span> 2-   if  the [ passed parameter {allowedRoles}  NOT include a defined  Role   => Check for there is a user =>  <br>
+                                    <span class="four" ></span>  a-  if there is a user =>  navigate to the {UnAuthorized} page <br>
+                                    <span class="four" ></span>  b-  if there is NOT a user =>   navigate to the {Login} page : */  <br>  <br>
+                                  
+                                <span class="two" ></span>    return (   <br>  
+                                  <span class="three"></span> auth?.roles?.find(role => allowedRoles?.include(role)) ?  <br>  
+                                    <span class="four"></span> &lt; Outlet / &gt; <br>   
+                                    <span class="four"></span>  : auth?.user ?  <br>
+                                      <span class="five"></span> // [No Role + No user ]     <br>
+                                      <span class="five"></span> &lt; Navigate to='/unauthorized' state={ { from: location } } replace / &gt; <br> 
+                                      <span class="five"></span> //  [No Role + but there is a user ] => adding the {state} attribute with locaton will allow the browser to remember where the user were  <br> 
+                                      <span class="five"></span> :  &lt; Navigate to='/Login' state={ { from: location } } replace / &gt;  <br>
+                                <span class="two"></span> )  <br>
+                              <span class="one" ></span>  } <br>
+                              
+                            </code>
 
-                          <li> D]  main  return of the functional component : <br> 
-                              <p>  using conditional rendering [according to {access} defined state ] to display one elemtn of the following :  <br>
-                                  <ol>  
-                                    <li> First rendering  [log-in link ] to log-in page => dispalyed after  the succesful registarion process -> to prvodie the  login for the  user </li> 
-                                    <li> Second Refndering  [Registration Form ]  => the first and default element to be displayed to the user to provdie the  registration first and  [sign-in] link , and including  : 
-                                        <ol> 
-                                          <li> 1- [error paragraph] =>  Displaying the error message if it is existed (before  the main form ) , by  usign  conditional  classname values [hide ,display ] </li>
-                                          <li> 2- [Registration Form]  => containing  next several sections : <br>
-                                             <ul>   
-                                               
-                                                <li>  a- [Username input field] section  =>    <br>
-                                                  <p> including the following inner  (3) details :   <br>
-                                                    <ol> 
-                                                      <li>  Username  [label]  => inlcuding  the next 3  details : <br> 
-                                                          <ul> 
-                                                            <li> Usernamne label text  value    </li> 
-                                                            <li> Conditional displaying  of [check Icon] =>  by Conditional rendering of classname value according to the asssinged value of [validName] state , incase of valid value inserted    </li> 
-                                                            <li> Conditional displaying  of  [waiting Icon] by Conditional rendering of classname value according to the asssinged value of [validName] state , incase of Invalid value inserted    </li> 
-                                                          </ul>  
-                                                      </li>
-                                                      
-                                                      <li>  Username [input field]  =>     </li>
-                                                      <li>  Username input field  [description notes]  =>     </li>
-                                                    </ol>                                                                                              
-                                                  </p>  
-                                                </li>
 
-                                                <li>  b- [Password input field] section  =>    <br>
-                                                  <p> including  the following    (3) details :   <br>
-                                                    <ol> 
-                                                      <li>  Username  [label]  =>     </li>
-                                                      <li>  Username [input field]  =>     </li>
-                                                      <li>  Username input field  [description notes]  =>     </li>
-                                                    </ol>                                                                                              
-                                                  </p>  
-                                                </li>
-      
-                                                <li>  c- [Password Confirmation input field] section  =>    <br>
-                                                  <p> including  the following    (3) details :   <br>
-                                                    <ol> 
-                                                      <li>  Username  [label]  =>     </li>
-                                                      <li>  Username [input field]  =>     </li>
-                                                      <li>  Username input field  [description notes]  =>     </li>
-                                                    </ol>                                                                                              
-                                                  </p>  
-                                                </li>
+                          </p>
 
-                                                <li>  d- Submiting button : <br>
-                                                  <p> the registration form submiting button , contains 'disabling' attribute accordings to (3)  conditions :   <br>  
-                                                     <ol>
-                                                      <li>  {!validName} =>  th defined state variable of validated username input field is not valid   </li>
-                                                      <li>  {!validPwd} =>  the defined state variable of validated password  input field is not valid      </li>
-                                                      <li>  {!validMatch} =>  the defined state variable of validated  confirmation password input field is not valid       </li> 
-                                                    </ol> 
-                                                  </p>
-                                                </li>
-                                                 
-                                             </ul>   
-                                          </li>
-
-                                          <li>  3- [Sign-in] paragraph with link  at  beneath of   page    : <br> 
-                                             <p> This paragraph will be displayed after the Regsitration Form  [to provide teh  ability to navigate to the sign-in page  ]    </p>
-                                          </li>
-                                        </ol>
-                                    </li>   
-                                  </ol>
-                              </p>  
-                          
-                          </li>
-                      </ul>
-                   
+                        </li>
+                      </ul> 
                   </p>             
                 </p> <br>     
               <!-- ------------------------------------------------------------- -->
             
-              <h1> C]   Vip notes about  Registration Form :   </h1>              
+              <h1> C]   Vip notes about protected role based routes Form :   </h1>              
                 <ul>
-                    <li>  [Backend] files links are  this  lesson description video  </li>  
-                    <li>  [Backend] files will be studied within the [node.js] course  </li>  
+                    <li>  While defining the protected rolutes inside the [App.js]  file => must follow the next rules :   <br>
+                      <ol> 
+                        <li> Must Wrap the protected  route(s)   within the  defined {protecting component}  route  </li>
+                        <li> The defined {protecting component}  route > can  include  more that one protected route with the same code     </li>
+                        <li> Inside the protector route must belonging  role parameter [ as well it defined inside the {protector functional compoennt  }  ] with assined code value </li>
+                      </ol>                       
+                    </li>
+                    
+                    <li> incase of defne and use a custom hook function to reduce the required steps of using deifned context, it must be imported inside the  [{protecting component} file] where  it will be used in fetching the isnerted infromation of the Login Form   </li>  
+
                 </ul>
               <!--  --------------------------------------------------------  -->
 
