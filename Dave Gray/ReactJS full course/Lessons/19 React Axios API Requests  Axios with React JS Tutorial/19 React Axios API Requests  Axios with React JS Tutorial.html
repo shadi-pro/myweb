@@ -1,0 +1,2003 @@
+
+<!DOCTYPE html>
+
+<html>
+
+ <head>
+
+    <meta charset="utf-8">
+
+    <!-- IE compatiblity Meta -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- First Mobile Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta content="Learning ReactJS Course" description="This is Lesson 19 React Axios API Requests  Axios with React JS Tutorial ">
+
+    <title> 19 React Axios API Requests  Axios with React JS Tutorial </title>
+
+    <link rel="stylesheet" href="19 React Axios API Requests  Axios with React JS Tutorial.css" media="all">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" media="all">
+
+    <link rel="stylesheet" href="css/fontawesome.min.css" media="all">
+
+    <link rel="stylesheet" href="css/all.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine|Inconsolata|Droid+Sans">
+
+    <link rel="stylesheet" href="css/style.css" media="all">
+
+    <link rel="stylesheet" href="css/media.css" media="all">
+
+    <link rel="stylesheet" href="css/hover.css" media="all">
+
+    <link rel="stylesheet" href="css/animate.css" media="all">
+
+    <link rel="stylesheet" href="css/default_theme.css" media="all">
+
+    <style>
+        body {
+            background-color: rgb(100, 196, 228);
+        }
+
+        .display>h3,
+        .display>h2 {
+            display: none
+        }
+
+        .display1>h3,
+        .display>h2 {
+            display: none
+        }
+
+        .display {
+            position: relative;
+
+        }
+
+        #group1,
+        #group2,
+        #group3,
+        #group4,
+        #group5,
+        #group6,
+        #group7 {
+            display: none;
+        }
+
+        .shadi {
+            width: 300px;
+            padding: 30px;
+            height: 100px;
+            border-radius: 20px;
+        }
+
+        .br {
+            border: 5px solid blue;
+            font-size: 30px
+        }
+
+        .input1,
+        .input2 {
+            font-size: 13px;
+            text-align: center;
+            min-height: 50px;
+            height: 50px;
+        }
+
+        .add {
+            width: 100px;
+            background-color: red;
+            font-size: 15px;
+            cursor: pointer;
+            display: lnline;
+        }
+
+        .custom  {
+            width: 300px;
+            height: 300px;
+            padding: 20px;
+            margin: 10px auto;
+            border: 5px solid gray;
+            background-color: #ccc;
+            text-align: center;
+        }
+
+        .dis {
+            border: 3px solid red;
+            border-radius: 30px;
+            width: 100%;
+            text-align: center;
+            line-height: 2em;
+        }
+
+        .item {
+            color: red;
+            font-size: 30px;
+            font-family: monospace;
+            background-color: blue;
+        }
+
+        .sh {
+            background-color: blue;
+            color: #fff;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .btn {
+            background-color: black;
+            border-radius: 20px;
+            margin: 20px auto;
+            color: #fff;
+            font-size: 15px;
+            transition: .5s all ease-in-out;
+        }
+
+        .btn:hover {
+            font-size: 18px;
+            border: 3px solid gold;
+            color: #fff;
+        }
+
+        .codes .elem1,
+        .codes .elem2,
+        .codes .elem3,
+        .codes .elem4 {
+            font-size: 15px;
+            border: 5px solid red;
+            padding: 50px;
+        }
+
+        .codes h3 {
+            text-decoration: underline;
+        }
+
+        .mainCont .subCont div {
+            border: 2px solid gray;
+            font-size: 25px;
+            color: blue;
+        }
+
+        .mainCont .subCont div p span {
+            display: block;
+        }
+
+        .color {
+            background-color: blue;
+            color: red;
+        }
+
+        #divn {
+            display: none;
+        }
+
+        .codes0 .g41 {
+            background-color: #ddd;
+            border: solid 3px gray;
+            width: 500px;
+            height: 200px;
+        }
+
+        .codes0 .g41 h3 {
+            color: red
+        }
+
+        .codes0 .g41 p {
+            font-family: Arial, Helvetica, sans-serif
+        }
+
+        .codes0 .g41t,
+        .codes0 .g41c {
+            margin: 10 0 0;
+            padding: 10px;
+        }
+
+        .codes0 .screen {
+
+            color: red;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1000%;
+            height: 1000%;
+            z-index: 9999;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .codes0 .hidden {
+            display: none;
+        }
+
+        /* border-radius:50%; */
+        .codes0 .circle,
+        .codes0 .circle1,
+        .codes0 .circle3 {
+            width: 100px;
+            height: auto;
+            border: solid 2px blue;
+            background-color: red;
+            /* display: none; */
+        }
+
+        #each {
+            background-color: #080;
+            color: #fff;
+        }
+    </style>
+
+    <!--[if It IE 9]>
+        <script src="js/html5shiv.min.js"> </script>
+        <script src="js/respond.min.js"> </script>
+    <[endif]!-->
+</head>
+
+<body>
+
+    <!-------------------------------------------------------------------------------------------------------->
+    <header id="Main" class="Main wow fadeInDown" data-wow-duration="1s">
+        19 React Axios API Requests  Axios with React JS Tutorial  [Dave Gray]   
+    </header>
+
+    <!-------------------------------------------------------------------------------------------------------->
+    <!-- Bootstrap Navigation Bar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+
+            <!-- 1] {Navbar Container / Header} : Brm m toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ToggleMenu"
+                    aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brm hvr-pop" href="#"> Shindow Pro <span>lnc.</span> </a>
+            </div>
+
+            <!-- 2] {Navbar Container / Menu Items} : Collect the nav links, forms, m other content for toggling -->
+            <div id="ToggleMenu" class="collapse navbar-collapse">
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="active"><a href="#MainC"> Main Topics <span class="sr-only">(current)</span></a></li>
+
+                    <li><a href="#JSDOMCon">Concept</a></li>
+                    <li><a href="#JSDOMImp">Importance & Benefits</a></li>
+                    <li><a href="#JSDOMSyntx">Syntax & Examples</a></li>
+                    <li><a href="#JSDOMPract">Practical Applications</a></li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">
+                            Hot Links <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#19 React Axios API Requests  Axios with React JS TutorialSection" target="_self" class="19 React Axios API Requests  Axios with React JS TutorialLink"> Lesson 19 React Axios API Requests  Axios with React JS Tutorial </a></li>
+
+                            <li role="separator" class="divider"></li>
+
+                            <li><a href="http://shadi-pro.epizy.com" target="_blank"> My References </a></li>
+
+                            <li role="separator" class="divider"></li>
+
+                            <li><a href="http://shadi-cv.epizy.com" target="_blank"> My Personal Website </a></li>
+                            <!-- <li><a href="#">Something else here</a></li> -->
+                            <!-- <li><a href="#">Separated link</a></li>
+                            <li role="separator" class="divider"></li>                            
+                            <li><a href="#">one more separated link</a></li> -->
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form> -->
+
+                <!-- <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                </ul> -->
+
+            </div><!-- /.navbar-collapse -->
+
+        </div><!-- /.container-fluid -->
+
+        <a class="Home hvr-wobble-horizontal" href="#Main" title="Go to page header"> Home </a>
+        <a class="End hvr-wobble-horizontal" href="#footer" title="Go to page footer"> End </a>
+    </nav>
+    <!-- ------------------------ -->
+
+    <!-- The following Tag can be as <main> Tag, but the Editor is old for HTML5-->
+    <main class="Welcome container text-center center-block wow bounceInDown" data-wow-duration="2s">
+        <span> Welcome to  ReactJS  full  Course  [Dave Gray]   | </span> <br>
+        19 React Axios API Requests  Axios with React JS Tutorial
+    </main>
+    <!-- ---------------------------------------------------------------------------------------------------- -->
+    <!-- Options Tool box -->
+    <section class="option-box" style="min-height: fit-content; " >
+        <!-- First Tool OPtion {Changing the color of the Whole the Website Template } -->
+
+        <!-- <div class="color-option text-center" style="float:left; height:auto "> -->
+        <div class="color-option text-center">
+            
+            <!-- <aside style="float:left ; width:auto " > -->
+                <div class="container"  >
+                    <div class="row"> 
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                            <h4> Color Options </h4>
+                            
+                            <ul class="list-unstyled">
+                                <li data-value="css/default_theme.css"></li>
+                                <li data-value="css/blue_theme.css"></li>
+                                <li data-value="css/purple_theme.css"></li>
+                                <li data-value="css/yellow_theme.css"></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row"> 
+                        <!--  Lesson Video  -->
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+                            
+                            <h3 style="margin-bottom:-10px "> Lesson # Video File: </h3>
+                            <video controls  height="300" width="300" style="margin-top:-10px; ">
+                                <source
+                                    src="E:\Web videos lessons\Web Framworks\ReactJs\Apps\recommended\React Portfolio\React portfolio website with animation Full.mp4"
+                                    type="video/mp4">
+                                Your browser Does Not Support the Video file ...
+                            </video>
+                        </div>
+                         
+                        <!--  Course Requriments & Course Map & MyPortfolio Website  -->
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+                            <h3>Course Requirments : </h3>
+                            <ol style=" list-style: none;"  >
+                                <li> HTML </li>
+                                <li> CSS </li>
+                                <li> Bootstrap & React Bootstrap </li>
+                                <li> JS [advanced] => [ES6+] </li>
+                                <li> ReactJs </li>
+                            </ol>
+
+                            <h3> Course Map : </h3>
+                            <ol class="list-unstyled">
+                                <li> <a target="_blank"  href="course map/ReactJS  course map.html"> ReactJS Course Map </a> </li>
+                            </ol>
+                             
+                            <h3> My portfolio website  : </h3>
+                            <ol class="list-unstyled">
+                                <li> <a  target="_blank" class='brand' href=" https://shindowpro.github.io/">  My Portfolio  </a> </li>
+                            </ol>
+                             
+                        </div>
+                    </div>
+            </div>
+        
+            
+        </div>
+ 
+        <i class="fas fa-gear fa-2x gear-option"></i>
+
+    </section>
+    <!-- ---------------------------------------------------------------------------------------------------- -->
+
+    <!-- About Section  -->
+    <section class="about text-center wow bounceInLeft" data-wow-duration="2s" id="about">
+        <div class="container">
+          <h2 class="h1" class="hidden-xs"> About Section =>  ReactJS Course dealing with API requests by using  <span><strong>  { axios() }  method with using CRUD operations </strong> </span> </h2>
+          <h3 class="visible-xs"> About Section => This lesson about <stron> dealing with  API  requries by using { axios() }  method   with using CRUD operations    </strong> </span> </h3> 
+        </div>
+    </section>
+    <!-- ---------------------------------------- -->
+
+    <!-- Footer Section -->
+    <section class="footer">
+
+        <div class="container">
+            <div class="row">
+                <!-- First Column {Site Map + Social Media} -->
+                <div class="col-lg-4 col-md-6">
+                    <!-- 1) Site Map  -->
+                    <h3> Site Map </h3>
+                    <ul class="list-unstyled three-columns">
+                        <li> <a href="#myslider"> Home </a> </li>
+                        <li> <a href="#about"> About </a> </li>
+                        <li> <a href="#"> Company </a> </li>
+                        <li> <a> Design </a> </li>
+                        <li> <a> Solutions </a> </li>
+                        <li herf="#"> <a> Contact </a> </li>
+                        <li> <a> Services </a> </li>
+                        <li> <a> Activities </a> </li>
+                        <li> <a> Featured </a> </li>
+                        <li> <a href="http://shindowpro.github.io">My Portfolio Website</a></li>
+                        <li> <a href="http://shadi-pro.epizy.com">My Refs</a></li>
+                        <li> <a href="http://gtmatrix.com"> GTmatrix.com [Testing website online ]</a></li>
+                        <li> <a href="https://github.com/shindowpro" target="self">My Github Repoes </a></li>
+                    </ul>
+
+                    <!-- 2) Social Media Links -->
+                    <ul class="list-unstyled social-list text-center">
+                        <li> <img src="img/social/facebook-48.png" alt="facebook"> </li>
+                        <li> <img src="img/social/twitter-48.png" alt="twitter"> </li>
+                        <li> <img src="img/social/whatsapp-48.png" alt="whatsapp"> </li>
+                        <li> <img src="img/social/google-plus-48.png" alt="google-plus"> </li>
+                        <li> <img src="img/social/linkedin-48.png" alt="linkedin"> </li>
+                        <li> <img src="img/social/tiktok-48.png" alt="tiktok"> </li>
+                        <li> <img src="img/social/mail-48.png" alt="mail"> </li>
+                        <li> <img src="img/social/instagram-48.png" alt="instagram"> </li>
+                        <li> <img src="img/social/rss-48.png" alt="rss"> </li>
+                        <li> <img src="img/social/myspace-48.png" alt="myspace"> </li>
+                        <li> <img src="img/social/bebo-48.png" alt="bebo"> </li>
+                    </ul>
+                </div>
+
+                <!-- Second column {Latest Articles} -->
+                <div class="col-lg-4 col-md-6">
+                    <h3> Latest Articles </h3>
+
+                    <!-- First media -->
+                    <div class="media">
+                        <a href="#" class="pull-left">
+                            <img src="img/social/bebo-48.png" class="media-object" alt="">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"> Programming </h4>
+                            This articles about the Programing m just for testing purposes for Display
+                        </div>
+                    </div>
+
+                    <!-- Second media -->
+                    <div class="media">
+                        <a href="#" class="pull-left">
+                            <img src="img/social/facebook-48.png" class="media-object" alt="">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"> Design </h4>
+                            This articles about the Design m just for testing purposes for Display
+                        </div>
+                    </div>
+
+                    <!-- Third media -->
+                    <div class="media">
+                        <a href="#" class="pull-left">
+                            <img src="img/social/tiktok-48.png" class="media-object" alt="">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"> Social </h4>
+                            This articles about the Social m just for testing purposes for Display
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Third column {Featured Works} -->
+                <div class="col-lg-4 col-md-12 text-center">
+                    <h3> Latest Articles </h3>
+                    <img src="img/footer/1.png" class="img-thumbnail" alt="image1">
+                    <img src="img/footer/2.png" class="img-thumbnail" alt="image2">
+                    <img src="img/footer/3.png" class="img-thumbnail" alt="image3">
+                    <img src="img/footer/4.png" class="img-thumbnail" alt="image4">
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- {copyright} -->
+        <div class="copyright1 text-center">
+            Copyright &copy; 2023 by <span> Shindow </span> lnc.
+        </div>
+
+    </section>
+    <!-- ---------------------------------------- -->
+
+    <!-- {Hover.css} Library Gallery Samples -->
+    <section class="hover-box text-center">
+        <div class="container hover-option text-center">
+
+            <h2 class="text-center"> Grow Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-2 hvr-grow btn-danger"> Default Grow Hover Effect </div>
+                <div class="col-lg-3"></div>
+                <div class="col-lg-2 hvr-grow-rotate btn-primary"> Grow Rotate Hover Effect </div>
+                <div class="col-lg-3"></div>
+                <div class="col-lg-2 hvr-icon-grow btn-info"> Icon Grow Hover Effect </div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Shrink Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-5 hvr-shrink btn-danger"> Shrink Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 hvr-icon-shrink btn-primary"> Icon Shrink Hover Effect </div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Push Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-5 hvr-push btn-danger"> Default Push Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 hvr-icon-push btn-primary"> Icon Push Hover Effect </div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Wobble Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-3 hvr-wobble-vertical btn-danger"> Wobble Vertical Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-wobble-horizontal btn-primary"> Wobble Horizontal Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 hvr-wobble-skew btn-info"> Wobble Skew Hover Effect </div>
+            </div> <br>
+
+            <div class="row text-center">
+                <div class="col-lg-5 hvr-wobble-top btn-danger"> Wobble Top Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 hvr-wobble-bottom btn-primary"> Wobble bottom Hover Effect </div>
+            </div> <br>
+
+            <div class="row text-center">
+                <div class="col-lg-5 hvr-wobble-to-top-right btn-info"> Wobble to Top Right Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 hvr-wobble-to-bottom-right btn-success"> Wobble Bottom Right Hover Effect </div>
+            </div>
+
+
+            <hr>
+
+            <h2 class="text-center"> Buzz Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-2 hvr-buzz btn-danger"> Buzz Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-icon-buzz btn-primary"> Icon Buzz Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-2 hvr-buzz-out btn-danger"> Buzz out Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+
+            <h2 class="text-center"> Bounce Hovering Group </h2>
+            <h3 class="text-center"> Default Bounce Hovering Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bounce-to-right btn-danger"> Bounce to right Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bounce-to-left btn-primary"> Bounce to left Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div> <br>
+
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bounce-to-top btn-success"> Bounce to top Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bounce-to-bottom btn-info"> Bounce to bottom Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h3 class="text-center"> Bounce In - Out Hovering Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bounce-in btn-danger"> Bounce in Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bounce-out btn-primary"> Bounce out Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Pulse Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-pulse btn-danger"> Pulse Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Fade Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-fade btn-danger"> Fade Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Radial Out/In Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-radial-out btn-danger"> Radial Out Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4 hvr-radial-in btn-danger"> Radial In Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Rectangle In/Out Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-rectangle-out btn-danger"> Rectangle Out Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4 hvr-rectangle-in btn-danger"> Rectangle In Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Forward/Backword Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-forward btn-danger"> Forward Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4 hvr-backward btn-primary"> Backword Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Shutter In Horizontal/Vertical Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-shutter-in-horizontal btn-danger"> Shutter in horizontal Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4 hvr-shutter-in-vertical btn-primary"> Shutter in Vertical Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Shutter Out Horizontal/Vertical Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-shutter-out-horizontal btn-danger"> Shutter out horizontal Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4 hvr-shutter-out-vertical btn-primary"> Shutter out Vertical Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Outline Out/In Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-outline-out btn-danger"> Outline Out horizontal Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4 hvr-outline-in btn-primary"> Outline In Vertical Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Pop Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-pop btn-success"> Pop Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Hollow Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-hollow btn-success"> Hollow Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Trim Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-trim btn-success"> Trim Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Ripple In/Out Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-ripple-in btn-primary"> Ripple In Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4 hvr-ripple-out btn-danger"> Ripple Out Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Rotate Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-rotate btn-success"> Rotate Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Float Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-float btn-primary"> Float Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Sink Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-sink btn-danger"> Sink Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Bob Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-bob btn-success"> Bob Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Hang Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-hang btn-info"> Hang Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Border Fade Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-border-fade btn-danger"> Border Fade Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Round Corners Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-round-corners btn-success"> Round Corners Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Glow Corners Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-glow btn-success"> Glow Corners Hover Effect </div>
+                <div class="col-lg-1"></div> 1
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Shadow Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-shadow btn-danger"> Shadow Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-shadow-radial btn-success"> Shadow Radial Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-box-shadow-inset btn-info"> Box Shadow Inset Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-box-shadow-outset btn-primary"> Box Shadow Outset Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Skew Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 hvr-skew-backward btn-danger"> Skew backward Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-2 hvr-skew btn-danger"> Skew Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 hvr-skew-forward btn-danger"> Skew forward Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Underline Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-underline-from-center btn-danger"> Underline From Center Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-underline-reveal btn-success"> Underline Reveal Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-underline-from-left btn-info"> Underline From Left Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-underline-from-right btn-primary"> Underline From Right Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Overline Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-overline-from-center btn-danger"> Overline From Center Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-overline-reveal btn-primary"> Overline Reveal Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-overline-from-left btn-info"> Overline From Left Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-overline-from-right btn-success"> Overline From Right Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> CURLS Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-curl-bottom-left btn-danger"> Curl bottom left Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-curl-bottom-right btn-primary"> Curl bottom Right Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-curl-top-left btn-info"> Curl top left Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-curl-top-right btn-success"> Curl top right Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+            <hr>
+
+            <h2 class="text-center"> Bubble Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bubble-bottom btn-danger"> Bubble bottom Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bubble-top btn-primary"> Bubble Top Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bubble-left btn-info"> Bubble Left Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bubble-right btn-success"> Bubble Right Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+            <hr>
+
+            <h3 class="text-center"> Bubble Float Hovering Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bubble-float-bottom btn-danger"> Bubble Float Bottom Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bubble-float-top btn-info"> Bubble Float Top Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bubble-float-left btn-success"> Bubble Float Left Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bubble-float-right btn-primary"> Bubble Float Right Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h3 class="text-center"> Icon Hovering Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-2 hvr-icon-back btn-danger"> Icon Back Hover Effect </div>
+                <div class="col-lg-2 col-lg-offset-0 hvr-icon-forward btn-info"> Icon Forward Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-2 hvr-icon-down btn-danger"> Icon Down Hover Effect </div>
+                <div class="col-lg-2 hvr-icon-up btn-info"> Icon Up Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div> <br>
+
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-2 hvr-icon-drop btn-danger"> Icon Drop Hover Effect </div>
+                <div class="col-lg-2 col-lg-offset-0 hvr-icon-fade btn-info"> Icon Fade Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-2 hvr-icon-float btn-danger"> Icon Float Hover Effect </div>
+                <div class="col-lg-2 hvr-icon-sink btn-info"> Icon Sink Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-2 hvr-icon-float-away btn-danger"> Icon Float Away Hover Effect </div>
+                <div class="col-lg-2 col-offset-0 hvr-icon-sink-away btn-primary"> Icon Sink Away Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-2 hvr-icon-pulse-shrink btn-info"> Icon Pulse Shrink Hover Effect </div>
+                <div class="col-lg-2 hvr-icon-pulse-grow btn-success"> Icon Pulse Grow Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h3 class="text-center"> Pulse Grow Hovering Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-icon-spin btn-danger"> Pulse Grow Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+
+            <h2 class="text-center"> Mixing Hovering Group </h2>
+            <h3 class="text-center"> Pulse Grow Hovering Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-pulse-grow btn-danger"> Pulse Grow Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div> <br>
+
+            <h3 class="text-center"> Pulse Shrink Hovering Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-pulse-shrink btn-primary"> Pulse Shrink Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h3 class="text-center"> Back Pulse Hovering Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-back-pulse btn-info"> Back Pulse Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h3 class="text-center"> Sweep Hovering Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4 hvr-sweep-to-right btn-danger"> Sweep To Right Hover Effect </div>
+                <div class="col-lg-4 hvr-sweep-to-left btn-info"> Sweep To Left Hover Effect </div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4 hvr-sweep-to-bottom btn-info"> Sweep To Bottom Hover Effect </div>
+                <div class="col-lg-4 hvr-sweep-to-top btn-danger"> Sweep To Top Hover Effect </div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Float Shadow Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-float-shadow btn-success"> Float Shadow Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+        </div>
+    </section>
+    <i class="gear-option0 hvr-pulse-grow"> Hover.css</i>
+    <!-- ---------------------------------------- -->
+
+    <!-- {wow.js} Library Animation Samples -->
+    <section class="animation-box text-center">
+        <div class="container hover-option text-center">
+
+            <h2 class="text-center"> Bounce Animation Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow bounce btn-primary" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> Default Bounce Animation </div>
+            </div> <br> <br>
+            <h3 class="text-center"> BounceIn Sub/Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-3 wow bounceInRight btn-danger" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> BounceIn Right Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 wow bounceIn btn-success" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> BounceIn Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 wow bounceInLeft btn-primary" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> BounceIn Left Animation </div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-5 wow bounceInUp btn-danger" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> BounceIn Up Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow bounceInDown btn-primary" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> BounceIn Down Animation </div>
+            </div> <br> <br>
+
+            <h3 class="text-center"> BounceOut Sub/Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-3 wow bounceOutRight btn-danger" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> BounceOut Right Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 wow bounceOut btn-success" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> BounceOut Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 wow bounceOutLeft btn-primary" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> BounceOut Left Animation </div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-5 wow bounceOutUp btn-danger" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> BounceOut Up Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow bounceOutDown btn-primary" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> BounceOut Down Animation </div>
+            </div> <br>
+            <hr> <br>
+            <!-- --------------------------- -->
+
+            <h2 class="text-center"> Pulse Animation </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow pulse btn-danger" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> Pulse Animation </div>
+            </div> <br>
+            <hr> <br>
+            <!-- --------------------------- -->
+
+            <h2 class="text-center"> Shake Animation </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow shake btn-info" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> Shake Animation </div>
+            </div> <br>
+            <hr> <br>
+            <!-- --------------------------- -->
+
+            <h2 class="text-center"> Swing Animation </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow swing btn-primary" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> Swing Animation </div>
+            </div> <br>
+            <hr> <br>
+            <!-- --------------------------- -->
+
+            <h2 class="text-center"> Tada Animation </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow tada btn-success" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> Tada Animation </div>
+            </div> <br>
+            <hr> <br>
+            <!-- --------------------------- -->
+
+            <h2 class="text-center"> Wobble Animation </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow wobble btn-danger" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> Wobble Animation </div>
+            </div> <br>
+            <hr><br>
+            <!-- --------------------------- -->
+
+            <h2 class="text-center"> FadeIn Animation Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow fadeIn btn-primary" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> Default FadeIn Animation </div>
+            </div> <br> <br>
+            <h3 class="text-center"> FadeIn Animation Sub/Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-5 wow fadeInRight btn-danger" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> FadeIn Right Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow fadeInLeft btn-success" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> FadeIn Left Animation </div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-5 wow fadeInRightBig btn-danger" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> FadeIn Right Big Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow fadeInLeftBig btn-success" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> FadeIn Left Big Animation </div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-5 wow fadeInUp btn-danger" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> FadeIn Up Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow fadeInDown btn-success" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> FadeIn Down Animation </div>
+            </div> <br> <br>
+            <div class="row text-center">
+                <div class="col-lg-5 wow fadeInUpBig btn-danger" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> FadeIn Up Big Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow fadeInDownBig btn-success" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> FadeIn Down Big Animation </div>
+            </div> <br> <br>
+            <!-- --------------------------------- -->
+
+            <h2 class="text-center"> FadeOut Animation Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow fadeOut btn-primary" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> Default FadeOut Animation </div>
+            </div> <br> <br>
+            <h3 class="text-center"> FadeOut Sub/Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-5 wow fadeOutRight btn-danger" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> FadeOut Right Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow fadeOutLeft btn-success" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> FadeOut Left Animation </div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-5 wow fadeOutRightBig btn-danger" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> FadeOut Right Big Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow fadeOutLeftBig btn-success" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> FadeOut Left Big Animation </div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-5 wow fadeOutUp btn-danger" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> FadeOut Up Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow fadeOutDown btn-success" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> FadeOut Down Animation </div>
+            </div> <br> <br>
+            <div class="row text-center">
+                <div class="col-lg-5 wow fadeOutUpBig btn-danger" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> FadeOut Up Big Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow fadeOutDownBig btn-success" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> FadeOut Down Big Animation </div>
+            </div> <br> <br>
+            <hr> <br>
+            <!-- --------------------------------- -->
+
+            <h2 class="text-center"> Flip Animation Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow flip btn-info" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> Default Flip Animation </div>
+            </div> <br> <br>
+            - <h3 class="text-center"> FlipIn Sub/Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-5 wow flipInX btn-danger" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> FlipIn X Horizontal Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow flipInY btn-primary" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> FlipIn Y Vertical Animation </div>
+            </div> <br> <br>
+            <h3 class="text-center"> FlipOut Sub/Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-5 wow flipOutX btn-danger" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> FlipOut X Horizontal Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow flipOutY btn-primary" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> FlipOut Y Vertical Animation </div>
+            </div> <br> <br>
+            <hr> <br>
+            <!-- ------------------------------------- -->
+
+            <h2 class="text-center"> LightSpeed Animation Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-5 wow lightSpeedIn btn-danger" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> LightSpeed In Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow lightSpeedOut btn-success" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> lightSpeed Out Animation </div>
+            </div> <br> <br>
+            <hr> <br>
+            <!-- ------------------------------------- -->
+
+            <h2 class="text-center"> Rotate Animation Group </h2>
+            <h3 class="text-center"> RotateIn Animation Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-3 wow rotateInDownLeft btn-danger" data-wow-duration="4s" data-wow-clone="2s"
+                    data-wow-offset="200"> RotateIn DownLeft Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 wow rotateIn btn-info" data-wow-duration="4s" data-wow-clone="2s"
+                    data-wow-offset="200"> Default RotateIn Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 wow rotateInDownRight btn-primary" data-wow-duration="4s" data-wow-clone="2s"
+                    data-wow-offset="200"> RotateIn DownRight Animation </div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-5 wow rotateInUpLeft btn-danger" data-wow-duration="4s" data-wow-clone="2s"
+                    data-wow-offset="200"> RotateIn UpLeft Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow rotateInUpRight btn-primary" data-wow-duration="4s" data-wow-clone="2s"
+                    data-wow-offset="200"> rotateIn UpRight Animation </div>
+            </div> <br> <br>
+
+            <h3 class="text-center"> RotateOut Animation Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-3 wow rotateOutDownLeft btn-danger" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> RotateOut DownLeft Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 wow rotateOut btn-info" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> Default RotateOut Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 wow rotateOutDownRight btn-primary" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> RotateOut DownRight Animation </div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-5 wow rotateOutUpLeft btn-danger" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> RotateOut UpLeft Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow rotateOutUpRight btn-primary" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> rotateOut UpRight Animation </div>
+            </div> <br>
+            <hr> <br>
+            <!-- --------------------------------------- -->
+
+            <h2 class="text-center"> Slide Animation Group </h2>
+            <h3 class="text-center"> SlideIn Animation Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-3 wow slideInLeft btn-danger" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> RotateIn Left Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 wow slideInDown btn-info" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> SlideIn Down Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 wow slideInRight btn-primary" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> SlideIn Right Animation </div>
+            </div> <br> <br>
+
+            <h3 class="text-center"> SlideOut Animation Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-3 wow slideOutLeft btn-danger" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> SlideOut Left Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 wow slideOutUp btn-info" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> SlideOut Down Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 wow slideOutRight btn-primary" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> SlideOut Right Animation </div>
+            </div> <br>
+            <hr> <br>
+            <!-- --------------------------------------- -->
+
+            <h2 class="text-center"> Hinge Animation </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow hinge btn-primary" data-wow-duration="2s" data-wow-clone="3s"
+                    data-wow-offset="300"> Hinge Animation </div>
+            </div> <br>
+            <hr> <br>
+            <!-- --------------------------- -->
+
+            <h2 class="text-center"> RollIn Animation </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow rollIn btn-success" data-wow-duration="2s" data-wow-clone="3s"
+                    data-wow-offset="200"> RollIn Animation </div>
+            </div> <br>
+            <hr> <br>
+            <!-- --------------------------- -->
+
+            <h2 class="text-center"> RollOut Animation </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow rollOut btn-danger" data-wow-duration="2s" data-wow-clone="3s"
+                    data-wow-offset="200"> RollOut Animation </div>
+            </div> <br>
+            <hr><br>
+            <!-- --------------------------- -->
+
+        </div>
+    </section>
+    <i class="gear-option1 hvr-pulse-grow"> wow.js </i>
+    <!-- ---------------------------------------- --> 
+
+    <!-- Page contents with Old CSS  -->
+    <div class="Post" id=post>
+        <Section id="MainC" class="MainC">
+            <header>
+              19 React Axios API Requests  Axios with React JS Tutorial   : <br>
+            </header>
+
+            <article>
+                <p> &gt; Main Subjects in this lesson contain the  following : </p>
+ 
+                <ol type="A">
+                    <li> Main points of this lesson , new method to deal with api requests {axios}  with crud  operations   : <br>
+                         <ol>
+                          <li> A] Main concept and mechanism of react {axios} with curd operations     </li>
+                          
+                          <li> B] Main benefits of using react {axios} with curd operations instead of using the old method of {fetch()} </li>
+                          
+                          <li> C] Practical steps and syntax of project [ Modifying the old script of  react blog  using the axios and curd opertions   ] </li> 
+
+                          <li> D] VIP Notes [most commons extracted commands fo the  {axios} library  ]   </li> 
+                           
+                        </ol>
+                     </li> <br> <br>
+                </ol>
+            </article>
+        </Section>
+
+        <!------------------------------------------------------------------------------>
+        <!------------------------------------------------------------------------------>
+        <section class="JSDOMCon" id="JSDOMCon">
+            <header>
+                <h3> 19 React Axios API Requests  Axios with React JS Tutorial concept : </h3>
+            </header>
+ 
+            <h1>  A]  Main concept and mechanism of using {axios} react library with curd operatsions    : </h1> <br>
+                <ol>  
+                   <li> The [axios ] is  about an [api] setting up for the react application , that creating a main connection api url [baseURL] with assinged {watheched} database json file by the json server , and that could be done  by using the main baics configuraions steps : <br>
+                      <ul>
+                        <li> a] Creating the main database json file inside the project's main root in a data folder 'data' => [src/data/db.json] , as an json object file   </li>   <br>
+                        
+                        <li> b] download the main [axios] library to be used in to define {api} & [Crud opertations] with real api connections  , by using the next npm command :   <br>
+                          <span></span> npm i axios    <br>                             
+                        </li>   <br> <br>
+                        
+                        <li> c] Creating and define the main [api] configuration file using installed and imported [axios] library  -> [api/posts.js] to be used to define the main axios {baseURL} to be used as prefix [which will be assign by  'localhost' in this project , but will be replaced by a live api in the future ] to be used by json server to  access the defined database from the assigned json file defined inside the [data] folder , an this file will include the next definition : <br>
+                            <code>   
+                                //  importing the main axios library  to be used in define and create the api  :   <br>  
+                                <span class="one"></span>  import axios from "axios"  <br>   <br>
+                                
+                                // Exported  creation function extracted from [axios] imported library  ,that include the main base url prefix + port nubmer     to be used in any connetion crud  opertation with the api :    <br>  
+                                <span class="one"></span>  export default axios.create({    <br>
+                                  <span class="two"></span>   baseURL: 'http://localhost:3500'  ; <br>
+                                <span class="two"></span> })   <br> 
+                            </code>
+                        </li>  <br>  <br>  
+                        
+                        <li> d] Activating the json server by using [npx] with assigning the each of both flags [port , watch ] :   <br> 
+                          <ol>  
+                              <li> assign the used port number {localhost in this project } to be used to as json server  , by using the  next flag  :  <br>    
+                                <code>
+                                    -p 3500 
+                                </code>
+                              </li> <br>
+                                
+                              <li> assign the database file to be watched from the assinged json server  [this step need inital internet for the first time at least  ] , by using the next flag :     <br>
+                                <code>
+                                    -w src/data/db.json
+                                </code> 
+                              </li>
+
+                              <li> Full command s next code : <br>
+                                <code>                                     
+                                    npx json-server -p 3500 -w serc/data/db.json <br>
+                                </code>  
+                              </li>
+                          </ol>                        
+                        </li>  <br>  <br>  
+
+                        <li> e] Modify the main {App.js} with next steps :  <br>   
+                          <ol> 
+                            <li> 1] New importings :  <br>
+                              <ul>
+                                <li> a- import the  [axios] library to  be used to assing the main crud opertations => {import axios from 'axios'}     </li>
+                                <li> b- import the defined api by axios [api: as custom name] from the api definition file [to be used  in any connection with api ]  => { import api from './api/posts' }   </li>
+                                <li> c- importing the required classes from [date-fns] library    </li>
+                              </ul>                              
+                            </li>  <br> 
+
+                            <li> 2] Modifications of Defined States   :  <br>
+                              <ul> 
+                                <li> a- keep the defined state of [posts, setPosts] , but  with empty array of objects => [to be obtained from  the api , instead of the static array ]  ,  by the next code  : <br> 
+                                  <code> 
+                                      const [posts, setPosts] = useState([]) ; <br>    
+                                  </code>
+                                </li>   <br>
+  
+                                <li> b- Defining required states for [add/creating a new post] [title] and [body]  :    <br>  
+                                  <code> 
+                                        const [postTitle, setPostTitle] = useState(''); <br>
+                                        const [postBody, setPostBody] = useState('');
+                                  </code>
+                                </li>
+                              </ul>
+                            </li> <br> 
+
+                            <li> 3] Modifications in Defined {useEffect} states callback  functions  :  <br>
+                              <ul> 
+                                <li> (a) Modify {Fetching data} first  CRUD operation => inside the main useEffect including [fetchPosts()] function  => responsible for reading / fetching  the returned data from the assinged [api] & [json data] file , but using the {axios} method instead of using the old method of {fetch() } , by using the next steps :  <br> 
+                                  <ol> 
+                                      <li> a- modifications inside the  try{}  :  <br> 
+                                        <ul>  
+                                          <li> 1- Must use the {async - await } method  within in the inner main funcion definition  {fetchPosts()} </li>
+                                          
+                                          <li> 2- Define the variable of the [response] with value of the imported [api] with using  [.get()] method to get the data from the assinged api path ['/posts'] as sub api path  after the baseURL of the defined [api] ,as the next code   : <br>
+                                            <code>
+                                                const response = await api.get('/posts'); <br>
+                                            </code>  
+                                          </li>  <br>  
+          
+                                          <li> 3-  Assigned the response variable value inside the [posts] status , by using directly the defined respnose's extracted [data]   : <br>
+                                            <code>
+                                                setPosts(response.data);   <br>
+                                            </code>  
+                                          </li>  <br>  
+                                        </ul>      
+                                      </li>  <br>
+
+                                      <li> b-  modifications inside the  catch() {} :   <br> 
+                                        <ul> 
+                                          <li> 4- => inside the [catch{}]   : <br>
+                                            catching and handling the default error message (err) that is being generated automatically by printintg the builtin error [if it is existed ] output that handled by axios  [with using axios handling options ] :   <br>
+                                          <code>
+                                            <span class="one"></span>   } catch (err) { <br>
+                                              <span class="two"></span> // print  the builtin error output that handled by axios  [with using axios handling options + and defined variable 'response'  ] after checking if the resposne error is existed and already gernareted :  <br>
+                                              <span class="two"></span> if (err.response) {   <br>
+                                                <span class="three"></span>  console.log(err.response.data) <br>
+                                                <span class="three"></span> console.log(err.response.status) <br>
+                                                <span class="three"></span> console.log(err.response.header) <br>
+                                              <span class="two"></span> } else { <br>
+                                                <span class="three"></span> // print a custom error message incase there is no handled output displayed default [axios]  :  <br> 
+                                                <span class="three"></span>  console.log(err.message)  <br>
+                                              <span class="two"></span> }  <br>
+                                            <span class="one"></span> }  <br>
+                                          </code>  
+                                        </li>  <br>                                             
+                                      </ul>
+                                    </li>
+                                  
+                                    <li> c-  executing the  upper defined function {fetchPosts()}    :   <br>
+                                        <ol> 
+                                          <li> // executing the  defined  {fetchPosts} function inside the useEffect , by using  next code     : <br>
+                                            <span class="one "></span>   fetchPosts();  <br>
+                                          </li>
+                                        </ol>
+                                    </li> <br>
+                                  
+                                    <li> d- adding empty array as dependencies  of the  useEffect [] => to be activated at the first time of running of the  project -> to  obtain the fetch  for data by  start the page   </li>
+                                  
+                                  </ol>              
+                                </li>  <br>
+
+                                <li>  (b) Modify {Post/Add new item data} second CRUD operation =>  {handleSubmit()} function repsonsible for posting/adding new data item into the assigned database through the assigned api , usign the {axios} method instead of {fetch} using next  steps :  <br> 
+                                  <ol> 
+                                    <li> 1- before the  try{} :  <br>
+                                      <ul> 
+                                        <li> Adding {async} to the main function with using the (e) paremater to used to prevent the defualt  submitting       </li>
+                                        <li> keep the defined variables of {[id] property} & {[dateTime] property} & {newPost} as it is without any modifications  </li>
+                                        <li> Define the {newPost} as object variable of full new post object [with assigning all object properties - in order  - ]    </li>
+                                      </ul>
+                                    </li>   <br>  
+                                    
+                                    <li> 2- wrapped inside try{} and catch{} :  <br>
+                                      <ul> 
+                                        <li>   a- Define a variable of [response] that as {api posting connection} , using the imnporetd deifned  [api]  with  '.post()'  method , with  paramters of : 
+                                         <ul> 
+                                             <li> First parameter [posting path]  => '/posts' => which is the file name defiend inside the 'api' folder      </li> <br>
+                                             
+                                             <li> Second parameter [new object of item of data]  => assinged by value of upper Define a variable {newPost} of full new post object [with assigning all of objtect properties  as following   :  <br>
+                                                 <ol> 
+                                                     <li> [id] : represent the upper defind [id] property    </li>
+                                                     <li> [title] : represent the  defeind state of [postTitle] as incomming prop  </li>
+                                                     <li> [dateTime] : represent the upper defeind property  of [dateTime]   </li>
+                                                     <li> [body] :  represent the  defeind state of [postBody] as incomming prop   </li>
+                                                 </ol>
+                                             </li>  <br> 
+                                         </ul>  
+                                        </li> <br>
+                                      
+                                      
+                                        <li> b- Define a variable of [allPosts] as array of summition of both (2) follwing : 
+                                          <ol>
+                                            <li>  { ...posts }        => the seperated of main incoming datasource 'posts ' from the assigned api  </li>
+                                            <li>  { response.data }   =>  the new upper defined { response } extracted data which is represent the new posted object 'after being assined '    </li> 
+                                          </ol>
+                                        </li>     <br> 
+                                        
+                                        <li> c-  Adding the new variable of all posts into the [posts] state using its setter its function by  the upper defined variable of assembled array 'allPosts' -> { setPosts(allPosts )}    </li>
+
+                                        <li>  d-  Setting the [postTitle]  & [postBody] states into an empty values after adding the new post, using their setter function  :<br> 
+                                          <ol> 
+                                            <li> setPostTitle('')  </li> 
+                                            <li> setPostBody('')  </li> 
+                                          </ol>    
+                                        </li>
+
+                                        <li> e- directing back to the home page after implementing the posting operation , by using the defiend history with path of the  main home page   : <br>  
+                                          history.push('/'); 
+                                        </li>
+
+                                        <li> f- Catching the returned and printing it using the default method using custom message   : <br>  
+                                             console.log(`Error: $(err.message ) ` )
+                                        </li>
+                                    </ul>                                    
+                                  </li>
+                                </ol> 
+                                </li> <br>
+                              
+
+                                <li> (c) Modify {Delete cetain item } third CRUD operation => {handleDelete() } function responsible for deleting /removing  a certain item from  the assigned database in the [posts] , by using {axios} method by following the next steps :  <br>
+                                  <ol> 
+                                    <li> 1- before the try {} :  <br>
+                                      <p> Adding the {async} to the main fucniion of the deletion {handleDelete()}   </p>
+                                      <p> Adding the [id] paramater , to be obtained from the user component -> to be used to detect the curernt item to be deleted  </p> 
+                                    </li> <br>    
+
+                                    <li> 2- inside the try {}  : <br>
+                                        <ul> 
+                                          <li> (a)  Direct Awaiting the delete crud operation  from [api] - from the full path of baseURL + id of hte current element post - [no need ot define  a varialbe ] , by using the  next crud  code : <br> 
+                                            <code>
+                                                await api.delete(`/posts/${id}`);
+                                            </code>                                          
+                                          </li> 
+
+                                          <li> (b)  Define a new list of posts (after excepting the deleted item ) that including all items except the current filtered deleted post - according to the current item by id , by using the (filter) method : <br> 
+                                            <code>
+                                                const postList = posts.filter(post => post.id !== id) ;
+                                            </code>                                          
+                                          </li>
+
+
+                                          <li> (c)  Setting the new post filtered list inside the post state [which will be displayed in the main home page] : <br> 
+                                            <code>
+                                              setPosts(postList);
+                                            </code>                                          
+                                          </li>
+
+
+                                          <li> (d) use the defined useHistory hook variable to route into a certain route  [home page]  : <br> 
+                                            <code>
+                                              history.push('/');
+                                            </code>                                          
+                                          </li>
+                                        </ul>                                    
+                                    </li>
+
+                                    <li> 3- inside the  catch(err) {} <br>                                         
+                                      <p>  catching the returned error  by using the custom error message : <br> 
+                                        <code>
+                                          console.log(err.message);
+                                        </code>                                          
+                                      </p>
+                                    </li>
+                            
+                                  </ol>
+                                </li>  <br>
+                                
+                                
+                                <li> (d) Modify {Modify/Edit} fourth CRUD operation => {handleEdit() } : <br>
+                                    <ol>
+                                      <li>  1-  Before try {} :  <br>
+                                          <ul> 
+                                            <li> a- Adding the (async) to the main function of handleEdit()     </li>
+                                            <li> b- Adding (id) parmater to  be used  for  checking of the current item to be modified and sent  to the assigned api by using {.put() } , and as one of the modifed item object properties   </li>
+                                            <li> c- Define a variable of date -current date-  => [as a one of the modified item object's property : dateTime] usijng the defined and imported { format } from 'date-fns' , with custom format pattern    </li>
+                                            <li> d- Define a variable of [full updated/modified item post object] after being updated/editing [with assigning  both of  [title] & [body] with defined status ] , as next code  :  <br>
+                                                <code> 
+                                                  <span class="one"> </span> const updatedPost = { id, title: editTitle, dateTime, body: editBody }; <br>  <br> 
+                                                  
+                                                  <span class="one"> </span>  // the modifed object properpties as following   -inorder-   :  <br>
+                                                    <span class="two"> </span>  [id] :     represent this item(post) id ,  will be assigned by incomming paremeter of the main function   <br>
+                                                    <span class="two"> </span>  [title] :  represent this item(post) title, will be assigned by the value of the {editTitle} prop      <br>
+                                                    <span class="two"> </span>  [dateTime] :  represent this item(post) current date [date of creation] , will be assigned by the value of the upper defined vcarilge  {dateTime}     <br>
+                                                    <span class="two"> </span>  [body] :  represent this item(post) body , will be assigned by the value of the {editBody} prop      <br>
+                                                </code>                                                                                      
+                                            </li>
+                                          </ul>                                   
+                                      </li> <br>
+
+
+                                      <li> 2- inside the try{} :  <br>
+                                        <ol>
+                                          <li> a-  Define a 'response' awaited variable   of getting the updated full object curd operartion , to send the edited/modified  values into the assigned api path  by using  the {.put} method , as following :  <br>                                          
+                                              <code> 
+                                                 <span class=one ></span>  const response = await api.put(`/posts/${id}`, updatedPost); <br>  <br>
+
+                                                 <span class=one ></span> // we here used the {.put} method due to we will send a full edited/modified item object into the assigned api path wihth sub dynamic path of this item id , but incase of editing single property of the item -> we must use the {patch} ,  and used the next parmater ; <br> 
+                                                   <span class="two" ></span>  [api dynamic path ]  => '/posts/${id}'   <br>      
+                                                   <span class="two" ></span>  [the full object of modified item ]  => {updatedPost}  <br>                                                     
+                                              </code>                                            
+                                            </li> <br>
+
+
+                                            <li>  b-  Assign/replace the updated item object value into api datasource [posts] , by using mapping - because we will not add the old data of the posts -  :  <br>
+                                               <code> 
+                                                  <span class=one ></span>   setPosts(posts.map(post =>    <br>
+                                                    <span class=two ></span>  post.id === id ? { ...response.data } : post <br>
+                                                  <span class=one ></span>    ));   <br>   <br>
+ 
+                                                  <span class=one ></span> // we here set a modifed post/item inside the datasource database  after condional confirmation of the current item id is equal identically with the id pamreter   <br> 
+                                                  <span class=one ></span> // the assinging after getting confirmed  is by assign the seperated [response data] object of the new modified variable , or assign the current object post item as it is <br> 
+                                               </code>
+                                            </li>   <br>
+
+                                            <li>  c-  Setting empty values of both [post body] & [post title] after being set  wihtin the defiend  full object  [updatedPost] :  <br>
+                                               <code> 
+                                                  <span class=one ></span>   setEditBody('');    <br>
+                                                  <span class=one ></span>   setEditTitle('');    <br>
+                                               </code>
+                                            </li> <br> 
+
+
+                                            <li>  d- Re-directing to the home page after accomplished modifying/editing crud orepration ,using the imported history('/') to the  main home page route    :  <br>
+                                               <code> 
+                                                  <span class=one ></span>   history.push('/');    <b>
+                                               </code>
+                                            </li> <br> 
+                                        </ol> 
+                                      </li>  <br> 
+
+                                      <li> 3- inside the  catch(err) {} <br>                                         
+                                        <p>  catching the returned error  by using the custom error message : <br> 
+                                          <code>
+                                            console.log(err.message);
+                                          </code>                                          
+                                        </p>
+                                      </li>
+                              
+                                    </ol> 
+                                </li>
+                              </ul>
+                            </li> <br> 
+ 
+                        </ol>
+                        </li>  <br> <br>
+
+
+                        <!-- im here  >>>>>>>>>>>>>>>>>>>>>>>>> -->
+                        <li> f] Creating  a new component of {EditPost} as a UI page to handle the editing post of [modify crud operation]  :    <br> 
+                           <ol> 
+                              <li> 1-  main importings  :    <br>
+                                <ul> 
+                                  <li> import React, { Fragment, useEffect } from 'react'; => // with the next usages : <br>
+                                      <ol> 
+                                        <li> [Fragment] : using it within to render nested elements as conditional renerding </li> 
+                                        <li> [useEffect] : using it to set useEffect callback function with set the next dependncies : [posts  , editTile , editBody ] ->(   to be Re-rendered incase of changing in one of them   )     </li> 
+                                      </ol>   
+                                  </li> <br>
+                                  
+                                  <li> import { useParams, Link } from 'react-router-dom'; => // wiht next usages    :  <br>
+                                    <ol>  
+                                      <li> [useParams] =>  used to get the current [post id] inside a variable as an  object  to be used this component configuration  </li> 
+                                      <li> [Link] => the imported class from ['react router dom'] => used to set one of the defeind routers [wihin App] inside this functional  component  </li> 
+                                    </ol>
+                                  </li>
+                                </ul> 
+                              </li> <br>
+
+                              <li> 2- main functional component [props] :  <br>
+                                <ul> 
+                                  <li> [posts]  =>  the datasource of [posts] state to be  assigned    one this component is being called [ inside the App component  ]  </li>
+                                  <li> [handleEdit]  => the defined async function [within the App] used to handle the modifying item [using the api edit crud operation ]  => will be called inside the button  of Form   </li>
+                                  <li> [editTitle]  =>  the defined prop [within the App] that represent the post title     </li>
+                                  <li> [setEditTitle]  => the defined setter function of prop 'editTitle' of the post title [within the App]  </li>
+                                  <li> [editBody]  => the defined prop [within the App] that represent the post body </li>
+                                  <li> [setEditBody]  => the defined setter function of prop 'editBody ' of the post title [within the App]     </li>    
+                                </ul> 
+                              </li>  <br>
+
+
+                              <li> 3-  before the return of the functional component     :  <br>
+                                <ul> 
+                                  <li> a- Define object  the dynmaic [Router id] of this item , using the  imported  useParams() hook : <br>
+                                      <code> 
+                                        const { id } = useParams();  <br> 
+                                      </code>     
+                                  </li>  <br> 
+                                   
+                                  <li>  b- Define this item full object  post [according to of this id value] , using the {find()}  method : <br>
+                                      <code> 
+                                         const post = posts.find(post => (post.id).toString() === id)  <br> 
+                                      </code>     
+                                  </li> <br>  
+                                   
+                                  <li> c- Define useEffect callback function - for executing the modiciations in the post's title and body values  - , including  the following :  <br>
+                                      <code> 
+                                        // 1- conditional setting the both of prop  [EditTitle]  &  [EditBody ] using it's setter funcions ->   incase of returned object  [post]  wit in the  previous variable  find) :   <br> 
+                                         <span class=one></span>  useEffect(() =>  {   <br>
+                                          <span class=two ></span> if (post) { <br>
+                                            <span class=three></span> setEditTitle(post.title)  <br>  
+                                            <span class=three></span> setEditBody(post.body) <br> 
+                                          <span class=two></span> } <br>
+                                        <span class=one></span>  } , [post, setEditTitle, setEditBody] )  <br>  <br>
+                                        
+                                        <span class=one></span>   // the upper dependencies of ueseEffect ,  have  the next purposes [to gurantttee the executing the   changing in the useEffect in each cases of {modify the full post object ||  modify the only post title  || modify the only post body }   ] :    <br>
+                                          <span class=two></span>  [post]  -> re-render the component if the full object 'post' the  current item changed      <br>
+                                          <span class=two></span>  [setEditTitle]  -> re-render the component if the post title [editTitle] prop setter function         <br>
+                                          <span class=two></span>  [setEditBody]  -> re-render the component if the post body [editBody] prop setter function         <br>
+                                      </code>     
+                                  </li>  <br>  
+                                   
+                                </ul> 
+                              </li>  <br>
+
+                              <li> 4-  inside the return of the functional component : <br> 
+                                                            
+                              </li>  <br> 
+
+                           </ol>
+                        </li>
+
+                        <li> g] Adding the [link] to navigate to  the edit post route inside button wihtin  the {PostPage} :    </li>
+
+                    </ul> 
+                  </li> 
+                     
+                </ol>
+              </p>
+              <br> <hr> <br>
+ 
+        <!-- -------------------------------------------------------------- -->
+         
+              <h1> B] Practical steps and syntax and method of  dealing with api requests   using {axios()} :  </h1>  <br>
+                   
+                <hr> <br>  <hr> <br>            
+              <!--  --------------------------------------------------------  -->             
+              <!-- -------------------------------------------------------- -->   
+             <!--  --------------------------------------------------------  -->
+   
+  
+             <h1> C]  VIP Notes   :   </h1>            
+
+                <ul>
+                  <li> { axios }  =>   this  library is  being imported JUST ONLY FOR ONE time in api define file  [api/post.js] , to be used to create the axios   </li>
+                  <li> Type of api extracted methods to be uesd in Crud opertaions  =>   this  library is  being imported JUST ONLY FOR ONE time in api define file  [api/post.js] , to be used to create the axios  <br> 
+                    <ol> 
+                    <li> 1- [Fetching/Reading Data] from the given api  using {.get('api file path')} -> <br>
+                        <code>
+                            const response = await api.get('/posts');  =>  [the sub domain path of the assigned api file 'posts'  ]
+                        </code> 
+                      </li> <br>
+ 
+                      <li> 2- [Post/Add new Data item] into the given api  using { .post('api file path' , variable full object of new item ) }  -> <br>
+                        <code>
+                            const response = await api.post('/posts', newPost);   => [ post/add the new defined object item {newPost} in to the assigned path {'/posts'} ]
+                        </code> 
+                      </li> <br>
+ 
+                      <li> 3- [Delete/Remove a full item object ] from the given api , using { api.put('api file path with dynamic item id' , variable full object of modified item ) }  -> <br>
+                        <code>                             
+                          await api.delete(`/posts/${id}`); =>   [deleting the certain item of obtained {id} , by using full path of the api with this  id a a dynamic sub domain       ]
+                        </code>  
+                      </li> <br>
+    
+                      <li> 4- [Modify/Edit a full item object ] from the given api , using { api.put('api file path with dynamic item id' , variable full object of modified  item ) }  -> <br>
+                        <code>                             
+                            const response = await api.put(`/posts/${id}`, updatedPost);  // => we here used the {put} method due to we will send a full edited object into the api , but  incase of editing single property of the item -> we must use the {patch}     
+                        </code> 
+                      </li> <br>
+ 
+ 
+                    </ol>    
+                  
+                  </li>                   
+                   
+                </ul>
+ 
+            <!--  --------------------------------------------------------  -->
+
+            <h3> ReactJS [react-dave-gray] project files of this lesson as following : </h3> <br>
+             <ol class="codes">
+                <li> Page Sources : </li>
+                
+                <h3> A]  Frontend Section  : </h3>
+                  <code>
+
+                   <h4> (1) Project files of  main [React] system :     </h4>
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../Main Project/react-dave-gray/package.json">  
+                        <button id=btn class="btn0" onclick="display()">  ReactJS  Source code of  all libraries file    [package.json]  file </button>
+                    </a> <br> <hr> <br> 
+                    
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../Main Project/react-dave-gray/src/index.js">  
+                        <button id=btn class="btn0" onclick="display()">  ReactJS Source code of main configuration [index] file JS [index.js] file </button>
+                    </a> <br> <hr> <br> 
+
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../Main Project/react-dave-gray/src/App.js">
+                        <button id=btn class="btn0" onclick="display()">  ReactJS Source code of main [App] file {Main Component} [App.js] file </button>
+                    </a> <br> <hr> <br> 
+                    
+
+                    <h4> (2) Project files of main Components :  </h4>
+                       <h5> (a)  Header section child  Compoents {Header.js} :  </h5>
+                       <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../Main Project/react-dave-gray/src/Header.js">  
+                           <button id=btn class="btn0" onclick="display()">  ReactJS Source code of First part of Header [Header] child component JS [Header.js] file </button>
+                       </a> <br> <hr> <br> 
+    
+                       
+                       <h5> (b) Content  section child  Components {Content.js} :  </h5>
+                       <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../Main Project/react-dave-gray/src/Content.js">  
+                           <button id=btn class="btn0" onclick="display()">  ReactJS Source code of Second part of Content [Content] child component JS [Content.js] file </button>
+                       </a> <br> <hr> <br> 
+                       
+                       <h6> Sub children components to be impprted inside their parent main Copmonent {Content.js} :  </h6>
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../Main Project/react-dave-gray/src/LineItem.js">  
+                            <button id=btn class="btn0" onclick="display()">  ReactJS Source code of Single Lowest and first  level child component  [LineItem] child component JS [LineItem.js] file </button>
+                        </a> <br> <hr> <br> 
+                       
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../Main Project/react-dave-gray/src/ItemsList.js">  
+                            <button id=btn class="btn0" onclick="display()">  ReactJS Source code of second level child component  [ItemsList] child component JS [ItemsList.js] file </button>
+                        </a> <br> <hr> <br> 
+                       
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../Main Project/react-dave-gray/src/Lesson56.js">  
+                            <button id=btn class="btn0" onclick="display()">  ReactJS Source code of Third level child component  [Lesson56] child component JS [Lesson56.js] file </button>
+                        </a> <br> <hr> <br> 
+                       
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../Main Project/react-dave-gray/src/Lesson7.js">  
+                            <button id=btn class="btn0" onclick="display()">  ReactJS Source code of Third level child component  [Lesson7] child component JS [Lesson7.js] file </button>
+                        </a> <br> <hr> <br> 
+                       
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../Main Project/react-dave-gray/src/Lesson9.js">  
+                            <button id=btn class="btn0" onclick="display()">  ReactJS Source code of Third level child component  [Lesson9] child component JS [Lesson9.js] file </button>
+                        </a> <br> <hr> <br> 
+                       
+
+                       <h5> (c) Footer  section Component  : </h5>
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../Main Project/react-dave-gray/src/Footer.js">  
+                           <button id=btn class="btn0" onclick="display()">  ReactJS Source code of Second  [Hero] child  component JS [Footer.jsx] file </button>
+                       </a> <br> <hr> <br>  
+
+                    
+                    <h4>  (3) Project backend files of all downloaded m setup libraries of  main React project  :  </h4>     
+                        <h5> (a)  RTK Query files [inside the  src / Redux ]   :     </h5> 
+                         <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/frontend/src/Redux/product.js">  
+                            <button id=btn class="btn0" onclick="display()">  ReactJS  Source code of main RTk Query () system file in the  [product.js] file </button>
+                        </a> <br> <hr> <br> 
+                          
+                         <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/frontend/src/Redux/store.js">  
+                            <button id=btn class="btn0" onclick="display()">  ReactJS  Source code of main RTk Query (store) system file in the  [store.js] file </button>
+                        </a> <br> <hr> <br>  
+                            
+                   <h4>  (4) Project files of all downloaded m setup libraries of  main React project  :  </h4>    
+                       
+                       <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/package.json">  
+                           <button id=btn class="btn0" onclick="display()">  ReactJS  Source code of main configuration file [package.json] file </button>
+                       </a> <br> <hr> <br> 
+                             
+                       <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/jsconfig.json">  
+                           <button id=btn class="btn0" onclick="display()">  ReactJS  Source code of JS custom  configuration file [jsconfig.json] file </button>
+                       </a> <br> <hr> <hr> <br>
+                      
+                </code> 
+                <hr> <br> <br> 
+                <!-- -------------------------------------------------------- -->
+
+                <h3> B] Backend Section  : </h3>
+                <code>
+
+                   <!-- <h4> (1) Project files of main configuration  of [Strapi] system :     </h4>
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/backend/package.json">  
+                        <button id=btn class="btn0" onclick="display()">  ReactJS  Source code of Backend strapi's package file [package.json] file </button>
+                    </a> <br> <hr>  <br><br>  -->
+                       
+                   
+                   <!-- <h4> (2) Project files of main [config] folder  of [Strapi] backend  system :     </h4>
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/backend/config/plugins.js">  
+                        <button id=btn class="btn0" onclick="display()">  ReactJS  Source code of strapi's plugins file [plugins.js] file </button>
+                    </a> <br> <hr> <br> 
+                     
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/backend/config/database.js">  
+                        <button id=btn class="btn0" onclick="display()">  ReactJS  Source code of  strapi's  database file [database.js] file </button>
+                    </a> <br> <hr> <br>  
+                     
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/backend/config/middlewares.js">  
+                        <button id=btn class="btn0" onclick="display()">  ReactJS  Source code of  strapi's  middlewares file [middlewares.js] file </button>
+                    </a> <br> <hr> <br> 
+           
+                    
+                   <h4> (3) Project files of database structure  [] folder  of [Strapi] backend  system :     </h4>
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/backend/src/api/product/content-types/product/schema.json">  
+                        <button id=btn class="btn0" onclick="display()">  ReactJS  Source code of strapi's database schema structure  file [schema.json] file </button>
+                    </a> <br> <hr> <br>  -->
+                     
+                     
+                 </code>
+
+               <!-- -------------------------------------------------------- -->
+
+               <h3> C] General Deployment Framework  Section  : </h3>
+                   <code>      
+                       <h4>  (1) Project files of all downloaded m setup libraries of  main React project  :  </h4>    
+                       
+                       <!-- <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/package.json">  
+                           <button id=btn class="btn0" onclick="display()">  ReactJS  Source code of main Deployment Framework configuration file [package.json] file </button>
+                       </a> <br> <hr> <br>  -->
+                            
+                   </code>
+
+            </ol>             
+            <br> <hr>
+        </section>
+
+        <!------------------------------------------------------------------------------------------------------>
+        <!------------------------------------------------------------------------------------------------------>
+
+        <section class="JSDOMImp" id="JSDOMImp">
+            <header>
+                <h3> [19 React Axios API Requests  Axios with React JS Tutorial] Importance & Benefits : </h3>
+            </header>
+            <ul>
+
+            </ul>
+        </section>
+
+        <!------------------------------------------------------------------------------------------------------>
+
+        <section class="JSDOMSyntx" id="JSDOMSyntx">
+            <header>
+                <h3> [19 React Axios API Requests  Axios with React JS Tutorial] Syntax & Methods: </h3>
+            </header>
+
+            <p> =&gt; Scenario Procedures : </p>
+
+            <hr>
+        </section>
+
+        <!------------------------------------------------------------------------------------------------------>
+        <section class="JSDOMPract container" id="JSDOMPract">
+            <header>
+                <h3> CMD [19 React Axios API Requests  Axios with React JS Tutorial] => {this lesson can be accessed through the github repo [webpages] } </h3>
+            </header>
+
+
+        </section>
+
+        <!-- <button type="button" class="btn" onclick="myTest()"> Click to Start [ (this) operator testing with both functions ] method  Application </button> -->
+
+        <script src="main.js"></script>
+
+        <br><br><br>
+
+        <div id="note" class="dis"></div> <br><br><br><br>
+
+        <!-- <button class="btn" id="elem" onclick="display()"> Click to activate {this} operator dispalying value  </button> <br>              -->
+
+
+        <!-- <button id=btn class="btn0" onclick="display()">Display JS Code [plugins.js] file </button> -->
+        <!------------------------------------------------------------------------------------->
+        <!---------------------------------------------------------------------------------------->
+
+        <footer id="footer" class="footer0">
+            All right reserved by &nbsp; &copy; &nbsp; Initiated by <a target='_self'  class="brand" href="https://shindowpro.github.io/"> ShindowPro </a> &trade;
+        </footer>
+    
+    </div>
+    <!------------------------------------------------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------>
+    
+    <!-- Here is the Aside  -->
+    
+    <div class="Clear"></div>
+    <!-------------------------------------------------------------------------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------------->
+
+    <dialog class="Note" open>
+        <details>
+            <summary> Hypernate Links: </summary>
+            <ul>
+                <li> <a href="http://shindowpro.github.io" target="_self">My Portfolio website </a></li>
+                <li> <a href="https://github.com/shindowpro/git-course" target="_self">My Github Repo </a></li>
+            </ul>
+        </details>
+    </dialog>
+
+
+    <!-- loading overlay  -->
+    <section class="loading-overlay">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </section>
+
+    <!-- <script src="main.js">
+    </script> -->
+
+
+    <!-- Scrolling top button -->
+    <section id="scroll-top">
+        <i class="fas fa-chevron-up fa-2x fa-align-center"></i>
+    </section>
+
+    <script>
+        alert("Welcome to 19 React Axios API Requests  Axios with React JS Tutorial");
+    </script>
+
+    <!-- Resources files -->
+    <script src="js/jquery-1.12.4.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/plugins.js"></script>
+
+    <script src="js/myplugins.js"></script>
+
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+
+    <script src="js/jquery.nicescroll.min.js"></script>
+
+</body>
+
+</html>

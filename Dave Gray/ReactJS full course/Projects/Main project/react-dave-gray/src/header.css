@@ -1,0 +1,16 @@
+/*   The private css file for the Haeder component    */
+
+
+.sub-header { 
+  display:'flex' ;
+  flex-direction: 'row'   ;  
+  background-color:'black'; 
+  color: 'yellow'  ; 
+}
+
+header { 
+ background-color:'black'; 
+  color: 'yellow'  ; 
+}
+
+
