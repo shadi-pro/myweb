@@ -1,0 +1,1001 @@
+/* jQuery course map */
+/* ================================== Global ================================ */
+* {
+  margin: 0px;
+  padding: 0px;
+  /* -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box */
+}
+
+body {
+  padding-top: 80px;
+  overflow: hidden;
+}
+
+hr {
+  border: 5px solid silver;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+ul {
+  margin-bottom: 20px;
+}
+
+ol li:first-child {
+  margin-top: 10px;
+}
+
+ul li {
+  list-style: none;
+}
+
+li ~ p {
+  margin-bottom: 22px;
+  margin-top: -10px;
+  margin-left: 25px;
+}
+
+li meter {
+  margin-left: 20px;
+}
+
+.Clear {
+  clear: both;
+}
+
+section {
+  border: 3px solid #333;
+  border-radius: 10px;
+  margin: 20px 10px;
+  padding: 10px;
+  height: auto;
+}
+
+header {
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+header h1 {
+  text-decoration: underline;
+  font-size: 25px;
+}
+
+section > header {
+  font-size: 25px;
+  text-align: center;
+  font-weight: bold;
+  background: gray;
+}
+
+section > header:hover {
+  border: 3px solid #100;
+  color: #fff;
+}
+
+section article > header > p,
+article > p,
+header > p {
+  font-size: 20px;
+  color: #100;
+  text-indent: 20px;
+  line-height: 200%;
+}
+
+#btnCont {
+  /* width: 1000px; */
+  width: fit-content;
+}
+
+.btn0 {
+  width: fit-content;
+  text-align: center;
+  font-size: 20px;
+  color: darkgreen;
+  font-weight: bold;
+  display: block;
+  margin: auto;
+  margin-bottom: 20px;
+  border: solid 1px lightgreen;
+}
+
+.btn0:hover {
+  background: #111;
+  border: solid 3px gold;
+  color: lightgreen;
+}
+
+/*ol li {font-size:20px; margin-left:50px; line-height:1.5em}*/
+
+.Welcome {
+  background: #eee;
+  padding: 10px;
+  width: auto;
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+}
+
+.Welcome span {
+  color: #888;
+}
+
+.JSDOMObjDefAssign {
+  border: solid 1px red;
+  text-align: left;
+  margin: auto;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.txtarea,
+.txtarea1,
+.txtarea2,
+.txtarea3 {
+  width: auto;
+  height: auto;
+  border: solid 3px blue;
+  text-align: center;
+  margin: 10px auto 10px;
+  font-size: 15px;
+  font-weight: bold;
+  display: block;
+}
+
+output {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.FixSpace {
+  margin-left: 50px;
+}
+
+.space {
+  margin-left: 70px;
+}
+
+.space0 {
+  margin-left: 50px;
+}
+
+.one {
+  margin-left: 40px;
+}
+
+.two {
+  margin-left: 80px;
+}
+
+.three {
+  margin-left: 120px;
+}
+
+.four {
+  margin-left: 160px;
+}
+
+.five {
+  margin-left: 200px;
+}
+
+.six {
+  margin-left: 240px;
+}
+
+.seven {
+  margin-left: 280px;
+}
+
+.eight {
+  margin-left: 320px;
+}
+
+.nine {
+  margin-left: 360px;
+}
+
+.ten {
+  margin-left: 400px;
+}
+
+.elv {
+  margin-left: 440px;
+}
+
+.tlv {
+  margin-left: 480px;
+}
+
+/*----------------------------------------------------------------------------*/
+
+/* ========================= Page Header =========================== */
+
+.Main {
+  border: 2px solid #100;
+  background: #ddd;
+  color: #333;
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  font-size: 30px;
+  word-spacing: 5px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/*----------------------------------------------------------------------------*/
+
+/* =============================== Page Index (Nav)============================== */
+
+/* nav {
+    border: 3px solid #ddd;
+    background: gray;
+    height: auto;
+    margin: 10px;
+    padding: 10px
+} */
+
+/* nav ol li {
+    display: inline-block;
+    font-size: 20px;7
+    margin-right: 5px
+} */
+
+/* nav ol {
+    text-align: center
+} */
+
+/* nav ol li:after {
+    content: " | "
+} */
+
+/* nav ol li:last-child:after {
+    content: "  "
+} */
+
+/* nav a {
+    text-decoration: none;
+    color: #100
+} */
+
+/* nav ol a:hover,
+nav ol li:hover {
+    border: gray;
+    background: #ddd;
+    font-weight: bold;
+    text-decoration: underline
+} */
+
+/*-----------------------------------------------------------------------------------------------------------*/
+
+/* ============================= Page Aside ========================== */
+
+/* aside {
+  width: 30%;
+  float: right;
+}
+ */
+aside section {
+  margin: 20px 10px;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: #eee;
+  border: 1px solid #ccc;
+}
+
+aside section ul {
+  list-style: none;
+  margin-top: 10px;
+}
+
+aside section ul li {
+  line-height: 1.8;
+  margin-left: 20px;
+}
+
+aside section ul li:hover {
+  text-decoration: underline;
+}
+
+aside h3 {
+  padding: 10px;
+  background: #d1d1d1;
+}
+
+aside section div {
+  margin: 10px;
+}
+
+progress {
+  width: 100px;
+}
+
+.Poll input[list="Browsers"] {
+  margin-top: 10px;
+}
+
+.Age-Calculate input[name="age"] {
+  margin-top: 10px;
+}
+
+aside .AudioSection audio {
+  width: 350px;
+  background: #efefef;
+}
+
+/*----------------------------------------------------------------------------*/
+
+/* ============================ Page Post ======================== */
+
+/* .Post {
+  width: 70%;
+  float: left;
+}
+ */
+/*--------------------------------------------------------------------------------------------------------*/
+
+/* ======================== MYSQL -jQuery course map Main ================= */
+
+.MainC ol,
+.MainC ul {
+  border: 2px solid #ddd;
+  font-size: 25px;
+  color: green;
+  margin: 10px;
+  padding: 15px;
+  list-style: none;
+  text-align: center;
+  list-style: none;
+}
+
+.MainC li {
+  margin-bottom: 20px;
+}
+
+/*---------------------------------------------------------------------------------------------------------*/
+
+/* ========================  MYSQL -jQuery course map Concept ]  =================== */
+
+/* .JSDOMCon ol,
+.JSDOMCon ul, */
+
+.JSDOMCon ol,
+.JSDOMCon ul {
+  margin-left: 40px;
+}
+.JSDOMCon ol li,
+.JSDOMCon ul li {
+  font-size: 20px;
+}
+
+.JSDOMCon p {
+  font-size: 20px;
+  padding: 5px;
+  margin: 5px 50px;
+  line-height: 1.5em;
+}
+
+.JSDOMCon ul li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.JSDOMCon ol li {
+  margin-bottom: 20px;
+}
+
+.JSDOMCon div {
+  font-size: 25px;
+  border: 2px solid gray;
+  background: #efefef;
+  margin-bottom: 25px;
+  padding: 10px;
+}
+
+.JSDOMCon h1 {
+  font-weight: bold;
+  text-decoration: underline;
+  margin: 10px auto 15px;
+}
+
+.JSDOMCon ul li,
+.JSDOMCon ol li {
+  margin-left: 20px;
+  padding: 10px;
+  line-height: 1.5em;
+  margin-top: 10px;
+}
+
+.codes,
+.codes > code > a {
+  text-align: left;
+  margin-left: -40px;
+  left: 0px;
+}
+.codes > code > a {
+  /* word-wrap: break-word; */
+  word-wrap: normal;
+}
+
+/*-------------------------------------------------------------------------------------------------------*/
+
+/* =====================  MYSQL -jQuery course map Importance & Benefits] */
+
+.JSDOMImp ol,
+.JSDOMImp ul,
+.JSDOMImp p {
+  font-size: 20px;
+  padding: 5px;
+  margin: 5px 50px;
+  line-height: 1.5em;
+}
+
+.JSDOMImp ul li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.JSDOMImp ol li {
+  margin-bottom: 10px;
+}
+
+.JSDOMImp div {
+  font-size: 25px;
+  border: 2px solid gray;
+  background: #efefef;
+  margin-bottom: 25px;
+  padding: 10px;
+}
+
+.JSDOMImp h1 {
+  font-weight: bold;
+  text-decoration: underline;
+  margin: 10px auto 15px;
+}
+
+.JSDOMImp ul li,
+.JSDOMImp ol li {
+  margin-left: 20px;
+  padding: 10px;
+  line-height: 1.5em;
+  margin-top: 10px;
+}
+
+/*-------------------------------------------------------------------------------------------------------*/
+/* =====================  MYSQL -jQuery course map Syntax] */
+
+.JSDOMSyntx ol,
+.JSDOMSyntx ul,
+.JSDOMSyntx p {
+  font-size: 20px;
+  padding: 5px;
+  margin: 5px 50px;
+  line-height: 1.5em;
+}
+
+.JSDOMSyntx ul li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.JSDOMSyntx ol li {
+  margin-bottom: 10px;
+}
+
+.JSDOMSyntx div {
+  font-size: 20px;
+  border: 2px solid gray;
+  background: #efefef;
+  margin-bottom: 25px;
+  padding: 10px;
+}
+
+.JSDOMSyntx h1 {
+  font-weight: bold;
+  text-decoration: underline;
+  margin: 10px auto 15px;
+}
+
+.JSDOMSyntx ul li,
+.JSDOMSyntx ol li {
+  margin-left: 20px;
+  padding: 10px;
+  line-height: 1.5em;
+  margin-top: 10px;
+}
+
+/*-------------------------------------------------------------------------------------------------------*/
+/* Practical Application:*/
+
+.JSDOMPract h1 {
+  font-weight: bold;
+  text-decoration: underline;
+  margin: 10px auto 15px;
+}
+
+.JSDOMPract ul li,
+.JSDOMPract ol li {
+  margin-left: 20px;
+  padding: 10px;
+  line-height: 1.5em;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.JSDOMPract p {
+  font-size: 20px;
+  padding: 5px;
+  margin: 5px 50px;
+  line-height: 1.5em;
+}
+
+.JSDOMPract section div {
+  background: #ccc;
+}
+
+.JSDOMPract section form p {
+  display: inline;
+  line-height: 2em;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.JSDOMPract code,
+textarea {
+  background: #fff;
+  padding: 10px;
+  display: block;
+  margin: 10px 0;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.JSDOMPract code:hover {
+  border: 3px solid crimson;
+}
+
+.JSDOMPract textarea:hover {
+  border: 3px solid crimson;
+}
+
+.JSDOMPract {
+  margin: 10px auto;
+  overflow: hidden;
+  width: 100%;
+}
+/*------------------------------------------------------------------------------------------------------*/
+
+/* Practical Application [Application 1]:*/
+
+.LitDefApp1 ol,
+.LitDefApp1 ul,
+.LitDefApp1 p {
+  font-size: 20px;
+  padding: 5px;
+  margin: 5px 50px;
+  line-height: 1.5em;
+}
+
+.LitDefApp1 ul li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.LitDefApp1 ol li {
+  margin-bottom: 20px;
+}
+
+.LitDefApp1 div {
+  font-size: 25px;
+  border: 2px solid gray;
+  background: #efefef;
+  margin-bottom: 25px;
+  padding: 10px;
+}
+
+.LitDefApp1 h1 {
+  font-weight: bold;
+  text-decoration: underline;
+  margin: 10px auto 15px;
+}
+
+.LitDefApp1 ul li,
+.LitDefApp1 ol li {
+  margin-left: 20px;
+  padding: 10px;
+  line-height: 1.5em;
+  margin-top: 10px;
+}
+
+/*-------------------------------------------------------------------------------------------------------*/
+
+/* Practical Application [Application 2]:*/
+
+.LitDefApp2 ol,
+.LitDefApp2 ul,
+.LitDefApp2 p {
+  font-size: 20px;
+  padding: 5px;
+  margin: 5px 50px;
+  line-height: 1.5em;
+}
+
+.LitDefApp2 ul li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.LitDefApp2 ol li {
+  margin-bottom: 10px;
+}
+
+.LitDefApp2 div {
+  font-size: 25px;
+  border: 2px solid gray;
+  background: #efefef;
+  margin-bottom: 25px;
+  padding: 10px;
+}
+
+.LitDefApp2 h1 {
+  font-weight: bold;
+  text-decoration: underline;
+  margin: 10px auto 15px;
+}
+
+.LitDefApp2 ul li,
+.LitDefApp2 ol li {
+  margin-left: 20px;
+  padding: 10px;
+  line-height: 1.5em;
+  margin-top: 10px;
+}
+
+/*-------------------------------------------------------------------------------------------------------*/
+/* Practical Application [Application 3]:*/
+
+.LitDefApp3 ol,
+.LitDefApp3 ul,
+.LitDefApp3 p {
+  font-size: 20px;
+  padding: 5px;
+  margin: 5px 50px;
+  line-height: 1.5em;
+}
+
+.LitDefApp3 ul li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.LitDefApp3 ol li {
+  margin-bottom: 10px;
+}
+
+.LitDefApp3 div {
+  font-size: 25px;
+  border: 2px solid gray;
+  background: #efefef;
+  margin-bottom: 25px;
+  padding: 10px;
+}
+
+.LitDefApp3 h1 {
+  font-weight: bold;
+  text-decoration: underline;
+  margin: 10px auto 15px;
+}
+
+.LitDefApp3 ul li,
+.LitDefApp3 ol li {
+  margin-left: 20px;
+  padding: 10px;
+  line-height: 1.5em;
+  margin-top: 10px;
+}
+
+/*-------------------------------------------------------------------------------------------------------*/
+/* =============================== Section / Free Buttons =========================== */
+
+.Home {
+  position: fixed;
+  border: 3px solid #080;
+  padding: 5px;
+  background: lightgreen;
+  color: #100;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  top: 100px;
+  right: 10px;
+}
+
+.Home:hover {
+  background: #080;
+  border-color: lightgreen;
+  color: #fff;
+}
+
+.End {
+  position: fixed;
+  border: 3px solid #080;
+  padding: 5px;
+  background: lightgreen;
+  color: #100;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  top: 150px;
+  right: 10px;
+}
+
+.End:hover {
+  background: #080;
+  border-color: lightgreen;
+  color: #fff;
+}
+
+.Note {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  width: 100px;
+  height: auto;
+}
+
+.Note details summary {
+  text-align: center;
+}
+
+.Note details ul {
+  margin-bottom: 5px;
+}
+
+.Note details ul li {
+  padding: 5px;
+  text-align: left;
+  margin-left: 3px;
+}
+
+.Note ul li a {
+  text-decoration: none;
+  text-align: left;
+  margin-left: 3px;
+}
+
+.Note:hover {
+  background: lightblue;
+  border: 3px solid gold;
+  border-radius: 3px;
+}
+
+.Note details summary:hover {
+  font-weight: bold;
+}
+
+.Note ul li a:hover {
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.Calculator input[name="num1"] {
+  margin-top: 10px;
+}
+
+.Age-Calculate input {
+  margin-bottom: 10px;
+}
+
+.Age-Calculate output[name="resultM"] {
+  margin-left: 20px;
+}
+
+.OutputExp input[name="age"] {
+  margin-top: 10px;
+}
+
+aside .AudioSection audio {
+  display: block;
+  color: #111;
+  background: #111;
+  margin: auto;
+  width: 300px;
+  margin-top: 10px;
+}
+
+aside .VideoSection video {
+  display: block;
+  color: #111;
+  background: #111;
+  margin: auto;
+  width: 350px;
+  height: 300px;
+  margin-top: 10px;
+}
+
+/*----------------------------------------------------------------------------*/
+
+/* ============================== Page Footer ============================= */
+
+footer {
+  border: 2px solid #100;
+  background: #333;
+  color: #fff;
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+}
+/* -----------------------------  Course MAp formating   ----------------------------- */
+/* .container .row .displayContent1 {
+  display: none;
+} */
+
+.container .row .button1,
+.container .row .button2,
+.container .row .button3,
+.container .row .button4,
+.container .row .button5,
+.container .row .button6,
+.container .row .button7,
+.container .row .button8,
+.container .row .button9,
+.container .row .button10,
+.container .row .button11,
+.container .row .button12,
+.container .row .button13,
+.container .row .button14,
+.container .row .button15,
+.container .row .button16,
+.container .row .button17,
+.container .row .button18,
+.container .row .button19,
+.container .row .button20,
+.container .row .button21,
+.container .row .button22,
+.container .row .button23,
+.container .row .button24,
+.container .row .button25,
+.container .row .button26,
+.container .row .button27,
+.container .row .button28,
+.container .row .button29,
+.container .row .button30,
+.container .row .button31,
+.container .row .button32,
+.container .row .button33,
+.container .row .button34,
+.container .row .button35,
+.container .row .button36,
+.container .row .button37,
+.container .row .button38,
+.container .row .button39,
+.container .row .button40,
+.container .row .button41,
+.container .row .button42,
+.container .row .button43,
+.container .row .button44,
+.container .row .button45,
+.container .row .button46,
+.container .row .button47,
+.container .row .button48,
+.container .row .button49,
+.container .row .button50,
+.container .row .button51,
+.container .row .button52,
+.container .row .button53,
+.container .row .button54,
+.container .row .button55,
+.container .row .button56,
+.container .row .button57,
+.container .row .button58,
+.container .row .button59,
+.container .row .button60,
+.container .row .button61,
+.container .row .button62,
+.container .row .button63,
+.container .row .button64,
+.container .row .button65 
+{
+  height: auto;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+
+.container .row .displayContent1,
+.container .row .displayContent2,
+.container .row .displayContent3,
+.container .row .displayContent4,
+.container .row .displayContent5,
+.container .row .displayContent6,
+.container .row .displayContent7,
+.container .row .displayContent8,
+.container .row .displayContent9,
+.container .row .displayContent10,
+.container .row .displayContent11,
+.container .row .displayContent12,
+.container .row .displayContent13,
+.container .row .displayContent14,
+.container .row .displayContent15,
+.container .row .displayContent16,
+.container .row .displayContent17,
+.container .row .displayContent18,
+.container .row .displayContent19,
+.container .row .displayContent20,
+.container .row .displayContent21,
+.container .row .displayContent22,
+.container .row .displayContent23,
+.container .row .displayContent24,
+.container .row .displayContent25,
+.container .row .displayContent26,
+.container .row .displayContent27,
+.container .row .displayContent28,
+.container .row .displayContent29,
+.container .row .displayContent30,
+.container .row .displayContent31,
+.container .row .displayContent32,
+.container .row .displayContent33,
+.container .row .displayContent34,
+.container .row .displayContent35,
+.container .row .displayContent36,
+.container .row .displayContent37,
+.container .row .displayContent38,
+.container .row .displayContent39,
+.container .row .displayContent40,
+.container .row .displayContent41,
+.container .row .displayContent42,
+.container .row .displayContent43,
+.container .row .displayContent44,
+.container .row .displayContent45,
+.container .row .displayContent46,
+.container .row .displayContent47,
+.container .row .displayContent48,
+.container .row .displayContent49,
+.container .row .displayContent50,
+.container .row .displayContent51,
+.container .row .displayContent52,
+.container .row .displayContent53,
+.container .row .displayContent54,
+.container .row .displayContent55,
+.container .row .displayContent56,
+.container .row .displayContent57,
+.container .row .displayContent58,
+.container .row .displayContent59,
+.container .row .displayContent60, 
+.container .row .displayContent61, 
+.container .row .displayContent62, 
+.container .row .displayContent63, 
+.container .row .displayContent64, 
+.container .row .displayContent65  
+{
+  display: none;
+  /* height: 100px; */
+  height: auto;
+  max-height: 100px;
+  padding-top: 50px;
+  font-size: 20px;
+  padding: 3px;
+  text-align: center;
+  line-height: 100%;
+  color: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.7s ease-in-out;
+}
+.container .row div:hover {
+  border: 3px solid darkred;
+}
+
+/* .displayContent1 {
+  color: #fff;
+  font-size: 15px;
+  margin: 0px;
+  width: 100%;
+} */
