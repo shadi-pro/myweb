@@ -1314,49 +1314,58 @@
 
                 <p> Main Concept :  <br>
                  <ul> 
-                     <li> Combining the both previous [Login Form] & [Registration Form] with one app of several inner pages with providing  protected routes autherization     </li>
-                     <li> [Login Form] should be contlored [Roled based] information inserted with several levels of Authorizations  as next :  <br>
+                     <li> Combining the both previous [Login Form] & [Registration Form] with one app of several inner pages  with  protected routes autherization management      </li>
+                     <li> [Login Form] should be contorled [Roled based] of user information inserted with [several levels of Authorizations] as next :  <br>
                        <ul> 
-                          <li> [Admin]  =>   Sould be authorized to get access into all inner pages & [Admin page] , and NOT authorizierd to get access  into [ Editor page  ]     </li>
-                          <li> [Editor] =>   Sould be authorized to get access into all inner pages & [Editor page] , and NOT authorizierd to get access  into [ Admin page  ]     </li>
-                          <li> [user]  =>    Sould be authorized to get access into all inner pages & [  page] , and NOT authorizierd to get access  into [ Editor page  ]     </li>
+                          <li> [Admin]  =>   Sould be authorized to get access into all inner pages & [Admin page] , but NOT authorizierd to get access  into [ Editor page  ]     </li>
+                          <li> [Editor] =>   Sould be authorized to get access into all inner pages & [Editor page] , but  NOT authorizierd to get access  into [ Admin page  ]     </li>
+                          <li> [ defualt  user]  =>    Sould be authorized to get access into all inner pages  , but  NOT authorizierd to get access  into [ Editor page] or nv [ Admin page ]     </li>
                        </ul>
                     </li>
                      
-                     
                     <li> Creating a [Login Form] that using [Axios] api for creating the [post] process and submit user information for authetication   </li>
+                    
                     <li>  The [Login Form] will provide the  Authentication by using both of the  [context]  &  [real endpoint of node server - will be provided withni Node course -]   </li>
+                  
                     <li>  The [Login Form] will provide the  Authentication by using both of the  [context ]  &  [real endpoint of node server - will be provided withni Node course -]   </li>
                    </ol>                
                 </p>  
                 <br>
 
-                <p> Main Features or components of the [ login Form]  :  <br>
-                  <p>  this form is about a Login Form with using  the following  frontend contents  :  <br>
+                <p> Main App Features or components of the [ login Form]  :  <br>
+                  <p>  this form is about a Login Form with  controling  and  managing the user information by providing [authorization controling] as following     :  <br>
                     <ol> 
-                      <li> 1- Conditional successful login message   </li>
-                      <li> 2- Login Form  :  <br>    
-                        <ul> 
-                            <li>  Username input field       </li>
-                            <li>  password  input field       </li> 
-                            <li>  Submit button        </li>
-                            <li>  Link to the sing-in => to be assigned by a real react Router of the [sign-in] page     </li>
-                        </ul>
-                      </li>
-
-                      <li> 3- Sign-up section => incase of the user don't  have an acount yet and need to create an account first </li>
-                         
+                      <li> 1- Provding access to a certain protected routes pages for a certain types users  according to the assinged and built authorazation [3] levels  as mentioned a bove   [ Admin , Editro , normal user ] , wiht comon access rouetes pages </li>
+                      
+                      <li> 2- Providing a backend history access according to the logining informatoin and user type  according to  protecteed routes      </li>
+    
                     </ol>                
                   </p> 
                 </p>  
                 <br>
                 
-                <p> Main Tools & Libraries requried for protecting the desired routers pages   :  <br>
+                <p> Main Tools & Libraries requried for the app  [protecting the desired routers pages]   :  <br>
                   <p>  This [Login Form] is about a Login Form with using  the folowing tools :  <br> 
                     <ol> 
-                      <li> [Axios] library for asynchoronous responding process [post]         </li>
-                      <li> {Context} : for define the [Authentication Provdier function] which will include the main Authentication coinfguration  settings to store the main inserted data of the [Login Form]    </li>
-                      <li> [node.js server] + [Mogo DB]  connection -> [available in the Node course ]  to provide the main endpoints of server's [response data] &  [response accessToken]  & [response roles]      </li>
+                      <li> [Axios] library for asynchoronous for handling the responding  of [post] process         </li>
+                      <li> {Context} : for define the [Authentication Provdier function] which will include the main Authentication coinfguration  settings to store the main inserted data of the [ App Form ]    </li>
+                      <li> Protecting certain Routes pages : using following   procedures  :   <br>
+                          <ul>
+                            <li> { RequireAuth.js } =>  this about a function to handle  displayed Route accordging to availability of both  [allowed Roles] and [valid user] witihin the inserted user information of the login form   </li>
+                          
+                            <li> {App.js} =>  this will include  following :  <br>
+                               <ol>
+                                  <li> Object of user {Roles} of codes , to be used as a alternative simulation for the  node server </li>
+                                  <li> Importing the Protector file  {RequireAuth} => [ to be as protector wrapping parent route over the desired routes to be protected]  </li>
+                                  <li> Using  the imported  Protector file  {RequireAuth} =>  to re-deifne the app route over the desired rouers to be protected with assigning the user Roles codes directly ro from the defeind object of role  </li>
+                               </ol> 
+                            </li>
+
+                          </ul>  
+                        
+                      </li>
+                      <li> Providing an alternative  orf node server endpoints of  users codes types as object of Roles within [App.js]               </li>
+                     <li> [node.js server] + [Mogo DB]  connection -> [available in the Node course ]  to provide the main endpoints of server's [response data] &  [response accessToken]  & [response roles] +  and usign  alternative user codes types          </li>
                     </ol>                
                   </p>   
                 <br>   <hr> <br>
@@ -1372,13 +1381,25 @@
                                   <li> Imported { useContext} hook   </li> 
                                   <li> Imported {AuthContext} varaible  file    </li> 
                               </ul> 
-                              <p> and instead of  preious (2) steps  will just imprt the custom hook defined function {useAuth} from  [ useAuth.js ] file inside  this route file   </p>                           
+                              <p> and instead of  previous (2) steps  will just imprt the custom hook defined function {useAuth} from  [ useAuth.js ] file inside  this route file   </p>                           
                             </li>  
                           </ol>  
                         </li>  <br>
 
                         <li>  2] Modifying defined Routes inside  {app.js} => with  using protector file {RequiredAuth.js} & adding defined Roles that will protect our pages routes , by using the next procedures :  <br> 
-                            <p>   to use different  protector  route  with different role  , file as the next code :    <br>
+                           <p> a- Define the object of alternative users Roles codes - insdie the App function -   : <br>
+                            <code>
+                              <span  class="one" ></span>   Define server alternative simulated object including the each type of user authorization  code   :   <br>
+                              <span  class="one" ></span>  const ROLES  = { <br>
+                                <span  class="two " ></span> 'Admin' : '5150' ,   <br>
+                                <span  class="two " ></span> 'Editor' : '1985' ,   <br>
+                                <span  class="two " ></span> 'User' : '2001'   <br> 
+                              <span  class="one" ></span> }                               
+                              <br> 
+                            </code>                              
+                          </p>   <br>
+
+                           <p>  b- to use different  protector  route  with different role  , file as the next code :    <br>
                               <code>
 
                                 <span  class="one" ></span>  define the protected route {Home} : Authorized for public {User} by assigning code of {2001} :   <br>
@@ -1402,9 +1423,10 @@
                                   <span  class="two" ></span>   &lt; Route path='/lounge'  element={ &lt; Lounge &gt; }  /&gt;   <br>
                                 <span  class="one" ></span>  &lt; /Route    &gt;  <br>
                             </code>                                                                       
-                        </li>
-                        
-                        <li>  3] Creating {components/RequriAuth.js} =>  the protector file that will protect our pages routes , by using the  next procedures :  <br>
+                        </li>  <br>
+                     
+                    
+                        <li> 3] Creating {components/RequriAuth.js} =>  the protector file that will protect our pages routes , by using the  next procedures :  <br>
                           <p> // A] Importing section :  <br>
                             <ul> 
                               <li>  1- import the defind [custom hook] function  => to be use the short method of custom hook  - when ned to use  the inner prop inside the context -  : <br> 
@@ -1448,14 +1470,16 @@
                                       <span class="five"></span> //  [No Role + but there is a user ] => adding the {state} attribute with locaton will allow the browser to remember where the user were  <br> 
                                       <span class="five"></span> :  &lt; Navigate to='/Login' state={ { from: location } } replace / &gt;  <br>
                                 <span class="two"></span> )  <br>
-                              <span class="one" ></span>  } <br>
+                              <span class="one" ></span> } <br>
                               
                             </code>
-
 
                           </p>
 
                         </li>
+
+                        <li> 4] Creating [Unauthorized] page component  ->  to be displayed for the unauthorized users [public Route] + with assinging a function of Goback button  </li>
+                         
                       </ul> 
                   </p>             
                 </p> <br>     
