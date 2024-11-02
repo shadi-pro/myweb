@@ -46,14 +46,13 @@ import Editor from './components/Editor';
 import Lounge from './components/Lounge';
 // -----------------------
 
-// (3) Protector file  {RequireAuth}    : 
+// (3) Protector file  {RequireAuth} => [ to be as protector wrapping  route ]    : 
 import RequireAuth from './components/RequireAuth';
-
 
 
 function App() {
 
-  // Define server simulated object including the each type of user authorization  code   : 
+  // Define server alternative simulated object including the each type of user authorization  code   : 
   const ROLES = {
     'User': 2001,
     'Admin': 5150,

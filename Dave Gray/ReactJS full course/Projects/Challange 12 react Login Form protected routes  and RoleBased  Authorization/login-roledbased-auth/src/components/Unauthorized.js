@@ -1,5 +1,5 @@
 
-// The [Unauthorized] page ->  to be displayed for the unauthorized users [public Route] : 
+// The [Unauthorized] page ->  to be displayed for the unauthorized users [public Route] + wiht assinging a function of Goback   : 
 
 import React from 'react'
 
@@ -23,7 +23,7 @@ const Unauthorized = () => {
           onClick={goBack}
         >
           Go back
-        </button >
+        </button>
       </div>
     </section>
   )

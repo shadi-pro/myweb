@@ -1,5 +1,5 @@
-
-
+// This is the fle of the providing hte context provider function wiht its props :
+ 
 //  the context file  for Authentciation provider   : 
 import { createContext, useState } from 'react';
 
@@ -20,14 +20,8 @@ export const AuthProvider = ({ children }) => {
 }
 
 
-
 //  Exporting the main context  variable  [AuthContext]     :
 export default AuthContext;
-
-
-
-
-
 
 
 
