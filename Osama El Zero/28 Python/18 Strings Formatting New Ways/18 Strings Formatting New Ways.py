@@ -20,8 +20,10 @@
 
 # 2- New [python 3.6+] formating method [similler to JS formating ] ->
   ##  To perform a concatenation between different datatype using placeholder unified prevoius operator of {f} as following :
-  ##  This method is much more easier  from all previous methods 
-    
+  ##  This method is much more easier  from all previous methods .
+  ##  This method syntax as following / :
+    ###  f'string to be contactenated with variables {var1} {var2}  {var3} '    
+ 
 # ===================================================
 # B] [Practical Exps] : 
 # [1]  First  method of new Flags   :
@@ -136,5 +138,5 @@ print(  '==========================================' )
   #  The new method of  [ {} .format(value or variable) ]  is just like the old method , but by replacing the {specified flag  %} with a (unified flag {}) 
   #  The new method of  [ {} .format(value or variable) ] include much more features and abilities  
   #  The new Formating method of  the previous operator  [f] => is similer to the javascript , and much more easier from all other methods    
-  #  There is a imprtant refernce of the python formating methods =>  ['pyformat.info']   => include only indetailed informatoin about the all python formating methods    
+  #  There is a important refernce of the python formating methods =>  ['pyformat.info']   => include only in-detailed information about the all python formating methods    
    
