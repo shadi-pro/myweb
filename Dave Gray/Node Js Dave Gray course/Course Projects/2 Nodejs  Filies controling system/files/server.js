@@ -1,11 +1,13 @@
-//   lesson 1 :   (intro)  Testing node.js server 
+//   lesson 2 : Testing  [File and Directory]  Controling methods  of node.js server 
+ 
 
-console.log('==================== Welcome to Node.js course -> lesson 1 intro =============================== ')
+console.log('==================== Welcome to Node.js course -> lesson 2 File and Directory controling system methods  =============================== ')
 
+// I]   :  
 // A] Applying Some built-in [Method]  & [Constants]  in [Node.js] :
 
 // [Exp 1] : Applying Some built-in general consants :
-console.log(' Exp1 : Applying Some built-in general consants' + '\n-------------------\n')
+console.log(' Exp1 : Applying Some built-in general constants' + '\n-------------------\n')
 
 // a-  Get and print the [current full directory]    :  
 console.log('The current full directory [using the constant {__dirname}]  is : \n ' + __dirname + '\n-------------------\n')
@@ -60,27 +62,6 @@ console.log(path.parse(__filename))
 
 // ---------------------------------------------------
 // ---------------------------------------------------
-
-// [Exp4] : Importing the full new custom file + inner child  defined  functions -> from [node core module] :    
-//  General importing of the full file   : 
-// const math =  require('./math') 
-
-// Specific importing a child defined function {destructured importing}  :
-const { add , sub , mult, divid} =  require('./math') 
-
-
-// Calling and using the {add()} function [ directly from imported destructured file ] :
-console.log(add(1 , 2 ))
-
-// Calling and using the {sub()} function [ directly from imported destructured file ] :
-console.log(sub(1 , 2 ))
-
-// Calling and using the {mult()} function [ directly from imported destructured file ] :
-console.log(mult(1 , 2 ))
-
-// Calling and using the {divid()} function [ directly from imported destructured file ] :
-console.log(divid(1 , 2 ))
-
 
 
    

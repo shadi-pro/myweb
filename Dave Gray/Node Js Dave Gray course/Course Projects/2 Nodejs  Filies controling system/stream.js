@@ -1,4 +1,4 @@
-
+// 
 // This is the file for defining a stream function for partial reading processes  :     
  
 // 1- Define a importerd 'fs' from the [node core module]       :
@@ -12,12 +12,10 @@ const ws = fs.createWriteStream('./files/newStream.txt') ;
   
 // 4- Define a function of reading data comming from created read stream [rs] +   then using the  [write stream] to write its content in a new file :
 rs.on( 'data', (dataChunk) => {
-  ws.write(dataChunk) ;
+  ws.write(dataChunk) ;  // passing through the obtained data from the stream read file into the write stream file   
 })   
 
-// 5-  Shortcut method to add the content of the stream read file inside a nother new file  of write stream , using {pipe()} method   :
+// 5- Shortcut method to add the content of the stream read file inside another new file  of write stream , using {pipe()} method   :
 rs.pipe(ws);
-
-
 
 

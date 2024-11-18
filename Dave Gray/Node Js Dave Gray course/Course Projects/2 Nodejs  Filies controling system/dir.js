@@ -1,4 +1,4 @@
-// this file to testing the  directory commands of the [Node]  : 
+// this file to testing the  Directory commands of the [Node]  : 
 
 // importing the 'fs' from the [node core module]   :
 const  fs  = require('fs'); 

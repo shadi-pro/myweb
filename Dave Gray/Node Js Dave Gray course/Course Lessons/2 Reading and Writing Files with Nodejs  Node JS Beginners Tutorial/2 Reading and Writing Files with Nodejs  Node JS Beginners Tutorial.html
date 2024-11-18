@@ -1313,320 +1313,263 @@
             </header>
  
             <h1>  A]  Main concept of the [ Node common core module] , as following : </h1> <br>
-              <p>  These are built-in methods about dealing with [Files and folders] of the  Nodes  server of  inside  the [node common  core  moedule] , and they include the following main  functions with syntax  : <br>
-                <ul>
-                  <li> *- Importing/requiring the {file} from [node core module] : <br>
-                    <code> 
-                      <span class=one> </span> const fs = requrie('fs')  ;   <br>  
-                    </code> 
-                  </li>   <br>
-  
-                  <li> *- Importing/requiring the desired current file's path {path} from [project files tree] : <br>
-                    <code> 
-                      <span class=one> </span> const path  = require('path') ;    <br>  
-                    </code> 
-                  </li>   <br> 
-
- 
-                  <li> 1- [Read from file] =>  using the {readFile()} method with parameters , extracted from the defined 'fs'  :    <br>
-                    <code> 
-                      <span class=one> </span> // using the {readFile} with assign the its parameter as [encodingSystem : 'utf8' , path: by using join  to  manual create the file path - to void differnt system path sytnax]  :    <br>  
-                      <span class=one> </span>  fs.readFile(  path  , encodingSystem ,   (err,  data ) => {  <br>  
-                        <span class=two> </span>   // 1- handling the catched error as conditional value  : <br>  
-                        <span class=two> </span>    if (err) throw err   <br> <br>  
-
-                        <span class=two> </span>   // 2-  Handling the read data [by using console for example]  {using the [data] directly - incase of using endcoding paramater 'utf8'  -   } : <br>  
-                        <span class=two> </span>    console.log(data)     <br> <br>  
-  
-                        <span class=two> </span>   // 3-  Handling and print the [unCaught  exception error] , using {process.on()}  &  {process.exit()}  : <br>  
-                        <span class=two> </span>   process.on( "uncaughtException" ,   err  => { <br> 
-                          <span class=three> </span>   console.log(` uncaughtException is   :   ${err} ` ) ;  <br> 
-                          <span class=three> </span>   process.exit(1) ;  -> [ to stop the worlking of process  ]   <br> 
-                        <span class=two> </span> })     <br> <br>  
-
-                      <span class=one> </span> }) <br>  
-                    </code> 
-                  </li> <br>   <br> <br>
-
-                  <li> 2- [Write new content inside a file] =>  using the {writeFile()} method with parameters , extracted from the defined 'fs'  :    <br>
-                    <code> 
-                      <span class=one> </span> // using the {writeFile} with assign the its parameter as [encodingSystem : NOT needed due to we write not read  , path: by using join  to  manual create the file path - to void differnt system path sytnax]  :    <br>  
-                      <span class=one> </span>  fs.writeFile( path , 'text to be written  inside  the file '  ,   (err) => {  <br>  
-                        <span class=two> </span>   // 1- handling the catched error as conditional value  : <br>  
-                        <span class=two> </span>    if (err) throw err   <br> <br>  
-
-                        <span class=two> </span>   // 2- Printing a confiramtion message if the proecess is done succedfuly : <br>  
-                        <span class=two> </span>    console.log(' Writing process  haas conpleted succesfuly ! ')     <br> <br>  
-
-                        <span class=two> </span>   // 3-  Handling and print the [unCaught  exception error] , using {process.on()}  &  {process.exit()}  : <br>  
-                        <span class=two> </span>   process.on( "uncaughtException" ,   err  => { <br> 
-                          <span class=three> </span>   console.log(` uncaughtException is   :   ${err} ` ) ;  <br> 
-                          <span class=three> </span>   process.exit(1) ;  -> [ to stop the worlking of process  ]   <br> 
-                        <span class=two> </span> })     <br> <br>  
-
-                      <span class=one> </span> }) <br>  
-                    </code> 
-                  </li>  <br> <br> <br>
- 
-
-                  <li> 3- [Update/Append ( Adding new contents to the existed ) inside a file] =>  using the {appendFile()} method with parameters , extracted from the defined 'fs'  :    <br>
-                    <p> This method for updating a file's  contents by append new contents into the existed contents of certain existed file ,  OR create this  file - if it not existed - and  then append this contents into it </p>
-                    <code> 
-                      <span class=one> </span> // using the {appendFile} with assign the its parameter as [encodingSystem : NOT needed due to we write not read  , path: by using join  to  manual create the file path - to void differnt system path sytnax]  :    <br>  
-                      <span class=one> </span>  fs.writeFile(  path  ,  'text to be updating  the assigned  file by  '  ,   (err ) => {  <br>  
-                        <span class=two> </span>   // 1- handling the catched error as conditional value  : <br>  
-                        <span class=two> </span>    if (err) throw err   <br> <br>  
-
-                        <span class=two> </span>   // 2- Printing a confiramtion message if the proecess is done succesfully : <br>  
-                        <span class=two> </span>    console.log('updating  process  has completed succesfully ! ')     <br> <br>  
-
-                        <span class=two> </span>   // 3-  Handling and print the [unCaught  exception error] , using {process.on()}  &  {process.exit()}  : <br>  
-                        <span class=two> </span>   process.on( "uncaughtException" ,   err  => { <br> 
-                          <span class=three> </span>   console.log(` uncaughtException is   :   ${err} ` ) ;  <br> 
-                          <span class=three> </span>   process.exit(1) ;  -> [ to stop the worlking of process ]   <br> 
-                        <span class=two> </span> })    <br> <br>  
-                      <span class=one> </span> }) <br>  
-                    </code> 
-                  </li>   <br> <br> <br> 
-
-
-                  <li> 4- [Rename a file ] =>  using the {rename()} method with 'path' parameter , extracted from the defined 'fs'  :    <br>
-                    <p> This method for change an existed file's name     </p>
-                    <code> 
-                      <span class=one> </span> // Using the  {rename()} on an existed file [with using a manual 'path' ] ] :    <br>  
-                      <span class=one> </span>  fs.rename( path with orignal file name  ,   path with new file name ) <br>  
-                    </code> 
-                  </li>   <br> <br> <br> 
-                  
-                  <li> 5- [Delete file]  =>  using the {unlink()} method with 'path' parameter  ,  extracted from the defined 'fs' :  <br>   
-                    <p>  Delete an existed file from project tree : </p>
-                    <code> 
-                      <span class=one> </span> // Using the  {unlink()} on an existed file [with using a manual 'path' ] ] :    <br>  
-                      <span class=one> </span>  fs.unlink( path of file  ) <br>  
-                    </code> 
-                  </li>
-
-                </ul>               
+              <p> These are built-in methods about dealing with [Files and folders] of the  Nodes server inside  the [Node Common Core Module]   </p>
+              <p> To use the  Node  file  methods  we will be need the following tools  :  <br>
+                  <ul> 
+                      <li> Importing or requring 'fs' OR 'fs.promises' variable         </li>
+                      <li> [async-await] + (try-catch) => incase  of using [fs.promises]   </li>
+                  </ul>  
               </p>
+            <br>
+            <!--------------------------------------------------------  -->
+            
+            <h1> B]  main Syntax  of the  node system file controling methods  :   </h1>
+             <p>  This lesson  will include File & Directory  Controling methods of project file tree   =>  using the imported default [fs] OR  the it's extracted [.promsises]  form [node core module] , with folllwing map : 
+                <ol> 
+                  <li> [First] : Node File controling methods :  <br>  
+                    <ul> 
+                      <li>  I] Using the default [fs] {node core Module} :   <br>
+                        <ol> 
+                            <li>  1- { fs.readFile() } => Default reading file's contents   </li>
+                            <li>  2- { fs.writeFile() } => Default writing a new  contents insdie a file's    </li>
+                            <li>  3- { fs.appendFile() } => Add new   contents onto the current  file's contents     </li>
+                            <li>  4- { fs.rename() } =>  rename a  file  </li>
+                            <li>  5- { fs.unlink() } =>  Deleting/removing an existed  file     </li>
+                          </ol>                       
+                      </li>  <br>
+ 
+                      <li>  II] Using the  Extracted  promises  [ (fs).promises ] {node core Module}  within [async-await]  :   <br>
+                        <ol> 
+                            <li>  1- { fsPromises.readFile() } => promising reading file's contents   </li>
+                            <li>  2- { fsPromises.writeFile() } => promising writing a new  contents insdie a file's       </li>
+                            <li>  3- { fsPromises.appendFile() } => promising Add new contents onto the current  file's contents      </li>
+                            <li>  4- { fsPromises.rename() } =>  promising rename a  file  </li>
+                            <li>  5- { fsPromises.unlink() } =>  promising Deleting/removing an existed  file     </li>
+                          </ol>                       
+                      </li>  <br> 
+  
+                      <li>  III] Using the Extracted  [ (fs) ] Stream methods  of  {node core Module}  => within [stream.js] :  <br>
+                        <ol> 
+                            <li>  1- fs.createReadStream('inner path' ,  {encoding:'utf8'})  =>   [file read stream] variable definition    </li>
+                            <li>  2- fs.createWriteStream('inner path')    => [file write  stream] variable definition            </li>
+                            <li>  3- streamReadVar.on('data' , (ChunkPar) => { } )  => [reading method from the defined stream file variable]  method         </li>
+                            <li>  4- streamWriteVar.write(data to be added )   =>  [Writing  inside the defined stream write file ]  method  definition      </li>
+                            <li>  5- streamReadVar.on('data' , (ChunkPar) => { streamWriteVar.write(data to be added ) }  )    => [ reading method from the defined stream file variable ]  + [Writing method ]  method  definition     </li>
+                            <li>  6- streamReadVar.pipe( streamWriteVar) => shortcut method of writing the data obtained from the stream read into  the write stream file </li>
+                          </ol>                       
+                      </li>  <br> 
+                    </ul>  
+                  </li>   <br>  <br> 
+  
+                  <li> [Second] : Node Directory controling methods  : <br> 
+                      <ul> 
+                        <li> 1- {mkdir()} => Create a new Directory   </li>
+                        <li> 2- {rmdir()} => Remove an existed  Directory   </li>
+                        <li> 3- {fs.existsSync(directory || file root path) } =>   Checking if the file or directory is existed or not            </li>
+                      </ul>                
+                  </li> 
+                </ol>            
+            </p>
+            <!-- ---------------------------------------------------------- -->
+            <h1>  C] Practical exps of methods of File and Directory  of  [ Node common core module]  :   </h1>
+               <p> File Node controling methods :     </p>
+              <ul>
+                <li> *- Importing/requiring the {file} from [node core module] : <br>
+                  <code> 
+                    <span class=one> </span>  This is the [default file system] of the node core module :       <br>  
+                    <span class=one> </span> const fs = requrie('fs')  ;   <br>  
+                    
+                    <span class=one> </span>  This is the [promise async  file system] of the node core module :       <br>  
+                    <span class=one> </span> const fs = requrie('fs')  ;   <br>  
+
+                  </code> 
+                </li>   <br>
+
+                <li> *- Importing/requiring the desired current file's path {path} from [project files tree] : <br>
+                  <code> 
+                    <span class=one> </span> const path  = require('path') ;    <br>  
+                  </code> 
+                </li>   <br> 
+
+                <li> a- Main default methods of  file controling : <br>
+                    <ol>
+                      <li> 1- [Read from file] =>  using the {readFile()} method with parameters , extracted from the defined 'fs'  :    <br>
+                            <code> 
+                              <span class=one> </span> // using the {readFile} with assign the its parameter as [encodingSystem : 'utf8' , path: by using join  to  manual create the file path - to void differnt system path sytnax]  :    <br>  
+                          <span class=one> </span>  fs.readFile(  path  , encodingSystem ,   (err,  data ) => {  <br>  
+                            <span class=two> </span>   // 1- handling the catched error as conditional value  : <br>  
+                            <span class=two> </span>    if (err) throw err   <br> <br>  
+      
+                            <span class=two> </span>   // 2-  Handling the read data [by using console for example]  {using the [data] directly - incase of using endcoding paramater 'utf8'  -   } : <br>  
+                            <span class=two> </span>    console.log(data)     <br> <br>  
+      
+                            <span class=two> </span>   // 3-  Handling and print the [unCaught  exception error] , using {process.on()}  &  {process.exit()}  : <br>  
+                            <span class=two> </span>   process.on( "uncaughtException" ,   err  => { <br> 
+                              <span class=three> </span>   console.log(` uncaughtException is   :   ${err} ` ) ;  <br> 
+                              <span class=three> </span>   process.exit(1) ;  -> [ to stop the worlking of process  ]   <br> 
+                            <span class=two> </span> })     <br> <br>  
+      
+                          <span class=one> </span> }) <br>  
+                        </code> 
+                      </li> <br>   <br> <br>
+      
+                      <li> 2- [Write new content inside a file] =>  using the {writeFile()} method with parameters , extracted from the defined 'fs'  :    <br>
+                        <code> 
+                          <span class=one> </span> // using the {writeFile} with assign the its parameter as [encodingSystem : NOT needed due to we write not read  , path: by using join  to  manual create the file path - to void differnt system path sytnax]  :    <br>  
+                          <span class=one> </span>  fs.writeFile( path , 'text to be written  inside  the file '  ,   (err) => {  <br>  
+                            <span class=two> </span>   // 1- handling the catched error as conditional value  : <br>  
+                            <span class=two> </span>    if (err) throw err   <br> <br>  
+      
+                            <span class=two> </span>   // 2- Printing a confiramtion message if the proecess is done succedfuly : <br>  
+                            <span class=two> </span>    console.log(' Writing process  haas conpleted succesfuly ! ')     <br> <br>  
+      
+                            <span class=two> </span>   // 3-  Handling and print the [unCaught  exception error] , using {process.on()}  &  {process.exit()}  : <br>  
+                            <span class=two> </span>   process.on( "uncaughtException" ,   err  => { <br> 
+                              <span class=three> </span>   console.log(` uncaughtException is   :   ${err} ` ) ;  <br> 
+                              <span class=three> </span>   process.exit(1) ;  -> [ to stop the worlking of process  ]   <br> 
+                            <span class=two> </span> })     <br> <br>  
+      
+                          <span class=one> </span> }) <br>  
+                        </code> 
+                      </li>  <br> <br> <br>
+      
+      
+                      <li> 3- [Update/Append ( Adding new contents to the existed ) inside a file] =>  using the {appendFile()} method with parameters , extracted from the defined 'fs'  :    <br>
+                        <p> This method for updating a file's  contents by append new contents into the existed contents of certain existed file ,  OR create this  file - if it not existed - and  then append this contents into it </p>
+                        <code> 
+                          <span class=one> </span> // using the {appendFile} with assign the its parameter as [encodingSystem : NOT needed due to we write not read  , path: by using join  to  manual create the file path - to void differnt system path sytnax]  :    <br>  
+                          <span class=one> </span>  fs.writeFile(  path  ,  'text to be updating  the assigned  file by  '  ,   (err ) => {  <br>  
+                            <span class=two> </span>   // 1- handling the catched error as conditional value  : <br>  
+                            <span class=two> </span>    if (err) throw err   <br> <br>  
+      
+                            <span class=two> </span>   // 2- Printing a confiramtion message if the proecess is done succesfully : <br>  
+                            <span class=two> </span>    console.log('updating  process  has completed succesfully ! ')     <br> <br>  
+      
+                            <span class=two> </span>   // 3-  Handling and print the [unCaught  exception error] , using {process.on()}  &  {process.exit()}  : <br>  
+                            <span class=two> </span>   process.on( "uncaughtException" ,   err  => { <br> 
+                              <span class=three> </span>   console.log(` uncaughtException is   :   ${err} ` ) ;  <br> 
+                              <span class=three> </span>   process.exit(1) ;  -> [ to stop the worlking of process ]   <br> 
+                            <span class=two> </span> })    <br> <br>  
+                          <span class=one> </span> }) <br>  
+                        </code> 
+                      </li>   <br> <br> <br> 
+      
+                      <li> 4- [Rename a file ] =>  using the {rename()} method with 'path' parameter , extracted from the defined 'fs'  :    <br>
+                        <p> This method for change an existed file's name     </p>
+                        <code> 
+                          <span class=one> </span> // Using the  {rename()} on an existed file [with using a manual 'path' ] ] :    <br>  
+                          <span class=one> </span>  fs.rename( path with orignal file name  ,   path with new file name ) <br>  
+                        </code> 
+                      </li>   <br> <br> <br> 
+                      
+                      <li> 5- [Delete file]  =>  using the {unlink()} method with 'path' parameter  ,  extracted from the defined 'fs' :  <br>   
+                        <p>  Delete an existed file from project tree : </p>
+                        <code> 
+                          <span class=one> </span> // Using the  {unlink()} on an existed file [with using a manual 'path' ] ] :    <br>  
+                          <span class=one> </span>  fs.unlink( path of file  ) <br>  
+                        </code> 
+                      </li>                     
+                    </ol>
+                </li>  <br><br> 
+
+                <li> b-  Using the  Extracted  promises  [ (fs).promises ] {node core Module}  within [async-await]  : <br>
+                  <ol> 
+
+                    <li>  Netsted methods of the file controling  :   <br> 
+                        <p> using the  {fs.promises}  extracted from the main 'fs' -> will allow to use  Asynchrous promeises and   [try-catch]  with one nested script  function  including several methods -> to provide controled output , as the next expample; : <br>
+                          <code> 
+                            //  1-  importing the  requried as an extyeaced variable from  the [fs.promises]  : <br> 
+                              <span class="one"></span> fsPromises   = require('fs').promsies;     <br> <br>
+
+
+                            //  2- Define an async function with [async-await] that including all file's operations inside the  [try-catch] + nested  method   :
+                            
+                            <span class="one"></span> const fileOps = async () => {  <br>
+                              <span class="two"></span> try {   <br>
+                                <span class="three"></span> // a- Define a [data] variable as  a await value of [read file] method from the defined and imported [promise fs]   :  <br>    
+                                <span class="three"></span> const data = await fsPromises.readFile(  path.join(__dirname , 'files' ,  'text.txt' ) , 'utf8' ) ; <br> <br> 
+                          
+                                <span class="three"></span> // Printing the read data from the main file [text.txt] :    <br>
+                                <span class="three"></span> console.log('The original data contents from the first file is\n' , data , '\n=========================\n\n' ); <br>   
+                          
+                                <span class="three"></span> // b- Define another file process of await [write process] to write the read data from the previous process of read file into a new create file  : <br>   
+                                <span class="three"></span> await fsPromises.writeFile(  path.join(__dirname , 'files' ,  'textPromise.txt' )  ,  data) ;  <br> <br> 
+                               
+                                
+                                <span class="three"></span> // c- Define  a new file process of  appending contents on the previous file :   <br> 
+                                <span class="three"></span> await fsPromises.appendFile(  path.join(__dirname , 'files' ,  'textPromise.txt' )  ,  '\n\nNew content by using  {appendFile} promise method    '  ) ; <br> <br> 
+                          
+                                <span class="three"></span> // d- Define  a new file of  [rename ] process  of the previous file :    <br>  
+                                <span class="three"></span> await fsPromises.rename(  path.join(__dirname , 'files' ,  'textPromise.txt' )  ,  path.join(__dirname , 'files' ,  'PromiseComplete.txt' ) )  <br> <br> 
+                          
+                                <span class="three"></span>  // e- Define a new varaible  of read data from  the new created file's contents  using await of {readFile(}) method :   <br>  
+                                <span class="three"></span> const newData  = await fsPromises.readFile( path.join( __dirname , 'files' , 'PromiseComplete.txt' ) ,   'utf8' ) ; <br><br> 
+                                
+                                <span class="three"></span> // f- Printing the read data from the new  created  file [PromiseComplete.txt] : <br>
+                                <span class="three"></span> console.log('The new data contents from the new created file is\n'  ,    newData  , '\n=========================\n\n'  ); <br>   <br> 
+                                
+                                
+                                <span class="three"></span> // g- Deleting an existed file using {unlink()}  method  :   <br> 
+                                <span class="three"></span> await fsPromises.unlink(path.join(__dirname, 'files' ,  'text2.txt' )  )   <br>  <br> 
+                           
+                                <span class="three"></span> // Print a confirm message of the process  : <br>
+                                <span class="three"></span> console.log('The file "text2.txt"  has deleted successfully ! \n'    , '\n=========================\n\n'  ); <br>  
+                            
+                              <span class="two"></span> } catch (err) {  <br> 
+                                <span class="three"></span>   console.error(err);   <br>
+                              <span class="two"></span> }  <br>    
+                            <span class="one"></span>  }     <br> 
+                          </code>
+                            
+                        </p>
+                    </li>
+
+
+                  </ol>
+                
+                
+                
+                </li>  <br><br> 
+
+                <li> c- using streaming file controling methods  :    <br> 
+                  <p> to Partial controling with file's contents   [read , write]  :  <br>
+                  
+                    <code> 
+                        <span class="one"></span>   // 1- Define a importerd 'fs' from the [node core module]       :  <br>
+                        <span class="one"></span>    const fs = require('fs') ;  <br>   <br>  
+                                                  
+                        <span class="one"></span>   // 2- Define an extracted [file read stream] from 'fs'   :  <br>
+                        <span class="one"></span>    const rs = fs.createReadStream('./files/newText.txt' ,  {encoding:'utf8'}) ;    <br>   <br>  
+                          
+                        <span class="one"></span>  // 3-  Define an extracted [file write stream] from 'fs'   : <br>
+                        <span class="one"></span>  const ws = fs.createWriteStream('./files/newStream.txt') ;  <br>   <br>  
+                          
+                        <span class="one"></span>   // 4- Define a function of reading data comming from created read stream [rs] +   then using the  [write stream] to write its content in a new file :  <br>
+                        <span class="one"></span>  rs.on( 'data', (dataChunk) => { <br>
+                          <span class="two"></span> ws.write(dataChunk) ;  // passing through the obtained data from the stream read file into the write stream file   <br>  
+                        <span class="one"></span> })   <br>   <br>  
+                        
+                        <span class="one"></span> // 5- Shortcut method to add the content of the stream read file inside another new file  of write stream , using {pipe()} method   : <br>
+                        <span class="one"></span> rs.pipe(ws); <br>                         
+                    </code>  
+                  </p>
+                </li>
+              </ul>                
             <hr> <br>  <hr> <br>            
             <!-- ----------------------------------------------------- -->        
-          
-            
-
-
-          <h1>  C] Main methods of the [ Node common core module]  :   </h1>
-            <p> First inside the [index.js]  => will be the controling file  which including node  methods , as following    :    </p>
-            <ul> 
-              <li> 1- Define variable of file to be read ['fs'] in the node core module & [path] variable  of this  file :  <br> 
-                <code>  
-                  <span class=one></span> const fs =  require('fs')   <br>              
-                  <span class=one></span> const path  =  require('/files/text.txt ')   <br> 
-                </code>                  
-              </li> <br> 
-              
-              
-              <li> 2- : Creating the [file read]  method  to get access and read the assigned and  defined file  :     <br>
-                <code>  
-                  <span class=one></span>     <br>              
-                  <span class=one></span> const path  =  require('/files/text.txt ')   <br> 
-                </code>      
- 
-              </li>
-              
-            </ul>  
-          </p>  
            
-          
-          <p> Second / Examples of Common  methods and  in the [Nodes.js]   : <br>
-            <p> {Require() } :   There are  (2) kinds of files in the [Node Core Module] to be imported/required  , as following :   <br>
-              <ul> 
-                <li> a-  [Full files Requiring/importing]  =>   import the file and  all its defined children form [Node Core Module]    :  <br>
-                  <li>  1- Requiring/importing  Built-in files :   <br>
-                    <ol> 
-                      <li> 'os' </li> 
-                      <li> 'path' </li> 
-                    </ol>
-                    <code>   
-                      <span  class="one"> </span>   const os =  require('os')       => [imporitng the operator system file from the Node core module]    <br>  
-                      <span  class="one"> </span>   const path =  require('path')   => [importing the operator system file from the Node core module]  <br>  
-                    </code>
-                  </li>                
-                  
-                  <li> 2- Requiring/importing  custom files :    <br> 
-                    <code>
-                      <span  class="one"> </span>   const filename  =  require('filename')    <br>  
-                    </code>     
-                  </li>
-                </li>  <br>
 
-                <li> b-  [partial requiring/inmporting] of a inenr child defined  function/variable :   <br>
-
-                  <p>  This type of  the requiring is related to a certin defined child inisde a certain file ,  by usgin the destructuring of the desired functions and varialbes to be import , as the next example   : <br>  
-                    <ol>
-                      <li> Inside the main other file [  exportor file  ] {math.js} : <br>    
-                        <code> 
-                          <span claas="one"></span>  // Define the a {func1} to be exproted   <br> 
-                          <span claas="one"></span> const   func1(a)  => { console.log(helllo + a ) }   <br>   <br> 
-
-                          <span claas="one"></span>  // Define the a {func2} to be exproted   <br> 
-                          <span claas="one"></span> const   func2(b)  => { console.log(helllo + b ) }   <br>   <br> 
-
-                          <span claas="one"></span>  // Define the a {func3} to be exproted   <br> 
-                          <span claas="one"></span> const   func3(c)  => { console.log(helllo + c ) }   <br>   <br> 
-
-
-                          <span claas="one"></span>  // Exporting the whole file :     <br> 
-                          <span claas="one"></span>  exports.modules =  {  fun1 , fun2 , fun3 }   <br>   <br> 
-                        </code>  
-                      </li>
-
-                      <li> Inside the [importor file] [sever.js]   : <br> 
-                          <p>   A] Importing section   :  </p>
-                          <code>
-                            <span class="one " ></span> General importing the [exportor  file] {math.js } :     <br> 
-                            <span class=one></span> const  math =  require('./math')      <br>  <br>  
-                          
-                            <span class="one " ></span>  Partial  Destructured  importing of Child from the [exportor  file] {math.js } :     <br> 
-                            <span class=one ></span>  {func1 , func2 } = require('./math')     <br>    <br>
-                          </code>     <br>   
-                      
-                      
-                          <p>   B] Calling the imported functions :  </p>
-                          
-                          <code>
-                            <span class="one " ></span>  1- calling and using functions by using the main imported file as a extracted object :   <br> 
-                            <span class=one ></span>  console.log(math.func1 ('shadi'))   <br>    <br>
-
-                            <span class="one " ></span>  2- calling and using functions by using the desturctured child imported file  :   <br> 
-                            <span class=one ></span>  console.log(func2('shadi'))   <br>    <br>
-                        
-                          </code>  
-                          
-                      </li>
-                      
-
-
-
-
-                    </ol>   
-                  </p>
-                  
-                
-                
-                
-                </li>
-            
-                <li> 1-  Requiring/importing the operator system file and get all it's properties   :  <br>
-                  <code>
-                    <span class=one></span>  // to import a file 'os' [of the operator system ] in the node terminal -> we need top define a file usign [require()] instead of using  {import} , as following   :   <br>  
-                    <span class=two></span>  const os = require('os')  <br> <br>
-                                       
-                    <span class=one></span>  // now we accessed to the imported file  , and can get it's properties , using it's methods  :  <br>
-                      <span class=two></span>  console(os.type() )   =>  [get the type of this file ] <br> 
-                      <span class=two></span>  console(os.version() ) =>  [get the version  of this file ] <br>                         
-                      <span class=two></span>  console(os.homedir() )  =>  [get the home directory of this file ] <br>                         
-                  </code>
-                </li> <br>
-                
-              </ul>
-            </p>
-            
-            <p>  {exporting } : <br>
-              <p> It is about exporting the defined functions /variables  to be imported/required  inside another file , and there are main  (2) of exporting methods  : <br>
-                <ul> 
-                    <li> 1-  General one line code { Destructuring exporting }  :    <br>
-                      <p>  Usually be at the end of script , and will be defined as  extracted object , as next code  : <br>   
-                        <code> 
-                            <span  class="one" ></span>  modules.exports = {func1  , func2  , var1 , var2 } <br>   
-                        </code>
-                      </p>
-                    </li>  <br> 
-  
-                    <li> 2- Inline code  {single exportive definition  }  :    <br>
-                      <p> used within the defining the function or variable , as next code  : <br>   
-                        <code> 
-                          <span  class="one" ></span>  exports.func1 = (a , b) =>  {} <br>   
-                          <span  class="one" ></span>  exports.var1 =  '' ;  <br>   
-                        </code>
-                      </p>
-                    </li>
-                 </ul>  
-              </p> 
-              <p> note :  we shall use one metod at one file , and can NOT combine between the (2) methods   </p>
-            </p>    <br>  
-            
-            
-
-           <p> Some examples :  In kind of importing we use the destructuring method to assign one or more of the inner defined children  </p>
-             <li>  2- Access the current directory name in [Node] -> using the [__dirname] constant   :  <br> 
-                 <code> 
-                   <span class=one></span>  console(__dirname)   =>  [get the value of the current full directory ] <br>    
-               </code>  
-             </li>  <br>
-             
-             <li>  3- Access the current file  name in [Node] -> using the  [__filename] constant :  <br> 
-                 <code> 
-                   <span class=one></span>  console(__filename)   =>  [get the value of the current file name including the full path ] <br>    
-               </code>  
-             </li>    <br>
-             
-
-             <li>  4- extract the [  current dirname] from full path {.path} by  using the [filename] constant as the method parameter  :  <br> 
-                 <code> 
-                   <span class=one></span>  const path = require('path')     <br>    
-                   <span class=one></span>  console.log(path.dirname(__filename)) )  <br>    
-               </code>  
-             </li>
-             
-             <li>  5- extract the [current file basename {filename + extension }] from the full path {.path}  by  using the [filename] constant as the method parameter  :  <br> 
-                 <code> 
-                   <span class=one></span>  const path = require('path')     <br>    
-                   <span class=one></span>  console.log(path.basename(__filename)) )  <br>    
-               </code>  
-             </li>
-             
-             <li>  6- extract the [current file extension name ] of the full path {.path}  by using the [filename] constant as the method parameter  :  <br> 
-                 <code> 
-                   <span class=one></span>  const path = require('path')     <br>    
-                   <span class=one></span>  console.log(path.extname(__filename)) )  <br>    
-               </code>  
-             </li>
-              
-             
-             <li>  7- extract the [current file all detailed information object ] from  {.path}  by using the [filename] constant as the method parameter  :  <br> 
-               <code> 
-                   <span class=one></span>  const path = require('path')     <br>    
-                   <span class=one></span>  console.log(path.parse(__filename)) )  <br>    
-               </code>  
-               <p>  This method will generate all current file details inmformation as following :   <br> 
-                   <ol> 
-                     <li>  root : main root of the file   </li>
-                     <li>  dir :  full directory of the file   </li>
-                     <li>  basename : file name and extenstion  </li>
-                     <li>  ext : file extension   </li>
-                     <li>  name :  file name only [with extension]   </li>
-                   </ol>
-               </p>
-             </li>
-           </ul>  
-         </p> 
-     
-
-        <p>  Next lesson  => we will have the file system controling methods in {common system module} witin the  [Node.js] , such as :   <br> 
-          <ol> 
-            <li> reading  </li>
-            <li> creating  new file     </li>
-            <li> writing inside the file    </li>
-            <li> updating    </li>
-            <li> deleting    </li>
-          </ol>      
-        </p> 
+        <p>  Next lesson  =>        </p> 
+        
         <!-- --------------------------------------------------------------------- -->
-        <h1>  C]  Notes about file system methods of [ Node common core module]  :   </h1> 
+        
+        
+        <h1>  C]  Notes about [file system] methods of [ Node common core module]  :   </h1> 
              <ol>  
-                <li>  The main official  reference of nodes edocumentations is {nodejs.org/en/docs} , as will as [js , html , css  ]       </li>  
-                <li>  The main official  reference of nodes edocumentations is {nodejs.org/en/docs}       </li>  
-              
+                <li>  The main official reference of nodes documentations is {nodejs.org/en/docs} , as will as [js , html , css  ]       </li>  
+                <li>  Controling File system can be used with either with the default file system core module Or with extracted 'promises' module , which can provide  Asyncyhorous using of methods and wihtin  nesting  methodology  </li>  
+                <li>  File stream methods is being defined for only one file , and can not be used to deal  with another file      </li>  
+                <li>  File stream methods can be crticial in some application when it requires to access certain paratical content from the file    </li>  
             </ol>
 
           

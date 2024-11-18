@@ -1,4 +1,45 @@
-// Here the file where will control the other files in the project  =>  using the imported default [fs] node core module :  
+//   lesson 2 : Testing  [File and Directory]  Controling methods  of node.js server 
+
+console.log('==================== Welcome to Node.js course -> lesson 2 File and Directory controling system methods  =============================== ')
+
+
+// Thie file  include will  Files  and  Directory  Controling methods the other in the project  =>  using the imported default [fs] OR  the it's extracted [.promsises]  form [node core module] , with following map  :  
+   // [First] : File Node controling methods :
+      // I] Using the default [fs] {node core Module} :
+        // 1- { fs.readFile() } => Default reading file's contents  
+        // 2- { fs.writeFile() } => Default writing a new  contents insdie a file's  
+        // 3- { fs.appendFile() } => Add new   contents onto the current  file's contents   
+        // 4- { fs.rename() } =>  rename a  file
+        // 5- { fs.unlink() } =>  Deleting/removing an existed  file   
+      //--------------------------------------------------------  
+
+      // II] Using the  Extracted  promises  [ (fs).promises ] {node core Module}  within [async-await]  :
+        // 1- { fsPromises.readFile() } => promising  reading file's contents  
+        // 2- { fsPromises.writeFile() } => promising writing a new  contents insdie a file's  
+        // 3- { fsPromises.appendFile() } => Promising Add new contents onto the current  file's contents   
+        // 4- { fsPromises.rename() } =>  promising rename a  file
+        // 5- { fsPromises.unlink() } => promising  Deleting/removing an existed  file   
+      //--------------------------------------------------------
+    
+      // III] Using the Extracted  [ (fs) ] Stream methods  of  {node core Module}  => within [stream.js] :
+        // 1- fs.createReadStream('inner path' ,  {encoding:'utf8'})  =>   [file read stream] variable definition  
+        // 2- fs.createWriteStream('inner path')    => [file write  stream] variable definition     
+        // 3- streamReadVar.on('data' , (ChunkPar) => { } )  => [reading method from the defined stream file variable]  method   
+        // 4- streamWriteVar.write(data to be added )   =>  [Writing  inside the defined stream write file ]  method  definition    
+        // 5- streamReadVar.on('data' , (ChunkPar) => { streamWriteVar.write(data to be added ) }  )    => [ reading method from the defined stream file variable ]  + [Writing method ]  method  definition    
+        // 6- streamReadVar.pipe( streamWriteVar) => shortcut method of writing the data obtained from the stream read into  the write stream file           
+
+
+    // [Second] : Node Directory controling methods  :     
+      // 1- {mkdir()} => Create a new Directory  
+      // 2- {rmdir()} => Remove an existed  Directory 
+      // 3- {fs.existsSync(directory || file root path) } =>   Checking if the file or directory is existed or not         
+  // ================================================================================================================ 
+  // ================================================================================================================ 
+
+// --------------------------------------------------
+// [First] : Node File controling methods :  
+// --------------------------------------------------
 
 // I] Using the default [fs] {node core Module}  :
 // A] Creating the essential importings :
@@ -125,9 +166,9 @@
 //  -----------------------------------------------
 //  -----------------------------------------------
 
-// II] Using the  Extracted   [ (fs).promises ] {node core Module}  :
+// II] Using the  Extracted  promises  [ (fs).promises ] {node core Module}  :
 
-// A] Using the [async-await] method to  have a  promises  controled flow ouput (without hell drilling)  ->  by importing a extracted promises  from the  [ ('fs').promises ]    : 
+// A] Using the [async-await] method to  have a  promises  controled flow output (without hell drilling)  ->  by importing a extracted promises from the [ ('fs').promises ] : 
 
 // 1- Define an imported variable of extraced promises from  the 'fs'   [node core module] :
 const fsPromises =  require('fs').promises;  
@@ -136,7 +177,7 @@ const fsPromises =  require('fs').promises;
 // const  path  =  require ('path')  ;
  
 
-// 3- Define an async function with [async-await] that including all file's operations insie the  [try-catch]  :
+// 3- Define an async function with [async-await] that including all file's operations inside the  [try-catch] + nested  method   :
 const fileOps = async () => {
   try {
     // a- Define a [data] variable as  a await value of [read file] method from the defined and imported [promise fs]   :      
@@ -177,6 +218,15 @@ const fileOps = async () => {
 
 // execute the defined promises function :  
 fileOps() ;   
+// ----------------------------------------------------------
+// III] Using the Extracted  [ (fs) ] Stream methods  of  {node core Module}  => within [stream.js]  
 
 
- 
+// ----------------------------------------------------------
+// ----------------------------------------------------------
+
+
+// [Second]   : Node Directory controling methods  => within the {dir.js} file  
+
+
+
