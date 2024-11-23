@@ -1,0 +1,2068 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <!-- IE compatiblity Meta -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- First Mobile Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta content="Learning Node.js  Course" description="This is Lesson 4 Node Events Tutorial  Nodejs Tutorials for Beginners ">
+
+    <title> 4 Node Events Tutorial  Nodejs Tutorials for Beginners </title>
+
+    <link rel="stylesheet" href="4 Node Events Tutorial  Nodejs Tutorials for Beginners.css" media="all">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" media="all">
+
+    <link rel="stylesheet" href="css/fontawesome.min.css" media="all">
+
+    <link rel="stylesheet" href="css/all.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine|Inconsolata|Droid+Sans">
+
+    <link rel="stylesheet" href="css/style.css" media="all">
+
+    <link rel="stylesheet" href="css/media.css" media="all">
+
+    <link rel="stylesheet" href="css/hover.css" media="all">
+
+    <link rel="stylesheet" href="css/animate.css" media="all">
+
+    <link rel="stylesheet" href="css/default_theme.css" media="all">
+
+    <style>
+        body {
+            background-color: rgb(100, 196, 228);
+        }
+
+        .display>h3,
+        .display>h2 {
+            display: none
+        }
+
+        .display1>h3,
+        .display>h2 {
+            display: none
+        }
+
+        .display {
+            position: relative;
+
+        }
+
+        #group1,
+        #group2,
+        #group3,
+        #group4,
+        #group5,
+        #group6,
+        #group7 {
+            display: none;
+        }
+
+        .shadi {
+            width: 300px;
+            padding: 30px;
+            height: 100px;
+            border-radius: 20px;
+        }
+
+        .br {
+            border: 5px solid blue;
+            font-size: 30px
+        }
+
+        .input1,
+        .input2 {
+            font-size: 13px;
+            text-align: center;
+            min-height: 50px;
+            height: 50px;
+        }
+
+        .add {
+            width: 100px;
+            background-color: red;
+            font-size: 15px;
+            cursor: pointer;
+            display: lnline;
+        }
+
+        .custom  {
+            width: 300px;
+            height: 300px;
+            padding: 20px;
+            margin: 10px auto;
+            border: 5px solid gray;
+            background-color: #ccc;
+            text-align: center;
+        }
+
+        .dis {
+            border: 3px solid red;
+            border-radius: 30px;
+            width: 100%;
+            text-align: center;
+            line-height: 2em;
+        }
+
+        .item {
+            color: red;
+            font-size: 30px;
+            font-family: monospace;
+            background-color: blue;
+        }
+
+        .sh {
+            background-color: blue;
+            color: #fff;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .btn {
+            background-color: black;
+            border-radius: 20px;
+            margin: 20px auto;
+            color: #fff;
+            font-size: 15px;
+            transition: .5s all ease-in-out;
+        }
+
+        .btn:hover {
+            font-size: 18px;
+            border: 3px solid gold;
+            color: #fff;
+        }
+
+        .codes .elem1,
+        .codes .elem2,
+        .codes .elem3,
+        .codes .elem4 {
+            font-size: 15px;
+            border: 5px solid red;
+            padding: 50px;
+        }
+
+        .codes h3 {
+            text-decoration: underline;
+        }
+
+        .mainCont .subCont div {
+            border: 2px solid gray;
+            font-size: 25px;
+            color: blue;
+        }
+
+        .mainCont .subCont div p span {
+            display: block;
+        }
+
+        .color {
+            background-color: blue;
+            color: red;
+        }
+
+        #divn {
+            display: none;
+        }
+
+        .codes0 .g41 {
+            background-color: #ddd;
+            border: solid 3px gray;
+            width: 500px;
+            height: 200px;
+        }
+
+        .codes0 .g41 h3 {
+            color: red
+        }
+
+        .codes0 .g41 p {
+            font-family: Arial, Helvetica, sans-serif
+        }
+
+        .codes0 .g41t,
+        .codes0 .g41c {
+            margin: 10 0 0;
+            padding: 10px;
+        }
+
+        .codes0 .screen {
+
+            color: red;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1000%;
+            height: 1000%;
+            z-index: 9999;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .codes0 .hidden {
+            display: none;
+        }
+
+        /* border-radius:50%; */
+        .codes0 .circle,
+        .codes0 .circle1,
+        .codes0 .circle3 {
+            width: 100px;
+            height: auto;
+            border: solid 2px blue;
+            background-color: red;
+            /* display: none; */
+        }
+
+        #each {
+            background-color: #080;
+            color: #fff;
+        }
+    </style>
+
+    <!--[if It IE 9]>
+        <script src="js/html5shiv.min.js"> </script>
+        <script src="js/respond.min.js"> </script>
+    <[endif]!-->
+</head>
+
+<body>
+
+    <!-------------------------------------------------------------------------------------------------------->
+    <header id="Main" class="Main wow fadeInDown" data-wow-duration="1s">
+        4 Node Events Tutorial  Nodejs Tutorials for Beginners  [Dave Gray]   
+    </header>
+
+    <!-------------------------------------------------------------------------------------------------------->
+    <!-- Bootstrap Navigation Bar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+
+            <!-- 1] {Navbar Container / Header} : Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ToggleMenu"
+                    aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand hvr-pop" href="#"> Shindow Pro <span>lnc.</span> </a>
+            </div>
+
+            <!-- 2] {Navbar Container / Menu Items} : Collect the nav links, forms, and other content for toggling -->
+            <div id="ToggleMenu" class="collapse navbar-collapse">
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="active"><a href="#MainC"> Main Topics <span class="sr-only">(current)</span></a></li>
+
+                    <li><a href="#JSDOMCon">Concept</a></li>
+                    <li><a href="#JSDOMImp">Importance & Benefits</a></li>
+                    <li><a href="#JSDOMSyntx">Syntax & Examples</a></li>
+                    <li><a href="#JSDOMPract">Practical Applications</a></li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">
+                            Hot Links <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#4 Node Events Tutorial  Nodejs Tutorials for BeginnersSection" target="_self" class="4 Node Events Tutorial  Nodejs Tutorials for BeginnersLink"> Lesson 4 Node Events Tutorial  Nodejs Tutorials for Beginners </a></li>
+
+                            <li role="separator" class="divider"></li>
+
+                            <li><a href="http://shadi-pro.epizy.com" target="_blank"> My References </a></li>
+
+                            <li role="separator" class="divider"></li>
+
+                            <li><a href="http://shadi-cv.epizy.com" target="_blank"> My Personal Website </a></li>
+                            <!-- <li><a href="#">Something else here</a></li> -->
+                            <!-- <li><a href="#">Separated link</a></li>
+                            <li role="separator" class="divider"></li>                            
+                            <li><a href="#">one more separated link</a></li> -->
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form> -->
+
+                <!-- <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                </ul> -->
+
+            </div><!-- /.navbar-collapse -->
+
+        </div><!-- /.container-fluid -->
+
+        <a class="Home hvr-wobble-horizontal" href="#Main" title="Go to page header"> Home </a>
+        <a class="End hvr-wobble-horizontal" href="#footer" title="Go to page footer"> End </a>
+    </nav>
+    <!-- ------------------------ -->
+
+    <!-- The following Tag can be as <main> Tag, but the Editor is old for HTML5-->
+    <main class="Welcome container text-center center-block wow bounceInDown" data-wow-duration="2s">
+        <span> Welcome to  Node.js   full  Course  [Dave Gray]   | </span> <br>
+        4 Node Events Tutorial  Nodejs Tutorials for Beginners
+    </main>
+    <!-- ---------------------------------------------------------------------------------------------------- -->
+    <!-- Options Tool box -->
+    <section class="option-box" style="min-height: fit-content; " >
+        <!-- First Tool OPtion {Changing the color of the Whole the Website Template } -->
+
+        <!-- <div class="color-option text-center" style="float:left; height:auto "> -->
+        <div class="color-option text-center">
+            
+            <!-- <aside style="float:left ; width:auto " > -->
+                <div class="container"  >
+                    <div class="row"> 
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                            <h4> Color Options </h4>
+                            
+                            <ul class="list-unstyled">
+                                <li data-value="css/default_theme.css"></li>
+                                <li data-value="css/blue_theme.css"></li>
+                                <li data-value="css/purple_theme.css"></li>
+                                <li data-value="css/yellow_theme.css"></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row"> 
+                        <!--  Lesson Video  -->
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+                            
+                            <h3 style="margin-bottom:-10px "> Lesson # Video File: </h3>
+                            <video controls  height="300" width="300" style="margin-top:-10px; ">
+                                <source
+                                    src="E:\Web videos lessons\Web Framworks\Node.js \Apps\recommended\React Portfolio\React portfolio website with animation Full.mp4"
+                                    type="video/mp4">
+                                Your browser Does Not Support the Video file ...
+                            </video>
+                        </div>
+                         
+                        <!--  Course Requriments & Course Map & MyPortfolio Website  -->
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+                            <h3>Course Requirments : </h3>
+                            <ol style=" list-style: none;"  >
+                                <li> HTML </li>
+                                <li> CSS </li>
+                                <li> Bootstrap & React Bootstrap </li>
+                                <li> JS [advanced] => [ES6+] </li>
+                                <li> Node.js  </li>
+                            </ol>
+
+                            <h3> Course Map : </h3>
+                            <ol class="list-unstyled">
+                                <li> <a target="_blank"  href="course map/Node.js   course map.html"> Node.js  Course Map </a> </li>
+                            </ol>
+                             
+                            <h3> My portfolio website  : </h3>
+                            <ol class="list-unstyled">
+                                <li> <a  target="_blank" class='brand' href=" https://shindowpro.github.io/">  My Portfolio  </a> </li>
+                            </ol>
+                             
+                        </div>
+                    </div>
+            </div>
+        
+            
+        </div>
+ 
+        <i class="fas fa-gear fa-2x gear-option"></i>
+
+    </section>
+    <!-- ---------------------------------------------------------------------------------------------------- -->
+
+    <!-- About Section  -->
+    <section class="about text-center wow bounceInLeft" data-wow-duration="2s" id="about">
+        <div class="container">
+            <h2 class="h1" class="hidden-xs"> About Section =>  Node  Events      <span><strong>      </strong> </span> </h2>
+            <h3 class="visible-xs"> About Section => This lesson about 
+              <strong>  [ Node events ]          </strong> 
+              <span>   Node  events  </span> 
+            </h3>
+            <!-- <p class="lead"> This lesson is commands to handle Stashing-UnStashing] Files and then Pushing to Remote Repo Account by <span> <strong>  {CMD} </strong> </span> </p> -->
+        </div>
+    </section>
+    <!-- ---------------------------------------- -->
+
+    <!-- Footer Section -->
+    <section class="footer">
+
+        <div class="container">
+            <div class="row">
+                <!-- First Column {Site Map + Social Media} -->
+                <div class="col-lg-4 col-md-6">
+                    <!-- 1) Site Map  -->
+                    <h3> Site Map </h3>
+                    <ul class="list-unstyled three-columns">
+                        <li> <a href="#myslider"> Home </a> </li>
+                        <li> <a href="#about"> About </a> </li>
+                        <li> <a href="#"> Company </a> </li>
+                        <li> <a> Design </a> </li>
+                        <li> <a> Solutions </a> </li>
+                        <li herf="#"> <a> Contact </a> </li>
+                        <li> <a> Services </a> </li>
+                        <li> <a> Activities </a> </li>
+                        <li> <a> Featured </a> </li>
+                        <li> <a href="http://shindowpro.github.io">My Portfolio Website</a></li>
+                        <li> <a href="http://shadi-pro.epizy.com">My Refs</a></li>
+                        <li> <a href="http://gtmatrix.com"> GTmatrix.com [Testing website online ]</a></li>
+                        <li> <a href="https://github.com/shindowpro" target="self">My Github Repoes </a></li>
+                    </ul>
+
+                    <!-- 2) Social Media Links -->
+                    <ul class="list-unstyled social-list text-center">
+                        <li> <img src="img/social/facebook-48.png" alt="facebook"> </li>
+                        <li> <img src="img/social/twitter-48.png" alt="twitter"> </li>
+                        <li> <img src="img/social/whatsapp-48.png" alt="whatsapp"> </li>
+                        <li> <img src="img/social/google-plus-48.png" alt="google-plus"> </li>
+                        <li> <img src="img/social/linkedin-48.png" alt="linkedin"> </li>
+                        <li> <img src="img/social/tiktok-48.png" alt="tiktok"> </li>
+                        <li> <img src="img/social/mail-48.png" alt="mail"> </li>
+                        <li> <img src="img/social/instagram-48.png" alt="instagram"> </li>
+                        <li> <img src="img/social/rss-48.png" alt="rss"> </li>
+                        <li> <img src="img/social/myspace-48.png" alt="myspace"> </li>
+                        <li> <img src="img/social/bebo-48.png" alt="bebo"> </li>
+                    </ul>
+                </div>
+
+                <!-- Second column {Latest Articles} -->
+                <div class="col-lg-4 col-md-6">
+                    <h3> Latest Articles </h3>
+
+                    <!-- First media -->
+                    <div class="media">
+                        <a href="#" class="pull-left">
+                            <img src="img/social/bebo-48.png" class="media-object" alt="">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"> Programming </h4>
+                            This articles about the Programing and just for testing purposes for Display
+                        </div>
+                    </div>
+
+                    <!-- Second media -->
+                    <div class="media">
+                        <a href="#" class="pull-left">
+                            <img src="img/social/facebook-48.png" class="media-object" alt="">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"> Design </h4>
+                            This articles about the Design and just for testing purposes for Display
+                        </div>
+                    </div>
+
+                    <!-- Third media -->
+                    <div class="media">
+                        <a href="#" class="pull-left">
+                            <img src="img/social/tiktok-48.png" class="media-object" alt="">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"> Social </h4>
+                            This articles about the Social and just for testing purposes for Display
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Third column {Featured Works} -->
+                <div class="col-lg-4 col-md-12 text-center">
+                    <h3> Latest Articles </h3>
+                    <img src="img/footer/1.png" class="img-thumbnail" alt="image1">
+                    <img src="img/footer/2.png" class="img-thumbnail" alt="image2">
+                    <img src="img/footer/3.png" class="img-thumbnail" alt="image3">
+                    <img src="img/footer/4.png" class="img-thumbnail" alt="image4">
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- {copyright} -->
+        <div class="copyright1 text-center">
+            Copyright &copy; 2023 by <span> Shindow </span> lnc.
+        </div>
+
+    </section>
+    <!-- ---------------------------------------- -->
+
+    <!-- {Hover.css} Library Gallery Samples -->
+    <section class="hover-box text-center">
+        <div class="container hover-option text-center">
+
+            <h2 class="text-center"> Grow Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-2 hvr-grow btn-danger"> Default Grow Hover Effect </div>
+                <div class="col-lg-3"></div>
+                <div class="col-lg-2 hvr-grow-rotate btn-primary"> Grow Rotate Hover Effect </div>
+                <div class="col-lg-3"></div>
+                <div class="col-lg-2 hvr-icon-grow btn-info"> Icon Grow Hover Effect </div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Shrink Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-5 hvr-shrink btn-danger"> Shrink Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 hvr-icon-shrink btn-primary"> Icon Shrink Hover Effect </div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Push Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-5 hvr-push btn-danger"> Default Push Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 hvr-icon-push btn-primary"> Icon Push Hover Effect </div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Wobble Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-3 hvr-wobble-vertical btn-danger"> Wobble Vertical Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-wobble-horizontal btn-primary"> Wobble Horizontal Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 hvr-wobble-skew btn-info"> Wobble Skew Hover Effect </div>
+            </div> <br>
+
+            <div class="row text-center">
+                <div class="col-lg-5 hvr-wobble-top btn-danger"> Wobble Top Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 hvr-wobble-bottom btn-primary"> Wobble bottom Hover Effect </div>
+            </div> <br>
+
+            <div class="row text-center">
+                <div class="col-lg-5 hvr-wobble-to-top-right btn-info"> Wobble to Top Right Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 hvr-wobble-to-bottom-right btn-success"> Wobble Bottom Right Hover Effect </div>
+            </div>
+
+
+            <hr>
+
+            <h2 class="text-center"> Buzz Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-2 hvr-buzz btn-danger"> Buzz Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-icon-buzz btn-primary"> Icon Buzz Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-2 hvr-buzz-out btn-danger"> Buzz out Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+
+            <h2 class="text-center"> Bounce Hovering Group </h2>
+            <h3 class="text-center"> Default Bounce Hovering Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bounce-to-right btn-danger"> Bounce to right Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bounce-to-left btn-primary"> Bounce to left Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div> <br>
+
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bounce-to-top btn-success"> Bounce to top Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bounce-to-bottom btn-info"> Bounce to bottom Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h3 class="text-center"> Bounce In - Out Hovering Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bounce-in btn-danger"> Bounce in Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bounce-out btn-primary"> Bounce out Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Pulse Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-pulse btn-danger"> Pulse Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Fade Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-fade btn-danger"> Fade Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Radial Out/In Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-radial-out btn-danger"> Radial Out Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4 hvr-radial-in btn-danger"> Radial In Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Rectangle In/Out Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-rectangle-out btn-danger"> Rectangle Out Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4 hvr-rectangle-in btn-danger"> Rectangle In Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Forward/Backword Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-forward btn-danger"> Forward Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4 hvr-backward btn-primary"> Backword Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Shutter In Horizontal/Vertical Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-shutter-in-horizontal btn-danger"> Shutter in horizontal Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4 hvr-shutter-in-vertical btn-primary"> Shutter in Vertical Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Shutter Out Horizontal/Vertical Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-shutter-out-horizontal btn-danger"> Shutter out horizontal Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4 hvr-shutter-out-vertical btn-primary"> Shutter out Vertical Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Outline Out/In Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-outline-out btn-danger"> Outline Out horizontal Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4 hvr-outline-in btn-primary"> Outline In Vertical Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Pop Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-pop btn-success"> Pop Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Hollow Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-hollow btn-success"> Hollow Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Trim Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-trim btn-success"> Trim Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Ripple In/Out Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-ripple-in btn-primary"> Ripple In Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4 hvr-ripple-out btn-danger"> Ripple Out Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Rotate Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-rotate btn-success"> Rotate Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Float Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-float btn-primary"> Float Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Sink Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-sink btn-danger"> Sink Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Bob Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-bob btn-success"> Bob Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Hang Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-hang btn-info"> Hang Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Border Fade Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-border-fade btn-danger"> Border Fade Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Round Corners Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-round-corners btn-success"> Round Corners Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Glow Corners Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-glow btn-success"> Glow Corners Hover Effect </div>
+                <div class="col-lg-1"></div> 1
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Shadow Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-shadow btn-danger"> Shadow Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-shadow-radial btn-success"> Shadow Radial Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-box-shadow-inset btn-info"> Box Shadow Inset Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-box-shadow-outset btn-primary"> Box Shadow Outset Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Skew Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 hvr-skew-backward btn-danger"> Skew backward Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-2 hvr-skew btn-danger"> Skew Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 hvr-skew-forward btn-danger"> Skew forward Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Underline Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-underline-from-center btn-danger"> Underline From Center Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-underline-reveal btn-success"> Underline Reveal Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-underline-from-left btn-info"> Underline From Left Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-underline-from-right btn-primary"> Underline From Right Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Overline Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-overline-from-center btn-danger"> Overline From Center Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-overline-reveal btn-primary"> Overline Reveal Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-overline-from-left btn-info"> Overline From Left Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-overline-from-right btn-success"> Overline From Right Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> CURLS Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-curl-bottom-left btn-danger"> Curl bottom left Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-curl-bottom-right btn-primary"> Curl bottom Right Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-curl-top-left btn-info"> Curl top left Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-curl-top-right btn-success"> Curl top right Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+            <hr>
+
+            <h2 class="text-center"> Bubble Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bubble-bottom btn-danger"> Bubble bottom Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bubble-top btn-primary"> Bubble Top Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bubble-left btn-info"> Bubble Left Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bubble-right btn-success"> Bubble Right Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+            <hr>
+
+            <h3 class="text-center"> Bubble Float Hovering Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bubble-float-bottom btn-danger"> Bubble Float Bottom Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bubble-float-top btn-info"> Bubble Float Top Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bubble-float-left btn-success"> Bubble Float Left Hover Effect </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 hvr-bubble-float-right btn-primary"> Bubble Float Right Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h3 class="text-center"> Icon Hovering Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-2 hvr-icon-back btn-danger"> Icon Back Hover Effect </div>
+                <div class="col-lg-2 col-lg-offset-0 hvr-icon-forward btn-info"> Icon Forward Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-2 hvr-icon-down btn-danger"> Icon Down Hover Effect </div>
+                <div class="col-lg-2 hvr-icon-up btn-info"> Icon Up Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div> <br>
+
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-2 hvr-icon-drop btn-danger"> Icon Drop Hover Effect </div>
+                <div class="col-lg-2 col-lg-offset-0 hvr-icon-fade btn-info"> Icon Fade Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-2 hvr-icon-float btn-danger"> Icon Float Hover Effect </div>
+                <div class="col-lg-2 hvr-icon-sink btn-info"> Icon Sink Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-2 hvr-icon-float-away btn-danger"> Icon Float Away Hover Effect </div>
+                <div class="col-lg-2 col-offset-0 hvr-icon-sink-away btn-primary"> Icon Sink Away Hover Effect </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-2 hvr-icon-pulse-shrink btn-info"> Icon Pulse Shrink Hover Effect </div>
+                <div class="col-lg-2 hvr-icon-pulse-grow btn-success"> Icon Pulse Grow Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h3 class="text-center"> Pulse Grow Hovering Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-icon-spin btn-danger"> Pulse Grow Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+
+            <h2 class="text-center"> Mixing Hovering Group </h2>
+            <h3 class="text-center"> Pulse Grow Hovering Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-pulse-grow btn-danger"> Pulse Grow Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div> <br>
+
+            <h3 class="text-center"> Pulse Shrink Hovering Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-pulse-shrink btn-primary"> Pulse Shrink Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h3 class="text-center"> Back Pulse Hovering Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-back-pulse btn-info"> Back Pulse Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+            <h3 class="text-center"> Sweep Hovering Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4 hvr-sweep-to-right btn-danger"> Sweep To Right Hover Effect </div>
+                <div class="col-lg-4 hvr-sweep-to-left btn-info"> Sweep To Left Hover Effect </div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4 hvr-sweep-to-bottom btn-info"> Sweep To Bottom Hover Effect </div>
+                <div class="col-lg-4 hvr-sweep-to-top btn-danger"> Sweep To Top Hover Effect </div>
+            </div>
+            <hr>
+
+            <h2 class="text-center"> Float Shadow Hovering Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 hvr-float-shadow btn-success"> Float Shadow Hover Effect </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+
+        </div>
+    </section>
+    <i class="gear-option0 hvr-pulse-grow"> Hover.css</i>
+    <!-- ---------------------------------------- -->
+
+    <!-- {wow.js} Library Animation Samples -->
+    <section class="animation-box text-center">
+        <div class="container hover-option text-center">
+
+            <h2 class="text-center"> Bounce Animation Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow bounce btn-primary" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> Default Bounce Animation </div>
+            </div> <br> <br>
+            <h3 class="text-center"> BounceIn Sub/Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-3 wow bounceInRight btn-danger" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> BounceIn Right Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 wow bounceIn btn-success" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> BounceIn Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 wow bounceInLeft btn-primary" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> BounceIn Left Animation </div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-5 wow bounceInUp btn-danger" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> BounceIn Up Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow bounceInDown btn-primary" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> BounceIn Down Animation </div>
+            </div> <br> <br>
+
+            <h3 class="text-center"> BounceOut Sub/Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-3 wow bounceOutRight btn-danger" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> BounceOut Right Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 wow bounceOut btn-success" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> BounceOut Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 wow bounceOutLeft btn-primary" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> BounceOut Left Animation </div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-5 wow bounceOutUp btn-danger" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> BounceOut Up Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow bounceOutDown btn-primary" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> BounceOut Down Animation </div>
+            </div> <br>
+            <hr> <br>
+            <!-- --------------------------- -->
+
+            <h2 class="text-center"> Pulse Animation </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow pulse btn-danger" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> Pulse Animation </div>
+            </div> <br>
+            <hr> <br>
+            <!-- --------------------------- -->
+
+            <h2 class="text-center"> Shake Animation </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow shake btn-info" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> Shake Animation </div>
+            </div> <br>
+            <hr> <br>
+            <!-- --------------------------- -->
+
+            <h2 class="text-center"> Swing Animation </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow swing btn-primary" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> Swing Animation </div>
+            </div> <br>
+            <hr> <br>
+            <!-- --------------------------- -->
+
+            <h2 class="text-center"> Tada Animation </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow tada btn-success" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> Tada Animation </div>
+            </div> <br>
+            <hr> <br>
+            <!-- --------------------------- -->
+
+            <h2 class="text-center"> Wobble Animation </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow wobble btn-danger" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> Wobble Animation </div>
+            </div> <br>
+            <hr><br>
+            <!-- --------------------------- -->
+
+            <h2 class="text-center"> FadeIn Animation Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow fadeIn btn-primary" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> Default FadeIn Animation </div>
+            </div> <br> <br>
+            <h3 class="text-center"> FadeIn Animation Sub/Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-5 wow fadeInRight btn-danger" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> FadeIn Right Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow fadeInLeft btn-success" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> FadeIn Left Animation </div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-5 wow fadeInRightBig btn-danger" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> FadeIn Right Big Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow fadeInLeftBig btn-success" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> FadeIn Left Big Animation </div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-5 wow fadeInUp btn-danger" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> FadeIn Up Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow fadeInDown btn-success" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> FadeIn Down Animation </div>
+            </div> <br> <br>
+            <div class="row text-center">
+                <div class="col-lg-5 wow fadeInUpBig btn-danger" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> FadeIn Up Big Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow fadeInDownBig btn-success" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> FadeIn Down Big Animation </div>
+            </div> <br> <br>
+            <!-- --------------------------------- -->
+
+            <h2 class="text-center"> FadeOut Animation Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow fadeOut btn-primary" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> Default FadeOut Animation </div>
+            </div> <br> <br>
+            <h3 class="text-center"> FadeOut Sub/Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-5 wow fadeOutRight btn-danger" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> FadeOut Right Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow fadeOutLeft btn-success" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> FadeOut Left Animation </div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-5 wow fadeOutRightBig btn-danger" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> FadeOut Right Big Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow fadeOutLeftBig btn-success" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> FadeOut Left Big Animation </div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-5 wow fadeOutUp btn-danger" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> FadeOut Up Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow fadeOutDown btn-success" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> FadeOut Down Animation </div>
+            </div> <br> <br>
+            <div class="row text-center">
+                <div class="col-lg-5 wow fadeOutUpBig btn-danger" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> FadeOut Up Big Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow fadeOutDownBig btn-success" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> FadeOut Down Big Animation </div>
+            </div> <br> <br>
+            <hr> <br>
+            <!-- --------------------------------- -->
+
+            <h2 class="text-center"> Flip Animation Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow flip btn-info" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> Default Flip Animation </div>
+            </div> <br> <br>
+            - <h3 class="text-center"> FlipIn Sub/Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-5 wow flipInX btn-danger" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> FlipIn X Horizontal Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow flipInY btn-primary" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> FlipIn Y Vertical Animation </div>
+            </div> <br> <br>
+            <h3 class="text-center"> FlipOut Sub/Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-5 wow flipOutX btn-danger" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> FlipOut X Horizontal Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow flipOutY btn-primary" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> FlipOut Y Vertical Animation </div>
+            </div> <br> <br>
+            <hr> <br>
+            <!-- ------------------------------------- -->
+
+            <h2 class="text-center"> LightSpeed Animation Group </h2>
+            <div class="row text-center">
+                <div class="col-lg-5 wow lightSpeedIn btn-danger" data-wow-duration="2s" data-wow-clone="1s"
+                    data-wow-offset="200"> LightSpeed In Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow lightSpeedOut btn-success" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> lightSpeed Out Animation </div>
+            </div> <br> <br>
+            <hr> <br>
+            <!-- ------------------------------------- -->
+
+            <h2 class="text-center"> Rotate Animation Group </h2>
+            <h3 class="text-center"> RotateIn Animation Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-3 wow rotateInDownLeft btn-danger" data-wow-duration="4s" data-wow-clone="2s"
+                    data-wow-offset="200"> RotateIn DownLeft Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 wow rotateIn btn-info" data-wow-duration="4s" data-wow-clone="2s"
+                    data-wow-offset="200"> Default RotateIn Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 wow rotateInDownRight btn-primary" data-wow-duration="4s" data-wow-clone="2s"
+                    data-wow-offset="200"> RotateIn DownRight Animation </div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-5 wow rotateInUpLeft btn-danger" data-wow-duration="4s" data-wow-clone="2s"
+                    data-wow-offset="200"> RotateIn UpLeft Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow rotateInUpRight btn-primary" data-wow-duration="4s" data-wow-clone="2s"
+                    data-wow-offset="200"> rotateIn UpRight Animation </div>
+            </div> <br> <br>
+
+            <h3 class="text-center"> RotateOut Animation Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-3 wow rotateOutDownLeft btn-danger" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> RotateOut DownLeft Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 wow rotateOut btn-info" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> Default RotateOut Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 wow rotateOutDownRight btn-primary" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> RotateOut DownRight Animation </div>
+            </div> <br>
+            <div class="row text-center">
+                <div class="col-lg-5 wow rotateOutUpLeft btn-danger" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> RotateOut UpLeft Animation </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-5 wow rotateOutUpRight btn-primary" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> rotateOut UpRight Animation </div>
+            </div> <br>
+            <hr> <br>
+            <!-- --------------------------------------- -->
+
+            <h2 class="text-center"> Slide Animation Group </h2>
+            <h3 class="text-center"> SlideIn Animation Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-3 wow slideInLeft btn-danger" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> RotateIn Left Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 wow slideInDown btn-info" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> SlideIn Down Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 wow slideInRight btn-primary" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> SlideIn Right Animation </div>
+            </div> <br> <br>
+
+            <h3 class="text-center"> SlideOut Animation Group </h3>
+            <div class="row text-center">
+                <div class="col-lg-3 wow slideOutLeft btn-danger" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> SlideOut Left Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 wow slideOutUp btn-info" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> SlideOut Down Animation </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 wow slideOutRight btn-primary" data-wow-duration="2s" data-wow-clone="2s"
+                    data-wow-offset="200"> SlideOut Right Animation </div>
+            </div> <br>
+            <hr> <br>
+            <!-- --------------------------------------- -->
+
+            <h2 class="text-center"> Hinge Animation </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow hinge btn-primary" data-wow-duration="2s" data-wow-clone="3s"
+                    data-wow-offset="300"> Hinge Animation </div>
+            </div> <br>
+            <hr> <br>
+            <!-- --------------------------- -->
+
+            <h2 class="text-center"> RollIn Animation </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow rollIn btn-success" data-wow-duration="2s" data-wow-clone="3s"
+                    data-wow-offset="200"> RollIn Animation </div>
+            </div> <br>
+            <hr> <br>
+            <!-- --------------------------- -->
+
+            <h2 class="text-center"> RollOut Animation </h2>
+            <div class="row text-center">
+                <div class="col-lg-12 wow rollOut btn-danger" data-wow-duration="2s" data-wow-clone="3s"
+                    data-wow-offset="200"> RollOut Animation </div>
+            </div> <br>
+            <hr><br>
+            <!-- --------------------------- -->
+
+        </div>
+    </section>
+    <i class="gear-option1 hvr-pulse-grow"> wow.js </i>
+    <!-- ---------------------------------------- --> 
+
+    <!-- Page contents with Old CSS  -->
+    <div class="Post" id=post>
+        <Section id="MainC" class="MainC">
+            <header>
+               Node.js  [4 Node Events Tutorial  Nodejs Tutorials for Beginners] Main Topics : <br>
+            </header>
+
+            <article>
+                <p> &gt; Main Subjects in this lesson will be Node  NPM    =>    , as following : </p>
+
+                <h2> Main Subjects : </h2>
+
+                <ol type="A">
+                    <li> Main points of this lesson ,  pracitcial methods of the file system in the node.js       : <br>
+                        <ol>
+                          <li> A] Main concept and steps to install of the [ NPM ]       </li>
+                          <li> B] Main methods of the  [  NPM ]       </li>
+                          <li> C] Notes about  Node package manager   [ NPM ]     </li>
+                        </ol>
+                     </li> <br> <br>
+                </ol>
+            </article>
+        </Section>
+
+        <!------------------------------------------------------------------------------>
+        <!------------------------------------------------------------------------------>
+        < class="JSDOMCon" id="JSDOMCon">
+            <header>
+                <h3> 4 Node Events Tutorial  Nodejs Tutorials for Beginners concept : </h3>
+            </header>
+ 
+            <h1>  A]  Main concept of the [ Node common core module] , as following : </h1> <br>
+              <p> The NPM refers to the {Node package Manager}  which is being installed with the node from the official site of node : [nodejs.org] </p>
+              <p> The NPM  the  its own offical site : [ npmjs.com ]     </p>
+               
+              <p> The main differences between [Node Core Module] & [NPM] , as  the following tools  :  <br> 
+                  <ul> 
+                      <li> {NPM}  is a [Node Core Module ] but created by the  third party   </li>
+                  </ul>  
+              </p> <br> 
+    
+              <p> Each Node package module can be found in the official site of { npmjs.com } , whic can provdie the follwing benefits  : <br>      
+                <ul> 
+                  <li> Any existed node package can be found in the [search tab]       </li>
+                
+                  <li> Any existed node package can  provide its documataions => inside the  [documentations]  of the top right  => and then  with in [NPM CLI] link, which is {command line interface } , which is include the real actual code to be used by developers    </li>
+                
+                  <li> [NPM CLI] link of the documentations include  {3} topics , as following : <br>
+                    <ol> 
+                      <li>  [Cli commands]   </li> 
+                      <li>  [Configuration Npm]    </li> 
+                      <li>  [Using Npm]   </li> 
+                    </ol>
+                  </li>
+                </ul>
+              </p>  <br>
+
+              
+              <p>  Each new added node Module package  to the current project  -> will be added into  both of :  <br>  
+                <ol> 
+                  <li>  [node modules] folder  => which is holding all npm core modules and new added  custom modules     </li>
+                  <li>  [package.json] file    => which is the project map of npm core modules => inside the one of (2) kinds of [dependencies] , as following ;   <br>
+                    <ul> 
+                      <li> 1- [dependencies] section  => which is including production dependencies , by using  next syntax :  <br>
+                        <p>  which is been  installed using  the   default sytnax of node  npm , such as the next example : <br>
+                            <code> 
+                              <span  clas="one" ></span> npm i packageName      <br>   
+                            </code>                            
+                        </p> 
+                      </li>   <br>  <br> 
+                        
+                      <li> 2- [devDependencies] section  => which is including production dependencies :   <br>                   
+                        <p>  which is been  installed using the sytnax wiht flag of  [--save-dev] || {-D } , such  as the  next exmaple : <br>       
+                          <code> 
+                            <span  clas="one" ></span> npm i packageName --save-dev      <br>   
+                            <span  clas="one" ></span> npm i packageName -D       => [the shortcut syntax method   ] <br>   
+                          </code>                            
+                        </p> 
+                      </li>
+                      
+                      <li> 3- [ scripts  ] section  => which is including  main commands to  operate the app :   <br>                
+                          <p> this commonly include the next scripts commands : <br>             
+                             <ol>
+                                <li> 'start'  => the start app command by  node   </li>
+                                <li> 'dev'   =>  the developer stating  app command by  node </li>
+                                <li> 'build' =>  create a building copy of the  app to be  ready for publishment    </li>
+                            </ol>                            
+                        </p> <br> 
+                        
+                        <p> Notes : <br>  
+                            <ul> 
+                              <li>  you can assign  manually  your custom commands , as following : <br>   
+                                <code> 
+                                'scripts': {   <br> 
+                                  <span class="one "> </span>  "start"  :  "node index" , => [calling the {index} file and operate by using {node server} =>  by typing {npm start}  ]  <br> 
+                                  <span class="one "> </span>  "dev"    :  "nodemon index" ,  =>  [calling the {index} file and operate by using {nodemon server} =>  by typing  {npm run  dev}  ]  <br> 
+                                  <span class="one "> </span>  "build"    :  "  index" ,  =>  [calling the {index} file and operate by using {nodemon server}]  <br>                                
+                                  }                            
+                                </code> 
+                              </li>
+
+                              <li> {package.json}  you can modify/re-assign  any of installed package version inside any  section with a certain pattern value  => 
+                                to be installed by it when it is being cloned by using {npm i} , or by the same developer when updating the pacakges by using {npm update} 
+                               </li>
+
+                        </ul>
+
+                        </p>
+                      </li>
+
+                      <li> 5- installing/adding  a custom new package of  [uuid] via using the node sever as a production dependenecies  , by  usikng hte next code  : <br>
+                          <code>
+                             { npm i uuid } => [this will  add the [id generator] library  witin  dependcies  ]   <br>
+                          </code>
+                      </li>
+                      
+                      <li>  </li>
+                      
+                   </ul>
+                  </li>
+                </ol> 
+              </p>
+
+              <p> General commands used in  of Node Package Manager within VScode Terminal   : <br> 
+                <p> The main syntax of adding new npm pacakge as following  : <br> 
+                  <ol> 
+                    <li> 1- { npm init } -> To add or install the main npm {package.json} for   this project  :   <br>
+                      <p> the [package.json]  :  is the file that contains the  main project's configuration information , and it can be created by using next code :   <br>
+                        <code>
+                          <span class="one"></span> { npm init } -> To create the main configuration file of the current project [package.json]  
+                        </code>                                 
+                      </p>
+                    </li> <br></br>  
+
+                    <li> 2- { npm i } -> To add or install the main npm packages existed inside the {package.json} that has been upper  created  :   <br>
+                      <p> This command to install all packages inside the {package.json} of this  project ,   by using next code :   <br>
+                        <code>
+                          <span class="one"></span> { npm i } -> To create the main configuration file of the current project [package.json]  
+                        </code>                                 
+                      </p>
+                      <br></br>
+                    </li>
+            
+            
+                    <li> 3- create a new  file  of  [.gitignore] =>    <br>
+                      <p> This file must be  created in the main root of project file tree -> include all large or uneccessery files and folder of the project when it is being pushed or uplaoded into a git repository such as {github} , this file could include :    
+                        <ul> 
+                          <li> [node_Modules] folder => which is a large folder that include a node core modules main and custom files   , that consuming  big size of  the  project total size      </li>
+                        </ul>
+                      </p>
+                    </li> <br></br>  
+
+                          
+                    <li> 4- To add or install a new custom package inside npm locally  or globally in the current project [with the latest version] :  <br>
+                      <code>
+                        //  - To install a new single npm package into the project's node modules folder [ by latest version or a certain version]  :
+                          <span  class=one></span> { npm i packageName -flag  }  ||  { npm add packageName -flag }  => [-g:  globllay ]  =>  [ Adding the new package within  the latest  version  ]    <br>  <br> 
+                          <span  class=one></span> { npm i packageName@#.#.# -flag  }  ||  { npm add packageName@#.#.# -flag }  =>  [ Adding the new package within a certain version  ]  <br>  <br> 
+                          <span  class=one></span> { npm i date-fns  }  ||  { npm add date-fns }  => Example to add the {date-fns}  package  to  the current project's node modules folder     <br>  <br> 
+                        
+                        //  - To install  new  multiple npm packages into the project's node modules folder :
+                        <span  class=one></span>  { npm i date-fns@3.5.1   uuid@2.22.3   }  ||  { npm add date-fns@3.5.1   uuid@2.22.3  }  => Example to add several  pakcvkes  for the current project's node modules folder with certain versoin      <br>
+                      </code>                               
+                    </li> <br></br>                             
+
+
+                    <li> 5- To  update an existed custom package inside npm locally or globally in the current project [with the latest version] :  <br>
+                      <code>
+                        //  - To update a certain  package  by  latest version  :     <br> 
+                        <span  class=one></span> { npm update  packageName }    <br>  <br> 
+                          
+                        //  - To update a certain  package  by a certain version   : <br>
+                        <span  class=one></span>  { npm  update   packageName@3.5.1  }   <br>
+                      
+                      </code>                               
+                    </li> <br></br>                             
+
+
+                    <li> 6- To remove/delete/uninstall  an existed custom package from the current project [node_module ] :  <br>
+                      <code>
+                        // using  method 1 :      <br> 
+                        <span  class=one></span> { npm rm  packageName }   => [remove the  package from prductoin depenedies  section ]  <br>  <br> 
+                        <span  class=one></span> { npm rm  packageName  -D }  => [remove the package from  developer depenedies section]    <br>  <br> 
+                        <span  class=one></span> { npm rm  packageName  -g }   => [remove the package  globally ]   <br>  <br> 
+                        
+                        //  using  method 2 :        <br> 
+                        <span  class=one></span> { npm uninstall  packageName }   => [remove the  package from prductoin depenedies  section ]  <br>  <br> 
+                        <span  class=one></span> { npm uninstall  packageName  -D }  => [remove the package from  developer depenedies section]    <br>  <br> 
+                        <span  class=one></span> { npm uninstall  packageName  -g }   => [remove the package  globally ]   <br>  <br> 
+                          
+                        
+                        //  using  method 3 :        <br> 
+                        <span  class=one></span> { npm un  packageName }   => [remove the  package from prductoin depenedies  section ]  <br>  <br> 
+                        <span  class=one></span> { npm un  packageName  -D }  => [remove the package from  developer depenedies section]    <br>  <br> 
+                        <span  class=one></span> { npm un  packageName  -g }   => [remove the package  globally ]   <br>  <br>                           
+                      </code>                               
+                    </li> <br></br>                             
+                  </ol>
+                </p>  
+              </p> <br>  
+              
+              
+              <p> Conceptual  examples of Common Node package modules  : <br> 
+                <ol> 
+                  <li> 1-  [nodemon] npm package :   <br>
+                    <p>  It is a great development Node packages , which used for managing and monitering  the project files , and when save  progress it will restart the node server autolmaically without need restart it manually by typing command of :  [node filename]   </p>
+                    <p>  The most common related commands for this package as following :  <br>
+                      <ul>
+                        <li> { npm i nodemon -g} =>  To install the  [nodemon]     </li>    
+                        <li> { nodemon } => to call the  [nodemon] package  to auto run the default file of node server </li>    
+                        <li> { nodemon customfile.js } =>  auto search and run the custom file   [customfile.js]  file   </li>    
+                        <li> { ctrl + c } =>  to exit the working of nodemon        </li>    
+                      </ul>  
+                    </p> <br>
+
+                    <p> The most benefits  of  [nodemon] ,  as following  : <br>        
+                      <ol>
+                        <li> auto search for the [index.js] file to run  by default , or the assigned other name of the other file , by following code :  <br> 
+                          <code>  
+                              <span class="one"></span> { nodemon } =>  auto search and run the by defualt file  [index.js]  file + with auto start the node server with each save   <br>  
+                              <span class="one"></span> { nodemon customfile.js  } =>  auto search and run the assgined custom file + with auto start the node server with each save   <br>  
+                          </code>
+                        </li>
+                      </ol>
+                    </p>        
+                  </li>  <br>
+                  
+                  
+                  <li>  [data-fns]  : <br>
+                    <p> Which is the date functions used for [react.js]    </p>
+                  </li>
+
+                </ol>    
+              </p> <br>
+            <!--------------------------------------------------------  -->
+            
+            <h1> B] Main Practical steps Syntax of node  setting up in the project     :   </h1>
+             <p>  The following are real  practical chained commands of a  actual project :   <br>  
+                 <ol>                        
+                   <li>  A] Create a new project from scratch  steps  :  <br> 
+                      <code>
+                        // 1- Initiating the node pacakge manager in the current project ] : <br>
+                        <span class="one"></span> {  npm  init   }   <br>   <br>
+      
+                        // 2- Install the node pacakge modules existed in the installed {pacakge.json} file of  the  current project ] : <br>
+                        <span class="one"></span> {  npm  i   }   <br>  <br> 
+                        
+                        
+                        // 3- Add and  Install new specific custom pacakges modules into the project's node [modules folder]  : <br>                 
+                          <span class="one"></span> {  npm  i nodemon -g   }    =>   add a global node package         <br>
+                          <span class="one"></span> {  npm  i date-fns   }  => add a local node package   <br> <br>
+                          <span class="one"></span> {  npm  i  uuid    }   => add a local node package   <br> <br>
+                          
+                         
+                        // 4- creating the {.gitignore}  file  : <br>
+                           <span class="one"></span>  to include mainly the  [node_Modules] folder   <br> <br>
+                           
+                        // 5- using the installed Node packages within js files within the  node scripts  , after requiring the desired and related packge inside file  : <br>
+                          
+                          <span class="one"></span> // a- Importing and using the  {date-fns} library package   : <br>
+                            <span class="two"></span> const { format  }   = require('date-fns')  <br> <br>
+
+                            
+                          <span class="one"></span> // b- Importing   {uuid } library package [one of the  next method is avialable  ]  :    <br>
+                            <span class="one"></span> const {  v4:uuid  }   = require('uuid')  <br> <br>  
+                            <span class="one"></span> const {  v4  }   = require('uuid')  <br> <br>  
+                            <span class="one"></span> const uuid     = require('uuid')  <br> <br>  
+                              
+                        </code>   
+                     
+                   </li>  <br> <br>  <br>          
+                  
+                  
+                   <li> B ] Clone a copy  an existed project from the repository   :  <br> 
+                      <code>    
+                        // 1-  Install the node pacakge modules existed in the installed {pacakge.json} file of  the cloned  current project ]  : <br>
+                        <span class="one"> </span>   { npm i } || { npm install }        <br>  
+                        
+                        // 2- using the installed node pacakge  within  the project file wihtin the node script [such as  : index.js  => {date_dns => format } ]  : <br>  
+                        <span class="one"> </span> importing/requiring  the  {format}  library from the  {date_dns} installled package by destructuritng  : <br>    
+                        <span class="one"> </span>  const  { format  }  =  require ('date_fns')        <br> <br>
+    
+                        // 3- using the installed   {format} library  in the  date functions     : <br>
+                        <span class="one"> </span>             <br> <br>
+    
+                        
+                        
+                      </code>                     
+                  </li>
+                 </ol>                              
+            </p>
+            <!-- ---------------------------------------------------------- -->
+ 
+            <h1>  C] Practical exps of methods of  NPM [ Node  package manager ]  [-> wihtin in the  {index.js}  ] :   </h1>
+               <!-- <p> File Node controling methods :     </p>
+              <ul>
+                <li> *- Importing/requiring the {} from [node core module] : <br>
+                  <code> 
+                    <span class=one> </span>  This is the [default file system] of the node core module :       <br>  
+                    <span class=one> </span> const fs = requrie('fs')  ;   <br>  
+                    
+                    <span class=one> </span>  This is the [promise async  file system] of the node core module :       <br>  
+                    <span class=one> </span> const fs = requrie('fs')  ;   <br>  
+
+                  </code> 
+                </li>   <br>
+
+                <li> *- Importing/requiring the desired current file's path {path} from [project files tree] : <br>
+                  <code> 
+                    <span class=one> </span> const path  = require('path') ;    <br>  
+                  </code> 
+                </li>   <br> 
+
+                <li> a- Main default methods of  file controling : <br>
+                    <ol>
+                      <li> 1- [Read from file] =>  using the {readFile()} method with parameters , extracted from the defined 'fs'  :    <br>
+                            <code> 
+                              <span class=one> </span> // using the {readFile} with assign the its parameter as [encodingSystem : 'utf8' , path: by using join  to  manual create the file path - to void differnt system path sytnax]  :    <br>  
+                          <span class=one> </span>  fs.readFile(  path  , encodingSystem ,   (err,  data ) => {  <br>  
+                            <span class=two> </span>   // 1- handling the catched error as conditional value  : <br>  
+                            <span class=two> </span>    if (err) throw err   <br> <br>  
+      
+                            <span class=two> </span>   // 2-  Handling the read data [by using console for example]  {using the [data] directly - incase of using endcoding paramater 'utf8'  -   } : <br>  
+                            <span class=two> </span>    console.log(data)     <br> <br>  
+      
+                            <span class=two> </span>   // 3-  Handling and print the [unCaught  exception error] , using {process.on()}  &  {process.exit()}  : <br>  
+                            <span class=two> </span>   process.on( "uncaughtException" ,   err  => { <br> 
+                              <span class=three> </span>   console.log(` uncaughtException is   :   ${err} ` ) ;  <br> 
+                              <span class=three> </span>   process.exit(1) ;  -> [ to stop the worlking of process  ]   <br> 
+                            <span class=two> </span> })     <br> <br>  
+      
+                          <span class=one> </span> }) <br>  
+                        </code> 
+                      </li> <br>   <br> <br>
+      
+                      <li> 2- [Write new content inside a file] =>  using the {writeFile()} method with parameters , extracted from the defined 'fs'  :    <br>
+                        <code> 
+                          <span class=one> </span> // using the {writeFile} with assign the its parameter as [encodingSystem : NOT needed due to we write not read  , path: by using join  to  manual create the file path - to void differnt system path sytnax]  :    <br>  
+                          <span class=one> </span>  fs.writeFile( path , 'text to be written  inside  the file '  ,   (err) => {  <br>  
+                            <span class=two> </span>   // 1- handling the catched error as conditional value  : <br>  
+                            <span class=two> </span>    if (err) throw err   <br> <br>  
+      
+                            <span class=two> </span>   // 2- Printing a confiramtion message if the proecess is done succedfuly : <br>  
+                            <span class=two> </span>    console.log(' Writing process  haas conpleted succesfuly ! ')     <br> <br>  
+      
+                            <span class=two> </span>   // 3-  Handling and print the [unCaught  exception error] , using {process.on()}  &  {process.exit()}  : <br>  
+                            <span class=two> </span>   process.on( "uncaughtException" ,   err  => { <br> 
+                              <span class=three> </span>   console.log(` uncaughtException is   :   ${err} ` ) ;  <br> 
+                              <span class=three> </span>   process.exit(1) ;  -> [ to stop the worlking of process  ]   <br> 
+                            <span class=two> </span> })     <br> <br>  
+      
+                          <span class=one> </span> }) <br>  
+                        </code> 
+                      </li>  <br> <br> <br>
+      
+      
+                      <li> 3- [Update/Append ( Adding new contents to the existed ) inside a file] =>  using the {appendFile()} method with parameters , extracted from the defined 'fs'  :    <br>
+                        <p> This method for updating a file's  contents by append new contents into the existed contents of certain existed file ,  OR create this  file - if it not existed - and  then append this contents into it </p>
+                        <code> 
+                          <span class=one> </span> // using the {appendFile} with assign the its parameter as [encodingSystem : NOT needed due to we write not read  , path: by using join  to  manual create the file path - to void differnt system path sytnax]  :    <br>  
+                          <span class=one> </span>  fs.writeFile(  path  ,  'text to be updating  the assigned  file by  '  ,   (err ) => {  <br>  
+                            <span class=two> </span>   // 1- handling the catched error as conditional value  : <br>  
+                            <span class=two> </span>    if (err) throw err   <br> <br>  
+      
+                            <span class=two> </span>   // 2- Printing a confiramtion message if the proecess is done succesfully : <br>  
+                            <span class=two> </span>    console.log('updating  process  has completed succesfully ! ')     <br> <br>  
+      
+                            <span class=two> </span>   // 3-  Handling and print the [unCaught  exception error] , using {process.on()}  &  {process.exit()}  : <br>  
+                            <span class=two> </span>   process.on( "uncaughtException" ,   err  => { <br> 
+                              <span class=three> </span>   console.log(` uncaughtException is   :   ${err} ` ) ;  <br> 
+                              <span class=three> </span>   process.exit(1) ;  -> [ to stop the worlking of process ]   <br> 
+                            <span class=two> </span> })    <br> <br>  
+                          <span class=one> </span> }) <br>  
+                        </code> 
+                      </li>   <br> <br> <br> 
+      
+                      <li> 4- [Rename a file ] =>  using the {rename()} method with 'path' parameter , extracted from the defined 'fs'  :    <br>
+                        <p> This method for change an existed file's name     </p>
+                        <code> 
+                          <span class=one> </span> // Using the  {rename()} on an existed file [with using a manual 'path' ] ] :    <br>  
+                          <span class=one> </span>  fs.rename( path with orignal file name  ,   path with new file name ) <br>  
+                        </code> 
+                      </li>   <br> <br> <br> 
+                      
+                      <li> 5- [Delete file]  =>  using the {unlink()} method with 'path' parameter  ,  extracted from the defined 'fs' :  <br>   
+                        <p>  Delete an existed file from project tree : </p>
+                        <code> 
+                          <span class=one> </span> // Using the  {unlink()} on an existed file [with using a manual 'path' ] ] :    <br>  
+                          <span class=one> </span>  fs.unlink( path of file  ) <br>  
+                        </code> 
+                      </li>                     
+                    </ol>
+                </li>  <br><br> 
+
+                <li> b-  Using the  Extracted  promises  [ (fs).promises ] {node core Module}  within [async-await]  : <br>
+                  <ol> 
+
+                    <li>  Netsted methods of the file controling  :   <br> 
+                        <p> using the  {fs.promises}  extracted from the main 'fs' -> will allow to use  Asynchrous promeises and   [try-catch]  with one nested script  function  including several methods -> to provide controled output , as the next expample; : <br>
+                          <code> 
+                            //  1-  importing the  requried as an extyeaced variable from  the [fs.promises]  : <br> 
+                              <span class="one"></span> fsPromises   = require('fs').promsies;     <br> <br>
+
+
+                            //  2- Define an async function with [async-await] that including all file's operations inside the  [try-catch] + nested  method   :
+                            
+                            <span class="one"></span> const fileOps = async () => {  <br>
+                              <span class="two"></span> try {   <br>
+                                <span class="three"></span> // a- Define a [data] variable as  a await value of [read file] method from the defined and imported [promise fs]   :  <br>    
+                                <span class="three"></span> const data = await fsPromises.readFile(  path.join(__dirname , 'files' ,  'text.txt' ) , 'utf8' ) ; <br> <br> 
+                          
+                                <span class="three"></span> // Printing the read data from the main file [text.txt] :    <br>
+                                <span class="three"></span> console.log('The original data contents from the first file is\n' , data , '\n=========================\n\n' ); <br>   
+                          
+                                <span class="three"></span> // b- Define another file process of await [write process] to write the read data from the previous process of read file into a new create file  : <br>   
+                                <span class="three"></span> await fsPromises.writeFile(  path.join(__dirname , 'files' ,  'textPromise.txt' )  ,  data) ;  <br> <br> 
+                               
+                                
+                                <span class="three"></span> // c- Define  a new file process of  appending contents on the previous file :   <br> 
+                                <span class="three"></span> await fsPromises.appendFile(  path.join(__dirname , 'files' ,  'textPromise.txt' )  ,  '\n\nNew content by using  {appendFile} promise method    '  ) ; <br> <br> 
+                          
+                                <span class="three"></span> // d- Define  a new file of  [rename ] process  of the previous file :    <br>  
+                                <span class="three"></span> await fsPromises.rename(  path.join(__dirname , 'files' ,  'textPromise.txt' )  ,  path.join(__dirname , 'files' ,  'PromiseComplete.txt' ) )  <br> <br> 
+                          
+                                <span class="three"></span>  // e- Define a new varaible  of read data from  the new created file's contents  using await of {readFile(}) method :   <br>  
+                                <span class="three"></span> const newData  = await fsPromises.readFile( path.join( __dirname , 'files' , 'PromiseComplete.txt' ) ,   'utf8' ) ; <br><br> 
+                                
+                                <span class="three"></span> // f- Printing the read data from the new  created  file [PromiseComplete.txt] : <br>
+                                <span class="three"></span> console.log('The new data contents from the new created file is\n'  ,    newData  , '\n=========================\n\n'  ); <br>   <br> 
+                                
+                                
+                                <span class="three"></span> // g- Deleting an existed file using {unlink()}  method  :   <br> 
+                                <span class="three"></span> await fsPromises.unlink(path.join(__dirname, 'files' ,  'text2.txt' )  )   <br>  <br> 
+                           
+                                <span class="three"></span> // Print a confirm message of the process  : <br>
+                                <span class="three"></span> console.log('The file "text2.txt"  has deleted successfully ! \n'    , '\n=========================\n\n'  ); <br>  
+                            
+                              <span class="two"></span> } catch (err) {  <br> 
+                                <span class="three"></span>   console.error(err);   <br>
+                              <span class="two"></span> }  <br>    
+                            <span class="one"></span>  }     <br> 
+                          </code>
+                            
+                        </p>
+                    </li>
+
+
+                  </ol>
+                
+                
+                
+                </li>  <br><br> 
+
+                <li> c- using streaming file controling methods  :    <br> 
+                  <p> to Partial controling with file's contents   [read , write]  :  <br>
+                  
+                    <code> 
+                        <span class="one"></span>   // 1- Define a importerd 'fs' from the [node core module]       :  <br>
+                        <span class="one"></span>    const fs = require('fs') ;  <br>   <br>  
+                                                  
+                        <span class="one"></span>   // 2- Define an extracted [file read stream] from 'fs'   :  <br>
+                        <span class="one"></span>    const rs = fs.createReadStream('./files/newText.txt' ,  {encoding:'utf8'}) ;    <br>   <br>  
+                          
+                        <span class="one"></span>  // 3-  Define an extracted [file write stream] from 'fs'   : <br>
+                        <span class="one"></span>  const ws = fs.createWriteStream('./files/newStream.txt') ;  <br>   <br>  
+                          
+                        <span class="one"></span>   // 4- Define a function of reading data comming from created read stream [rs] +   then using the  [write stream] to write its content in a new file :  <br>
+                        <span class="one"></span>  rs.on( 'data', (dataChunk) => { <br>
+                          <span class="two"></span> ws.write(dataChunk) ;  // passing through the obtained data from the stream read file into the write stream file   <br>  
+                        <span class="one"></span> })   <br>   <br>  
+                        
+                        <span class="one"></span> // 5- Shortcut method to add the content of the stream read file inside another new file  of write stream , using {pipe()} method   : <br>
+                        <span class="one"></span> rs.pipe(ws); <br>                         
+                    </code>  
+                  </p>
+                </li>
+              </ul>                 -->
+            <hr> <br>  <hr> <br>            
+            <!-- ----------------------------------------------------- -->        
+           
+
+        <p>  Next lesson  =>        </p> 
+        
+        <!-- --------------------------------------------------------------------- -->
+        
+        
+        <h1>  C]  Notes about [NPM]   of [ Node common core module]  :   </h1> 
+             <ol>  
+                <li>  The main official reference of nodes documentations is {nodejs.org/en/docs} , as will as [js , html , css  ]       </li>  
+                <li>  Controling File system can be used with either with the default file system core module Or with extracted 'promises' module , which can provide  Asyncyhorous using of methods and wihtin  nesting  methodology  </li>  
+                <li>  File stream methods is being defined for only one file , and can not be used to deal  with another file      </li>  
+                <li>  File stream methods can be crticial in some application when it requires to access certain paratical content from the file    </li>  
+                <li>  The added package in  the {package.json} is consist of value of version , which has the net rules :  <br> 
+                    <ul> 
+                      <li>  Prefix symbol  :   <br>
+                          <ol>
+                            <li>  ~  => means to update only the patch of this package    </li>
+                            <li>  ^  =>  the default symbol , and means to update only the patch of package    </li>
+                            <li>  *  => means to update any of  this package kinds values [ maior or mainor or patch]      </li>
+                          </ol>                        
+                      </li>
+                      <li>  First number => the major version value        </li>
+                      <li>  Second number => the mainor version value        </li>
+                      <li>  Third  number => the patch value        </li>
+                    </ul>
+                </li>  
+
+
+
+            </ol>
+
+          
+          <!-- --------------------------------------------------------------------- -->
+
+             <h3>  Source code  scripts files of this  lesson as following : </h3> <br>
+
+             <ol class="codes">
+                <li> Page Sources : </li>
+                
+                <h3> A]  Frontend Section  : </h3>
+                <!-- <code>
+
+                   <h4> (1) Project  files of  main [React-Vite] system :     </h4>
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/index.html">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js   Source code of public HTML file  [index.html] file </button>
+                    </a> <br> <hr> <br> 
+                    
+                    
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/main.jsx">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js  Source code of  wrapping application [main] file JS [main.jsx] file </button>
+                    </a> <br> <hr> <br> 
+
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/App.jsx">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js  Source code of main [App] file {Main Component} [App.jsx] file </button>
+                    </a> <br> <hr> <br> 
+                     
+
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/index.css">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js  Source code of main formating css properties file JS [index.css] file </button>
+                    </a> <br> <hr> <br> 
+
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/public/style.css">  
+                        <button id=btn class="btn0" onclick="display()">    Moon icons library  Source code of  [ all icons in the project ]  formating  file JS [style.css] file </button>
+                    </a> <br> <hr> <hr> <br> 
+                     
+
+                    <h4> (2) Project files of main Components :  </h4>
+                       <h5> (a) First Header section child  Compoents {TopBar} :  </h5>
+                       <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/TopBar.jsx">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js  Source code of First part of Header [TopBar] child component JS [TopBar.jsx] file </button>
+                       </a> <br> <hr> <br> 
+    
+                       
+                       <h5> (b) Second Header section child  Compoents {SideBar} :  </h5>
+                       <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/SideBar.jsx">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js  Source code of Second part of Header [SideBar] child component JS [SideBar.jsx] file </button>
+                       </a> <br> <hr> <br> 
+                       
+
+                       
+                       <h5> (b) Hero section Compoents  : </h5>
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/2-hero/Hero.jsx">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js  Source code of Second  [Hero] child  component JS [Hero.jsx] file </button>
+                       </a> <br> <hr> <br>  
+   
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/2-hero/hero.css">  
+                           <button id=btn class="btn0" onclick="display()">  CSS code of formating Second [Hero] child  component JS [hero.css] file </button>
+                       </a> <br> <hr> <br>   
+
+                       <h5> (c) Main section Components  :     </h5>
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/3-main/Main.jsx">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js  Source code of Third [Main] child  component JS [Main.jsx] file </button>
+                       </a> <br> <hr> <br>  
+                       
+                    
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/3-main/main.css">  
+                           <button id=btn class="btn0" onclick="display()">  CSS code of formating Third [Main] child  component JS [main.css] file </button>
+                       </a> <br> <hr> <br>   
+                       
+ 
+                       <h5> (d) Contact-us section Compoent  :     </h5>
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/4-contact/Contact.jsx">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js  Source code of Fourth  [Contact] child  component JS [Contact.jsx] file </button>
+                       </a> <br> <hr> <br>  
+   
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/4-contact/contact.css">  
+                           <button id=btn class="btn0" onclick="display()">  CSS code of formating Fourth  [Contact] child  component JS [contact.css] file </button>
+                       </a> <br> <hr> <br>  
+                        
+                    
+                       <h5> (e) Footer section Compoent  :     </h5> 
+                         <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/5-footer/Footer.jsx">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js  Source code of Fifth [Footer] child  component JS [Footer.jsx] file </button>
+                       </a> <br> <hr> <br>   
+
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/5-footer/footer.css">  
+                           <button id=btn class="btn0" onclick="display()">  CSS code of formating Fifth [Footer] child  component JS [footer.css] file </button>
+                       </a> <br> <hr> <br>  
+                    
+                    
+                    
+                    <h4>  (3) Project backend files of all downloaded and setup libraries of  main React project  :  </h4>     
+                        <h5> (a)  RTK Query files [inside the  src / Redux ]   :     </h5> 
+                         <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/frontend/src/Redux/product.js">  
+                            <button id=btn class="btn0" onclick="display()">  Node.js   Source code of main RTk Query () system file in the  [product.js] file </button>
+                        </a> <br> <hr> <br> 
+                          
+                         <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/frontend/src/Redux/store.js">  
+                            <button id=btn class="btn0" onclick="display()">  Node.js   Source code of main RTk Query (store) system file in the  [store.js] file </button>
+                        </a> <br> <hr> <br>  
+                            
+                   <h4>  (4) Project files of all downloaded and setup libraries of  main React project  :  </h4>    
+                       
+                       <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/package.json">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js   Source code of main configuration file [package.json] file </button>
+                       </a> <br> <hr> <br> 
+                             
+                       <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/jsconfig.json">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js   Source code of JS custom  configuration file [jsconfig.json] file </button>
+                       </a> <br> <hr> <hr> <br>
+                      
+                </code> -->
+                <hr> <br> <br> 
+                <!-- -------------------------------------------------------- -->
+
+                <h3> B] Backend Section  : </h3>
+                <code>
+
+                   <!-- <h4> (1) Project files of main configuration  of [Strapi] system :     </h4>
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/backend/package.json">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js   Source code of Backend strapi's package file [package.json] file </button>
+                    </a> <br> <hr>  <br><br>  -->
+                       
+                   
+                   <!-- <h4> (2) Project files of main [config] folder  of [Strapi] backend  system :     </h4>
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/backend/config/plugins.js">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js   Source code of strapi's plugins file [plugins.js] file </button>
+                    </a> <br> <hr> <br> 
+                     
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/backend/config/database.js">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js   Source code of  strapi's  database file [database.js] file </button>
+                    </a> <br> <hr> <br>  
+                     
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/backend/config/middlewares.js">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js   Source code of  strapi's  middlewares file [middlewares.js] file </button>
+                    </a> <br> <hr> <br> 
+           
+                    
+                   <h4> (3) Project files of database structure  [] folder  of [Strapi] backend  system :     </h4>
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/backend/src/api/product/content-types/product/schema.json">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js   Source code of strapi's database schema structure  file [schema.json] file </button>
+                    </a> <br> <hr> <br>  -->
+                     
+                     
+                 </code>
+
+               <!-- -------------------------------------------------------- -->
+
+               <!-- <h3> C] General Deployment Framework  Section  : </h3>
+                   <code>      
+                       <h4>  (1) Project files of all downloaded and setup libraries of  main React project  :  </h4>    
+                       
+                       <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/package.json">  
+                          <button id=btn class="btn0" onclick="display()">  Node.js   Source code of main Deployment Framework configuration file [package.json] file </button>
+                       </a> <br> <hr> <br>  
+                            
+                   </code> -->
+
+            </ol>             
+            <br> <hr>
+        </section>
+
+        <!------------------------------------------------------------------------------------------------------>
+        <!------------------------------------------------------------------------------------------------------>
+
+        <section class="JSDOMImp" id="JSDOMImp">
+            <header>
+                <h3> [4 Node Events Tutorial  Nodejs Tutorials for Beginners] Importance & Benefits : </h3>
+            </header>
+            <ul>
+
+            </ul>
+        </section>
+
+        <!------------------------------------------------------------------------------------------------------>
+
+        <section class="JSDOMSyntx" id="JSDOMSyntx">
+            <header>
+                <h3> [4 Node Events Tutorial  Nodejs Tutorials for Beginners] Syntax & Methods: </h3>
+            </header>
+
+            <p> =&gt; Scenario Procedures : </p>
+
+            <hr>
+        </section>
+
+        <!------------------------------------------------------------------------------------------------------>
+        <section class="JSDOMPract container" id="JSDOMPract">
+            <header>
+                <h3> CMD [4 Node Events Tutorial  Nodejs Tutorials for Beginners] => {this lesson can be accessed through the github repo [webpages] } </h3>
+            </header>
+
+
+        </section>
+
+        <!-- <button type="button" class="btn" onclick="myTest()"> Click to Start [ (this) operator testing with both functions ] method  Application </button> -->
+
+        <script src="main.js"></script>
+
+        <br><br><br>
+
+        <div id="note" class="dis"></div> <br><br><br><br>
+
+        <!-- <button class="btn" id="elem" onclick="display()"> Click to activate {this} operator dispalying value  </button> <br>              -->
+
+
+        <!-- <button id=btn class="btn0" onclick="display()">Display JS Code [plugins.js] file </button> -->
+        <!------------------------------------------------------------------------------------->
+        <!---------------------------------------------------------------------------------------->
+
+        <footer id="footer" class="footer0">
+            All right reserved by &nbsp; &copy; &nbsp; Initiated by <a target='_self'  class="brand" href="https://shindowpro.github.io/"> ShindowPro </a> &trade;
+        </footer>
+    
+    </div>
+    <!------------------------------------------------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------>
+    
+    <!-- Here is the Aside  -->
+    
+    <div class="Clear"></div>
+    <!-------------------------------------------------------------------------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------------->
+
+    <dialog class="Note" open>
+        <details>
+            <summary> Hypernate Links: </summary>
+            <ul>
+                <li> <a href="http://shindowpro.github.io" target="_self">My Portfolio website </a></li>
+                <li> <a href="https://github.com/shindowpro/git-course" target="_self">My Github Repo </a></li>
+            </ul>
+        </details>
+    </dialog>
+
+
+    <!-- loading overlay  -->
+    <section class="loading-overlay">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </section>
+
+    <!-- <script src="main.js">
+    </script> -->
+
+
+    <!-- Scrolling top button -->
+    <section id="scroll-top">
+        <i class="fas fa-chevron-up fa-2x fa-align-center"></i>
+    </section>
+
+    <script>
+        alert("Welcome to 4 Node Events Tutorial  Nodejs Tutorials for Beginners");
+    </script>
+
+    <!-- Resources files -->
+    <script src="js/jquery-1.12.4.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/plugins.js"></script>
+
+    <script src="js/myplugins.js"></script>
+
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+
+    <script src="js/jquery.nicescroll.min.js"></script>
+
+</body>
+
+</html>
