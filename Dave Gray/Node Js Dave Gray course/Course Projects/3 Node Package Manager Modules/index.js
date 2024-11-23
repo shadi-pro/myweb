@@ -1,3 +1,4 @@
+
 //   lesson 3 : Testing  [NPM ]   node package manager :
 
 console.log('==================== Welcome to Node.js course -> lesson 3  node package manager [NPM]   =============================== ')
@@ -11,24 +12,13 @@ console.log('==================== Welcome to Node.js course -> lesson 3  node pa
 // C] will use the custom scripts added inside  the [package.json]  file  => [npm run dev] 
 
 // ================================================================================
-
-
-
 // A]  Main  steps of installing and setting node modules  within the project  files :
 // 1- Iinitializing the node and npm core nodlues witin a new project  :
  
 
 
-
-
-
 // -------------------------------------------------------------------------------------------
 // 2- Iinitializing the node and npm core modules witin a cloned  project [from git repository]  
-
-
-
-
-
 
 // --------------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------------
@@ -38,21 +28,24 @@ console.log('==================== Welcome to Node.js course -> lesson 3  node pa
 
 // 1- using the  {format} from the installed [data-fns] library :
   // importing the {format}  from   {date-fns} :
-  const  {format }   = require('date-fns') ;
+  const  {format } = require('date-fns') ;
   
   // printing the current date the certain fomrating :
-  console.log ( format(new Date() , 'yyyyMMdd\tHH:mm:ss') ) ;  
+  // console.log() ;  
+  
+  console.log( 'The current full date is : \n' ,  format(new Date() , 'yyyyMMdd\tHH:mm:ss') ) ;  
 // --------------------------------------
 
 
 // 2- using the  {v4} from the installed [uuid] library :
   // importing the {v4}  from   { uuid } :
-  // const  { v4:uuid }   = require('uuid') ;
+  const  { v4:uuid }   = require('uuid') ;
   // const  { v4 }   = require('uuid ') ;
-  const  uuid    = require('uuid ') ;
+  // const  uuid = require('uuid') ;
   
   // printing a random generated  value  [each time the code will run]    :
-  console.log (  uuid () ) ;  
+   
+  console.log( 'The random generate number is : ' , uuid() ) ;  
 
 
 

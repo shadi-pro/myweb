@@ -1289,16 +1289,24 @@
             </header>
 
             <article>
-                <p> &gt; Main Subjects in this lesson will be Node  NPM    =>    , as following : </p>
+                <p> &gt; Main Subjects in this lesson will be Node events   =>    , as following : </p>
 
                 <h2> Main Subjects : </h2>
 
                 <ol type="A">
-                    <li> Main points of this lesson ,  pracitcial methods of the file system in the node.js       : <br>
+                    <li> Main points of this lesson , practicial methods of Events  of  node.js : <br>
                         <ol>
-                          <li> A] Main concept and steps to install of the [ NPM ]       </li>
-                          <li> B] Main methods of the  [  NPM ]       </li>
-                          <li> C] Notes about  Node package manager   [ NPM ]     </li>
+                          <li> A]  The main concept of Advanced Events core module of [node.js] </li>
+                          
+                          <li> B] Main methods steps of deal with and respond to custom events of the [common core modules] in node.js : <br>
+                              <ol> 
+                                <li> Define a custom event [of creating a new file and write the return of defined  new event] in as file and export it into a [index.js]    </li>
+                                <li> Importing the defined event file and calling it inside  extracted object of a new class  </li>
+                              </ol>   
+                          </li>
+
+                          <li> C] Notes about [Events]  [node common core module]    in  the [nodejs]  </li>
+
                         </ol>
                      </li> <br> <br>
                 </ol>
@@ -1307,270 +1315,97 @@
 
         <!------------------------------------------------------------------------------>
         <!------------------------------------------------------------------------------>
-        < class="JSDOMCon" id="JSDOMCon">
+        <section class="JSDOMCon" id="JSDOMCon">
             <header>
                 <h3> 4 Node Events Tutorial  Nodejs Tutorials for Beginners concept : </h3>
             </header>
  
-            <h1>  A]  Main concept of the [ Node common core module] , as following : </h1> <br>
-              <p> The NPM refers to the {Node package Manager}  which is being installed with the node from the official site of node : [nodejs.org] </p>
-              <p> The NPM  the  its own offical site : [ npmjs.com ]     </p>
-               
-              <p> The main differences between [Node Core Module] & [NPM] , as  the following tools  :  <br> 
-                  <ul> 
-                      <li> {NPM}  is a [Node Core Module ] but created by the  third party   </li>
-                  </ul>  
-              </p> <br> 
-    
-              <p> Each Node package module can be found in the official site of { npmjs.com } , whic can provdie the follwing benefits  : <br>      
-                <ul> 
-                  <li> Any existed node package can be found in the [search tab]       </li>
-                
-                  <li> Any existed node package can  provide its documataions => inside the  [documentations]  of the top right  => and then  with in [NPM CLI] link, which is {command line interface } , which is include the real actual code to be used by developers    </li>
-                
-                  <li> [NPM CLI] link of the documentations include  {3} topics , as following : <br>
-                    <ol> 
-                      <li>  [Cli commands]   </li> 
-                      <li>  [Configuration Npm]    </li> 
-                      <li>  [Using Npm]   </li> 
-                    </ol>
-                  </li>
-                </ul>
-              </p>  <br>
-
-              
-              <p>  Each new added node Module package  to the current project  -> will be added into  both of :  <br>  
-                <ol> 
-                  <li>  [node modules] folder  => which is holding all npm core modules and new added  custom modules     </li>
-                  <li>  [package.json] file    => which is the project map of npm core modules => inside the one of (2) kinds of [dependencies] , as following ;   <br>
-                    <ul> 
-                      <li> 1- [dependencies] section  => which is including production dependencies , by using  next syntax :  <br>
-                        <p>  which is been  installed using  the   default sytnax of node  npm , such as the next example : <br>
-                            <code> 
-                              <span  clas="one" ></span> npm i packageName      <br>   
-                            </code>                            
-                        </p> 
-                      </li>   <br>  <br> 
-                        
-                      <li> 2- [devDependencies] section  => which is including production dependencies :   <br>                   
-                        <p>  which is been  installed using the sytnax wiht flag of  [--save-dev] || {-D } , such  as the  next exmaple : <br>       
-                          <code> 
-                            <span  clas="one" ></span> npm i packageName --save-dev      <br>   
-                            <span  clas="one" ></span> npm i packageName -D       => [the shortcut syntax method   ] <br>   
-                          </code>                            
-                        </p> 
-                      </li>
-                      
-                      <li> 3- [ scripts  ] section  => which is including  main commands to  operate the app :   <br>                
-                          <p> this commonly include the next scripts commands : <br>             
-                             <ol>
-                                <li> 'start'  => the start app command by  node   </li>
-                                <li> 'dev'   =>  the developer stating  app command by  node </li>
-                                <li> 'build' =>  create a building copy of the  app to be  ready for publishment    </li>
-                            </ol>                            
-                        </p> <br> 
-                        
-                        <p> Notes : <br>  
-                            <ul> 
-                              <li>  you can assign  manually  your custom commands , as following : <br>   
-                                <code> 
-                                'scripts': {   <br> 
-                                  <span class="one "> </span>  "start"  :  "node index" , => [calling the {index} file and operate by using {node server} =>  by typing {npm start}  ]  <br> 
-                                  <span class="one "> </span>  "dev"    :  "nodemon index" ,  =>  [calling the {index} file and operate by using {nodemon server} =>  by typing  {npm run  dev}  ]  <br> 
-                                  <span class="one "> </span>  "build"    :  "  index" ,  =>  [calling the {index} file and operate by using {nodemon server}]  <br>                                
-                                  }                            
-                                </code> 
-                              </li>
-
-                              <li> {package.json}  you can modify/re-assign  any of installed package version inside any  section with a certain pattern value  => 
-                                to be installed by it when it is being cloned by using {npm i} , or by the same developer when updating the pacakges by using {npm update} 
-                               </li>
-
-                        </ul>
-
-                        </p>
-                      </li>
-
-                      <li> 5- installing/adding  a custom new package of  [uuid] via using the node sever as a production dependenecies  , by  usikng hte next code  : <br>
-                          <code>
-                             { npm i uuid } => [this will  add the [id generator] library  witin  dependcies  ]   <br>
-                          </code>
-                      </li>
-                      
-                      <li>  </li>
-                      
-                   </ul>
-                  </li>
-                </ol> 
-              </p>
-
-              <p> General commands used in  of Node Package Manager within VScode Terminal   : <br> 
-                <p> The main syntax of adding new npm pacakge as following  : <br> 
-                  <ol> 
-                    <li> 1- { npm init } -> To add or install the main npm {package.json} for   this project  :   <br>
-                      <p> the [package.json]  :  is the file that contains the  main project's configuration information , and it can be created by using next code :   <br>
-                        <code>
-                          <span class="one"></span> { npm init } -> To create the main configuration file of the current project [package.json]  
-                        </code>                                 
-                      </p>
-                    </li> <br></br>  
-
-                    <li> 2- { npm i } -> To add or install the main npm packages existed inside the {package.json} that has been upper  created  :   <br>
-                      <p> This command to install all packages inside the {package.json} of this  project ,   by using next code :   <br>
-                        <code>
-                          <span class="one"></span> { npm i } -> To create the main configuration file of the current project [package.json]  
-                        </code>                                 
-                      </p>
-                      <br></br>
-                    </li>
-            
-            
-                    <li> 3- create a new  file  of  [.gitignore] =>    <br>
-                      <p> This file must be  created in the main root of project file tree -> include all large or uneccessery files and folder of the project when it is being pushed or uplaoded into a git repository such as {github} , this file could include :    
-                        <ul> 
-                          <li> [node_Modules] folder => which is a large folder that include a node core modules main and custom files   , that consuming  big size of  the  project total size      </li>
-                        </ul>
-                      </p>
-                    </li> <br></br>  
-
-                          
-                    <li> 4- To add or install a new custom package inside npm locally  or globally in the current project [with the latest version] :  <br>
-                      <code>
-                        //  - To install a new single npm package into the project's node modules folder [ by latest version or a certain version]  :
-                          <span  class=one></span> { npm i packageName -flag  }  ||  { npm add packageName -flag }  => [-g:  globllay ]  =>  [ Adding the new package within  the latest  version  ]    <br>  <br> 
-                          <span  class=one></span> { npm i packageName@#.#.# -flag  }  ||  { npm add packageName@#.#.# -flag }  =>  [ Adding the new package within a certain version  ]  <br>  <br> 
-                          <span  class=one></span> { npm i date-fns  }  ||  { npm add date-fns }  => Example to add the {date-fns}  package  to  the current project's node modules folder     <br>  <br> 
-                        
-                        //  - To install  new  multiple npm packages into the project's node modules folder :
-                        <span  class=one></span>  { npm i date-fns@3.5.1   uuid@2.22.3   }  ||  { npm add date-fns@3.5.1   uuid@2.22.3  }  => Example to add several  pakcvkes  for the current project's node modules folder with certain versoin      <br>
-                      </code>                               
-                    </li> <br></br>                             
-
-
-                    <li> 5- To  update an existed custom package inside npm locally or globally in the current project [with the latest version] :  <br>
-                      <code>
-                        //  - To update a certain  package  by  latest version  :     <br> 
-                        <span  class=one></span> { npm update  packageName }    <br>  <br> 
-                          
-                        //  - To update a certain  package  by a certain version   : <br>
-                        <span  class=one></span>  { npm  update   packageName@3.5.1  }   <br>
-                      
-                      </code>                               
-                    </li> <br></br>                             
-
-
-                    <li> 6- To remove/delete/uninstall  an existed custom package from the current project [node_module ] :  <br>
-                      <code>
-                        // using  method 1 :      <br> 
-                        <span  class=one></span> { npm rm  packageName }   => [remove the  package from prductoin depenedies  section ]  <br>  <br> 
-                        <span  class=one></span> { npm rm  packageName  -D }  => [remove the package from  developer depenedies section]    <br>  <br> 
-                        <span  class=one></span> { npm rm  packageName  -g }   => [remove the package  globally ]   <br>  <br> 
-                        
-                        //  using  method 2 :        <br> 
-                        <span  class=one></span> { npm uninstall  packageName }   => [remove the  package from prductoin depenedies  section ]  <br>  <br> 
-                        <span  class=one></span> { npm uninstall  packageName  -D }  => [remove the package from  developer depenedies section]    <br>  <br> 
-                        <span  class=one></span> { npm uninstall  packageName  -g }   => [remove the package  globally ]   <br>  <br> 
-                          
-                        
-                        //  using  method 3 :        <br> 
-                        <span  class=one></span> { npm un  packageName }   => [remove the  package from prductoin depenedies  section ]  <br>  <br> 
-                        <span  class=one></span> { npm un  packageName  -D }  => [remove the package from  developer depenedies section]    <br>  <br> 
-                        <span  class=one></span> { npm un  packageName  -g }   => [remove the package  globally ]   <br>  <br>                           
-                      </code>                               
-                    </li> <br></br>                             
-                  </ol>
-                </p>  
-              </p> <br>  
-              
-              
-              <p> Conceptual  examples of Common Node package modules  : <br> 
-                <ol> 
-                  <li> 1-  [nodemon] npm package :   <br>
-                    <p>  It is a great development Node packages , which used for managing and monitering  the project files , and when save  progress it will restart the node server autolmaically without need restart it manually by typing command of :  [node filename]   </p>
-                    <p>  The most common related commands for this package as following :  <br>
-                      <ul>
-                        <li> { npm i nodemon -g} =>  To install the  [nodemon]     </li>    
-                        <li> { nodemon } => to call the  [nodemon] package  to auto run the default file of node server </li>    
-                        <li> { nodemon customfile.js } =>  auto search and run the custom file   [customfile.js]  file   </li>    
-                        <li> { ctrl + c } =>  to exit the working of nodemon        </li>    
-                      </ul>  
-                    </p> <br>
-
-                    <p> The most benefits  of  [nodemon] ,  as following  : <br>        
-                      <ol>
-                        <li> auto search for the [index.js] file to run  by default , or the assigned other name of the other file , by following code :  <br> 
-                          <code>  
-                              <span class="one"></span> { nodemon } =>  auto search and run the by defualt file  [index.js]  file + with auto start the node server with each save   <br>  
-                              <span class="one"></span> { nodemon customfile.js  } =>  auto search and run the assgined custom file + with auto start the node server with each save   <br>  
-                          </code>
-                        </li>
-                      </ol>
-                    </p>        
-                  </li>  <br>
-                  
-                  
-                  <li>  [data-fns]  : <br>
-                    <p> Which is the date functions used for [react.js]    </p>
-                  </li>
-
-                </ol>    
-              </p> <br>
+            <h1>   A] The main concept of this lesson  Advanced Events core module of [node.js], as following : </h1> <br>
+              <p> To create an event in the node system => of function of creating a new text file + and writing [dynamic log] adding </p>
             <!--------------------------------------------------------  -->
             
-            <h1> B] Main Practical steps Syntax of node  setting up in the project     :   </h1>
-             <p>  The following are real  practical chained commands of a  actual project :   <br>  
-                 <ol>                        
-                   <li>  A] Create a new project from scratch  steps  :  <br> 
-                      <code>
-                        // 1- Initiating the node pacakge manager in the current project ] : <br>
-                        <span class="one"></span> {  npm  init   }   <br>   <br>
-      
-                        // 2- Install the node pacakge modules existed in the installed {pacakge.json} file of  the  current project ] : <br>
-                        <span class="one"></span> {  npm  i   }   <br>  <br> 
-                        
-                        
-                        // 3- Add and  Install new specific custom pacakges modules into the project's node [modules folder]  : <br>                 
-                          <span class="one"></span> {  npm  i nodemon -g   }    =>   add a global node package         <br>
-                          <span class="one"></span> {  npm  i date-fns   }  => add a local node package   <br> <br>
-                          <span class="one"></span> {  npm  i  uuid    }   => add a local node package   <br> <br>
-                          
-                         
-                        // 4- creating the {.gitignore}  file  : <br>
-                           <span class="one"></span>  to include mainly the  [node_Modules] folder   <br> <br>
-                           
-                        // 5- using the installed Node packages within js files within the  node scripts  , after requiring the desired and related packge inside file  : <br>
-                          
-                          <span class="one"></span> // a- Importing and using the  {date-fns} library package   : <br>
-                            <span class="two"></span> const { format  }   = require('date-fns')  <br> <br>
+            <h1>  B]  Main methods steps of deal with and respond to custom events of the [common core modules] in node.js :   </h1>
+             <p>  The following are main steps required for creating a new event within  node  system     :   <br>  
+                <ol>                        
+                  <li> 1] {logEvents.js} file :    <br>
+                      <p>  This file  will include => Define the main  function to be implemented  through out Event to be created , using the following steps   : </p>   
+                        <ul> 
+                          <li> Importing section  : <br> 
+                              <code>
+                                // a-  Importing  [Common Core modules]  required inside the  function     : <br>
+                                <span class="one"></span>  // 1- import the [fs] from the [Common Core modules] :      <br>    
+                                <span class="one"></span>  const  fs = require('fs') ;   <br>  <br>
+              
+                                <span class="one"></span>  // 2- import the [fsPromise] from the [Common Core modules] :      <br>    
+                                <span class="one"></span>  const  fsPromise = require('fs').promises ;   <br> <br>     
+            
+                                  
+                                <span class="one"></span>  // 3- import the [path] from the [Common Core modules] :      <br>    
+                                <span class="one"></span>  const  path = require('path') ;   <br>   <br>   
+                                <span class="one"></span>  --------------------------------   <br>   <br>   
+              
+                                  
+                                // b-  Importing  [Custom Core modules]  required inside the  function   : <br>                                                                    
+                                <span class="one"></span> // 1- Importing {format} and using it from the  {date-fns} library package   : <br>
+                                  <span class="two"></span> const {format}   = require('date-fns')  <br> <br>
+                                    
+                                <span class="one"></span> // 2- Importing  {uuid } library package [one of the  next method is avialable  ]  :    <br>
+                                  <span class="one"></span> const {  v4:uuid  }   = require('uuid')  <br>   
+                                  <span class="one"></span> const {  v4  }   = require('uuid')  <br> 
+                                  <span class="one"></span> const uuid     = require('uuid')  <br> <br>    
+                              </code>     
+                          </li>  <br> <br> <br>
 
+                          <li> Define a {Custom function}  [to be used inside an event method ] to be  using the both custom and core modules wihtin it :  <br> 
+                           
+                            // Define the custom function with  assign (1) parameter : <br>   
+                            <span  class="one"></span>  const logEvents = async (message) => {  <br>
+  
+                              <span  class="two"></span> // 1- Define a variable of  the current data and time using the imported {format} :   <br>
+                              <span  class="two"></span>  const dateTime = `${format(new Date(), 'yyyyMMdd\tHH:mm:ss')}`; <br>  <br>
                             
-                          <span class="one"></span> // b- Importing   {uuid } library package [one of the  next method is avialable  ]  :    <br>
-                            <span class="one"></span> const {  v4:uuid  }   = require('uuid')  <br> <br>  
-                            <span class="one"></span> const {  v4  }   = require('uuid')  <br> <br>  
-                            <span class="one"></span> const uuid     = require('uuid')  <br> <br>  
-                              
-                        </code>   
-                     
-                   </li>  <br> <br>  <br>          
+                              <span  class="two"></span> // 2- Define a variable of the printing a  literal defiend  varialbes +  the  function parmater : <br>
+                              <span  class="two"></span> const logItem = `${dateTime}\t ${uuid()} \t ${message}\n`; <br>   <br>
+                            
+                              <span  class="two"></span> // 3- Testing Print the defiend combined  variable   :   <br>
+                              <span  class="two"></span> console.log(logItem);   <br> <br>
+                            
+                              <span  class="two"></span> // 4- Using the [try-catch]  for the [fs promises]  to create a new file and log certain message inside + catching the errors  :   <br>
+                                <span  class="three"></span> try {   <br> 
+                                  <span  class="four"></span>  // a- Adding the directory of  'logs' if it is not existed : <br>  
+                                  <span  class="four"></span>  if (!fs.existsSync(path.join(__dirname, 'logs'))) { <br>
+                                      <span  class="five"></span> await fsPromises.mkdir(path.join(__dirname, 'logs')); <br>
+                                    <span  class="four"></span> }   <br>  <br> 
+                            
+                                    <span  class="four"></span> // b- Appending a new file into the file system using the [fsPromises] , and including  the [logItem]  variable upper defined : <br>
+                                      <span  class="five "></span> await fsPromises.appendFile(path.join(__dirname, 'logs', 'eventLog.txt'), logItem); <br>
+                                    <span  class="four"></span> } catch (err) { <br>
+                                      <span  class="five"></span> console.error(err);  <br> 
+                                    <span  class="four"></span> }  <br>
+                                <span  class="three"></span> }; <br>
+                          </li>
+
+                        </ul>                    
+                  </li>  <br> <br>  <br>    
                   
                   
-                   <li> B ] Clone a copy  an existed project from the repository   :  <br> 
-                      <code>    
-                        // 1-  Install the node pacakge modules existed in the installed {pacakge.json} file of  the cloned  current project ]  : <br>
-                        <span class="one"> </span>   { npm i } || { npm install }        <br>  
-                        
-                        // 2- using the installed node pacakge  within  the project file wihtin the node script [such as  : index.js  => {date_dns => format } ]  : <br>  
-                        <span class="one"> </span> importing/requiring  the  {format}  library from the  {date_dns} installled package by destructuritng  : <br>    
-                        <span class="one"> </span>  const  { format  }  =  require ('date_fns')        <br> <br>
-    
-                        // 3- using the installed   {format} library  in the  date functions     : <br>
-                        <span class="one"> </span>             <br> <br>
-    
+                  <li> 2]  {index.js} file   :   <br>      
+                    <p>  Importing the defiend fuciton form the [logEvent.js] file to use it in defining the event , using the  next steps :  </p>
+                      <ul> 
+                        <!-- im  here >>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+                        <li>  a-  :    <br>  
+
+
+
+                        </li>  <br> <br> <br>
                         
                         
-                      </code>                     
+                        <li>    </li>
+
+                      </ul>
+                
                   </li>
-                 </ol>                              
+                </ol>                              
             </p>
             <!-- ---------------------------------------------------------- -->
  
@@ -1762,34 +1597,14 @@
             <!-- ----------------------------------------------------- -->        
            
 
-        <p>  Next lesson  =>        </p> 
+        <p>  Next lesson  =>  using  the logEvents in creating a [Node Web Server] </p> 
         
         <!-- --------------------------------------------------------------------- -->
         
         
-        <h1>  C]  Notes about [NPM]   of [ Node common core module]  :   </h1> 
+        <h1>  C] Notes about [Events]  [node common core module]    in  the [nodejs]   :     </h1> 
              <ol>  
                 <li>  The main official reference of nodes documentations is {nodejs.org/en/docs} , as will as [js , html , css  ]       </li>  
-                <li>  Controling File system can be used with either with the default file system core module Or with extracted 'promises' module , which can provide  Asyncyhorous using of methods and wihtin  nesting  methodology  </li>  
-                <li>  File stream methods is being defined for only one file , and can not be used to deal  with another file      </li>  
-                <li>  File stream methods can be crticial in some application when it requires to access certain paratical content from the file    </li>  
-                <li>  The added package in  the {package.json} is consist of value of version , which has the net rules :  <br> 
-                    <ul> 
-                      <li>  Prefix symbol  :   <br>
-                          <ol>
-                            <li>  ~  => means to update only the patch of this package    </li>
-                            <li>  ^  =>  the default symbol , and means to update only the patch of package    </li>
-                            <li>  *  => means to update any of  this package kinds values [ maior or mainor or patch]      </li>
-                          </ol>                        
-                      </li>
-                      <li>  First number => the major version value        </li>
-                      <li>  Second number => the mainor version value        </li>
-                      <li>  Third  number => the patch value        </li>
-                    </ul>
-                </li>  
-
-
-
             </ol>
 
           

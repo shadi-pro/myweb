@@ -1,74 +1,30 @@
-//   lesson 3 : Testing  [NPM ]   node package manager :
+// This the main file will Import the defiend  function from the [logEvents.js]  , and define the event using it :
 
-console.log('==================== Welcome to Node.js course -> lesson 3  node package manager [NPM]   =============================== ')
+// The main steps of  using the defiend events from other file  :   
 
-// This lesson will include praciical using  of  the   node npm modlues proceudures  and methods   :
+// 1- Importing the defined and exported {logEvents} :
+  const logEvents =  require('./logEvents') ;
 
-// A]  Main  steps of installing and setting node modules  within the project  files              
-
-// B]  Using the added packages in [index.js] file wiht in the node script and operating  wiht  node server     
-
-// C] will use the custom scripts added inside  the [package.json]  file  => [npm run dev] 
-
-// ================================================================================
-
-
-
-// A]  Main  steps of installing and setting node modules  within the project  files :
-// 1- Iinitializing the node and npm core nodlues witin a new project  :
+// 2- Importing the  [Events Common Core Module class] that required for dealing with the [events] in nodejs  :
+  const EventEmitter =  require('events') ;
  
+// 3- Extract a new class [EventEmitter] extended from the main imported variable from the [Events] the node core module      :
+  class MyEmitter extends  EventEmitter {}  ;
+
+// 4- Initializing/ Extracting a object from the new  extracted Class [MyEmitter] :
+ const myEmitter  = new MyEmitter() ;  
 
 
+// 5- Adding a [listner event of the  defined varaible  and its event function] to the new defined extracted object [myEmitter] to be able to deal wiht  the events :
+  //public syntax =>  myEmitter.on('eventNameVar' , callbackfunc(par) )   ; 
+   myEmitter.on('log' ,  (msg) =>  logEvents(msg)   );     
+   
+   // a- Defind event inside the [timeout()] event  :
+   setTimeout( () => {     
 
-
-
-// -------------------------------------------------------------------------------------------
-// 2- Iinitializing the node and npm core modules witin a cloned  project [from git repository]  
-
-
-
-
-
-
-// --------------------------------------------------------------------------------------------
-// --------------------------------------------------------------------------------------------
-
-// B]  Using the added packages in [index.js] file with in the node script and operating  wiht  node server :
-
-
-// 1- using the  {format} from the installed [data-fns] library :
-  // importing the {format}  from   {date-fns} :
-  const  {format }   = require('date-fns') ;
-  
-  // printing the current date the certain fomrating :
-  console.log ( format(new Date() , 'yyyyMMdd\tHH:mm:ss') ) ;  
-// --------------------------------------
-
-
-// 2- using the  {v4} from the installed [uuid] library :
-  // importing the {v4}  from   { uuid } :
-  // const  { v4:uuid }   = require('uuid') ;
-  // const  { v4 }   = require('uuid ') ;
-  const  uuid    = require('uuid ') ;
-  
-  // printing a random generated  value  [each time the code will run]    :
-  console.log (  uuid () ) ;  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
+    // b- Calling and Operating/Emitting the defined [log] event + assign an emitting message parameter : 
+    myEmitter.emit('log' , 'log Event emittied !' );     
+  }, 2000 ) ;
+ 
 
 

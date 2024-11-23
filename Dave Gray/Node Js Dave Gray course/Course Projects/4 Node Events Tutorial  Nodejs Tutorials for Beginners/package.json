@@ -1,0 +1,19 @@
+{
+  "name": "4-node-events-tutorial-nodejs-tutorials-for-beginners",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  },
+  "dependencies": {
+    "date-fns": "^4.1.0",
+    "uuid": "^11.0.3"
+  }
+}
