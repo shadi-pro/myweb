@@ -1289,7 +1289,7 @@
             </header>
 
             <article>
-                <p> &gt; Main Subjects in this lesson will be Node events   =>    , as following : </p>
+                <p> &gt; Main Subjects in this lesson will be Node events =>   as following : </p>
 
                 <h2> Main Subjects : </h2>
 
@@ -1305,7 +1305,7 @@
                               </ol>   
                           </li>
 
-                          <li> C] Notes about [Events]  [node common core module]    in  the [nodejs]  </li>
+                          <li> C] Notes about [Node Events] with   [node common   & advanced  core module]    in  the [nodejs]  </li>
 
                         </ol>
                      </li> <br> <br>
@@ -1325,14 +1325,20 @@
             <!--------------------------------------------------------  -->
             
             <h1>  B]  Main methods steps of deal with and respond to custom events of the [common core modules] in node.js :   </h1>
-             <p>  The following are main steps required for creating a new event within  node  system     :   <br>  
+             <p>  The following are main steps required for creating a new event within node system :  <br>  
                 <ol>                        
-                  <li> 1] {logEvents.js} file :    <br>
-                      <p>  This file  will include => Define the main  function to be implemented  through out Event to be created , using the following steps   : </p>   
+                  <li>  First/ {logEvents.js} file :    <br>
+                      <p>  This file will include [Conceptual ] => Define the main  function to be implemented  through out Event to be created , using the following steps  : <br>  
                         <ul> 
-                          <li> Importing section  : <br> 
+                          <li> A] Using (2) different kinds of the imported node core :  [node custom modules ] & [node core modules ] => to Define a custom function to be exproeted into an event defiend inside  another    </li>
+                          <li> B] Define a Custom function to be exported  and used as Event's method   </li>
+                        </ul>
+                      </p>
+                      <p> This file will include [practicaly] the following steps :   <br>        
+                        <ul> 
+                          <li> 1] Importing section  : <br> 
                               <code>
-                                // a-  Importing  [Common Core modules]  required inside the  function     : <br>
+                                // a-  Importing  [Common Core modules]  required inside the function : <br>
                                 <span class="one"></span>  // 1- import the [fs] from the [Common Core modules] :      <br>    
                                 <span class="one"></span>  const  fs = require('fs') ;   <br>  <br>
               
@@ -1356,60 +1362,96 @@
                               </code>     
                           </li>  <br> <br> <br>
 
-                          <li> Define a {Custom function}  [to be used inside an event method ] to be  using the both custom and core modules wihtin it :  <br> 
-                           
-                            // Define the custom function with  assign (1) parameter : <br>   
-                            <span  class="one"></span>  const logEvents = async (message) => {  <br>
-  
-                              <span  class="two"></span> // 1- Define a variable of  the current data and time using the imported {format} :   <br>
-                              <span  class="two"></span>  const dateTime = `${format(new Date(), 'yyyyMMdd\tHH:mm:ss')}`; <br>  <br>
+                          <li> 2] Define a {Custom function}  [to be used inside an event method ] to be  using the both custom and core modules wihtin it :  <br> 
+                              <code>  
+      
+                                // Define the custom function with  assign (1) parameter : <br>   
+                                <span  class="one"></span>  const logEvents = async (message) => {  <br>
+      
+                                  <span  class="two"></span> // 1- Define a variable of  the current data and time using the imported {format} :   <br>
+                                  <span  class="two"></span>  const dateTime = `${format(new Date(), 'yyyyMMdd\tHH:mm:ss')}`; <br>  <br>
+                                
+                                  <span  class="two"></span> // 2- Define a variable of the printing a  literal defiend  varialbes +  the  function parmater : <br>
+                                  <span  class="two"></span> const logItem = `${dateTime}\t ${uuid()} \t ${message}\n`; <br>   <br>
+                                
+                                  <span  class="two"></span> // 3- Testing Print the defiend combined  variable   :   <br>
+                                  <span  class="two"></span> console.log(logItem);   <br> <br>
+                                
+                                  <span  class="two"></span> // 4- Using the [try-catch]  for the [fs promises]  to create a new file and log certain message inside + catching the errors  :   <br>
+                                  <span  class="two"></span> try {   <br> 
+                                    <span  class="three"></span>  // a- Adding the directory of  'logs' [if it is not existed] : <br>  
+                                    <span  class="three"></span>  if (!fs.existsSync(path.join(__dirname, 'logs'))) { <br>
+                                      <span  class="four"></span> await fsPromises.mkdir(path.join(__dirname, 'logs')); <br>
+                                    <span  class="three"></span> }   <br>  <br> 
                             
-                              <span  class="two"></span> // 2- Define a variable of the printing a  literal defiend  varialbes +  the  function parmater : <br>
-                              <span  class="two"></span> const logItem = `${dateTime}\t ${uuid()} \t ${message}\n`; <br>   <br>
-                            
-                              <span  class="two"></span> // 3- Testing Print the defiend combined  variable   :   <br>
-                              <span  class="two"></span> console.log(logItem);   <br> <br>
-                            
-                              <span  class="two"></span> // 4- Using the [try-catch]  for the [fs promises]  to create a new file and log certain message inside + catching the errors  :   <br>
-                                <span  class="three"></span> try {   <br> 
-                                  <span  class="four"></span>  // a- Adding the directory of  'logs' if it is not existed : <br>  
-                                  <span  class="four"></span>  if (!fs.existsSync(path.join(__dirname, 'logs'))) { <br>
-                                      <span  class="five"></span> await fsPromises.mkdir(path.join(__dirname, 'logs')); <br>
-                                    <span  class="four"></span> }   <br>  <br> 
-                            
-                                    <span  class="four"></span> // b- Appending a new file into the file system using the [fsPromises] , and including  the [logItem]  variable upper defined : <br>
-                                      <span  class="five "></span> await fsPromises.appendFile(path.join(__dirname, 'logs', 'eventLog.txt'), logItem); <br>
-                                    <span  class="four"></span> } catch (err) { <br>
-                                      <span  class="five"></span> console.error(err);  <br> 
-                                    <span  class="four"></span> }  <br>
-                                <span  class="three"></span> }; <br>
+                                    <span  class=" three"></span> // b- Appending a new file into the file system using the [fsPromises] , and including  the [logItem]  variable upper defined : <br>
+                                    <span  class="three"></span> await fsPromises.appendFile(path.join(__dirname, 'logs', 'eventLog.txt'), logItem); <br>  <br>  
+                                    
+                                  <span  class="two"></span> } catch (err) { <br>
+                                    <span  class="three"></span> console.error(err);  <br> 
+                                  <span  class="two "></span> }  <br>
+                                <span  class="one"></span> }; <br>
+                            </code>
                           </li>
-
                         </ul>                    
+                      </p>
                   </li>  <br> <br>  <br>    
                   
                   
-                  <li> 2]  {index.js} file   :   <br>      
-                    <p>  Importing the defiend fuciton form the [logEvent.js] file to use it in defining the event , using the  next steps :  </p>
+                  <li> Second/  {index.js} file   :   <br>      
+                    <p> This the main file of [index.js] , and will include  Importing the defined function form the [logEvent.js] file to use it in defining the event ,  accordgin to the  following  [Conceputual] steps  : <br>
                       <ul> 
-                        <!-- im  here >>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
-                        <li>  a-  :    <br>  
-
-
-
-                        </li>  <br> <br> <br>
+                        <li> 1- Import the defined function from the [logEvents.js] file , and using it as the defiend [node event]'s method : <br>
+                          <code>
+                            <span class=one></span>  const logEvents =  require('./logEvents') ; <br>         
+                          </code>
+                        </li> <br>  <br>  
+                        
+                        <li> 2-  Define the [node event]  from extracted object [myEmitter] from the extended class [MyEmitter]  : <br>
+                          <code>
+                            <span class=one></span>  const EventEmitter =  require('events') ; <br>         
+                          </code>
+                        </li>     <br>  <br>
+                        
+                        <li> 3-  Extract a new class [EventEmitter] extended from the main imported variable from the [Events] the node core module : <br>
+                          <code>
+                            <span class=one></span>  class MyEmitter extends  EventEmitter {} ;   <br>         
+                          </code>
+                        </li>  <br> <br>
                         
                         
-                        <li>    </li>
-
+                        <li>  4- Initializing/ Extracting a new object from the new extracted Class [MyEmitter]   -> to be used to deal wiht the  [event node]   : <br>
+                          <code>
+                            <span class=one></span>  const myEmitter  = new MyEmitter() ;     <br>         
+                          </code>
+                        </li>  <br> <br>
+                        
+                        
+                        <li>  5- Using the defined Extracted object to [Define + Emit/Implement/Execute] with [node event] : <br>
+                          <code>
+                              // a- Main define/create  the Node Event syntax =>  myEmitter.on('eventNameVar' , callbackfunc(par) )    : <br>         
+                              <span class=one></span>  myEmitter.on('log' ,  (msg) =>  logEvents(msg)   );     <br>         
+                                                        
+                              //  b- Define [node event] inside a built-in [setTimeout()] event : <br>         
+                              <span class=one></span> setTimeout( () => {     
+                                  <span class=two></span> // c- Calling/Operating/Emitting the defined [log] event + assign an emitting message parameter : 
+                                  <span class=two></span> myEmitter.emit('log' , 'log Event emittied !' );     
+                              <span class=one></span> }, 1000 ) ;
+                           
+    
+                              <span class=one></span>  myEmitter.on('log' ,  (msg) =>  logEvents(msg)   );     <br>         
+                            
+                          </code>
+                        </li>  <br> <br>
+                    
                       </ul>
-                
+                    </p>
                   </li>
                 </ol>                              
             </p>
             <!-- ---------------------------------------------------------- -->
  
-            <h1>  C] Practical exps of methods of  NPM [ Node  package manager ]  [-> wihtin in the  {index.js}  ] :   </h1>
+            <h1>  C] Practical exps of  [ Node Events ]  [-> wihtin in the  {index.js}  &  {logEvents.js}  ] :   </h1>
                <!-- <p> File Node controling methods :     </p>
               <ul>
                 <li> *- Importing/requiring the {} from [node core module] : <br>
@@ -1597,17 +1639,27 @@
             <!-- ----------------------------------------------------- -->        
            
 
-        <p>  Next lesson  =>  using  the logEvents in creating a [Node Web Server] </p> 
+        <p>  Next lesson  =>  using  the {logEvents} in creating a [Node Web Server] </p> 
         
         <!-- --------------------------------------------------------------------- -->
         
         
-        <h1>  C] Notes about [Events]  [node common core module]    in  the [nodejs]   :     </h1> 
-             <ol>  
-                <li>  The main official reference of nodes documentations is {nodejs.org/en/docs} , as will as [js , html , css  ]       </li>  
-            </ol>
-
-          
+        <h1>  C] Notes about [Node Events] & using [node common & advanced core module] in  the [nodejs]   :     </h1> 
+          <ul> 
+            <li> To create a new node event , and deal with, we must implement the next proceudres  :   <br> 
+              <ol> 
+                  <li>  a- Define [EventEmitter] as imported variable from the {events} of [core node module]  </li>
+                  <li>  b- Define a Custom class {MyEmitter} extended from the main imported [EventEmitter]   </li>
+                  <li>  c- Define an extracted object {myEmitter} from the extended Custom class {MyEmitter} => this object will be about control the event by using the certain methods :  <br>
+                    <ul> 
+                      <li> 1 -- {    myEmitter.on('eventName' , (par) => imported method to be implemented within this event(par) )    } </li>
+                      <li> 2 -- {    myEmitter.emit('eventName' , 'paramter value of the event's method'    }      => [usually sued to be called insdie a builtin event - such as: {setTimeout}         -  ] </li>                        
+                    </ul>
+                  </li>
+              </ol>
+            </li>
+          </ul>
+ 
           <!-- --------------------------------------------------------------------- -->
 
              <h3>  Source code  scripts files of this  lesson as following : </h3> <br>

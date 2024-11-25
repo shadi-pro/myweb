@@ -2,36 +2,34 @@
 
 console.log('==================== Welcome to Node.js course -> lesson 4 [Node events] of the advaned [Node Core Modules]      =============================== ')
 
-// This lesson will include practical using  of  the   node npm modlues proceudures  and methods   :
+// This lesson will include practical using of the [Node Events] of  npm modlues proceudures  and methods   :
 
-// A] Using (2) different kinds of the imoprted [node custom modules ] & [node core modules ] to Define a custom function  
+// A] Using (2) different kinds of the imported node core :  [node custom modules ] & [node core modules ] => to Define a custom function to be exproeted into an event defiend inside  another    
 
-// B Define a Custom function to be used as Event's method   
+// B] Define a Custom function to be used as Event's method   
 
 // --------------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------------
 
-//  A] Using (2) different kinds of the imoprted [node custom modules ] & [node core modules] :
+//  A] Importing  (2) different kinds of  node core =>  [node custom modules ] & [node core modules] :
 
-// 1] Importing  [Common Core modules]  :
+// 1] Importing  [Common Core Modules]  :
 // a-  importing a [fs] :
 const fs = require('fs');
 
-// b-  importing a [fs] :
+// b-  importing a [fs.promosises] :
 const fsPromises = require('fs').promises;
 
 // c-  importing a [path] :
 const path = require('path');
 // ------------------------------------------------------
 
-// 2] Importing  [Custom node modules] :
-
-// a- using the  {format} from the installed [data-fns] library :
-// 1- importing the {format} from  {date-fns} :
+// 2] Importing  [Custom Node Modules] :
+// a- importing the  {format} from the installed [data-fns] library :
 const { format } = require('date-fns');
 
 
-// 2- using the  {v4} from the installed [uuid] library :
+// b- importing the {v4} from the installed [uuid] library :
 const { v4: uuid } = require('uuid');
 
 // --------------------------------------
@@ -67,7 +65,7 @@ const logEvents = async (message) => {
 // ---------------------------------------
 // ---------------------------------------
 
-// Exporting the defined  {logEvents} function  => [to be able to use inside another file [index.js] :  
+// Exporting the defined {logEvents} function  => [to be able to use inside another file [index.js] wintin a event method      :  
 module.exports = logEvents;
 
 
