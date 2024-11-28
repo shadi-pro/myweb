@@ -1,0 +1,5 @@
+This the new contents to of this file created by using (writeFile) 
+
+ new contents added by using append method This the new contents to of this file created by using (writeFile) 
+
+ new contents added by using append method 
