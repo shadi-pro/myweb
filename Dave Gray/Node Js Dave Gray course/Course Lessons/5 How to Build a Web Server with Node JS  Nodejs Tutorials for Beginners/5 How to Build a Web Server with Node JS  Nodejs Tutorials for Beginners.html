@@ -1298,14 +1298,15 @@
                         <ol>
                           <li> A] The main concept of using the previous {Node Events} of Advanced core module of [node.js] to create a practical web server (without using/utilizing  any Framework [such as :express.js] )    </li>
                           
-                          <li> B] Main Practical steps of using the previous {Node Events} appcication  to create a practical web sever , using the next steps  : <br>
+                          <li> B] Main Practical steps of using the previous {Node Events} appcication  to create a practical web server , using the next steps  : <br>
                               <ol> 
-                                <li>     </li>
-                                <li>    </li>
+                                <li> Building [Node Server] system file structure  </li>
+                                <li> [Server.js] =>  Server define file    </li>
+                                <li> {logEvents.js}  => modify the defined event o be able for use inside the  Node server    </li>
                               </ol>   
                           </li>
 
-                          <li> C] Notes about  web server and [Node Events]  in  the [nodejs]  </li>
+                          <li> C] Notes about  web Node server and [Node Events]  in the [nodejs]  </li>
 
                         </ol>
                      </li> <br> <br>
@@ -1320,20 +1321,116 @@
                 <h3> 5 How to Build a Web Server with Node JS  Nodejs Tutorials for Beginners concept : </h3>
             </header>
  
-            <h1>   A] The main concept of this lesson  Advanced Events core module of [node.js], as following : </h1> <br>
-              <p> To create an event in the node system => of function of creating a new text file + and writing [dynamic log] adding </p>
+            <h1> A] The main concept of this lesson  of build the {Node server} using [node.js] , as following : </h1> <br>
+              <p> To create an ideal node system => using the basic and fundamental  Server configuration and processes script of the node of javascript +  [nodemon]  npm package as server running       </p>
+              <p> Modify the defined log event to be able to publish borth default logs and error wihtin th currenit defined node  server   </p>
             <!--------------------------------------------------------  -->
             
-            <h1>  B]  Main methods steps of deal with and respond to custom events of the [common core modules] in node.js :   </h1>
-             <p>  The following are main steps required for creating a new event within node system :  <br>  
-                <ol>                        
-                  <li>  First/ {logEvents.js} file :    <br>
-                      <p>  This file will include [Conceptual ] => Define the main  function to be implemented  through out Event to be created , using the following steps  : <br>  
+            <h1>  B]  Main  steps of methods to  build Node server + log Events using   [node.js] only  :   </h1>
+                <ol>          
+                  <li> First / building the Node server file structure : <br> 
+                      <ul> 
+                        <li> a- {package.json} file  => with next modifications    :  <br>
+                          <ol> 
+                            <li>  1- modify the 'main'  property  => with 'server.js' file  -> to be started by default </li>
+                            <li>  2- modify the 'dev'   property   in the "scripts" section => with  "nodemon server"   -> to be able to run the 'npm run dev' command to run the nodemon sever     </li>
+                          </ol>                          
+                        </li>
+
+                        <li> b-  main root =>   including the next files and folders  :  <br>
+                          
+                          <ol>   
+                            <li> [Files] inside the main root :   <br>
+                                <ul>  
+                                  <li> 1-  {server.js} => <br> 
+                                    <p> The main file to be run as default [as set in  package.json ] </p>
+                                    <p> This file will include all Server configurations methods and procedures & steps   </p>
+                                    <p> This file will include also importing and using of hte defeind {logEvent} methods and procedures practical steps   </p>
+                                  </li>  <br>   
+                                  
+                                  <li> 2- {logEvents.js}  =>   <br>
+                                    <p> This file include the main definition of the custom method as {Asynchronous}  to be used inside the event  when calling it inside the [server.js] file   </p>
+                                    <p> This custom method include  following :  <br>
+                                        <p> => parameters : <br> 
+                                          <ol> 
+                                            <li> (message)   => log operation confirmation message   </li>
+                                            <li> (logName)   =>  The specific file inside the [log]  folder  to add this log inside it </li>
+                                          </ol>
+                                        </p>
+                                    </p>
+
+                                    <p> Process implemented : <br>
+                                      <p> => Printing a [logItem] as [Single log item] to be written inside a certain file , that consistes of following   :  <br>
+                                        <ul>
+                                          <li> Current date  </li>
+                                          <li> Random genterated number   </li>
+                                          <li> Message of Log confirmation    =>  will be assign inside the [server.js] file when the event is being called      </li>
+                                        </ul>
+                                      </p>
+                                    </p>
+                                  </li>   <br>
+                                  
+                                  <li> 3-  {package.json} : the manifest of application and libraries  </li>
+                                  
+                                  <li> 4-  {.gitigonre} :  exectutive file include all ignored files and folders  </li>
+                                </ul> 
+                            </li>  <br>  <br>
+
+                            
+                            <li>  [Folders] inside the main root   : <br>
+                               <ul> 
+                                   <li> 1-  [views]  => the main sever folder that will incluide all essential server files , as following  : <br> 
+                                      <ol> 
+                                        <li>  [subdir]  :   another  sub directory inside the [views], that include another  {index.html} </li>
+                                        <li>  {index.html}  : the main home html  page       </li>
+                                        <li>  {404.html}  : the 404 Error html page       </li>
+                                      </ol>
+                                   </li>   <br>   
+                                    
+                                   <li> 2- [logs]  => the folder to include the log files that will by  created by Node server scripting , such as :    <br>
+                                      <ul>
+                                        <li>  {rewLog.txt}  ->  to hold all written main Logs   </li>  
+                                        <li>  {errLog.txt}  ->  to hold all written catched [erros Logs]   </li>  
+                                      </ul>
+                                    </li> <br> 
+                                    
+                                    <li> 3- [data]  => the folder will hold all [data files] such as   :      <br>
+                                      <ul>
+                                        <li>  {data.json}  ->  a json file of testing  object of  data in form of a json format  </li>  
+                                        <li>  {data.txt}  ->   a text file of testing data in form of a text format   </li>  
+                                      </ul>
+                                   </li>    <br>  
+                                      
+                                    <li> 4- [css]  => the folder will hold all [ CSS styling files] such as :  <br>
+                                      <ul>
+                                        <li>  {style.css}  ->  a  css styling testing file   </li>  
+                                      </ul>
+                                   </li>    <br>  
+                                      
+                                    <li> 5- [img]  => the folder will hold all [ images files] such as :  <br>
+                                      <ul>
+                                        <li>  {1.jpg}  ->  testing image to be used inside a application      </li>  
+                                      </ul>
+                                   </li>    <br>  
+                                      
+                                  <li> 6- [node_modules]  => the folder will hold all installed core and custom [ npm libaries ]   </li>    <br>  
+                                      
+                               </ul>
+                            </li>
+                          </ol>
+                        
+                        </li>
+                      </ul>
+                  </li> <br> <br>  
+  
+                  <li>  Second / {logEvents.js} file :    <br>
+                      <p>  This file will include [Conceptually]  => Defining the main method to be implemented  through the Event that will be created  ikn the {server.js}  file  , using the following steps  : <br>  
                         <ul> 
-                          <li> A] Using (2) different kinds of the imported node core :  [node custom modules ] & [node core modules ] => to Define a custom function to be exproeted into an event defiend inside  another    </li>
+                          <li> A] Using (2) different kinds of the imported node core modules :  [node custom modules ] & [node core modules ] => to Define a custom function to be exproeted into an event defiend inside  another    </li>
                           <li> B] Define a Custom function to be exported  and used as Event's method   </li>
                         </ul>
                       </p>
+
                       <p> This file will include [practicaly] the following steps :   <br>        
                         <ul> 
                           <li> 1] Importing section  : <br> 
@@ -1362,89 +1459,147 @@
                               </code>     
                           </li>  <br> <br> <br>
 
-                          <li> 2] Define a {Custom function}  [to be used inside an event method ] to be  using the both custom and core modules wihtin it :  <br> 
-                              <code>  
-      
-                                // Define the custom function with  assign (1) parameter : <br>   
-                                <span  class="one"></span>  const logEvents = async (message) => {  <br>
-      
-                                  <span  class="two"></span> // 1- Define a variable of  the current data and time using the imported {format} :   <br>
-                                  <span  class="two"></span>  const dateTime = `${format(new Date(), 'yyyyMMdd\tHH:mm:ss')}`; <br>  <br>
-                                
-                                  <span  class="two"></span> // 2- Define a variable of the printing a  literal defiend  varialbes +  the  function parmater : <br>
-                                  <span  class="two"></span> const logItem = `${dateTime}\t ${uuid()} \t ${message}\n`; <br>   <br>
-                                
-                                  <span  class="two"></span> // 3- Testing Print the defiend combined  variable   :   <br>
-                                  <span  class="two"></span> console.log(logItem);   <br> <br>
-                                
-                                  <span  class="two"></span> // 4- Using the [try-catch]  for the [fs promises]  to create a new file and log certain message inside + catching the errors  :   <br>
-                                  <span  class="two"></span> try {   <br> 
-                                    <span  class="three"></span>  // a- Adding the directory of  'logs' [if it is not existed] : <br>  
-                                    <span  class="three"></span>  if (!fs.existsSync(path.join(__dirname, 'logs'))) { <br>
-                                      <span  class="four"></span> await fsPromises.mkdir(path.join(__dirname, 'logs')); <br>
-                                    <span  class="three"></span> }   <br>  <br> 
-                            
-                                    <span  class=" three"></span> // b- Appending a new file into the file system using the [fsPromises] , and including  the [logItem]  variable upper defined : <br>
-                                    <span  class="three"></span> await fsPromises.appendFile(path.join(__dirname, 'logs', 'eventLog.txt'), logItem); <br>  <br>  
-                                    
-                                  <span  class="two"></span> } catch (err) { <br>
-                                    <span  class="three"></span> console.error(err);  <br> 
-                                  <span  class="two "></span> }  <br>
-                                <span  class="one"></span> }; <br>
-                            </code>
+                          <li> 2] Define a {Custom method : logEvents() } , with next propporties : <br> 
+                             <p >   Main coneet => [to be used as the callback function paremeter inside an event defintion ] to be using the both custom and core modules within it   </p>   
+                              <p>    (2) parameters  : <br>
+                                <ul>  
+                                  <li> (message) =>   represent the texst meassae to bve recive  inside [server.js] file when this method is being called        </li>
+                                  <li> (logName) =>   represent  the fnal part of the  file name that the logv will be append/write  insde it            </li>
+                                </ul>                        
+                              </p>
+                              <p>  The main practical script   a following    :  <br> 
+                                <code>  
+                                  // The mainmethod definition : <br>   
+                                  <span  class="one"></span>  const logEvents = async (message) => {  <br>
+        
+                                    <span  class="two"></span> // 1- Define a variable of  the current data and time using the imported {format} :  <br>
+                                    <span  class="two"></span>  const dateTime = `${format(new Date(), 'yyyyMMdd\tHH:mm:ss')}`; <br>  <br>
+                                  
+                                    <span  class="two"></span> // 2- Define a variable of the printing a  literal defiend  varialbes +  the  function parmater : <br>
+                                    <span  class="two"></span> const logItem = `${dateTime}\t ${uuid()} \t ${message}\n`; <br>   <br>
+                                  
+                                    <span  class="two"></span> // 3- Testing Print the defiend combined  variable   :   <br>
+                                    <span  class="two"></span> console.log(logItem);   <br> <br>
+                                  
+                                    <span  class="two"></span> // 4- Using the [try-catch]  for the [fs promises]  to create a new file and log certain message inside + catching the errors  :   <br>
+                                    <span  class="two"></span> try {   <br> 
+                                      <span  class="three"></span>  // a- Adding the directory of  'logs' [if it is not existed] : <br>  
+                                      <span  class="three"></span>  if (!fs.existsSync(path.join(__dirname, 'logs'))) { <br>
+                                        <span  class="four"></span> await fsPromises.mkdir(path.join(__dirname, 'logs')); <br>
+                                      <span  class="three"></span> }   <br>  <br> 
+                              
+                                      <span  class=" three"></span> // b- Appending/write the upper defined [logItem] variable inside a new log file into the file system using the [fsPromises] ,  <br>
+                                      and using the final file's path as recieved parameter [logName] when this event method is being called insdie it's user file  [ server.js]   : <br>
+                                      <span  class="three"></span> await fsPromises.appendFile(   <br> 
+                                        <span  class="four "></span>  path.join(__dirname, 'logs',  logName )   => [the full path with using a parameter of the  [logName  :   this may could be the default log file or the error data log ]   as the final path name ]     <br>  
+                                        <span  class="four "></span>  , logItem ); => [This is  repreent the full data of the upper variable to be as a single log ] <br>  <br>  
+                                      
+                                    <span  class="two"></span> } catch (err) { <br>
+                                      <span  class="three"></span> console.error(err);  <br> 
+                                    <span  class="two "></span> }  <br>
+                                  <span  class="one"></span> }; <br>
+                              </code>
+                          </li>
+
+                          <li> 3-  Exporting the defined {logEvents} method  => [to be able to use inside another file [server.js] as a event method :  <br>  
+                              <code>
+                                <span class=one>  </span>   module.exports =  logEvents;       <br>
+                              </code>
                           </li>
                         </ul>                    
                       </p>
-                  </li>  <br> <br>  <br>    
+                  </li> 
+                  <br> <br>  <br>    
+                <!-- ----------------------------------------------------------                 -->
                   
-                  
-                  <li> Second/  {index.js} file   :   <br>      
-                    <p> This the main file of [index.js] , and will include  Importing the defined function form the [logEvent.js] file to use it in defining the event ,  accordgin to the  following  [Conceputual] steps  : <br>
-                      <ul> 
-                        <li> 1- Import the defined function from the [logEvents.js] file , and using it as the defiend [node event]'s method : <br>
-                          <code>
-                            <span class=one></span>  const logEvents =  require('./logEvents') ; <br>         
-                          </code>
-                        </li> <br>  <br>  
-                        
-                        <li> 2-  Define the [node event]  from extracted object [myEmitter] from the extended class [MyEmitter]  : <br>
-                          <code>
-                            <span class=one></span>  const EventEmitter =  require('events') ; <br>         
-                          </code>
-                        </li>     <br>  <br>
-                        
-                        <li> 3-  Extract a new class [EventEmitter] extended from the main imported variable from the [Events] the node core module : <br>
-                          <code>
-                            <span class=one></span>  class MyEmitter extends  EventEmitter {} ;   <br>         
-                          </code>
-                        </li>  <br> <br>
-                        
-                        
-                        <li>  4- Initializing/ Extracting a new object from the new extracted Class [MyEmitter]   -> to be used to deal wiht the  [event node]   : <br>
-                          <code>
-                            <span class=one></span>  const myEmitter  = new MyEmitter() ;     <br>         
-                          </code>
-                        </li>  <br> <br>
-                        
-                        
-                        <li>  5- Using the defined Extracted object to [Define + Emit/Implement/Execute] with [node event] : <br>
-                          <code>
-                              // a- Main define/create  the Node Event syntax =>  myEmitter.on('eventNameVar' , callbackfunc(par) )    : <br>         
-                              <span class=one></span>  myEmitter.on('log' ,  (msg) =>  logEvents(msg)   );     <br>         
-                                                        
-                              //  b- Define [node event] inside a built-in [setTimeout()] event : <br>         
-                              <span class=one></span> setTimeout( () => {     
-                                  <span class=two></span> // c- Calling/Operating/Emitting the defined [log] event + assign an emitting message parameter : 
-                                  <span class=two></span> myEmitter.emit('log' , 'log Event emittied !' );     
-                              <span class=one></span> }, 1000 ) ;
-                           
-    
-                              <span class=one></span>  myEmitter.on('log' ,  (msg) =>  logEvents(msg)   );     <br>         
-                            
-                          </code>
-                        </li>  <br> <br>
-                    
-                      </ul>
+                  <li> Third / {server.js} file   :   <br>      
+                    <p> This the file of [server.js] , and will be main server defenition and confiurations steps    +   including  Importing the defined method of [ logEvents]  from [logEvent.js] file to use it  as  the event's method  ,  according to the  following  [practical] steps  : <br>                      
+                        <ol>  
+                          <li>   A]  Importing Section :     <br>  
+                              <ul> 
+                                <li> 1] Importings required for creating  [Node Web Server] + other inner methods :    <br>
+                                    <code> 
+                                      //  a-  importing the {http} class from the [node core common module] {the main  claas rewuried for defining the server }  :  <br>   
+                                      <span class="one " > </span>    const http = require('http') ;  <br>    <br>
+
+                                      //  b-  importing the {path} class from the  [node core common module]   :  <br>   
+                                      <span class="one " > </span>    const path = require('path') ;   <br>   <br>
+
+                                      //   c-  importing the {fs} class from the  [node core common module]   :  <br>   
+                                      <span class="one " > </span>     const fs = require('fs') ;   <br>   <br>
+
+                                      //  d-  importing the {fs Promises} class from the  [node core common module]    :  <br>   
+                                      <span class="one " > </span>  const fsPromises  = require('fs').promises ;  <br>   <br>
+                                  </code>      
+                                </li>   <br>      <br>  
+
+                                <li>  2] Importings required for  [Node Event : logEvents}     :   <br>
+                                    <code> 
+                                        // a- Importing the defined and exported {logEvents} function from the [logEvents.js] file [to be ready to use inside the main event ]     :  <br>   
+                                        <span class="one " > </span>    const logEvents =  require('./logEvents') ;  <br>  <br>
+                                        
+                                        //  b- Importing the main class of node  Events from {events : Common Core Module class } that will be used in  extending  another custom class from it that will be  used it in extracting define of new object of event emiiter :  <br>   
+                                        <span class="one " > </span>   const EventEmitter =  require('events') ;  <br>  <br>
+                                                                            
+                                    </code>      
+                                  </li>   
+                              </ul> 
+                          </li>   <br><hr>  <br>     
+                          
+                          <li>  B] [Node Event]  defenition steps and procedures  section :  <br>
+                            <ul> 
+                              <li>   1] Extract a new class [EventEmitter] extended from the main imported variable from the [Events] the node core module  : <br>
+                                <code>  
+                                    <span  class ="one" > </span>  class Emitter extends  EventEmitter {} ;       <br>   
+                                </code>                              
+                              </li>  <br>
+
+                              <li>   2] Initializing/ Extracting a new object from the new extracted Class [Emitter]  : <br>
+                                <code>  
+                                    <span  class ="one" > </span>  class Emitter extends  EventEmitter {} ;       <br>   
+                                </code>    
+                              </li>   <br>  
+ 
+                              <li>   // 3] Main define/create the Node Event syntax =>  {myEmitter.on('eventNameVar' , callbackfunc(pars) )  ;}  <br>
+                                  <p>    by using the extracted object [myEmitter] and {on()} method process , as next code  :   <br>
+                                    <code>  
+                                      <span  class ="one" > </span>  myEmitter.on('log' ,  (msg , fileName) =>  logEvents(msg , fileName) );       <br>  
+                                    </code>
+                                  </p>  
+                              </li>   <br>  
+                            </ul>                             
+                          </li>    <br><hr>  <br>     
+                          
+                          
+                          <li>   C]  [Server configuration processes steps] section    :   <br>
+                            <ul>  
+                              <li>  1] Define the {port} to be used for connecting with the [localhost] OR with other custom node  server {3500}  :    <br>
+                                <span  class=one > </span>    const PORT = process.env.PORT || 3500 ;  <br>  
+                              </li> 
+
+                              <li>   2] Define the {public server} method of [serveFile] accroding to the detected [filePath] ,  [contentType] ,  [response]  =>   [for dynamic serving files procerssing   ]   :   <br>
+                                <span  class=one > </span> const serveFile = async( filePath ,  contentType ,   response )=> {   <br>  
+                                  <span  class= two > </span>  try { <br>  
+
+
+
+
+
+                              </li> 
+
+
+
+                            </ul> 
+
+
+                          
+                          </li>  
+
+
+
+
+                        </ol> 
+                     
                     </p>
                   </li>
                 </ol>                              
@@ -1452,194 +1607,13 @@
             <!-- ---------------------------------------------------------- -->
  
             <h1>  C] Practical exps of  [ Node Events ]  [-> wihtin in the  {index.js}  &  {logEvents.js}  ] :   </h1>
-               <!-- <p> File Node controling methods :     </p>
-              <ul>
-                <li> *- Importing/requiring the {} from [node core module] : <br>
-                  <code> 
-                    <span class=one> </span>  This is the [default file system] of the node core module :       <br>  
-                    <span class=one> </span> const fs = requrie('fs')  ;   <br>  
-                    
-                    <span class=one> </span>  This is the [promise async  file system] of the node core module :       <br>  
-                    <span class=one> </span> const fs = requrie('fs')  ;   <br>  
-
-                  </code> 
-                </li>   <br>
-
-                <li> *- Importing/requiring the desired current file's path {path} from [project files tree] : <br>
-                  <code> 
-                    <span class=one> </span> const path  = require('path') ;    <br>  
-                  </code> 
-                </li>   <br> 
-
-                <li> a- Main default methods of  file controling : <br>
-                    <ol>
-                      <li> 1- [Read from file] =>  using the {readFile()} method with parameters , extracted from the defined 'fs'  :    <br>
-                            <code> 
-                              <span class=one> </span> // using the {readFile} with assign the its parameter as [encodingSystem : 'utf8' , path: by using join  to  manual create the file path - to void differnt system path sytnax]  :    <br>  
-                          <span class=one> </span>  fs.readFile(  path  , encodingSystem ,   (err,  data ) => {  <br>  
-                            <span class=two> </span>   // 1- handling the catched error as conditional value  : <br>  
-                            <span class=two> </span>    if (err) throw err   <br> <br>  
-      
-                            <span class=two> </span>   // 2-  Handling the read data [by using console for example]  {using the [data] directly - incase of using endcoding paramater 'utf8'  -   } : <br>  
-                            <span class=two> </span>    console.log(data)     <br> <br>  
-      
-                            <span class=two> </span>   // 3-  Handling and print the [unCaught  exception error] , using {process.on()}  &  {process.exit()}  : <br>  
-                            <span class=two> </span>   process.on( "uncaughtException" ,   err  => { <br> 
-                              <span class=three> </span>   console.log(` uncaughtException is   :   ${err} ` ) ;  <br> 
-                              <span class=three> </span>   process.exit(1) ;  -> [ to stop the worlking of process  ]   <br> 
-                            <span class=two> </span> })     <br> <br>  
-      
-                          <span class=one> </span> }) <br>  
-                        </code> 
-                      </li> <br>   <br> <br>
-      
-                      <li> 2- [Write new content inside a file] =>  using the {writeFile()} method with parameters , extracted from the defined 'fs'  :    <br>
-                        <code> 
-                          <span class=one> </span> // using the {writeFile} with assign the its parameter as [encodingSystem : NOT needed due to we write not read  , path: by using join  to  manual create the file path - to void differnt system path sytnax]  :    <br>  
-                          <span class=one> </span>  fs.writeFile( path , 'text to be written  inside  the file '  ,   (err) => {  <br>  
-                            <span class=two> </span>   // 1- handling the catched error as conditional value  : <br>  
-                            <span class=two> </span>    if (err) throw err   <br> <br>  
-      
-                            <span class=two> </span>   // 2- Printing a confiramtion message if the proecess is done succedfuly : <br>  
-                            <span class=two> </span>    console.log(' Writing process  haas conpleted succesfuly ! ')     <br> <br>  
-      
-                            <span class=two> </span>   // 3-  Handling and print the [unCaught  exception error] , using {process.on()}  &  {process.exit()}  : <br>  
-                            <span class=two> </span>   process.on( "uncaughtException" ,   err  => { <br> 
-                              <span class=three> </span>   console.log(` uncaughtException is   :   ${err} ` ) ;  <br> 
-                              <span class=three> </span>   process.exit(1) ;  -> [ to stop the worlking of process  ]   <br> 
-                            <span class=two> </span> })     <br> <br>  
-      
-                          <span class=one> </span> }) <br>  
-                        </code> 
-                      </li>  <br> <br> <br>
-      
-      
-                      <li> 3- [Update/Append ( Adding new contents to the existed ) inside a file] =>  using the {appendFile()} method with parameters , extracted from the defined 'fs'  :    <br>
-                        <p> This method for updating a file's  contents by append new contents into the existed contents of certain existed file ,  OR create this  file - if it not existed - and  then append this contents into it </p>
-                        <code> 
-                          <span class=one> </span> // using the {appendFile} with assign the its parameter as [encodingSystem : NOT needed due to we write not read  , path: by using join  to  manual create the file path - to void differnt system path sytnax]  :    <br>  
-                          <span class=one> </span>  fs.writeFile(  path  ,  'text to be updating  the assigned  file by  '  ,   (err ) => {  <br>  
-                            <span class=two> </span>   // 1- handling the catched error as conditional value  : <br>  
-                            <span class=two> </span>    if (err) throw err   <br> <br>  
-      
-                            <span class=two> </span>   // 2- Printing a confiramtion message if the proecess is done succesfully : <br>  
-                            <span class=two> </span>    console.log('updating  process  has completed succesfully ! ')     <br> <br>  
-      
-                            <span class=two> </span>   // 3-  Handling and print the [unCaught  exception error] , using {process.on()}  &  {process.exit()}  : <br>  
-                            <span class=two> </span>   process.on( "uncaughtException" ,   err  => { <br> 
-                              <span class=three> </span>   console.log(` uncaughtException is   :   ${err} ` ) ;  <br> 
-                              <span class=three> </span>   process.exit(1) ;  -> [ to stop the worlking of process ]   <br> 
-                            <span class=two> </span> })    <br> <br>  
-                          <span class=one> </span> }) <br>  
-                        </code> 
-                      </li>   <br> <br> <br> 
-      
-                      <li> 4- [Rename a file ] =>  using the {rename()} method with 'path' parameter , extracted from the defined 'fs'  :    <br>
-                        <p> This method for change an existed file's name     </p>
-                        <code> 
-                          <span class=one> </span> // Using the  {rename()} on an existed file [with using a manual 'path' ] ] :    <br>  
-                          <span class=one> </span>  fs.rename( path with orignal file name  ,   path with new file name ) <br>  
-                        </code> 
-                      </li>   <br> <br> <br> 
-                      
-                      <li> 5- [Delete file]  =>  using the {unlink()} method with 'path' parameter  ,  extracted from the defined 'fs' :  <br>   
-                        <p>  Delete an existed file from project tree : </p>
-                        <code> 
-                          <span class=one> </span> // Using the  {unlink()} on an existed file [with using a manual 'path' ] ] :    <br>  
-                          <span class=one> </span>  fs.unlink( path of file  ) <br>  
-                        </code> 
-                      </li>                     
-                    </ol>
-                </li>  <br><br> 
-
-                <li> b-  Using the  Extracted  promises  [ (fs).promises ] {node core Module}  within [async-await]  : <br>
-                  <ol> 
-
-                    <li>  Netsted methods of the file controling  :   <br> 
-                        <p> using the  {fs.promises}  extracted from the main 'fs' -> will allow to use  Asynchrous promeises and   [try-catch]  with one nested script  function  including several methods -> to provide controled output , as the next expample; : <br>
-                          <code> 
-                            //  1-  importing the  requried as an extyeaced variable from  the [fs.promises]  : <br> 
-                              <span class="one"></span> fsPromises   = require('fs').promsies;     <br> <br>
-
-
-                            //  2- Define an async function with [async-await] that including all file's operations inside the  [try-catch] + nested  method   :
-                            
-                            <span class="one"></span> const fileOps = async () => {  <br>
-                              <span class="two"></span> try {   <br>
-                                <span class="three"></span> // a- Define a [data] variable as  a await value of [read file] method from the defined and imported [promise fs]   :  <br>    
-                                <span class="three"></span> const data = await fsPromises.readFile(  path.join(__dirname , 'files' ,  'text.txt' ) , 'utf8' ) ; <br> <br> 
-                          
-                                <span class="three"></span> // Printing the read data from the main file [text.txt] :    <br>
-                                <span class="three"></span> console.log('The original data contents from the first file is\n' , data , '\n=========================\n\n' ); <br>   
-                          
-                                <span class="three"></span> // b- Define another file process of await [write process] to write the read data from the previous process of read file into a new create file  : <br>   
-                                <span class="three"></span> await fsPromises.writeFile(  path.join(__dirname , 'files' ,  'textPromise.txt' )  ,  data) ;  <br> <br> 
-                               
-                                
-                                <span class="three"></span> // c- Define  a new file process of  appending contents on the previous file :   <br> 
-                                <span class="three"></span> await fsPromises.appendFile(  path.join(__dirname , 'files' ,  'textPromise.txt' )  ,  '\n\nNew content by using  {appendFile} promise method    '  ) ; <br> <br> 
-                          
-                                <span class="three"></span> // d- Define  a new file of  [rename ] process  of the previous file :    <br>  
-                                <span class="three"></span> await fsPromises.rename(  path.join(__dirname , 'files' ,  'textPromise.txt' )  ,  path.join(__dirname , 'files' ,  'PromiseComplete.txt' ) )  <br> <br> 
-                          
-                                <span class="three"></span>  // e- Define a new varaible  of read data from  the new created file's contents  using await of {readFile(}) method :   <br>  
-                                <span class="three"></span> const newData  = await fsPromises.readFile( path.join( __dirname , 'files' , 'PromiseComplete.txt' ) ,   'utf8' ) ; <br><br> 
-                                
-                                <span class="three"></span> // f- Printing the read data from the new  created  file [PromiseComplete.txt] : <br>
-                                <span class="three"></span> console.log('The new data contents from the new created file is\n'  ,    newData  , '\n=========================\n\n'  ); <br>   <br> 
-                                
-                                
-                                <span class="three"></span> // g- Deleting an existed file using {unlink()}  method  :   <br> 
-                                <span class="three"></span> await fsPromises.unlink(path.join(__dirname, 'files' ,  'text2.txt' )  )   <br>  <br> 
-                           
-                                <span class="three"></span> // Print a confirm message of the process  : <br>
-                                <span class="three"></span> console.log('The file "text2.txt"  has deleted successfully ! \n'    , '\n=========================\n\n'  ); <br>  
-                            
-                              <span class="two"></span> } catch (err) {  <br> 
-                                <span class="three"></span>   console.error(err);   <br>
-                              <span class="two"></span> }  <br>    
-                            <span class="one"></span>  }     <br> 
-                          </code>
-                            
-                        </p>
-                    </li>
-
-
-                  </ol>
-                
-                
-                
-                </li>  <br><br> 
-
-                <li> c- using streaming file controling methods  :    <br> 
-                  <p> to Partial controling with file's contents   [read , write]  :  <br>
-                  
-                    <code> 
-                        <span class="one"></span>   // 1- Define a importerd 'fs' from the [node core module]       :  <br>
-                        <span class="one"></span>    const fs = require('fs') ;  <br>   <br>  
-                                                  
-                        <span class="one"></span>   // 2- Define an extracted [file read stream] from 'fs'   :  <br>
-                        <span class="one"></span>    const rs = fs.createReadStream('./files/newText.txt' ,  {encoding:'utf8'}) ;    <br>   <br>  
-                          
-                        <span class="one"></span>  // 3-  Define an extracted [file write stream] from 'fs'   : <br>
-                        <span class="one"></span>  const ws = fs.createWriteStream('./files/newStream.txt') ;  <br>   <br>  
-                          
-                        <span class="one"></span>   // 4- Define a function of reading data comming from created read stream [rs] +   then using the  [write stream] to write its content in a new file :  <br>
-                        <span class="one"></span>  rs.on( 'data', (dataChunk) => { <br>
-                          <span class="two"></span> ws.write(dataChunk) ;  // passing through the obtained data from the stream read file into the write stream file   <br>  
-                        <span class="one"></span> })   <br>   <br>  
-                        
-                        <span class="one"></span> // 5- Shortcut method to add the content of the stream read file inside another new file  of write stream , using {pipe()} method   : <br>
-                        <span class="one"></span> rs.pipe(ws); <br>                         
-                    </code>  
-                  </p>
-                </li>
-              </ul>                 -->
+            <p> Building an ideal server using only [node.js] scirpts + attching the defined [event log]  to log all of the event  & error     </p> 
+             
             <hr> <br>  <hr> <br>            
             <!-- ----------------------------------------------------- -->        
            
 
-        <p>  Next lesson  =>  using  the {logEvents} in creating a [Node Web Server] </p> 
+        <p>  Next lesson  =>  using  the  Node server using [express.js]  server  framwork   </p> 
         
         <!-- --------------------------------------------------------------------- -->
         

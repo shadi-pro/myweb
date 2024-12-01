@@ -1,9 +1,10 @@
+// lesson 4 :  Building  a [Mode server]  +  [ Node events ] of [write logs] process in acertain  file   :
 
-// This is the main initialized file using the [node server] , and lncluding the main definition of the node events :
+// This is the main initialized file using the [node server] , and lncluding using  the main definition of the node events :
 
  // A] Importing Section  :
-  // 1] Importings required for creating  [Node Web Server ] :   
-    // a-  importing the {http} class from the  [node core common module]     :    
+  // 1] Importings required for creating  [Node Web Server] + other inner methods  :   
+    // a-  importing the {http} class from the [node core common module] {the main  claas rewuried for defining the server }     :    
     const http = require('http') ;
     
     // b-  importing the {path} class from the  [node core common module]     :    
@@ -16,17 +17,18 @@
     const fsPromises  = require('fs').promises ;
   // ---------------------------------------------------------------- 
 
-  // 2] Importings required for  [Node Event]   :   
-    // a- Importing the defined and exported {logEvents} function from the [logEvents.js] file :
+  // 2] Importings required for  [Node Event : logEvents}     :   
+    // a- Importing the defined and exported {logEvents} function from the [logEvents.js] file [to be ready to use inside the main event ] :
       const logEvents =  require('./logEvents') ;
 
-    // b- Importing the main class of Events from {events : Common Core Module class } that will be  used to exrtact another custom class from it :
+    // b- Importing the main class of Events from {events : Common Core Module class } that will be  used to extend  another
+    //  custom class from it that will be  used it in extracting define of new object of event emiiter :
       const EventEmitter =  require('events') ;
     
     
   //  -------------------------------------------------------------
   //  -------------------------------------------------------------
-// B] [Node Event] section :  
+// B] [Node Event]  [defenition steps and procedures]  section :  
  
   // 1] Extract a new class [EventEmitter] extended from the main imported variable from the [Events] the node core module  :
   class Emitter extends  EventEmitter {} ;
@@ -34,17 +36,17 @@
   // 2] Initializing/ Extracting a new object from the new extracted Class [Emitter] :
   const myEmitter  = new Emitter() ;  
 
-  // 3] Main define/create the Node Event syntax =>  myEmitter.on('eventNameVar' , callbackfunc(pars) )   ; 
+  // 3] Main define/create the Node Event syntax =>  {myEmitter.on('eventNameVar' , callbackfunc(pars) )}  :
   myEmitter.on('log' ,  (msg , fileName) =>  logEvents(msg , fileName) );      
 // ------------------------------------
 
 
-//  C] [Server configuration and processes] section :
-  // 1] Define the {port} to be used for connecting with the [localhost] OR with other custom node  server {3500}  :
+//  C] [Server configuration processes steps] section :
+  // 1] Define the {port(s)} to be used for connecting with the [localhost] OR with other custom node server {3500} :
    const PORT = process.env.PORT || 3500 ;
 
   
-    // 2] Define the {public server} method of [serveFile] accroding to the detected [filePath] ,  [contentType] ,  [response] :  
+  // 2] Define the {public server} method of [serveFile] accroding to the detected [filePath] ,  [contentType] ,  [response] :  
     const serveFile = async( filePath ,  contentType ,   response ) => {
       try {
 
@@ -55,12 +57,12 @@
         );
 
         // b- Parsing the value of [rawData] into a json format if the [contentType] ===  Application/json (json format ) :
-        const data  =  contentType === 'application/json' ? JSON.parse(rawData) : rawData  ;  
+        const data  =  contentType === 'Application/json' ? JSON.parse(rawData) : rawData  ;  
 
         // c- (after reading  the content type) : assgin/write the response's Head by the code of the {200: of the success connection }    [content-Type] of the response's head  with the parameter value  of {contentType} :
         response.writeHead( 
-          filePath.includes('404.html') ?  404  :  200  ,                   // => [Assign a conditional vlue of the code according to if the file path includes error type]
-          {'Content-Type' : contentType }
+          filePath.includes('404.html') ?  404  :  200  ,                  // => [Assign a conditional value of the code according to if the file path includes error type]
+          {'Content-Type' : contentType }                                  // => [ Assign the {Content-Type}  with the value of the pamrater of the (contentType) of  the  main {serveFile} fucniuon        ]
         ) ; 
         
         // d- assign the obtained data [conditional value] into the end process   :
@@ -72,7 +74,11 @@
         console.error(err) ;
         
         // Calling/Operating/Emitting the defined [log] event + assign an emitting message parameter  + assign the file to be written in {errLog.txt}  : 
-        myEmitter.emit('log' , `${err.name} :  ${err.message}` , 'errLog.txt' ); 
+        myEmitter.emit(     // Calling event customized for log error :    
+          'log' ,    // the event name assgined inisde the event object on() process  [myEmitter.on()]  
+          `${err.name} :  ${err.message}` ,   //  the (message) parameter value 
+          'errLog.txt'   //  the (fileName) parameter   
+        ); 
 
 
         //  Setting the of status code of [response] to the server error code value [500]  :
@@ -91,7 +97,11 @@
     console.log(req.url , req.method ) ;
 
     // Calling/Operating/Emitting the defined [log] event + assign an emitting message parameter  + assign the file to be written in {reqLog.txt}      : 
-    myEmitter.emit('log' , `${req.url}\t${req.method}` , 'reqLog.txt' ); 
+    myEmitter.emit(     // Calling event for main log  :
+      'log' ,     // the event name
+      `${req.url}\t${req.method}` ,  // the (message) parameter value 
+      'reqLog.txt'   // the (fileName) parameter value   
+    ); 
 
 
 
@@ -185,14 +195,14 @@
           break;
 
         default  : 
-          //serving the [404 page] , when the NON of the upper url path  cases is NOT existed ,  by calling the upper defined public method of the  serveFile    : 
+          //serving the public error [404 page] , when the NON of the upper url path  cases is NOT existed ,  by calling the upper defined public method of the  serveFile    : 
           serveFile( path.join(__dirname , 'views' , '404.html' ) , 'text/html' , res  );       
       }
     }  
   });
 
-  // 3] Launching the [Listen] process to the server [to be able to listen the request] :
-   server.listen(PORT , () => console.log(`Server running on port : ${PORT} `)   )
+  // 3] Launching the [Listen] process  of server [to be able to listen  its  request] :
+   server.listen(PORT , () => console.log(`Server running on port : ${PORT} `)  )
 
 
  // -------------------------------------------------------------------------

@@ -36,13 +36,13 @@ const { v4: uuid } = require('uuid');
 // --------------------------------------
 
 
-// B] Define a {Custom function}  [to be used inside an event method ] to be  usign  the both custom and core modules wihtin it :
+// B] Define a {Custom function} of the Event [to be used inside an event method ] to be  usign  the both custom and core modules wihtin it :
 const logEvents = async (message , logName) => {
   
   // 1- Define a variable of  the current data and time using the imported {format} :  
   const dateTime = `${format(new Date(), 'yyyyMMdd\tHH:mm:ss')}`;
 
-  // 2- Define a variable of the printing a  literal defiend  varialbes +  the  function parmater : 
+  // 2- Define a variable of the printing a  literal defined  variables +  the  function parameter : 
   const logItem = `${dateTime}\t ${uuid()} \t ${message}\n`;
 
   // 3-  Testing Print the defiend combined  variable   :
@@ -55,8 +55,8 @@ const logEvents = async (message , logName) => {
       await fsPromises.mkdir(path.join(__dirname, 'logs'));
     }
 
-    // b- Appending a new file into the file system using the [fsPromises] , and including  the [logItem]  variable upper defined : 
-    await fsPromises.appendFile(path.join(__dirname, 'logs' , logName ) , logItem);
+    // b- Appending/write the upper defined [logItem] variable inside a new log file into the file system using the [fsPromises] , and using the final  file path as recieved parameter [logName] when this event method is being called     : 
+    await fsPromises.appendFile(path.join(__dirname, 'logs' , logName ) , logItem ); 
 
   } catch (err) {
     console.error(err);
@@ -65,7 +65,7 @@ const logEvents = async (message , logName) => {
 // ---------------------------------------
 // ---------------------------------------
 
-// Exporting the defined {logEvents} function  => [to be able to use inside another file [index.js] wintin a event method      :  
+// Exporting the defined {logEvents} method  => [to be able to use inside another file [server.js] as a event method :  
 module.exports = logEvents;
  
 
