@@ -1513,101 +1513,266 @@
                 <!-- ----------------------------------------------------------                 -->
                   
                   <li> Third / {server.js} file   :   <br>      
-                    <p> This the file of [server.js] , and will be main server defenition and confiurations steps    +   including  Importing the defined method of [ logEvents]  from [logEvent.js] file to use it  as  the event's method  ,  according to the  following  [practical] steps  : <br>                      
-                        <ol>  
-                          <li>   A]  Importing Section :     <br>  
-                              <ul> 
-                                <li> 1] Importings required for creating  [Node Web Server] + other inner methods :    <br>
-                                    <code> 
-                                      //  a-  importing the {http} class from the [node core common module] {the main  claas rewuried for defining the server }  :  <br>   
-                                      <span class="one " > </span>    const http = require('http') ;  <br>    <br>
-
-                                      //  b-  importing the {path} class from the  [node core common module]   :  <br>   
-                                      <span class="one " > </span>    const path = require('path') ;   <br>   <br>
-
-                                      //   c-  importing the {fs} class from the  [node core common module]   :  <br>   
-                                      <span class="one " > </span>     const fs = require('fs') ;   <br>   <br>
-
-                                      //  d-  importing the {fs Promises} class from the  [node core common module]    :  <br>   
-                                      <span class="one " > </span>  const fsPromises  = require('fs').promises ;  <br>   <br>
-                                  </code>      
-                                </li>   <br>      <br>  
-
-                                <li>  2] Importings required for  [Node Event : logEvents}     :   <br>
-                                    <code> 
-                                        // a- Importing the defined and exported {logEvents} function from the [logEvents.js] file [to be ready to use inside the main event ]     :  <br>   
-                                        <span class="one " > </span>    const logEvents =  require('./logEvents') ;  <br>  <br>
-                                        
-                                        //  b- Importing the main class of node  Events from {events : Common Core Module class } that will be used in  extending  another custom class from it that will be  used it in extracting define of new object of event emiiter :  <br>   
-                                        <span class="one " > </span>   const EventEmitter =  require('events') ;  <br>  <br>
-                                                                            
-                                    </code>      
-                                  </li>   
-                              </ul> 
-                          </li>   <br><hr>  <br>     
-                          
-                          <li>  B] [Node Event]  defenition steps and procedures  section :  <br>
+                    <p> This the file of [server.js] , and will be main server defenition and confiurations steps  +  including  Importing the defined method of [ logEvents]  from [logEvent.js] file to use it  as  the event's method  ,  according to the  following  [practical] steps  : <br> 
+                      <ol>  
+                        <li>   A]  Importing Section :     <br>  
                             <ul> 
-                              <li>   1] Extract a new class [EventEmitter] extended from the main imported variable from the [Events] the node core module  : <br>
-                                <code>  
-                                    <span  class ="one" > </span>  class Emitter extends  EventEmitter {} ;       <br>   
-                                </code>                              
-                              </li>  <br>
+                              <li> 1] Importings required for creating  [Node Web Server] + other inner methods :    <br>
+                                  <code> 
+                                    //  a-  importing the {http} class from the [node core common module] {the main  claas rewuried for defining the server }  :  <br>   
+                                    <span class="one " > </span>    const http = require('http') ;  <br>    <br>
 
-                              <li>   2] Initializing/ Extracting a new object from the new extracted Class [Emitter]  : <br>
-                                <code>  
-                                    <span  class ="one" > </span>  class Emitter extends  EventEmitter {} ;       <br>   
-                                </code>    
-                              </li>   <br>  
- 
-                              <li>   // 3] Main define/create the Node Event syntax =>  {myEmitter.on('eventNameVar' , callbackfunc(pars) )  ;}  <br>
-                                  <p>    by using the extracted object [myEmitter] and {on()} method process , as next code  :   <br>
-                                    <code>  
-                                      <span  class ="one" > </span>  myEmitter.on('log' ,  (msg , fileName) =>  logEvents(msg , fileName) );       <br>  
-                                    </code>
-                                  </p>  
-                              </li>   <br>  
-                            </ul>                             
-                          </li>    <br><hr>  <br>     
-                          
-                          
-                          <li>   C]  [Server configuration processes steps] section    :   <br>
-                            <ul>  
-                              <li>  1] Define the {port} to be used for connecting with the [localhost] OR with other custom node  server {3500}  :    <br>
-                                <span  class=one > </span>    const PORT = process.env.PORT || 3500 ;  <br>  
-                              </li> 
+                                    //  b-  importing the {path} class from the  [node core common module]   :  <br>   
+                                    <span class="one " > </span>    const path = require('path') ;   <br>   <br>
 
-                              <li>   2] Define the {public server} method of [serveFile] accroding to the detected [filePath] ,  [contentType] ,  [response]  =>   [for dynamic serving files procerssing   ]   :   <br>
-                                <span  class=one > </span> const serveFile = async( filePath ,  contentType ,   response )=> {   <br>  
-                                  <span  class= two > </span>  try { <br>  
+                                    //   c-  importing the {fs} class from the  [node core common module]   :  <br>   
+                                    <span class="one " > </span>     const fs = require('fs') ;   <br>   <br>
 
+                                    //  d-  importing the {fs Promises} class from the  [node core common module]    :  <br>   
+                                    <span class="one " > </span>  const fsPromises  = require('fs').promises ;  <br>   <br>
+                                </code>      
+                              </li>   <br>      <br>  
 
-
-
-
-                              </li> 
-
-
-
+                              <li>  2] Importings required for  [Node Event : logEvents}     :   <br>
+                                  <code> 
+                                      // a- Importing the defined and exported {logEvents} function from the [logEvents.js] file [to be ready to use inside the main event ]     :  <br>   
+                                      <span class="one " > </span>    const logEvents =  require('./logEvents') ;  <br>  <br>
+                                      
+                                      //  b- Importing the main class of node  Events from {events : Common Core Module class } that will be used in  extending  another custom class from it that will be  used it in extracting define of new object of event emiiter :  <br>   
+                                      <span class="one " > </span>   const EventEmitter =  require('events') ;  <br>  <br>
+                                                                          
+                                  </code>      
+                                </li>   
                             </ul> 
+                        </li>   <br><hr> <br>  <br>     
+                        
+                        <li>  B] [Node Event]  defenition steps and procedures  section :  <br>
+                          <ul> 
+                            <li>   1] Extract a new class [EventEmitter] extended from the main imported variable from the [Events] the node core module  : <br>
+                              <code>  
+                                  <span  class ="one" > </span>  class Emitter extends  EventEmitter {} ;       <br>   
+                              </code>                              
+                            </li>  <br>
+
+                            <li>   2] Initializing/ Extracting a new object from the new extracted Class [Emitter]  : <br>
+                              <code>  
+                                  <span  class ="one" > </span>  class Emitter extends  EventEmitter {} ;       <br>   
+                              </code>    
+                            </li>   <br>  
+
+                            <li>   3] Main define/create the Node Event syntax =>  {myEmitter.on('eventNameVar' , callbackfunc(pars) )  ; }  <br>
+                                <p>    by using the extracted object [myEmitter] and {on()} method process , as next code  :   <br>
+                                  <code>  
+                                    <span  class ="one" > </span>  myEmitter.on('log' ,  (msg , fileName) =>  logEvents(msg , fileName) );       <br>  
+                                  </code>
+                                </p>  
+                            </li>   <br>  
+                          </ul>                             
+                        </li>    
+                        <br><hr>   <br> <br>     
+                        
+                        
+                        <li>  C]  [Server configuration processes and procedures steps] section    :   <br>
+                          <ul>  
+                            <li> 1] Define the {port(s)} to be used for connecting with the [localhost] OR with other custom node  server {3500}  :   <br>
+                              <code>
+                                <span  class=one > </span>    const PORT = process.env.PORT || 3500 ;  <br>  
+                              </code>
+                            </li>    <br> <br> 
+
+                            <li> 2] Define the {public server} method of [serveFile] accroding to the detected [filePath] ,  [contentType] ,  [response]  =>   [for dynamic serving files procerssing   ]   :   <br>
+                              <span  class=one > </span> const serveFile = async( filePath ,  contentType ,   response )=> {   <br>  
+                                <span  class= two > </span>  try { <br>  
+                                
+                                  <span  class= three> </span>  //  a- Define a [rawData] as raw data that has been read content from [the file with detected path [filePath]]  :    <br>
+                                  <span  class= three > </span> const rawData =  await fsPromises.readFile(  <br> 
+                                    <span  class= four> </span>    filePath ,    <br> 
+                                    <span  class= four> </span>    !contentType.includes('image') ? 'utf8' : ''   //  => [conditanional assignment  of scripting code value  accroding to the {contentType} value] (to include the 'image' scrtipt code type   ) <br> 
+                                  <span  class= three > </span> );  <br>  <br>    
+                        
+                                  <span  class= three > </span>  // b- define the [data]  by Parsing the value of [rawData] into a json format if the [contentType] ===  Application/json (to obtain the  json format ) :  <br>  
+                                  <span  class= three > </span> const data  =  contentType === 'Application/json' ? JSON.parse(rawData) : rawData  ; <br> <br>   
+
+                                  <span  class= three > </span>  // c- (after reading  the content type) : assgin/write the response's Head by the code of the {200: of the success connection }    [content-Type] of the response's head  with the parameter value  of {contentType} :  <br>  
+                                  <span  class= three > </span>  response.writeHead(  <br> 
+                                    <span  class= four > </span>   filePath.includes('404.html') ?  404  :  200  ,  // => [Assign the reesponse code  according to  a conditinoal value of the file path includes of he [404.html ] extesnion ]   <br> 
+                                    <span  class= four > </span>   {'Content-Type' : contentType }  // => [ Assign the {Content-Type}  property bt the value of the parameter of the (contentType)  that assinged inside the  {serveFile} function ] <br> 
+                                  <span  class= three > </span> )  ;   <br>
+
+                                  
+                                  <span  class= three > </span> // d- Ending  the {response} by using the [end()] method + assigning the obtained data as [conditional value] into the end process :        
+                                  <span  class= three > </span> response.end(   <br>
+                                    <span  class= four > </span>contentType === 'Application/json' ? JSON.stringify(data) : data  // =>  [setting the json stringify data incase of json type , or the data as it is defined    ] 
+                                  <span  class= three > </span> ) <br> <br>
 
 
+                                <span  class= two > </span>   catch (err ) {  <br>  
+
+                                  <span  class= three > </span>  //  a- testing the printing error :   <br>
+                                  <span  class= three > </span> console.error(err) ;  <br> <br>
+
+                                  <span  class= three > </span> //  b-  [ write the error log ] ->  by Calling/Operating/Emitting the defined [log] event + assign an emitting message parameter  + assign the file to be written in {errLog.txt}   :  <br>       
+                                  <span  class= three > </span> // [Calling event customized for log error] -> <br>       
+                                  <span  class= three> </span> Calling/Operating/Emitting the defined [log] event + assign an emitting message parameter  + assign the file to be written in {errLog.txt}  : <br>
+                                  <span  class= three > </span>  myEmitter.emit(       <br>   
+                                    <span  class= four > </span> 'log' ,    // the event name that has been assigned inisde the event object on() process [myEmitter.on()]  <br>
+                                    <span  class= four > </span> `${err.name} :  ${err.message}` ,   //  the (message) parameter value   <br>  
+                                    <span  class= four > </span> 'errLog.txt'   //  the (fileName) parameter  <br>     
+                                  <span  class= three > </span> );  <br>     <br>   
                           
-                          </li>  
+
+                                  <span  class= three > </span> // c- Setting the of status code of [response] by the code of server error code value [500]  :  <br>
+                                  <span  class= three > </span>  response.statusCode =  500 ;    // => [Error responding code ]  <br> 
+                            
+                                  <span  class= three > </span> // d- Ending  the response by using the [end()] method   :   <br>   
+                                  <span  class= three > </span> response.end(); <br>
+
+                                <span  class= two  > </span > }   <br>
+                              <span  class= one  > </span > }   <br>
+
+                            </li> <br> <br>  
+
+                            <li> 3]  [Create/define the main server method]  [minimal server] by Define the {server} as extracted [createServer] from the imported [http] 
+                                , and assign both of the [req: request && res: response ] as callback function's  parameters  :  <br> 
+                                <span  class=one > </span> const server  = http.createServer((req, res)  => {   <br>
+
+
+                                <span  class=two  > </span> // a-  Testing  Print the value of {request url} & {request method} of the sent request :  <br>
+                                <span  class=two  > </span> console.log(req.url , req.method ) ;  <br> <br> 
+                            
+                                  
+                                <span  class=two  > </span> // b- [ write the default log ] ->   by Calling/Operating/Emitting the defined [log] event + assign an emitting message parameter  + assign the file to be written in {reqLog.txt}  :  <br>
+                                <span  class=two  > </span>  myEmitter.emit(  <br>   
+                                  <span  class=three  > </span> 'log' ,     // assign the value of first parameter of the event name assgined inisde the event object on() process  [myEmitter.on()]  <br>   
+                                  <span  class=three  > </span> `${req.url}\t${req.method}` ,  // assign the value the second parameter of (message) parameter value <br>
+                                  <span  class=three  > </span> 'reqLog.txt'    // assign the value  the third parameter of the (fileName)    <br>
+                                <span  class=two  > </span>   );  <br>   <br>
+                                
+
+                                <span  class=two  > </span>   // c-  Define the [extension]  of the returned [url]'s extension of request(req) ,  to figure out the type of the page requested using the switch  :  :  <br>
+                                <span  class=two  > </span>   const extension  = path.extname(req.url) ;   <br>  <br> 
+                          
+                              
+                                <span  class=two  > </span> // d-  Define a variable to prohibited cases retunred from the current page's file extension  => [will be used as te value of  parameter value of the {serverfile} method ] :    <br>
+                                <span  class=two  > </span> let contentType ;    <br>
+                            
+                                <span  class=two  > </span> // e-  Setting the {contentType} upper variable's value with the conditional   value  of  according to the returned extension value -> to be set inside the another method :    <br>
+                                <span  class=two  > </span> switch (extension)  {   <br>
+                                  <span  class=three  > </span>   case '.css' :   <br>
+                                    <span  class=four  > </span> contentType =  'text/css' ;   <br> 
+                                    <span  class=four  > </span> break ;  <br> <br> 
+                                  
+                                  <span  class=three  > </span> case '.js' :   <br>
+                                    <span  class=four  > </span>  contentType =  'text/javascript' ;    <br>
+                                    <span  class=four  > </span> break ;  <br>
+                                  
+                                  <span  class=three  > </span> case '.json' :   <br>
+                                      <span  class=four   > </span> contentType =  'application/json' ;   <br>
+                                      <span  class=four  > </span>  break ;  <br>
+                                  
+                                  <span  class=three  > </span> case '.jpg' :  <br>   
+                                    <span  class=four  > </span> contentType =  'image/jpeg' ;   <br>
+                                    <span  class=four  > </span> break ;  <br>
+                                  
+                                  <span  class=three  > </span> case '.png' :    <br>
+                                    <span  class=four   > </span> contentType =  'image/png' ;   <br>  
+                                    <span  class=four   > </span> break ; <br>
+                                  
+                                  <span  class=three  > </span> case '.txt' :   <br>
+                                      <span  class=four   > </span> contentType =  'text/plain' ;   <br>
+                                      <span  class=four   > </span> break ;  <br>
+                                    
+                                  <span  class=three  > </span> //  the default case  of having '/'  only OR 'html' extension : <br>
+                                    <span  class=four  > </span> default :     <br>
+                                    <span  class=four  > </span> contentType =  'text/html' ;   <br>
+                                <span  class=  two  > </span>   }  <br><br>
+        
+
+                                <span  class= two  > </span> // f- Setting the {file path  : to be used in the {servefile} method as the value of hte parmeter of the [filePath] } <br>
+                                  <span  class= three> </span>  // with conditional value according to the returned value of the [contentType] using the (chained conditional method statement)  : <br>  
+                                  <span  class= three> </span> let filePath  =   <br>    
+                                    <span  class= four > </span> contentType === 'text/html' && req.url === '/' <br>  
+                                      <span  class= five   > </span> ? path.join(__dirname , 'views', 'index.html') <br>
+                                      <span  class= five   > </span> : contentType === 'text/html' && req.url.slice(-1) === '/'  <br>
+                                        <span  class= six   > </span> ? path.join(__dirname , 'views', req.url ,  'index.html')   <br>
+                                        <span  class= six   > </span> : contentType === 'text/html'  <br> 
+                                          <span  class= seven > </span> ? path.join(__dirname , 'views', req.url  )   <br>
+                                          <span  class= seven > </span>  : path.join(__dirname , req.url ) ;   // [ set the path with returned specified file  ]  <br>   <br>
 
 
 
+                                <span  class= two  > </span> // g- Adding [extenion of '.html' ] to the filepath in case a of  {inner page path} [incase there no extension returned and last charchter is Not equal '/' ] :   <br>
+                                <span  class= two  > </span> // this will make (adding the .html  extension to the last of the requesst url) is not required : <br>
+                                <span  class= two  > </span> if (!extension && req.url.slice(-1) !==  '/') filePath += '.html' ;   <br>
+                                
+                              
+                              
+                                <span  class= two  > </span>  // h- [ Checked if the returned file path is existed ] by  Define a variable of the  existaned file imported from the file system form the 'fs' and assing the [filePath] at its paramnter  :   <br>
+                                <span  class= two  > </span>   const fileExists =  fs.existsSync(filePath) ;   // =>   [this will return a boolean value ]  <br>
 
-                        </ol> 
-                     
+
+
+                                <span  class= two  > </span> // i- According to the Checked value of the [fileExists] =>  <br>  
+                                  <span  class= three  > </span>  /// => i/1- implement the Serving file procedures  <br>  
+                                  <span  class= three  > </span>  /// => i/2- Or implement Error handling procedures    : <br>  <br> 
+
+                                <span  class= two  > </span> if  (fileExists)  {  <br>  
+                                  <span  class= three  > </span> // i/1  Serving the file procedures =>  by calling the defined public method of [servefile()]   and assign all pamrameters : <br>  
+                                  <span  class= three  > </span> serveFile( filePath , contentType  , res ); <br>   <br>
+                        
+                                <span  class= two   > </span> }  else {     <br>
+                                  <span  class= three  > </span> // i/2 Error page handling procedures  of one of the next type  : <br>
+                                    <span  class= four  > </span> // [404] =>  Serving the [404] error page  <br>  
+                                    <span  class= four  > </span> // [301] =>  Serving the Redirecting  <br>
+                        
+                        
+                                  <span  class= three  > </span> // testing printing of the obtained error : <br>   
+                                  <span  class= three  > </span> console.log( path.parse(filePath) ) ;  <br>    <br>  
+                                
+                                  <span  class= three  > </span> // switch the path value and assign [filePath] as the parameter  => [to detect which page error type to be represented ]  : <br>     
+                                  <span  class= three  > </span> switch ( path.parse(filePath).base ) {  <br>
+                                    <span  class= four > </span> case 'old-page.html' : <br> 
+                                      <span  class= five > </span> //  redirect into  [new-page.html] page when node url is  'old-page.html' => by  Assign the [res] with  301 redirection code & assign specific header value of  '/new-page.html'  : <br>
+                                      <span  class= five   > </span>   res.writeHead( 301,  {'Location' :  '/new-page.html' });  <br> <br>
+                                
+                                      <span  class= five   > </span> // ending the {res} :  <br>
+                                      <span  class= five   > </span> res.end() ; <br>
+                                      <span  class= five   > </span>  break;   <br>  <br>
+                        
+                                    <span  class= four > </span> case 'www-page.html' :   <br>
+                                      <span  class= five    > </span> //  redirect into  [index.html] home page when node url is  'www-page.html' => by  Assign the [res] with  301 redirection code & assign specific header value of  '/'  :  <br>
+                                      <span  class= five  > </span>    res.writeHead( 301, {'Location' :  '/' } ) ; <br>  <br>
+                                  
+                                      <span  class= five  > </span> // ending  the  {res} : <br>
+                                      <span  class= five  > </span> res.end() ;  <br>
+                                      <span  class= five  > </span> break; <br>
+                        
+                                    <span  class= four  > </span> default  :  <br>
+                                      <span  class= five  > </span> // Serving the public error [404 page] , when the NON of the upper url path  cases is NOT existed ,  by calling the upper defined public method of the  serveFile : <br> 
+                                      <span  class= five  > </span> serveFile( path.join(__dirname , 'views' , '404.html' ) , 'text/html' , res  ); <br>
+                                  <span  class= three  > </span>  }  <br>    
+                                <span  class= two  > </span> }   <br>
+                              <span  class= one  > </span> }); <br>
+                            </li>  <br><br>
+
+                            <li> 4] Launching the [Listen] process  of server [to be able to listen  its  request] :  <br>    
+                              <code> 
+                                  <span  class="one "> </span>     server.listen(PORT , () => console.log(`Server running on port : ${PORT} `)  )   <br>
+                              </code>
+                            </li>  
+
+                          </ul>                           
+                        </li> 
+                        <br><hr>  <br>     
+                      </ol> 
                     </p>
                   </li>
                 </ol>                              
             </p>
             <!-- ---------------------------------------------------------- -->
  
-            <h1>  C] Practical exps of  [ Node Events ]  [-> wihtin in the  {index.js}  &  {logEvents.js}  ] :   </h1>
-            <p> Building an ideal server using only [node.js] scirpts + attching the defined [event log]  to log all of the event  & error     </p> 
+            <h1>  C] Practical exps of    [building a Node Server] with using the defined [ Node Events ]  [-> wihtin in the  {index.js}  &  {logEvents.js}  ] :   </h1>
+            <p> Building an ideal server using only [node.js] scirpts + attaching the defined [event log]  to log all of the event  & error     </p> 
              
             <hr> <br>  <hr> <br>            
             <!-- ----------------------------------------------------- -->        
@@ -1907,3 +2072,6 @@
 </body>
 
 </html>
+
+
+ 
