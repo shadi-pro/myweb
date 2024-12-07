@@ -711,72 +711,44 @@
                               </code>
                             </li>    <br> <br> 
 
- 
+                            <!-- im here >>>>>>>>>>>>   -->
                             <li> 2]  Define the {app} as extracted variable from the defined express  [instead of the   {server} defined variable ]  :   <br>
                               <code>
-                                <span  class=one > </span>    const  app = express() ;  <br>  
+                                
+                                <span  class=one > </span>    const PORT = process.env.PORT || 3500 ;  <br>  
                               </code>
                             </li>    <br> <br> 
 
 
-                            <li> 3] Define the main routes of the main node server  within  the  express framework  :    <br>
-                                <p> there  are  (2)  method to define the route with in node wiht the [express.js] :   <br>
-                                  <ol> 
-                                    <li>  [First method] :  define the route with single return callback function   :  <br>  
-                                        <p> by using  the main  default parmaters of  node server [ res, req ] , as the next example  :  <br>
-                                          <code> 
-                                            <span class=one> </span>    res.get( '/request url icluding regular expressions' , (res , req )   => {   <br>
-                                                <span class=two > </span>   // express node methods     <br>   
-                                            <span class=one> </span> }  )    <br>
-                                          </code >                                      
-                                        </p>
-                                    </li>  <br>  <br>
-
-                                    <li>  [Second  method] :  define the route with several chained return of callback functions :  <br>  
-                                        <p> by returuning several calback functions defined inside this  route definition , and this method has type include (2)  inner methods   , as  following    :  <br>
-                                            <ul> 
-                                              <li> a- chained  several  inner defined  callback functions with several rocedures  for each callback function  ( must use the built-in method of {next()} as parameter ) , as the next example :    <br>
-                                                <code> 
-                                                  <span class=one> </span>    res.get( '/request url icluding regular expressions   ' , (res , req , next  )   => {   <br>
-                                                      <span class=two > </span>   //  procedure  1  by using one of the sent paremeters such as :   [res.send(  'text value  '  ) ;  ]  <br>   
-                                                      <span class=two > </span>   next() ;  => [  using  this mehod  allow to move to  go the next   procedurs    ]       <br>   
-                                                  <span class=one> </span>  } , (req , res )  => {  => [we not usign  the next here ,  becsuase the next procedu is the last  ]  <br> 
-                                                    <span class=two > </span>   //  procedure  2  by using one of the sent paremeters such as :   [res.sendFile ( path.join(__dirname ,  'folder'  ,  'filename ' ) ) ;  ]  <br>      
-                                                  <span class=one> </span>  }     )    <br>
-                                                </code >                                                                                    
-                                              </li>  <br>  <br>
-
-
-                                              <li> b- chained calling outer several functions as array of the parameters of the main  route , as the next example :   <br>
-                                                <code> 
- 
-                                                  // 1- Define a frist single outer function [using the next parameter  ] :   <br>
-                                                  <span class=one> </span>   const  one  =   (res , req , next ) => {   <br>
-                                                      <span class=two > </span>   // procedure ;     <br>   
-                                                  <span class=one> </span> }  )    <br>
-
-                                                  // 2- Define a second single outer function  [using the next parameter ] :   <br>
-                                                  <span class=one> </span>   const  two  =   (res , req , next ) => {   <br>
-                                                      <span class=two > </span>   // procedure ;     <br>   
-                                                  <span class=one> </span> }  )    <br>
-
-                                                  // 3- Define a third single outer function   [not using  the  next - due to this is the last  function    - ]  :   <br>
-                                                  <span class=one> </span>   const   three  =   (res , req ) => {   <br>
-                                                      <span class=two > </span>   // procedure ;     <br>   
-                                                  <span class=one> </span> }  )    <br>
-
-                                                  // 4- Define a main route that calling all defiend upper functions as parmeters (without using a  callback ro return  ) :   <br>
-                                                <span class=one> </span>    res.get('/req url value'  ,  [ one , two , three ]  )  ; <br>     
-                                              </li>
-                                            </ul>
-                                        </p>
-                                    </li>  <br>
-                                  </ol>
-                                </p>                          
+                            <li> 3] Define the main route of the [index page : '/'] using the {get} method on the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :   :   <br>
+                                <ul> 
+                                  <li>  a- Define the main route of the [index page : '/'] using the {get} method on the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :     <br>
+                                    <code>
+                                      <span  class=one > </span>     <br>  
+                                    </code>                                   
+                                  </li>    
+                                  
+                                  <li> 
+                                    
+                                  </li>    
+                                  
+                                  <li>
+                                    
+                                  
+                                  
+                                  </li>    
+                                
+                                
+                                
+                                
+                                </ul> 
                             </li>    <br> <br> 
 
- 
-                            <li> 4] Launching the [Listen] process  of server [to be able to listen its request]  ->  [with using the app instead of the server ]:  <br>    
+
+                            <li>    []     </li>
+
+
+                            <li> 5] Launching the [Listen] process  of server [to be able to listen  its  request]  ->  [wiht using hte app instead of  the server ]:  <br>    
                               <code> 
                                   <span  class="one "> </span>     app.listen(PORT , () => console.log(`Server running on port : ${PORT} `)  )   <br>
                               </code>
