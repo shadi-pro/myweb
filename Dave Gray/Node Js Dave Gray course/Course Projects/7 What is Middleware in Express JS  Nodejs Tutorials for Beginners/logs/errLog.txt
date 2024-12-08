@@ -1,0 +1,17 @@
+20241128	19:50:57	 03d581d3-5981-4d2e-a48a-62c7f91f794a 	 TypeError :  fsPromises.readFil is not a function
+20241128	19:51:19	 286c3f14-5ee6-45ae-a551-f89edb248840 	 TypeError :  fsPromises.readFil is not a function
+20241130	17:40:43	 0e7d536d-6735-4120-a4a8-ef1ecb8d99cf 	 TypeError :  The "chunk" argument must be of type string or an instance of Buffer or Uint8Array. Received an instance of Object
+20241130	17:41:09	 b697b518-99cd-4dac-9c6a-91a21c301ff3 	 TypeError :  The "chunk" argument must be of type string or an instance of Buffer or Uint8Array. Received an instance of Object
+20241130	17:43:01	 9a0dbb01-5688-43a1-92e1-9f0e211c8b04 	 TypeError :  The "chunk" argument must be of type string or an instance of Buffer or Uint8Array. Received an instance of Object
+20241130	17:43:11	 fd2c0ef6-628e-483e-afea-813de7f56af9 	 TypeError :  The "chunk" argument must be of type string or an instance of Buffer or Uint8Array. Received an instance of Object
+20241130	17:43:33	 7344ba1f-e997-41ac-a2b7-88395cfe4932 	 SyntaxError :  Unexpected token [ in JSON at position 9
+20241130	17:43:55	 7d99ae07-6abf-43a4-b8a2-43c9be164e82 	 SyntaxError :  Unexpected token , in JSON at position 79
+20241130	17:44:06	 6b3597ca-b670-4b9e-955c-bc3c802db0e4 	 SyntaxError :  Unexpected token { in JSON at position 9
+20241130	17:44:45	 c0481d75-592b-49e0-a35e-eaa7543c6d34 	 SyntaxError :  Unexpected token } in JSON at position 87
+20241130	17:44:47	 6e42cf49-9ccc-4882-8ff9-baf0a53bbb14 	 SyntaxError :  Unexpected token } in JSON at position 87
+20241130	17:46:04	 b97153bf-c839-49e3-8792-e4e33c6bff88 	 SyntaxError :  Unexpected token } in JSON at position 101
+20241130	17:47:00	 3880b2fa-fe7e-489c-bcdf-95678963c9b6 	 SyntaxError :  Unexpected token = in JSON at position 15
+20241130	17:47:49	 a0c2485f-da67-4fdf-a9c6-20091921e56b 	 TypeError :  The "chunk" argument must be of type string or an instance of Buffer or Uint8Array. Received an instance of Object
+20241130	17:48:51	 78c0fdac-0df7-49e9-964c-e213ed6c557a 	 TypeError :  The "chunk" argument must be of type string or an instance of Buffer or Uint8Array. Received an instance of Object
+20241130	17:48:58	 e37eb61f-10af-45b8-bd61-bae1edd088e3 	 TypeError :  The "chunk" argument must be of type string or an instance of Buffer or Uint8Array. Received an instance of Object
+20241130	17:49:13	 b3ac14ec-4c34-44ca-abe2-c06b6a30f1d7 	 TypeError :  The "chunk" argument must be of type string or an instance of Buffer or Uint8Array. Received an instance of Object
