@@ -54,3 +54,16 @@
 20241204	21:16:09	 c4c6b778-2fe7-4154-93df-23acb6540914 	 /old.html	GET
 20241204	21:16:16	 76d0b344-4bd2-49b8-bb04-2d0d46448a4f 	 /new-page.html	GET
 20241204	21:16:16	 765083c4-1f26-49c0-9fe9-52337bacc254 	 /img/1.jpg	GET
+20241210	16:55:25	 14acb6e9-e223-4c82-ad3e-c9a42530eeec 	  GET 	 undefined 	  /new-page.html 
+20241210	16:55:25	 9338f9b9-9d3e-4836-8a04-bd6d135aa0f3 	  GET 	 undefined 	  /css/style.css 
+20241210	16:55:25	 9b5dfb14-0fb8-4ffc-a90d-41de03242650 	  GET 	 undefined 	  /new-page.html 
+20241210	17:17:48	 c0f601d0-7ed7-4e22-8b9f-084a22d200f2 	  GET 	 undefined 	  / 
+20241210	17:17:49	 bd6c6dd5-c332-4d9d-88ae-55ec751d38ea 	  GET 	 undefined 	  /css/style.css 
+20241210	17:17:55	 d6fa65f3-c645-420e-bb1d-a97be1afb53e 	  GET 	 undefined 	  /css/style.css 
+20241210	17:18:31	 2ce7dcdb-c68a-45da-88e4-4b1031ca4aa1 	  GET 	 undefined 	  /index.html 
+20241210	17:18:32	 4ddc0bb1-8fa9-4f14-a438-42648887f27d 	  GET 	 undefined 	  /css/style.css 
+20241210	17:18:48	 d8168e2c-1814-4d37-82f9-925100f6e07b 	  GET 	 undefined 	  /new-page.html 
+20241210	17:18:49	 2ce9edc4-d80c-4e5c-ada4-a372132710b7 	  GET 	 undefined 	  /css/style.css 
+20241210	17:18:49	 9b82885a-b274-4c89-b0d4-35f7a87c59d8 	  GET 	 undefined 	  /new-page.html 
+20241210	17:24:07	 88467826-3b1f-42f6-8a5c-37dfa700f391 	  OPTIONS 	 https://www.google.com 	  / 
+20241210	17:24:07	 a097d92b-228b-4863-a436-5434d798f967 	  GET 	 https://www.google.com 	  / 

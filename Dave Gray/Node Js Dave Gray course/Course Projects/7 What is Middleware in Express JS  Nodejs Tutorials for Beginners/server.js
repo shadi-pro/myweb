@@ -15,11 +15,22 @@
     
     // 2] importing the {path} class from the  [node core common module]     :    
     const path = require('path') ;
-      
-  //  -------------------------------------------------------------
+
+    // 3] importing the {cors} library from the  [cors] requried to use the [third-party middleware] type       :    
+    // const cors = require('cors') ;
+
+  // 4] Importing {logger} defined and exported function from the {logEvents.js} file to be used  here inside express method - instead of defien the custommiddleware here    -  :
+    const {logger} = require('./middleware/logEvents') ;
+  
+   // 4] Importing {logEvents} defiend and exported function from  the {logEvents.js} file to be here int  the [server.js]     :
+    // const logEvents = require('./middleware/logEvents') ;
+ 
+
+ 
+  //    -------------------------------------------------------------
   //  -------------------------------------------------------------
  
-//  B] [Express Server configuration processes steps] section :
+//  B] [Express Server public configuration processes steps] section :
   
   // 1] Define the { Port(s) } to be used for connecting with the [localhost] OR with other custom node server {3500} :
    const PORT = process.env.PORT || 3500 ;
@@ -29,21 +40,21 @@
 
   // --------------------------------------------------------------------------
   // --------------------------------------------------------------------------
- 
-  // # [7:10] =>    
-  //  II- using [Custom] [middleware] methods  :   
+  
+  // C] Define {Handlers methods} using different  types of the middlewares  : 
+    
+  // I] [Custom Middleware] type   :   
+  // 1] Calling the Defined and imported [Custom Middleware {Custom Logger} ]  as the return of the express defined method of {app.use()}   => 
+    app.use( logger ) ;
 
 
-
-
-
-
-  // --------------------------------------
-  // I- using [Built-in] [middleware] methods  :   
+// --------------------------------------
+  // II] Define [Built-in Middleware] Type  :   
+  //  1] Define public methods :  
   app.use(express.urlencoded({ extended : false })) ;
   app.use(express.json() ) ;
  
-  // define the public file to be  accesssesable to  all  other files in the sever       :
+  // 2]  Define the method the public folder's files reader to be accesable to  all other files in the project server  [extrated form the express] :
   app.use(express.static(path.join(__dirname , '/public')) ) ;
 
   // 3] Define the several routes using the {get} method on the express +  assign an annonymous function of the reqiured method => [instead of define {server} variable in default node ]  :

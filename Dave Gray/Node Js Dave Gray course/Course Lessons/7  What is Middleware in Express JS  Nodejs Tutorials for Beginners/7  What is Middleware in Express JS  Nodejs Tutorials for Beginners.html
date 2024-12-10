@@ -531,11 +531,43 @@
                           
                           <li> B] Main Practical steps of using [Express.js] framework to create a Node web server   , using the next practical steps  : <br>
                               <ol> 
-                                <li> Building [Node web Server] system file structure => [ modify the previous [node web server] application]  </li>
-                                <li> [Server.js] =>  define  and setting up the Server using the installed  express server framework  </li>
-                                <li> Define and setting  configurating server routes and  its handling , by  usign the next methods   :  <br>
+                                <li> 1] Building [Node web Server] system file structure => [ modify the previous [node web server] application] , with next   MDIODS   :  <br>     
                                   <ul>
-                                    <li> a- define the main routes =>   app.get('route value - could including a regular expresion -'  , (req , res , next ) =>  {// handling methods }  )   =>   Define a  certain route  ,  and using next  handling steps methods  : <br>
+                                    <li> Create a new folder of [public] in the main root , whih should include the next folder and files  :  <br>   
+                                      <ol> 
+                                          <li> [css]  folder  => include all css files  {style.css} </li>
+                                          <li> [img]  folder  => include all images files  {.jpg & .png} of the project </li>
+                                          <li> [text] folder  => include all text  files  {.jpg & .png  }  of  the project  </li>
+                                      </ol>                                         
+                                    </li>
+
+                                    <li>  Create a new folder of [middleware] in the main root , and put the {logEvents.js} :   <br>
+                                        <p> {logEvents.js} file inside it  => this file will require some script editing   </p>  
+                                    </li>
+
+                                  </ul>
+                                </li> <br> 
+  
+                                <li> 2] Modifications inside the  {logEvents.js} file  => implementing the  next script editing as following : <br> 
+                                    <p>   Edit  {logEvents()} : the custom function of the event  [including modifications of the file new path   - after creating the new folder of [middleware] - ] :   </p>  
+                                    <p>   Create {logger()} : Creating a new function of as a custom middleware function that using the upper defined function of the [logEvents()] wtih assinging  its parameters   </p>  
+                                    <p>   Export both of  :  <br>
+                                      <ul> 
+                                        <li> {logger() } =>  to be  imported and used inside the {server.js} file inside a  defined request method   </li>
+                                        <li> {logEvents()} -> not acutallty need it her in this project for now     </li>
+                                      </ul>
+                                    </p>  
+                                </li>  <br>
+
+                                <li>  3] Modifications inside the [Server.js]  file  =>  Define and setting up the  Server configurating and Routes including middleware [built-in and custom]  using the installed  express server framework , acording to the next  methods :  <br>  
+                                  <ul>
+                                    <li> a- Import the  exported and defined  {logger}  to be called and  used inside a defined express request method as custom middleware        </li> 
+                                    
+                                    <li> b- Import the installed [third-party] library to be able ot use this type of the middleware </li> 
+
+                                    <li> c- Define request method  the [app.use] by calling the  imported [custom middleware method :  {Custom Logger}  inside it    </li> 
+                                    
+                                    <li> d- Define the main routes using [Built-in Middleware method]   =>   app.get('route value - could including a regular expresion -'  , (req , res , next ) =>  {// handling methods }  )   =>   Define a  certain route  ,  and using next  handling steps methods  : <br>
                                       <ol>
                                         <li> 1- { res.send('text')  } =>  sending a  dare text value into the current page  to be displayed </li>
                                         <li> 2- { res.sendFile(file  path & file name )  } =>    sending a file   into the current page to be displayed , by using one of the next methods : <br>
@@ -544,39 +576,52 @@
                                             <li> b) [path variable method] =>  res.sendFile(  path.join( __dirname   , 'main node server folder' , 'filename.extension' ) ) ;   </li>
                                           </ol> 
                                         </li>
+                                        
+                                        <li> 3- Define the routes handlers methods  wiht built-in middleware method [by with using chained method ]    >    app.get('route value - could including a regular expresion -'  , (req , res , next ) =>  {// handling methods }  )   =>   Define a  certain route  ,  and using next  handling steps methods  : <br>
+                                          <ol>
+                                            <li>  { res.send('text')  } =>    sending a  dare text value into the current page  to be displayed </li>
+                                            <li>  { res.sendFile(file  path & file name )  } =>    sending a file   into the current page to be displayed , by using one of the next methods : <br>
+                                              <ol>   
+                                                <li> a) [node basic method]    =>  res.sendFile( ' ./main folder in teh node server/filename.extension' ,    { root : __dirname } )  </li>
+                                                <li> b) [path variable method] =>  res.sendFile(  path.join( __dirname   , 'main node server folder' , 'filename.extension' ) ) ;   </li>
+                                              </ol> 
+                                            </li>
+                                            <li> 3- Define the static method of handling [public]  folder  files extracted builtin method </li> 
+                                          </ol>
+                                        </li>  
                                       </ol>
-                                    </li>   <br> <hr> <br>
- 
-                                    <li> b- define the custom routes =>  app.get('route value - could including a regular expresion -'  , (req , res , next ) =>  {// handling methods }  )   =>   Define a  certain route  ,  and using next  handling steps methods  : <br>
-                                      <ol>
-                                        <li> 1- { res.send('text')  } =>    sending a  dare text value into the current page  to be displayed </li>
-                                        <li> 2- { res.sendFile(file  path & file name )  } =>    sending a file   into the current page to be displayed , by using one of the next methods : <br>
-                                          <ol>   
-                                            <li> a) [node basic method]    =>  res.sendFile( ' ./main folder in teh node server/filename.extension' ,    { root : __dirname } )  </li>
-                                            <li> b) [path variable method] =>  res.sendFile(  path.join( __dirname   , 'main node server folder' , 'filename.extension' ) ) ;   </li>
-                                          </ol> 
-                                        </li>
-                                      </ol>
-                                    </li>   <br> <hr> <br>
- 
-                                    <li> c- define the chained routes =>    app.get('route value - could including a regular expresion -'  , (req , res , next ) =>  {// handling methods }  )   =>   Define a  certain route  ,  and using next  handling steps methods  : <br>
-                                      <ol>
-                                        <li> 1- { res.send('text')  } =>    sending a  dare text value into the current page  to be displayed </li>
-                                        <li> 2- { res.sendFile(file  path & file name )  } =>    sending a file   into the current page to be displayed , by using one of the next methods : <br>
-                                          <ol>   
-                                            <li> a) [node basic method]    =>  res.sendFile( ' ./main folder in teh node server/filename.extension' ,    { root : __dirname } )  </li>
-                                            <li> b) [path variable method] =>  res.sendFile(  path.join( __dirname   , 'main node server folder' , 'filename.extension' ) ) ;   </li>
-                                          </ol> 
-                                        </li>
-                                      </ol>
-                                    </li>  
+                                    </li->  
                                   </ul> 
-
+                                </li> <br> 
+                                
+                                
+                                <li>  4] Install a new library of [cors] of [Third-party Middleware] type , by using the next code      : <br>
+                                    <code>                                        
+                                       { npm i cors }
+                                    </code> 
                                 </li> <br> <hr> <br>
                               </ol>   
                           </li>
+                          <br> <hr> <br>
 
-                          <li> C] Notes about using   {Middleware} [ Express.js] framework    web Node server  </li>
+
+                         <li> C] Notes about using   {Middleware} [ Express.js] framework   web Node server   :  <br>
+                          <p> The main differnces between the [buitlin middleware]  and [custom middleware] as folwing points   :  <br>
+                              <ul> 
+                                <li>  [next]  parameter  : <br>  
+                                  <ol>
+                                    <li>  [built-in middleware] => we not need to asssing the  (next)   parameter , due to it is already exsited in the builtin middlerwaere method   </li>
+                                    <li>  [custom middleware] => we Must  assign the (next) parameter wihtin any defined custom middleware method    </li>
+                                  </ol>
+                                </li>
+                              </ul> 
+                          
+                           </p>
+                            
+                          
+                          
+                          
+                          </li>
 
                         </ol>
                      </li> <br> <br>
@@ -624,7 +669,7 @@
                     </li>  <br>  <br>
                     
                     <li> 2- [Custom]  Middleware =>  <br>
-                      <p> like  , such as   : <br>
+                      <p> like     , such as   : <br>
                         <code > 
                         </code> 
                        </p> 
