@@ -567,7 +567,9 @@
 
                                     <li> c- Define request method  the [app.use] by calling the  imported [custom middleware method :  {Custom Logger}  inside it    </li> 
                                     
-                                    <li> d- Define the main routes using [Built-in Middleware method]   =>   app.get('route value - could including a regular expresion -'  , (req , res , next ) =>  {// handling methods }  )   =>   Define a  certain route  ,  and using next  handling steps methods  : <br>
+                                    <li> d- Define request method of the [app.use] including definition of [third-party] middlerware handler  by  calling the  imported library of the [cores]  </li> 
+                                    
+                                    <li> e- Define the main routes using [Built-in Middleware method]   =>   app.get('route value - could including a regular expresion -'  , (req , res , next ) =>  {// handling methods }  )   =>   Define a  certain route  ,  and using next  handling steps methods  : <br>
                                       <ol>
                                         <li> 1- { res.send('text')  } =>  sending a  dare text value into the current page  to be displayed </li>
                                         <li> 2- { res.sendFile(file  path & file name )  } =>    sending a file   into the current page to be displayed , by using one of the next methods : <br>
@@ -577,7 +579,7 @@
                                           </ol> 
                                         </li>
                                         
-                                        <li> 3- Define the routes handlers methods  wiht built-in middleware method [by with using chained method ]    >    app.get('route value - could including a regular expresion -'  , (req , res , next ) =>  {// handling methods }  )   =>   Define a  certain route  ,  and using next  handling steps methods  : <br>
+                                        <li> 3- Define the routes handlers methods with  built-in middleware method [by with using chained method ]    >    app.get('route value - could including a regular expresion -'  , (req , res , next ) =>  {// handling methods }  )   =>   Define a  certain route  ,  and using next  handling steps methods  : <br>
                                           <ol>
                                             <li>  { res.send('text')  } =>    sending a  dare text value into the current page  to be displayed </li>
                                             <li>  { res.sendFile(file  path & file name )  } =>    sending a file   into the current page to be displayed , by using one of the next methods : <br>
@@ -605,22 +607,22 @@
                           <br> <hr> <br>
 
 
-                         <li> C] Notes about using   {Middleware} [ Express.js] framework   web Node server   :  <br>
+                         <li> C] Notes about using {Middleware} [ Express.js] framework web Node server   :  <br>
                           <p> The main differnces between the [buitlin middleware]  and [custom middleware] as folwing points   :  <br>
                               <ul> 
-                                <li>  [next]  parameter  : <br>  
+                                <li>  using  of  [next]  parameter   of  the handler method  : <br>  
                                   <ol>
-                                    <li>  [built-in middleware] => we not need to asssing the  (next)   parameter , due to it is already exsited in the builtin middlerwaere method   </li>
-                                    <li>  [custom middleware] => we Must  assign the (next) parameter wihtin any defined custom middleware method    </li>
+                                    <li>  [built-in middleware] handler mehtod    => we not need to asssing the  (next)   parameter , due to it is already exsited in the builtin middlerwaere method   </li>
+                                    <li>  [custom middleware]  hanlder  method    => we Must  assign the (next) parameter wihtin any defined custom middleware method    </li>
                                   </ol>
                                 </li>
+
+                                <li> to be able to use the [third-party] of the Middleware , we mneed first type install one of   [third-party] library inside the node package manager     </li>
+                                <li> the [  express ] has  its built-in error hanlding method , but we can define a custom  error hanlding method </li>
+ 
                               </ul> 
-                          
                            </p>
-                            
-                          
-                          
-                          
+                             
                           </li>
 
                         </ol>
@@ -809,7 +811,7 @@
                               </code>
                             </li>    <br> <br> 
 
-                            <!-- im here >>>>>>>>>>>>   -->
+                           
                             <li> 2]  Define the {app} as extracted variable from the defined express  [instead of the   {server} defined variable ]  :   <br>
                               <code>
                                 
