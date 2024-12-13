@@ -83,3 +83,6 @@
 20241212	14:01:46	 9f627798-468f-4b0c-961d-64b3ee01080b 	  GET 	 undefined 	  / 
 20241212	14:08:26	 2573e921-bd57-4541-a3fb-202e8d58abff 	  GET 	 undefined 	  / 
 20241212	14:08:27	 045a9f0a-5186-4917-96b4-f9ebca54bb1a 	  GET 	 undefined 	  /css/style.css 
+20241213	18:51:53	 c6d2f0d7-2fe4-483f-9e08-a42b97e0a9c8 	  GET 	 undefined 	  / 
+20241213	18:51:53	 7670a38d-28d1-45e3-b682-fe134d2af71b 	  GET 	 undefined 	  /css/style.css 
+20241213	18:51:54	 325f9233-2ae7-48df-b124-58682fbe4917 	  GET 	 undefined 	  /favicon.ico 

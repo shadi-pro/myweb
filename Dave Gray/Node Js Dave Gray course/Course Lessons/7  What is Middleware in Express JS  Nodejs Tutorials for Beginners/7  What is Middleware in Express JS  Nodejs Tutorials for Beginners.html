@@ -671,43 +671,49 @@
                     </li>  <br>  <br>
                     
                     <li> 2- [Custom]  Middleware =>  <br>
-                      <p> like     , such as   : <br>
+                      <p>  using imported  defined events to be assingd inside custyoim middlerware  ,  as folloowing    : <br>
                         <code > 
+                          // a- Calling the Defined and imported [Custom Middleware {Logger} ]  as the return of the express defined method of {app.use()}   :    <br>   
+                          <span class = "one "  > </span>   app.use(logger); <br> <br>  
+                          
+                          // b-  2] Define [Custom middleware method of Error handler] by express method of calling the defined and importeds :    <br>   
+                          <span class = "one "  > </span>   app.use( errorHandler); <br> 
+
                         </code> 
                        </p> 
                     </li> <br> <br> 
                     
                     
                     <li> 3- [third-party]  Middleware =>       <br>
+                      <p> Define [Third-party  Middleware] type to handle the request host and solve the cors issue , by using the next (3) steps :   <br>  
+                        <code > 
+                          // a- Define a [whitelist] array of the accepted hosts to be handled as allowed to access to the our backend [your website  , your localhost ,  the virtual custom server - such as the react - ] :    <br>   
+                          <span class = "one" > </span>    const whiteList = ['https://www.yourdomain.com', 'http://localhost:3500', 'http://127.0.0.1:5500'] ;      <br> <br>  
+                          
+                          // b- Define a object of {cors} configutration  properties to handle the [whitelist] array   to be able to access to the our backend ]  :    <br>   
+                          <span class = "one" > </span> const corsOptions = {    <br>
+                            <span class = "two" > </span> // The first property to handle the comming host , through a anonymous function :    <br> 
+                            <span class = "two" > </span> origin: (origin, callback) => {   <br>    
+                                <span class = "three" > </span> // Create a condition of the recived origin value (host sender request) : <br>   
+                                <span class = "three" > </span> if (whiteList.indexOf(origin) !== -1 || !origin) {  // if the comming request host  IS  existed in  previous defined list of the accepted host  OR the no request host came at all ]  <br> 
+                                  <span class = "four " > </span>  callback(null, true);    <br>
+                                <span class = "three" > </span> } else { <bvr>
+                                  <span class = "four" > </span> callback(new Error('Not allowed by Cors '));   <br>
+                                <span class = "three" > </span> }  <br>
+                              <span class = "two" > </span>   },    <br>
+                              <span class = "two" > </span> // the second property of cors objerct of the halding the received request : <br>
+                              <span class = "two" > </span> optionSeccessStatus: 200 <br>
+                            <span class = "one" > </span> }  <br>   <br> 
                       
-                      
+                          // c- Define the main middleware method of [third-party] type , by calling the imported {cors} as an imported  method with assigning the upper defined object {corsOptions} as its  paramter  :   <br>
+                          <span class = "one" > </span>    app.use(  cors(corsOptions) ) ;     // [{cors}  => refers to the cross origin resourse sharing  ]  <br>  <br>
+   
+                        </code> 
+                      </p>
                    </li>
-
-
-
                   </ul>                 
-              
-              
-              
-              
+                      
               </p>    
-
-
-
-              <!-- <p> [express.js] official website =>  [guide] documentation => is the best guide and getstarted method , as  next steps   : <br> 
-                  <ol> 
-                    <li> Installation : by using the next code tbe npm in  the  {package.json}   :   <br>
-                      <code>
-                          <span  class=one > </span>  npm i express <br>  
-                          OR <br>
-                          <span  class=one > </span> npm i express --save <br>  
-                      </code> 
-                    </li> <br> 
-
-                  </ol>
-                                    
-              </p> -->
-
 
             <!--------------------------------------------------------  -->
             
@@ -773,6 +779,13 @@
                                     <li> 5- [img]  => the folder will hold all [ images files] such as :  <br>
                                       <ul>
                                         <li>  {1.jpg}  ->  testing image to be used inside a application      </li>  
+                                      </ul>
+                                   </li>    <br>  
+                                      
+                                    <li> 6- [middleware]   => the folder will hold all [  exteeral middlewarew methiodx  definitions  files] such as :  <br>
+                                      <ul>
+                                        <li> 1- {logEvents.js}     -> main definition of the creating a log handler event method  {logEvents}    </li>  
+                                        <li> 2- {errorHandler.js}  -> main definition of the error hanlder  event method  {errorHandler} , that will imported and use the main defined event  {logEvents}  </li>  
                                       </ul>
                                    </li>    <br>  
                                       
@@ -859,13 +872,27 @@
                         <br><hr>  <br>     
                       </ol> 
                     </p>
+                  </li>  <br> <br>  
+
+
+                  <li> Fourth / {logEvents.js} modifications  :   <br>   
+                  
+                  
+                  </li>    <br> <br>
+                
+
+                  <li> Fifth / {errorHandler.js}  new file    :   <br> 
+                    
+                  
+                  
+                  
                   </li>
                 </ol>                              
             </p>
             <!-- ---------------------------------------------------------- -->
  
-            <h1>  C] Practical exps of    [building a Node Server] with using the defined [ Node Events ]  [-> wihtin in the  {index.js}  &  {logEvents.js}  ] :   </h1>
-            <p> Building an ideal server using only [node.js] scirpts + attaching the defined [event log]  to log all of the event  & error     </p> 
+            <h1>  C] Practical exps of [building a Node Server usihng express  framework ] +  using  [differnt type of the middelware (including the third-party 'cors' ] +  using the defined [ (2) Node Events ]  [-> wihtin in the main file {server.js}  & {logEvents.js} & { errorHandler.js}  ] :   </h1>
+            <p> Building an ideal server using  the node web server framework [express.js] scirpts + attaching the defined [event log]  & [erro event log]  to log all of the default event  & error wiht define deffgernt type of middleware      </p> 
              
             <hr> <br>  <hr> <br>            
             <!-- ----------------------------------------------------- -->        

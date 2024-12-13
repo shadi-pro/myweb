@@ -67,7 +67,7 @@ const logEvents = async (message , logName) => {
 const logger = (req , res ,  next ) => {
   // 1-  Calling the uper defined event function {logEvents & its parameters : (message , logName  ) } here to be exectued once in this method is being called ,  including hte next parameters   :
     //  [req.method] =>  the request method type (get ,  post , fetch ) 
-    //  [req.headers.origin]  =>  where request comming from (the place that seding the request ) 
+    //  [req.headers.origin]  =>  where request comming from (the place that sending the request ) 
     //  [req.url] => request url   
     //  [reqLog.txt]  => represent the (LogName) parameter (that represent the file to be used to write this log)
     logEvents(` ${req.method} \t ${req.headers.origin} \t  ${req.url} `  , 'reqLog.txt' ) ; 
