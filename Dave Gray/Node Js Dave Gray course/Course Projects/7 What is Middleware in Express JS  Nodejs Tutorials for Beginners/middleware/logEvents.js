@@ -35,14 +35,19 @@ const { v4: uuid } = require('uuid');
 // --------------------------------------
 // --------------------------------------
 
-// B] Define a {Custom function} of the Event [to be used inside an event method ] to be  using the both custom and core modules wihtin it [including modifications of the file new path] :
-const logEvents = async (message , logName) => {
+// B] [Basic function] => Define a {Custom function} of the Event [to be used inside an event method ] to be  using the both custom and core modules wihtin it [including modifications of the file new path] :
+  //  The main (2) parmeters  of  this method  : 
+    // -  (message)   -> the custom message value to be assinged when this method is being  called      
+    // -  (logName)   -> the final file name that will bve used to log the logitem inside it  
+  // = [logItem]    -> (not parameter)  : exteranl defiend custom value of thoe log to be log entry inside the file              
+  
+const logEvents = async (message , logName ) => {
   
   // 1- Define a variable of  the current data and time using the imported {format} :  
-  const dateTime = `${format(new Date(), 'yyyyMMdd\tHH:mm:ss')}`;
+  const dateTime = `${format(new Date(), 'yyyyMMdd\tHH:mm:ss')}` ;
 
   // 2- Define a variable of the printing a  literal defined  variables +  the  function parameter : 
-  const logItem = `${dateTime}\t ${uuid()} \t ${message}\n`;
+  const logItem = `${dateTime}\t ${uuid()} \t ${message}\n` ;
 
   // 3-  Testing Print the defiend combined  variable   :
   console.log(logItem);
@@ -54,7 +59,7 @@ const logEvents = async (message , logName) => {
       await fsPromises.mkdir(path.join(__dirname , '..' , 'logs'));
     }
 
-    // b- Appending/write the upper defined [logItem] variable inside a new log file into the file system using the [fsPromises] , and using the final  file path as recieved parameter [logName] when this event method is being called     : 
+    // b- Appending/write the upper defined [logItem] variable inside a new log file into the file system using the [fsPromises] , and using the final  file path as recieved parameter [logName] when this event method is being called  :  
     await fsPromises.appendFile(path.join(__dirname , '..' ,  'logs' ,  logName ) , logItem ); 
 
   } catch (err) {
@@ -63,13 +68,15 @@ const logEvents = async (message , logName) => {
 };
 // ---------------------------------------
 
-// Define antoher function of the {Handlers methods}  as [custom middlewares] type that calling hte upper defined function {logEvents}   ,   [To log custom message into the console ] : 
+//  [function uses the basic function] : Define antoher function of the {Handlers methods} as [custom middlewares] type that calling hte upper defined function {logEvents} ,
+ //   [To log custom message into the console ] : 
 const logger = (req , res ,  next ) => {
-  // 1-  Calling the uper defined event function {logEvents & its parameters : (message , logName  ) } here to be exectued once in this method is being called ,  including hte next parameters   :
-    //  [req.method] =>  the request method type (get ,  post , fetch ) 
-    //  [req.headers.origin]  =>  where request comming from (the place that sending the request ) 
-    //  [req.url] => request url   
-    //  [reqLog.txt]  => represent the (LogName) parameter (that represent the file to be used to write this log)
+  // 1-  Calling the upper defined event function {logEvents & its parameters : (message , logName  ) } here to be exectued once in this method is being called ,  including (2) next parameters   :
+    // - (message)  :   contain of the following :           
+      //  [req.method] =>  the request method type (get ,  post , fetch ) 
+      //  [req.headers.origin]  =>  where request comming from (the place that sending the request ) 
+      //  [req.url] => request url   
+    // - (logName)[reqLog.txt]  => represent the (final name of file to be used to write this log in) 'reqLog.txt;'  
     logEvents(` ${req.method} \t ${req.headers.origin} \t  ${req.url} `  , 'reqLog.txt' ) ; 
 
     // 2-  Testing print of the request method and path :

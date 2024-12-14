@@ -93,7 +93,7 @@
       }
     },
     // 2- the second property of cors object of the halding the received request :     
-    optionSeccessStatus: 200
+    optionSuccessStatus: 200
   }
 
   // C] Define the main middleware method of [third-party] type , by calling the imported {cors} as an imported  method with assigning the upper defined object {corsOptions} as its  paramter  :   

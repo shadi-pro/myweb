@@ -876,15 +876,81 @@
 
 
                   <li> Fourth / {logEvents.js} modifications  :   <br>   
-                  
+                    <p>  This is the main file containing the main method definitions of both evnts that have been exported into the sever.js file, wih some modification to be applictable  wiht  define of the define  of custom middleware  :   <br>
+                      <ol> 
+                          <li> a- {logEvents()} => <br> 
+                              <p> [Basic pattern function] to be used by the next defined  {logger} Event method as a [custom middleware]  </p>
+                              
+                              <p> Include using of the both custom and core imported modules within it [including modifications of the file new path]  </p> 
+                              
+                              <p>  [main procedure] of this method is : <br>  
+                                <p> logging a full log of concatenating data [logItem : Date + random id] inside the assigned file [full path +  final file name (logName)   ]     </p>
+                              </p>
+                              
+                              <p> Modify the previuos path with the current folder of [logs] which  contains all of logs files :  <br>  
+                                  <ol>
+                                    <li>  {errLog.txt}  : to add the error logs entires         </li>
+                                    <li>  {eventLog.txt}  : to add the  defualt logs entires        </li>
+                                  </ol>
+                              </p>
+                          </li>
+                            
+                          <li>  b- {logger}  =>  <br> 
+                            <p>  This [custom middleware] of   that using the previous basic defined event method of [logEvents] , by  using the main parenters of the [req, res , next ] as it requrd in the main custom middleware    </p>
+                            
+                            <p>  This  [custom middleware] will use main required  parmaters in custom middleware method  of the [req, res , next ]     </p>
+                            
+                            <p>  The  [main procedures] of this method :   <br>
+                              <p> Calling the upper defined event function {logEvents & its parameters : (message , logName  ) } here to be executed once in this method is being called ,  with  asssign  (2) next parameters   :
+                                <ul> 
+                                  <li> 1- (message) : the first paramater of called basic method of  [logEvents()] , contain of the following : <br>
+                                    <ol>   
+                                      <li> - [req.method] =>  the request method type (get ,  post , fetch )  </li>
+                                      <li> - [req.headers.origin]  =>  where request comming from (the place that sending the request )  </li>
+                                      <li> - [req.url] => request url    </li>
+                                    </ol>                                     
+                                  </li>  <br>    
+
+                                  <li> (logName)[reqLog.txt]  =>  the second  paramater of called basic method of  [logEvents()] ,   represent the (final name of file to be used to write this log in) 'reqLog.txt;'    </li>  
+                                </ul>
+                               </p>  
+                            </p>                           
+                          </li>
+                        </ol>                     
+                    </p>
                   
                   </li>    <br> <br>
                 
 
-                  <li> Fifth / {errorHandler.js}  new file    :   <br> 
+                  <li> Fifth / {errorHandler.js}  new file :   <br> 
+                    <p>  This file include the main [custom middleware] of error handler => by clling and usiung tbe  imported basc fucion of  t  event {logEvents}  </p>
+                    <p>  This method will use hte nect paraemters bsic  paramters of {custom middleware} + (err) as following       :  <br>
+                      <ol>
+                        <li> [err]  : the error parameter  => to be use used for  extract certain  builtin static  values , as following  :   <br>
+                          <ul> 
+                            <li> 1- {err.name}  =>  the error name      </li>
+                            <li> 2- {err.message}  =>  the error built-in message     </li>
+                            <li> 3- {err.stack}  =>  the error built-in message     </li>
+                          </ul>
+                        </li>
+
+                        <li> [res]  : the respone parameter   => <br> 
+                          <p> use one of it's built-in method  => {res.status(500).send(err.message) } =>  to assign the returned resposne with the error code + and send it to the error message parmeter of [err.message ]     </p>
+                        </li>
+
+                        <li> [req]  : the request  parameter   </li>
+                        <li> [next] : the next  parameter =>  </li>
+                      </ol>
+
+
+                    <p>  This methiod will Improt the defined {logEvents} from its file {logEvents.js}  to vbve usaed inside 
+                      
+                      
                     
-                  
-                  
+                    
+                      </p>
+                    
+                    
                   
                   </li>
                 </ol>                              
@@ -898,7 +964,7 @@
             <!-- ----------------------------------------------------- -->        
            
 
-        <p>  Next lesson  => talking about the [middle ware] role in the node server      </p> 
+        <p>  Next lesson  => talking about the [MVC] role in the node server      </p> 
         
         <!-- --------------------------------------------------------------------- -->
         

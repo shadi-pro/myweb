@@ -86,3 +86,11 @@
 20241213	18:51:53	 c6d2f0d7-2fe4-483f-9e08-a42b97e0a9c8 	  GET 	 undefined 	  / 
 20241213	18:51:53	 7670a38d-28d1-45e3-b682-fe134d2af71b 	  GET 	 undefined 	  /css/style.css 
 20241213	18:51:54	 325f9233-2ae7-48df-b124-58682fbe4917 	  GET 	 undefined 	  /favicon.ico 
+20241214	19:14:17	 37f8b256-73e1-409e-a486-3dadff8446fb 	  GET 	 undefined 	  / 
+20241214	19:14:17	 24884e85-a394-4f6d-b901-10b907f78aba 	  GET 	 undefined 	  /css/style.css 
+20241214	19:14:17	 fd4a6a29-9c8b-428a-9eda-f08d94443684 	  GET 	 undefined 	  /favicon.ico 
+20241214	19:14:24	 c57020b6-2444-4b62-975a-36719e6633fe 	  GET 	 undefined 	  /new-page.html 
+20241214	19:14:25	 a946d193-b34b-40fa-b57c-f58e14bf0c15 	  GET 	 undefined 	  /css/style.css 
+20241214	19:14:25	 73753645-7b0b-41a7-a456-fde65267f0f8 	  GET 	 undefined 	  /new-page.html 
+20241214	19:14:29	 7c41b3fa-bb2e-40ba-bf1a-977a1b7634ef 	  GET 	 undefined 	  /new-pa 
+20241214	19:14:30	 694cc72f-b026-4317-9d02-6d871b04f707 	  GET 	 undefined 	  /css/style.css 
