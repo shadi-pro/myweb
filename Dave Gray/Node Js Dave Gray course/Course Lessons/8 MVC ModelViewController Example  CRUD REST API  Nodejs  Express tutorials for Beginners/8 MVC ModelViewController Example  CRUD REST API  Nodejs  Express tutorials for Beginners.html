@@ -12,11 +12,11 @@
     <!-- First Mobile Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta content="Learning Node.js  Course" description="This is Lesson 6 Introduction to Express JS  Express  Nodejs Tutorials for Beginners ">
+    <meta content="Learning Node.js  Course" description="This is Lesson 8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners ">
 
-    <title> 6 Introduction to Express JS  Express  Nodejs Tutorials for Beginners </title>
+    <title> 8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners </title>
 
-    <link rel="stylesheet" href="6 Introduction to Express JS  Express  Nodejs Tutorials for Beginners.css" media="all">
+    <link rel="stylesheet" href="8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners.css" media="all">
 
     <link rel="stylesheet" href="css/bootstrap.min.css" media="all">
 
@@ -239,7 +239,7 @@
 
     <!-------------------------------------------------------------------------------------------------------->
     <header id="Main" class="Main wow fadeInDown" data-wow-duration="1s">
-        6 Introduction to Express JS  Express  Nodejs Tutorials for Beginners  [Dave Gray]   
+        8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners  [Dave Gray]   
     </header>
 
     <!-------------------------------------------------------------------------------------------------------->
@@ -277,7 +277,7 @@
                             Hot Links <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#6 Introduction to Express JS  Express  Nodejs Tutorials for BeginnersSection" target="_self" class="6 Introduction to Express JS  Express  Nodejs Tutorials for BeginnersLink"> Lesson 6 Introduction to Express JS  Express  Nodejs Tutorials for Beginners </a></li>
+                            <li><a href="#8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for BeginnersSection" target="_self" class="8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for BeginnersLink"> Lesson 8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners </a></li>
 
                             <li role="separator" class="divider"></li>
 
@@ -327,7 +327,7 @@
     <!-- The following Tag can be as <main> Tag, but the Editor is old for HTML5-->
     <main class="Welcome container text-center center-block wow bounceInDown" data-wow-duration="2s">
         <span> Welcome to  Node.js   full  Course  [Dave Gray]   | </span> <br>
-        6 Introduction to Express JS  Express  Nodejs Tutorials for Beginners
+        8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners
     </main>
     <!-- ---------------------------------------------------------------------------------------------------- -->
     <!-- Options Tool box -->
@@ -403,8 +403,8 @@
         <div class="container">
             <h2 class="h1" class="hidden-xs"> About Section =>  Building a [Web node Server] using   <span><strong> ( express.js) Framework utilizes  </strong> </span> </h2>
             <h3 class="visible-xs"> About Section => This lesson about 
-              <strong>  Building a [Node Web Server] using  [express.js] framework  </strong>  
-              <span>  for much easier usage of the node.js to  building the node web server        </span> 
+              <strong>   Organize the Node.js &  express API Web Server  using MVC [Model view controllor] design pattern  </strong>  
+              <span>           </span> 
             </h3>
             <!-- <p class="lead"> This lesson is commands to handle Stashing-UnStashing] Files and then Pushing to Remote Repo Account by <span> <strong>  {CMD} </strong> </span> </p> -->
         </div>
@@ -516,7 +516,7 @@
     <div class="Post" id=post>
         <Section id="MainC" class="MainC">
             <header>
-               Node.js  [6 Introduction to Express JS  Express  Nodejs Tutorials for Beginners] Main Topics : <br>
+               Node.js  [8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners] Main Topics : <br>
             </header>
 
             <article>
@@ -527,56 +527,11 @@
                 <ol type="A">
                     <li> Main points of this lesson , practicial application on the [express.js  framework ] of using  the  node.j for buliding the node webserver  : <br>
                         <ol>
-                          <li> A] The main concept of ( [express.js] Framework  ) and use to build  practical web server wihtin  the node .js  enviropnment      </li>
+                          <li> A] The main concept of ( [MVC] design pattern) & main benefites  </li>
                           
-                          <li> B] Main Practical steps of using [Express.js] framework to create a Node web server   , using the next practical steps  : <br>
-                              <ol> 
-                                <li> Building [Node web Server] system file structure => [ modify the previous [node web server] application]  </li>
-                                <li> [Server.js] =>  define  and setting up the Server using the installed  express server framework  </li>
-                                <li> Define and setting  configurating server routes and  its handling , by  usign the next methods   :  <br>
-                                  <ul>
-                                    <li> a- define the main routes =>   app.get('route value - could including a regular expresion -'  , (req , res , next ) =>  {// handling methods }  )   =>   Define a  certain route  ,  and using next  handling steps methods  : <br>
-                                      <ol>
-                                        <li> 1- { res.send('text')  } =>  sending a  dare text value into the current page  to be displayed </li>
-                                        <li> 2- { res.sendFile(file  path & file name )  } =>    sending a file   into the current page to be displayed , by using one of the next methods : <br>
-                                          <ol>   
-                                            <li> a) [node basic method]    =>  res.sendFile( ' ./main folder in teh node server/filename.extension' ,    { root : __dirname } )  </li>
-                                            <li> b) [path variable method] =>  res.sendFile(  path.join( __dirname   , 'main node server folder' , 'filename.extension' ) ) ;   </li>
-                                          </ol> 
-                                        </li>
-                                      </ol>
-                                    </li>   <br> <hr> <br>
- 
-                                    <li> b- define the custom routes =>  app.get('route value - could including a regular expresion -'  , (req , res , next ) =>  {// handling methods }  )   =>   Define a  certain route  ,  and using next  handling steps methods  : <br>
-                                      <ol>
-                                        <li> 1- { res.send('text')  } =>    sending a  dare text value into the current page  to be displayed </li>
-                                        <li> 2- { res.sendFile(file  path & file name )  } =>    sending a file   into the current page to be displayed , by using one of the next methods : <br>
-                                          <ol>   
-                                            <li> a) [node basic method]    =>  res.sendFile( ' ./main folder in teh node server/filename.extension' ,    { root : __dirname } )  </li>
-                                            <li> b) [path variable method] =>  res.sendFile(  path.join( __dirname   , 'main node server folder' , 'filename.extension' ) ) ;   </li>
-                                          </ol> 
-                                        </li>
-                                      </ol>
-                                    </li>   <br> <hr> <br>
- 
-                                    <li> c- define the chained routes =>    app.get('route value - could including a regular expresion -'  , (req , res , next ) =>  {// handling methods }  )   =>   Define a  certain route  ,  and using next  handling steps methods  : <br>
-                                      <ol>
-                                        <li> 1- { res.send('text')  } =>    sending a  dare text value into the current page  to be displayed </li>
-                                        <li> 2- { res.sendFile(file  path & file name )  } =>    sending a file   into the current page to be displayed , by using one of the next methods : <br>
-                                          <ol>   
-                                            <li> a) [node basic method]    =>  res.sendFile( ' ./main folder in teh node server/filename.extension' ,    { root : __dirname } )  </li>
-                                            <li> b) [path variable method] =>  res.sendFile(  path.join( __dirname   , 'main node server folder' , 'filename.extension' ) ) ;   </li>
-                                          </ol> 
-                                        </li>
-                                      </ol>
-                                    </li>  
-                                  </ul> 
+                          <li> B] Main Practical steps of using [MVC] design pattern] to organize the Node and Express      </li>
 
-                                </li> <br> <hr> <br>
-                              </ol>   
-                          </li>
-
-                          <li> C] Notes about web Node server  with using   [ Express.js] framework     </li>
+                          <li> C] Notes about web Node server with using [ MVC] ]  design pattern      </li>
 
                         </ol>
                      </li> <br> <br>
@@ -588,13 +543,15 @@
         <!------------------------------------------------------------------------------>
         <section class="JSDOMCon" id="JSDOMCon">
             <header>
-                <h3> 6 Introduction to Express JS  Express  Nodejs Tutorials for Beginners concept : </h3>
+                <h3> 8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners concept : </h3>
             </header>
  
-          <h1> A] The main concept of this lesson  of build the {Node Web server} using {Express.js} framework with  [node.js] , as following : </h1> <br>
-              <p> [express.js ] : is  fast , unopinionated , minimalist web framework  for  [node.js]           </p> 
-               
-              <p> [express.js] official website =>  [guide] documentation => is the best guide and getstarted method , as  next steps   : <br> 
+          <h1> A]  The main concept of ( [MVC] design pattern) : </h1> <br>
+            <p> The {MVC}  Design pattern used with the [express.js] sever to organize  the  project    ,  due to the [express.js] is unopinionated for  web framework </p> 
+            
+            <p> The {MVC} is one of the most popular Design pattern used to organize the [express.js] server project ,  but there are other design patterns  </p> 
+          
+            <p>  main installations steps , as following : <br> 
                   <ol> 
                     <li> Installation : by using the next code tbe npm in  the  {package.json}   :   <br>
                       <code>
@@ -611,161 +568,201 @@
 
             <!--------------------------------------------------------  -->
             
-            <h1>  B]  Main  steps of methods to  build Node server + by using   [ express.js ]   :   </h1>
-                <ol>          
-                  <li> First / building the Express Node server file structure [ the same , wiht addding some modifications   ] : <br> 
-                      <ul> 
-                        <li> a- {package.json} file  => with next modifications    :  <br>
-                          <ol> 
-                             <li> adding the [express] npm => "express": "^4.21.1"    </li> 
-                          </ol>                          
-                        </li>
+            <h1>  B]  Main  steps of methods to  build Express Node server + by using   MVC pattern design    :   </h1>
+              <ol>          
+                <li> First/ Modify the file structure of  Express Node server  [ the same  destructure  , with change some folder and create some new ] : <br> 
+                    <ul> 
+                      <li> a- {package.json} file  => with next modifications    :  <br>
+                        <ol> 
+                            <li> adding the [express] npm => "express": "^4.21.1"    </li> 
+                        </ol>                          
+                      </li>
 
-                        <li> b-  main root =>   including the next files and folders  :  <br>
+                      <li> b- inside  main root =>   including the next files and folders  :  <br>      
+                        <ol>   
+                          <li> [Files] inside the main root :   <br>
+                              <ul>  
+                                <li> 1-  {server.js} => <br> 
+                                  <p> The main file to be run as default [as set in  package.json ] </p>
+                                  <p> This file will include all Server configurations methods and procedures & steps   </p>
+                                  <p> This file will include also importing and using of hte defeind {logEvent} methods and procedures practical steps   </p>
+                                </li>  <br>   
+                                  
+                                <li> 2-  {package.json} : the manifest of application and libraries  </li>
+                                
+                                <li> 3-  {.gitigonre} :  exectutive file include all ignored files and folders  </li>
+                              </ul> 
+                          </li>  <br>  <br>
+
                           
-                          <ol>   
-                            <li> [Files] inside the main root :   <br>
-                                <ul>  
-                                  <li> 1-  {server.js} => <br> 
-                                    <p> The main file to be run as default [as set in  package.json ] </p>
-                                    <p> This file will include all Server configurations methods and procedures & steps   </p>
-                                    <p> This file will include also importing and using of hte defeind {logEvent} methods and procedures practical steps   </p>
-                                  </li>  <br>   
-                                   
-                                    
-                                  <li> 3-  {package.json} : the manifest of application and libraries  </li>
+                          <li>  [Folders] inside the main root   : <br>
+                              <ul> 
+                                  <li> 1-  [views]  => the main server folder that will include all essential server files , as following  : <br> 
+                                    <ol> 
+                                      <li>  [subdir]  :   another  sub directory inside the [views], that include another inner {index.html} </li>
+                                      <li>  {index.html}  : the main home html  page       </li>
+                                      <li>  {new-page.html}  : a testitng html  page used to redirecting into it   by requestng a unexisted {old-page.html} </li>
+                                      <li>  {404.html}  : the 404 Error html page       </li>
+                                    </ol>
+                                  </li>   <br>   
                                   
-                                  <li> 4-  {.gitigonre} :  exectutive file include all ignored files and folders  </li>
-                                </ul> 
-                            </li>  <br>  <br>
+                                  <li> 2- [logs]  => the folder to include the log files that will by  created by Node server scripting , such as :    <br>
+                                    <ul>
+                                      <li>  {eventLog.txt} ->  to hold all written main default Logs records     </li>  
+                                      <li>  {reqLog.txt}   ->  to hold all written request Logs records  </li>  
+                                      <li>  {errLog.txt}   ->  to hold all written catched [erros Logs]  records  </li>  
+                                    </ul>
+                                  </li> <br> 
+                                  
+                                  <li> 3- [model] instead of [data] => and change inner file of  [data.json] -> [employees.json  ] : <br>
+                                    <ul>
+                                      <li>  { employees.json}  ->  a json file of testing object of data of employees data in form of a json format  </li>  
+                                    </ul>
+                                  </li>    <br>  
+                                    
+                                  <li> 4- [middleware] : include the defined events files of the basuc methods and middelware methods     <br>
+                                    <ul>
+                                      <li>  { logEvents.js }     ->  include the main 2 methods of  <br> 
+                                        <ol> 
+                                          <li>  { logEvents() } => Basic event method  </li>
+                                          <li>  { logger() }    => Custom Middleware event method </li>
+                                        </ol> 
+                                      </li>  <br> 
 
-                            
-                            <li>  [Folders] inside the main root   : <br>
-                               <ul> 
-                                   <li> 1-  [views]  => the main sever folder that will incluide all essential server files , as following  : <br> 
-                                      <ol> 
-                                        <li>  [subdir]  :   another  sub directory inside the [views], that include another  {index.html} </li>
-                                        <li>  {index.html}  : the main home html  page       </li>
-                                        <li>  {404.html}  : the 404 Error html page       </li>
-                                      </ol>
-                                   </li>   <br>   
+                                      <li>  { errorHandler.js }  ->   include the main  custom middleware error method of the  [ errorHandler() ]    </li>  
+                                    </ul>
+                                  </li>    <br>  
                                     
-                                   <li> 2- [logs]  => the folder to include the log files that will by  created by Node server scripting , such as :    <br>
-                                      <ul>
-                                        <li>  {rewLog.txt}  ->  to hold all written main Logs   </li>  
-                                        <li>  {errLog.txt}  ->  to hold all written catched [erros Logs]   </li>  
+                                  <li> 5- [public]  => this folder will hold all [public project server folders and files  ] such as :  <br>
+                                    <ul>
+                                        <li>  [css]  => this  folder will hold all [ CSS styling files] such as :  <br>
+                                          <ul>
+                                            <li>  {style.css}  ->  a  css styling testing file   </li>  
+                                          </ul>
+                                        </li>    <br>  
+                                          
+                                        <li>  [img]  => this folder will hold all [ images files] such as :  <br>
+                                          <ul>
+                                            <li>  {1.jpg}  ->  testing image to be used inside a application      </li>  
+                                          </ul>
+                                        </li>    <br>  
+                                        
+                                        <li> [text]  => this folder will hold all [ texual files] such as :  <br>
+                                          <ul>
+                                            <li>  {data.txt}  ->  testing  textual data  </li>  
+                                          </ul>
+                                        </li>    <br>  
+
                                       </ul>
-                                    </li> <br> 
+                                  </li>    <br>  
+                                  
+                                  <li> 6- [controllers]  => new folder that  will hold all defined contlllers metod of the our server hosts  , and include  following files :
+                                      <ul> 
+                                        <li>   {employeesController.js} :     </li>
+
+                                      </ul>      
+                                  </li>   <br>  
+                                  
+                                  <li> 7- [routes]  => new folder that will hold all defined routes and APIs logic files of the server , as following  : <br> 
+                                       <ol>
+                                          <li> [api] folder => include the api files => {employees.js} , which contain the following defintions   :   <br>    
+                                            <p> Express Routes definitions -> [defisned by the route  middlware method hanlders  </p>
+                                            <p> Each defined Express Route  include all  CRUD API operations : [get , post , put , delete]  </p>
+                                          </li>
+
+                                          <li> {root.js} file => include  </li>
+                                          <li> {subdir.js} file => include  </li>
+                                      </ol>                                    
+                                  </li> <br>  
+                                
+                                  <li> 8- [node_modules]  => the folder will hold all installed core and custom [ npm libaries ]   </li>    <br>  
                                     
-                                    <li> 3- [data]  => the folder will hold all [data files] such as   :      <br>
-                                      <ul>
-                                        <li>  {data.json}  ->  a json file of testing  object of  data in form of a json format  </li>  
-                                        <li>  {data.txt}  ->   a text file of testing data in form of a text format   </li>  
-                                      </ul>
-                                   </li>    <br>  
-                                      
-                                    <li> 4- [css]  => the folder will hold all [ CSS styling files] such as :  <br>
-                                      <ul>
-                                        <li>  {style.css}  ->  a  css styling testing file   </li>  
-                                      </ul>
-                                   </li>    <br>  
-                                      
-                                    <li> 5- [img]  => the folder will hold all [ images files] such as :  <br>
-                                      <ul>
-                                        <li>  {1.jpg}  ->  testing image to be used inside a application      </li>  
-                                      </ul>
-                                   </li>    <br>  
-                                      
-                                  <li> 6- [node_modules]  => the folder will hold all installed core and custom [ npm libaries ]   </li>    <br>  
-                                      
-                               </ul>
-                            </li>
-                          </ol>
-                        
-                        </li>
-                      </ul>
-                  </li> <br> <br>  
-   
-                <!-- ----------------------------------------------------------                 -->
+                              </ul>
+                          </li>
+                        </ol>
+                      
+                      </li>
+                    </ul>
+                </li> <br> <br>  
+  
+              <!-- ----------------------------------------------------------                 -->
+                
+                <li> Third / {server.js} file   :   <br>      
+                  <p> This the file of [server.js] , and will be  Re-factoring using the express.js methodolog  instead of the  previous regular node   : <br> 
+                    <ol>  
+                      <li>   A]  Importing Section :     <br>     
+                          <code> 
+
+                            //  a-  importing the {path} class from the  [node core common module]   :  <br>   
+                            <span class="one " > </span>    const path = require('path') ;   <br>   <br>
+
+                            // b-  importing the {express} custom class from the  [node custom module] :     <br>
+                            <span class="one " > </span>    const express  = require('express') ;    <br>   <br>
+                          </code>       
+                      </li>   <br><hr> <br>  <br>     
+                      
                   
-                  <li> Third / {server.js} file   :   <br>      
-                    <p> This the file of [server.js] , and will be  Re-factoring using the express.js methodolog  instead of the  previous regular node   : <br> 
-                      <ol>  
-                        <li>   A]  Importing Section :     <br>     
-                            <code> 
+                      <li>  B]  [Express Server configuration processes and procedures steps] section    :   <br>
+                        <ul>  
+                          <li> 1] Define the {port(s)} to be used for connecting with the [localhost] OR with other custom node  server {3500}  :   <br>
+                            <code>
+                              <span  class=one > </span>    const PORT = process.env.PORT || 3500 ;  <br>  
+                            </code>
+                          </li>    <br> <br> 
 
-                              //  a-  importing the {path} class from the  [node core common module]   :  <br>   
-                              <span class="one " > </span>    const path = require('path') ;   <br>   <br>
-
-                              // b-  importing the {express} custom class from the  [node custom module] :     <br>
-                              <span class="one " > </span>    const express  = require('express') ;    <br>   <br>
-                            </code>       
-                        </li>   <br><hr> <br>  <br>     
-                        
-                    
-                        <li>  B]  [Express Server configuration processes and procedures steps] section    :   <br>
-                          <ul>  
-                            <li> 1] Define the {port(s)} to be used for connecting with the [localhost] OR with other custom node  server {3500}  :   <br>
-                              <code>
-                                <span  class=one > </span>    const PORT = process.env.PORT || 3500 ;  <br>  
-                              </code>
-                            </li>    <br> <br> 
-
-                            <!-- im here >>>>>>>>>>>>   -->
                             <li> 2]  Define the {app} as extracted variable from the defined express  [instead of the   {server} defined variable ]  :   <br>
-                              <code>
+                            <code>
+                              
+                              <span  class=one > </span>    const PORT = process.env.PORT || 3500 ;  <br>  
+                            </code>
+                          </li>    <br> <br> 
+
+
+                          <li> 3] Define the main route of the [index page : '/'] using the {get} method on the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :   :   <br>
+                              <ul> 
+                                <li>  a- Define the main route of the [index page : '/'] using the {get} method on the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :     <br>
+                                  <code>
+                                    <span  class=one > </span>     <br>  
+                                  </code>                                   
+                                </li>    
                                 
-                                <span  class=one > </span>    const PORT = process.env.PORT || 3500 ;  <br>  
-                              </code>
-                            </li>    <br> <br> 
-
-
-                            <li> 3] Define the main route of the [index page : '/'] using the {get} method on the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :   :   <br>
-                                <ul> 
-                                  <li>  a- Define the main route of the [index page : '/'] using the {get} method on the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :     <br>
-                                    <code>
-                                      <span  class=one > </span>     <br>  
-                                    </code>                                   
-                                  </li>    
+                                <li> 
                                   
-                                  <li> 
-                                    
-                                  </li>    
+                                </li>    
+                                
+                                <li>
                                   
-                                  <li>
-                                    
-                                  
-                                  
-                                  </li>    
                                 
                                 
-                                
-                                
-                                </ul> 
-                            </li>    <br> <br> 
+                                </li>    
+                              
+                              
+                              
+                              
+                              </ul> 
+                          </li>    <br> <br> 
 
 
-                            <li>    []     </li>
+                          <li>    []     </li>
 
 
-                            <li> 5] Launching the [Listen] process  of server [to be able to listen  its  request]  ->  [wiht using hte app instead of  the server ]:  <br>    
-                              <code> 
-                                  <span  class="one "> </span>     app.listen(PORT , () => console.log(`Server running on port : ${PORT} `)  )   <br>
-                              </code>
-                            </li>  
+                          <li> 5] Launching the [Listen] process  of server [to be able to listen  its  request]  ->  [wiht using hte app instead of  the server ]:  <br>    
+                            <code> 
+                                <span  class="one "> </span>     app.listen(PORT , () => console.log(`Server running on port : ${PORT} `)  )   <br>
+                            </code>
+                          </li>  
 
-                          </ul>                           
-                        </li> 
-                        <br><hr>  <br>     
-                      </ol> 
-                    </p>
-                  </li>
-                </ol>                              
-            </p>
+                        </ul>                           
+                      </li> 
+                      <br><hr>  <br>     
+                    </ol> 
+                  </p>
+                </li>
+              </ol>                              
             <!-- ---------------------------------------------------------- -->
  
-            <h1>  C] Practical exps of    [building a Node Server] with using the defined [ Node Events ]  [-> wihtin in the  {index.js}  &  {logEvents.js}  ] :   </h1>
-            <p> Building an ideal server using only [node.js] scirpts + attaching the defined [event log]  to log all of the event  & error     </p> 
+            <h1>  C] Practical exps of [using {MVC} pattern design to organize the Node Server]    :   </h1>
+            <p>         </p> 
              
             <hr> <br>  <hr> <br>            
             <!-- ----------------------------------------------------- -->        
@@ -778,8 +775,7 @@
         
         <h1>  C] Notes about  building [Node web server] using   ,  [express.js] Framework   :     </h1> 
           <ul>
-            <li>  The main offfical website of the express.js framework is : { expressjs.com }   </li>  
-            
+             
             
             <li> this lesson is bulding the node web server with using only the node JS syntax and envoirnment (witht using/utilizing Framework of :express.js] ) </li> 
             
@@ -1038,7 +1034,7 @@
 
         <section class="JSDOMImp" id="JSDOMImp">
             <header>
-                <h3> [6 Introduction to Express JS  Express  Nodejs Tutorials for Beginners] Importance & Benefits : </h3>
+                <h3> [8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners] Importance & Benefits : </h3>
             </header>
             <ul>
 
@@ -1049,7 +1045,7 @@
 
         <section class="JSDOMSyntx" id="JSDOMSyntx">
             <header>
-                <h3> [6 Introduction to Express JS  Express  Nodejs Tutorials for Beginners] Syntax & Methods: </h3>
+                <h3> [8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners] Syntax & Methods: </h3>
             </header>
 
             <p> =&gt; Scenario Procedures : </p>
@@ -1060,7 +1056,7 @@
         <!------------------------------------------------------------------------------------------------------>
         <section class="JSDOMPract container" id="JSDOMPract">
             <header>
-                <h3> CMD [6 Introduction to Express JS  Express  Nodejs Tutorials for Beginners] => {this lesson can be accessed through the github repo [webpages] } </h3>
+                <h3> CMD [8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners] => {this lesson can be accessed through the github repo [webpages] } </h3>
             </header>
 
 
@@ -1124,7 +1120,7 @@
     </section>
 
     <script>
-        alert("Welcome to 6 Introduction to Express JS  Express  Nodejs Tutorials for Beginners");
+        alert("Welcome to 8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners");
     </script>
 
     <!-- Resources files -->
