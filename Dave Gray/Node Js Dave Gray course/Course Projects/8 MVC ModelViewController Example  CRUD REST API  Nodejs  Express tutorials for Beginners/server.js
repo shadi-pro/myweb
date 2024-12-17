@@ -1,4 +1,4 @@
-// lesson 7 :  Continue Building a [Node server]  using the [express] framework  +  using the [middleware]  , including the next types   :
+// lesson 8 :  Continue Building a [Node server]  using the [express] framework  +  using the [middleware]  + [MVC]    including the next types   :
 
 // I- [Built-in Middleware] =>  that used in the previous lesson : 
     // 1- {app.use}  -> Define the basic route of the express server                  
@@ -41,8 +41,11 @@
 
 
 // 3] Required  Importings for Middlleware of the [third-party] type :   
-  //  importing the {cors} library from the  [cors] requried to use the [third-party middleware] type   :    
-  const cors = require('cors') ;   // => [ by importing and using  third party middleware => we iwill solve the problem to the [cors that displayed in the browser devtool  ] when request come from the oustsiders host ] 
+  // a- import the {cors} library from the  [cors] requried to use the [third-party middleware] type   :    
+  const cors = require('cors') ;   // => [ by importing and using  third party middleware => we will solve the problem to the [cors that displayed in the browser devtool  ] when request come from the oustsiders host ] 
+
+  // b- import the requried mEthod {corsOptions} for  third-party middleware :  
+  const corsOptions = require('./config/corsOptions') ;   
 
 
 // 4] Required Importing of the used Events imported from outside files    :   
@@ -76,41 +79,30 @@
   app.use(logger);
 // --------------------------------------
 
-// II] [ Third-party  Middleware] type to handle the {{request host}} and solve the cors issue , by using the next (3)  steps     :   
-  // A] Define a [whitelist] array of the accepted hosts to be handled as allowed to access to the our backend [your website  , your localhost ,  the virtual custom server - such as the react -  ]   : 
-  const whiteList = ['https://www.yourdomain.com', 'http://localhost:3500', 'http://127.0.0.1:5500'] ;
-
-
-  // B] Define a object  of  {cors} configutration properties to handle the [whitelist] array   to be able to access to the our backend ]  : 
-  const corsOptions = {
-    // 1- The first property to handle the comming host , through a anonymous function    : 
-    origin: (origin, callback) => {
-      // Create a condition of the recived origin value (host sender request) :
-      if (whiteList.indexOf(origin) !== -1 || !origin) {  // if the comming request host  IS  existed in  previous defined list of the accepted host  OR the no request host came at all ]
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by Cors '));
-      }
-    },
-    // 2- the second property of cors object of the halding the received request :     
-    optionSuccessStatus: 200
-  }
-
-  // C] Define the main middleware method of [third-party] type , by calling the imported {cors} as an imported  method with assigning the upper defined object {corsOptions} as its  paramter  :   
-  app.use(  cors(corsOptions) ) ;     // [{cors}  => refers to the cross origin resourse sharing  ]
+// II] [ Third-party Middleware] type to handle the {{request host}} and solve the cors issue , by using the next (3) steps :   
+   
+  //  Define the main middleware method of [third-party] type , by calling the imported {cors} as an imported  method with assigning the upper defined object {corsOptions} as its  paramter :   
+   app.use(  cors(corsOptions) ) ;     // [{cors}  => refers to the cross origin resourse sharing  ]
 
 // --------------------------------------
 
 // III] Define [Built-in Middleware] Type  :   
   // III] Define [Built-in Middleware] Type /  1] Define public methods :  
-  app.use(express.urlencoded({ extended: false }));
-  app.use(express.json());
+    // Built-in middleware to  handle urlencoded form data  [ content-type : application/x-www-form-urlnccoded ] :
+    app.use(express.urlencoded({ extended: false }));
+    
+    // Built-in middleware to handle json data :
+    app.use(express.json());
 
-  // III] Define [Built-in Middleware] Type /  2]  Define the method the public folder's files reader to be accesable to  all other files in the project server  [extrated from the express] :
-  app.use(express.static(path.join(__dirname, '/public')));
+
+    // III] Define [Built-in Middleware] Type /  2]  Define the method the public folder's files reader to be accesable to  all other files in the project server  [extrated from the express] :
+    app.use( '/' , express.static(path.join(__dirname, '/public')));
+
+    // app.use( '/subdir' , express.static(path.join(__dirname, '/public')));
+  // -----------------------------------------------------
+
 
   // III] Define [Built-in Middleware] Type / 3] Define the several routes using the {get} method on the express +  assign an annonymous function of the reqiured method => [instead of define {server} variable in default node ]  :
-
     // a- Define the main route of the [index page : '^/$' || 'index.html' ] using the {get} method on the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :
     app.get('^/$|index(.html)?', (req, res) => {
       // 1- [sending a dare testing text ]  => this message  will be dispalyed at the page : 
@@ -174,6 +166,14 @@
     // Define the main router of  ['chain' with optional followed after by '.html' ] that chaining all of previous (3) functions  as array parameter  :  
     app.get('/chain(.html)?', [one, two, three]);
 
+// -----------------------------------  
+   // Define routes  by importing from  the 'routes' folder :   
+    app.use('/' , require('./routes/root') ) ;
+    
+    // app.use('/subdir' , require('./routes/subdir') ) ;
+    
+    app.use('/employees' , require('./routes/api/employees') ) ;
+ 
 // -----------------------------------
 
   //  III] [Built-in Middleware] type / e-  Define the last route with using the [app.use()]  of  '*' and followed by any value => and display the inner 404 error page {404.html} incase of any No existed path is written  =>

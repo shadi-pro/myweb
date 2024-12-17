@@ -94,3 +94,9 @@
 20241214	19:14:25	 73753645-7b0b-41a7-a456-fde65267f0f8 	  GET 	 undefined 	  /new-page.html 
 20241214	19:14:29	 7c41b3fa-bb2e-40ba-bf1a-977a1b7634ef 	  GET 	 undefined 	  /new-pa 
 20241214	19:14:30	 694cc72f-b026-4317-9d02-6d871b04f707 	  GET 	 undefined 	  /css/style.css 
+20241217	22:00:32	 2999e112-c884-41d6-833e-dfb234b3e765 	  GET 	 undefined 	  / 
+20241217	22:00:32	 e9f53df7-2bf2-4b02-883a-381ecad2bfd3 	  GET 	 undefined 	  /css/style.css 
+20241217	22:00:32	 708c3d24-2b38-49e6-9557-e3780677df1e 	  GET 	 undefined 	  /favicon.ico 
+20241217	22:04:21	 89f02ee5-739b-421e-8ec5-6468fd459003 	  GET 	 undefined 	  /employees 
+20241217	22:04:52	 1510361a-10f8-46be-abc5-60ef96b85682 	  GET 	 undefined 	  /employees 
+20241217	22:05:36	 3c2ceeb8-1e6e-4897-8add-5dcb71a7c772 	  GET 	 undefined 	  /employees 

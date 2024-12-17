@@ -1,5 +1,12 @@
-{
-  "firstname" : "Shadi",  
-  "lastname" : "Sayed",  
-  "age" :  30  
-}
+[
+  {
+    "firstname" : "Shadi",  
+    "lastname" : "Sayed",  
+    "age" :  30  
+  } , 
+  {
+    "firstname" : "Ramiz",  
+    "lastname" : "Sayed",  
+    "age" :  28
+  }
+]
