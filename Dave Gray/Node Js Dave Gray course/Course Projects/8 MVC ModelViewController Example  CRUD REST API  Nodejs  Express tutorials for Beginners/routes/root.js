@@ -7,8 +7,8 @@ const path  = require('path') ;
 // --------------------------------------
 
 
-// B] Define main routes : 
-// Define the main page route of {index}    :
+// B] Define main routes  handling return  : 
+// Define the main page route of {index}  [with using the regular expresssion ] :
 router.get('^/$|index(.html)?' , (req , res) => {
    res.sendFile(path.join(__dirname , '..'  , 'views' , 'index.html') ) ;
 } ) ;
@@ -27,4 +27,4 @@ router.get('^/$|index(.html)?' , (req , res) => {
 // C] Export the defined routes :
 module.exports =  router ;
 
-
+ 

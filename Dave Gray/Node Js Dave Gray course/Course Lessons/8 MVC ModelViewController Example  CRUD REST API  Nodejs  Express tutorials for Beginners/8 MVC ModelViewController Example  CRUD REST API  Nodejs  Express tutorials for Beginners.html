@@ -401,7 +401,7 @@
     <!-- About Section  -->
     <section class="about text-center wow bounceInLeft" data-wow-duration="2s" id="about">
         <div class="container">
-            <h2 class="h1" class="hidden-xs"> About Section =>  Building a [Web node Server] using   <span><strong> ( express.js) Framework utilizes  </strong> </span> </h2>
+            <h2 class="h1" class="hidden-xs"> About Section =>  Building a [Web node Server] with  ( express.js) Framework orgaized by  <span><strong>   MVC [model view control]  pattern  </strong> </span> </h2>
             <h3 class="visible-xs"> About Section => This lesson about 
               <strong>   Organize the Node.js &  express API Web Server  using MVC [Model view controllor] design pattern  </strong>  
               <span>           </span> 
@@ -520,18 +520,24 @@
             </header>
 
             <article>
-                <p> &gt; Main Subjects in this lesson will be Node Web sever (without using/utilizing  any Framework [such as :express.js] )   =>   as following : </p>
+                <p> &gt; Main Subjects in this lesson will be Node Express  Web sever ( with using the  {MVC} pattern )   =>   as following : </p>
 
                 <h2> Main Subjects : </h2>
 
                 <ol type="A">
-                    <li> Main points of this lesson , practicial application on the [express.js  framework ] of using  the  node.j for buliding the node webserver  : <br>
+                    <li> Main points of this lesson , practical application  of the mamnaging the built [express  node webserver]   by using [MVC] design pattern : <br>
                         <ol>
                           <li> A] The main concept of ( [MVC] design pattern) & main benefites  </li>
                           
-                          <li> B] Main Practical steps of using [MVC] design pattern] to organize the Node and Express      </li>
+                          <li> B] Main Practical steps of using [MVC] design pattern] to organize the Express Node wseb server  , by applying the  next  steps  : <br>
+                            <ol>
+                              <li> Project  file structure  modifications    </li>  
+                              <li> Managing and cleaning the routes  methods definitions </li>  
+                              <li> Managing API  main CRUD operations methods using the  [MVC] design pattern methodology    </li>  
+                            </ol>
+                          </li>
 
-                          <li> C] Notes about web Node server with using [ MVC] ]  design pattern      </li>
+                          <li> C] Notes about using [MVC]  design pattern  to organize the  web [Express Node server]  </li>
 
                         </ol>
                      </li> <br> <br>
@@ -547,26 +553,37 @@
             </header>
  
           <h1> A]  The main concept of ( [MVC] design pattern) : </h1> <br>
-            <p> The {MVC}  Design pattern used with the [express.js] sever to organize  the  project    ,  due to the [express.js] is unopinionated for  web framework </p> 
+            <p> The {MVC}  Design pattern used with the [express.js] server to organize  the  project    ,  due to the [express.js] is unopinionated for  web framework </p> 
             
             <p> The {MVC} is one of the most popular Design pattern used to organize the [express.js] server project ,  but there are other design patterns  </p> 
-          
-            <p>  main installations steps , as following : <br> 
+            
+            <p> The {MVC} system   is about certain  steps methodology  , as following  : <br>
+              <ul> 
+                <li> creating certain folder of including certain methods as following  :   <br>   
                   <ol> 
-                    <li> Installation : by using the next code tbe npm in  the  {package.json}   :   <br>
-                      <code>
-                          <span  class=one > </span>  npm i express <br>  
-                          OR <br>
-                          <span  class=one > </span> npm i express --save <br>  
-                      </code> 
-                    </li> <br> 
+                    <li> a- [ controller ] folder => contains Each file of the certain Route's CRUD custom handling methods  => such as : <br>  
+                        <p> { employeesController.js} file  => to handle  all CRUD operations methods of  'employees.html'  route </p>
+                    </li>   <br>  
 
+                    <li> b- [routes] folder  => include essentially  the following  :  <br>  
+                      <ul>   
+                        <li> 1- [api]  folder => including api files of each database section [] as following :   <br>
+                          <p>  {employees.js} file ->   Define the main api routes CRUD ops pattern  (as simluted DB)  of this server  [using   controller external source of defiend method of each crud  the  {employeesController} ]   </p>
+                        </li>                           
+                        
+                        <li> 2- {root.js} file => include  the main handling return method of the  main route  [with using the regular expresssion ]  </li>
+
+                      </ul>                        
+                    </li>  
                   </ol>
-                                    
-              </p>
-
-
-            <!--------------------------------------------------------  -->
+                </li>  
+              </ul>              
+            </p> 
+            
+            
+            <p> Adding the {Thunder Client} extension  of [server Api CRUD testing] via  VS code      </p> 
+           
+          <!--------------------------------------------------------  -->
             
             <h1>  B]  Main  steps of methods to  build Express Node server + by using   MVC pattern design    :   </h1>
               <ol>          
@@ -691,81 +708,99 @@
                     </ul>
                 </li> <br> <br>  
 
-                  <li> Second / adding the {Thunder Client} extension  of [server Api CRUD testing]     </li>
+                <li> Second/ Modifications in related files : <br>
+                    <ol> 
+                      <li>  1- {server.js} file   :   <br>      
+                        <p> This the file of [server.js] , will be including Re-factoring of the express node server with   using  [MVC]  methodology  +  cleaning procedures of defined  Middlewares  ,  as folwoing    : <br> 
+                          <ol>  
+                            <li>  A] Importing Section :     <br>     
+                                <code> 
+                                  // 1]  Importing for [node and express]   : <br> 
+                                    // a-  importing the {path} class from the  [node core common module]   :  <br>   
+                                     <span class="one " > </span>    const path = require('path') ;   <br>   <br>
+      
+                                    // b-  importing the {express} custom class from the  [node custom module] :     <br>
+                                    <span class="one " > </span>    const express  = require('express') ;    <br>   <br>
+                                    
+                                  // 2]  Importing for [ Third-party Middleware ]   : <br> 
+                                    // a-  importing the {cors} library required for using the [third-party] type  ] :  <br>
+                                    <span class="one " > </span>    const cors  = require('cors') ;    <br>   <br>
+
+                                    // b-  importing the external  defined  third-party middleware method {corsOptions} =>  to use be able it here [as assigned method inside the {cors}  ] : <br>
+                                    <span class="one " > </span>    const corsOoptions  = require('config/corsOptions') ;    <br>   <br>
+
+                                  // 3]  Importing the defined  Events [ Custom middleware ] : <br> 
+                                    // a-  importing the {Logger} defined Custom middleware method , and exproted class  from the {logEvents.js} file to be used and called  here inside express method - instead of defining it here     :  <br>
+                                    <span class="one " > </span>    const { logger } = require('./middleware/logEvents');    <br>   <br>
+
+                                    // b- importing {errorHandler} defined and exported function from the {errorHandler.js} file to be used  here [inside express method] - instead of define the custom middleware here : <br>
+                                    <span class="one " > </span>    const errorHandler = require('./middleware/errorHandler');  <br>   <br>
+ 
+                                </code>       
+                            </li>   <br><hr> <br>  <br>     
+                            
+                        
+                            <li>  B]  [Express Server configuration processes and procedures steps] section    :   <br>
+                              <ul>  
+                                <li> 1] Define the {port(s)} to be used for connecting with the [localhost] OR with other custom node  server {3500}  :   <br>
+                                  <code>
+                                    <span  class=one > </span>    const PORT = process.env.PORT || 3500 ;  <br>  
+                                  </code>
+                                </li>    <br> <br> 
+      
+                                  <li> 2]  Define the {app} as extracted variable from the defined express  [instead of the   {server} defined variable ]  :   <br>
+                                  <code>
+                                    <span  class=one > </span>  const app = express() ;  <br>  
+                                  </code>
+                                </li>    <br> <br> 
+      
+                                <!--  Im here >>>>>>>>>>>>>>>>> -->
+                                  
+                                <li> 3] Define the main route of the [index page : '/'] using the {get} method on the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :   :   <br>
+                                    <ul> 
+                                      <li>  a- Define the main route of the [index page : '/'] using the {get} method on the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :     <br>
+                                        <code>
+                                          <span  class=one > </span>     <br>  
+                                        </code>                                   
+                                      </li>    
+                                      
+                                      <li> 
+                                        
+                                      </li>    
+                                      
+                                      <li>
+                                        
+                                      
+                                      
+                                      </li>    
+                                    
+                                    
+                                    
+                                    
+                                    </ul> 
+                                </li>    <br> <br> 
+      
+      
+                                <li>    []     </li>
+      
+      
+                                <li> 5] Launching the [Listen] process  of server [to be able to listen  its  request]  ->  [wiht using hte app instead of  the server ]:  <br>    
+                                  <code> 
+                                      <span  class="one "> </span>     app.listen(PORT , () => console.log(`Server running on port : ${PORT} `)  )   <br>
+                                  </code>
+                                </li>  
+      
+                              </ul>                           
+                            </li> 
+                            <br><hr>  <br>     
+                          </ol> 
+                        </p>
+                      </li>
+                    </ol>
+                 
+                </li>
   
               <!-- ----------------------------------------------------------                 -->
-                
-                <li> Third / {server.js} file   :   <br>      
-                  <p> This the file of [server.js] , and will be  Re-factoring using the express.js methodolog  instead of the  previous regular node   : <br> 
-                    <ol>  
-                      <li>   A]  Importing Section :     <br>     
-                          <code> 
-
-                            //  a-  importing the {path} class from the  [node core common module]   :  <br>   
-                            <span class="one " > </span>    const path = require('path') ;   <br>   <br>
-
-                            // b-  importing the {express} custom class from the  [node custom module] :     <br>
-                            <span class="one " > </span>    const express  = require('express') ;    <br>   <br>
-                          </code>       
-                      </li>   <br><hr> <br>  <br>     
-                      
-                  
-                      <li>  B]  [Express Server configuration processes and procedures steps] section    :   <br>
-                        <ul>  
-                          <li> 1] Define the {port(s)} to be used for connecting with the [localhost] OR with other custom node  server {3500}  :   <br>
-                            <code>
-                              <span  class=one > </span>    const PORT = process.env.PORT || 3500 ;  <br>  
-                            </code>
-                          </li>    <br> <br> 
-
-                            <li> 2]  Define the {app} as extracted variable from the defined express  [instead of the   {server} defined variable ]  :   <br>
-                            <code>
-                              
-                              <span  class=one > </span>    const PORT = process.env.PORT || 3500 ;  <br>  
-                            </code>
-                          </li>    <br> <br> 
-
-
-                          <li> 3] Define the main route of the [index page : '/'] using the {get} method on the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :   :   <br>
-                              <ul> 
-                                <li>  a- Define the main route of the [index page : '/'] using the {get} method on the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :     <br>
-                                  <code>
-                                    <span  class=one > </span>     <br>  
-                                  </code>                                   
-                                </li>    
-                                
-                                <li> 
-                                  
-                                </li>    
-                                
-                                <li>
-                                  
-                                
-                                
-                                </li>    
-                              
-                              
-                              
-                              
-                              </ul> 
-                          </li>    <br> <br> 
-
-
-                          <li>    []     </li>
-
-
-                          <li> 5] Launching the [Listen] process  of server [to be able to listen  its  request]  ->  [wiht using hte app instead of  the server ]:  <br>    
-                            <code> 
-                                <span  class="one "> </span>     app.listen(PORT , () => console.log(`Server running on port : ${PORT} `)  )   <br>
-                            </code>
-                          </li>  
-
-                        </ul>                           
-                      </li> 
-                      <br><hr>  <br>     
-                    </ol> 
-                  </p>
-                </li>
               </ol>                              
             <!-- ---------------------------------------------------------- -->
  
