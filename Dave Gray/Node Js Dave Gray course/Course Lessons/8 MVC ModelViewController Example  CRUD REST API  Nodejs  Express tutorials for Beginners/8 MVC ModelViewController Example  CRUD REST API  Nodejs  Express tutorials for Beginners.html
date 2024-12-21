@@ -717,7 +717,7 @@
                                 <code> 
                                   // 1]  Importing for [node and express]   : <br> 
                                     // a-  importing the {path} class from the  [node core common module]   :  <br>   
-                                     <span class="one " > </span>    const path = require('path') ;   <br>   <br>
+                                     <span class="one " > </span>   const path = require('path') ;   <br>   <br>
       
                                     // b-  importing the {express} custom class from the  [node custom module] :     <br>
                                     <span class="one " > </span>    const express  = require('express') ;    <br>   <br>
@@ -740,7 +740,7 @@
                             </li>   <br><hr> <br>  <br>     
                             
                         
-                            <li>  B]  [Express Server configuration processes and procedures steps] section    :   <br>
+                            <li>  B]  [Express Server configuration processes and procedures ] section    :   <br>
                               <ul>  
                                 <li> 1] Define the {port(s)} to be used for connecting with the [localhost] OR with other custom node  server {3500}  :   <br>
                                   <code>
@@ -754,9 +754,8 @@
                                   </code>
                                 </li>    <br> <br> 
       
-                                <!--  Im here >>>>>>>>>>>>>>>>> -->
-                                  
-                                <li> 3] Define the main route of the [index page : '/'] using the {get} method on the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :   :   <br>
+                                   
+                                <li> 3] Define the main route of the [index page : '/'] using the {get} method of the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :   :   <br>
                                     <ul> 
                                       <li>  a- Define the main route of the [index page : '/'] using the {get} method on the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :     <br>
                                         <code>
@@ -818,9 +817,117 @@
         
         <h1>  C] Notes about  building [Node web server] using   ,  [express.js] Framework   :     </h1> 
           <ul>
-             
+              
+            <li> This lesson is building the express node web server with organizing the script by  using the  [MVC] pattern    </li> 
             
-            <li> this lesson is bulding the node web server with using only the node JS syntax and envoirnment (witht using/utilizing Framework of :express.js] ) </li> 
+            <li> By using the {MVC} pattern design =>  there are essential differneces  between the defined the {main Route +  handling it's return } , and defined it's {Route CRUD operations} as following : <br>  
+                <ol> 
+                  <li> [I] Define the main [route] {server url value +  return handling ] => by using (2) methods  as following  : <br>
+                      <p> 1] [First method] : Default express.js only [without using MVC] Method  => according to the next steps   : <br>
+                        <code> 
+                          //  a- Define the main method inside the {server.js} file    : <br>
+                            <span class="one"></span>  app.get('route' , (res , req) => { <br>
+                              <span class="two"></span> // handling procedures codes  <br>
+                              <span class="two"></span>  res.sendFile('./views/index.html', { root: __dirname }) ; <br>
+                              <span class="two"></span>  res.sendFile(path.join( __dirname , 'views' , 'index.html')  ) ; <br>
+                              <span class="two"></span>  res.send('welcome to the express web server !') ; <br>
+                            <span class="one" ></span> } ) ;     <br> 
+                        </code> <br> <hr>  <br>   <br>
+                      </p>     
+                          
+                      <p> 2] [Second method  ] : [Express.js + using MVC] pattern method =>  according to next steps   :  <br> 
+                         <ul> 
+                          <li> a- Inside {routes/root.js}  file => main routes  defintion    <br>
+                            <code> 
+                                //  1-   Importing  requirments [express , router , path ]  :  <br>
+                                <span class="one"></span> express = require ('express')  ;         <br>
+                                <span class="one"></span> router =  express.Router() ;    <br> 
+                                <span class="one"></span> path  = require('path')  ;     <br> <br>
+                                
+                                //  2- Define the main method of  route + handling return :  <br>
+                                  <span class="one"></span>  app.get('route' , (res , req) => { <br>
+                                    <span class="two"></span> // handling procedures codes  <br>
+                                    <span class="two"></span>  res.sendFile('./views/index.html', { root: __dirname }) ; <br>
+                                    <span class="two"></span>  res.sendFile(path.join( __dirname , 'views' , 'index.html')  ) ; <br>
+                                    <span class="two"></span>  res.send('welcome to the express web server !') ; <br>
+                                  <span class="one" ></span> } ) ;     <br>      
+        
+                                //  3 - Exporting the  {router}  class   :  <br>
+                                  <span class="one"></span>  module.exports   =    router  <br>       
+                              </code>
+                          </li>   <br> <br>
+                        
+                          <li> b- Inside {server.js}  file => calling/importing  the defined route  method and assign it insde3 the express method    <br>
+                            //  Importing both of defined Routes & its  crud (according to the {mvc} )   : <br>
+                            <code> 
+                              // importing Route of the {'/'}  [main Route(s)  + return handling ] method =>  from : [routes/root.js] : <br> 
+                                  // Define main index/home route and handling return  :  <br>
+                                  <span class="one"></span>  app.use('/' ,  require('./routes/root') ) <br>   <br>
+                                  
+                                <!-- // 2-  [Routes CRUD operations handlers methods  ]   => from : [routes/api/employees.js] : <br>
+                                  <span class="one"></span>    app.use('/employees' , require('./routes/api/employees') ) ;  <br>   -->
+                            </code>                     
+                          </li> 
+                        </ul>
+                      </p>   
+                  </li> <br>
+ 
+ 
+                  <li> [II] {Route CRUD operations}  method , (according to [MVC] pattern design)   by following steps : <br>
+                      <!-- <p> 2] Main CRUD method definitions =>  inside the { routes/api/employee.js}  :  <br> -->
+                      <p>  1]  Inside the { controllers/employeesControllers.js => Main Data model  + CRUD method definitions => : <br>
+                          <ol>
+                            <li> a- Define the {data} source object { routes/api/employees.js}  file ,   by using  one of  (2)  methods  as following : <br>                               
+                              <code>  
+                                   // First method : default Node method ] - [ will not be used in this project ] :   <br>
+                           
+                                   <span class="one" > </span> // 1- Define an empty object of the data : <br>
+                                   <span class="one" > </span>   const data = {} ; <br>   <br>
+                                      
+                                  
+                                   <span class="one" > </span> //  2- Define the [employees data] as extracted property from the main empty object <br>
+                                      <span class="two" > </span> by importing them from the main defined file  {model/employees.json} :  <br>
+                                   <span class="one" > </span>  data.employees = require('../model/employees.json'); <br>  <br>  
+
+                                    
+                                   // Second method : Reactful method ] - [ will not be used in this project ] :   <br>
+                                   <span class="one" > </span> 1- Define a {data} object of the (2) properties as following [will be used inside the crud  opterations  methods  : <br>                                 
+                               </code>                           
+                            </li>  <br><hr><br>  
+
+                            <li> b- Define the main custom handling CRUD operations method  for each  the Route used in this server  as following : <br> 
+                               <p> 1- CRUD operations  of the  of first Route { '/'}  : <br>    
+                                <code>  
+                                     // First CRUD method [get opt]   :  <br>
+                                     // Second  CRUD method [get opt]   :  <br>
+                                     // Third  CRUD method [get opt]   :  <br>
+                                     // Fourth  CRUD method [get opt]   :  <br>
+                             
+                                 </code>                              
+                              </p> 
+                               
+                              
+                                      <!-- im herer >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  -->
+                               <p> 2- CRUD operations  of the  of second  Route { '/:id'}  : <br>    
+                                <code>  
+                                     // First CRUD method [get opt]   :  <br>
+                                     // Second  CRUD method [get opt]   :  <br>
+                                     // Third  CRUD method [get opt]   :  <br>
+                                     // Fourth  CRUD method [get opt]   :  <br>
+                             
+                                 </code>                              
+                              </p>   
+                            </li>
+                           
+                          </ol>
+                         
+                      </p>  
+
+                    
+                  
+                  </li>
+                </ol>
+            </li> 
             
             <li>  {app.get('request url -  accept a regular expressions  - ', ( req , res, next ) {})} => used to define a certain route , and than adding the certain hanlding procedures will ber implementted awhen this reqest url is being called  , which can include folwlowing procdueres :  <br> 
               <ol> 

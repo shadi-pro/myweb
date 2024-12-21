@@ -1,5 +1,24 @@
 
-//  Including the all Route's CRUD custom handling methods  => [ this file will include simulated scripts of js untill we use the real database ]     :  
+//  This file will Include  :
+  // a- Main [Data model]  object , including the next (2) properties   => 
+    // 1-  [ main data property of hold all data ] => as a imported from the model json file    
+    // 2-  [ data setter function ] => a defiend function using the upper property of the data    
+   
+  // b- Each Route's main defintions of CRUD custom handling methods of each route  (2 Routes) , as following   => 
+    // First route [static route {'/'} ]  , with  next CRUD opts :
+      // 1-  [get opertaion] 
+      // 2-  [create new opertaion] 
+      // 3-  [put/update opertaion] 
+      // 4-  [delete opertaion]  
+
+    // Second route [dynamic route ('/:id' ]  , with next handling :
+      // 1-  [ Finding the requested element from the data object according to its {id}  ] 
+      // 2-  [ Handling error by Send it wiht status code if the requested element has NO [id]   ] 
+      // 3-  [ Sending the [ requested obtained employee]  after being filled into the  response parameter  ] 
+  
+  // c- [this file will include simulated scripts of js untill we use the real database ]     :  
+// ---------------------------------------------------------
+// ---------------------------------------------------------
 
 // A] Define the main data object (using 2 methods ) :
 
@@ -10,9 +29,9 @@
       // data.employees = require('../model/employees.json');
 
   // 2] [using second method : Reactful method ] :   
-    //   define an {data} object of the (2) properties as following [will be used ins the crud  opterations  methods   ]    :
+    //   define a {data} object of the (2) properties as following [will be used ins the crud  opterations  methods   ]    :
     const data = {
-      employees: require('../model/employees.json'),        // the main data property [to hold the main data  ]   
+      employees: require('../model/employees.json'),        // the main data property [to hold the main data]   
       setEmployees: function (data) { this.employees = data }   // the main [data setter function]   
     }
 //----- --------------------------------------
@@ -128,7 +147,7 @@
 
   // II] Define the CRUD operations of the second route : the dynamic route of finding a dynamic element  =>  { ('/:id')}:  
     const getEmployee = (req, res) => {
-      // a- finding the requested element from the data object according to its {id}  :  
+      // a- Finding the requested element from the data object according to its {id}  :  
       const employee = data.employees.find(emp => emp.id === parseInt(req.body.id));
 
       // b- Send an error status code if the requested element has NO [id]  :
@@ -136,7 +155,7 @@
         return res.status(400).json({ "message": `Employee  ID ${req.body.id} not found ! ` });
       }
 
-      // c-  sending the    [ requested obtained employee]  after being filled into the  response parameter  :  
+      // c- Sending the [ requested obtained employee]  after being filled into the response parameter as json format  :  
       res.json(employee);  
 
 

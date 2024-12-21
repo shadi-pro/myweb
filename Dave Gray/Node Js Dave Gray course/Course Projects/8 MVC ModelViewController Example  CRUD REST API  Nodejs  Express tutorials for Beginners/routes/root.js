@@ -1,4 +1,4 @@
-// Define the main routes here to be exported into the server file :
+// Define main Routes according to the [MVC] pattern  , inlcuding  [index] home route here to be exported into the {server.js} file   :
  
 //  A]  Importing section :   
 const express = require('express') ;
@@ -7,8 +7,8 @@ const path  = require('path') ;
 // --------------------------------------
 
 
-// B] Define main routes  handling return  : 
-// Define the main page route of {index}  [with using the regular expresssion ] :
+// B] Define main routes +  handling return  : 
+// Define the main page route of {index} [with using the regular expresssion ] :
 router.get('^/$|index(.html)?' , (req , res) => {
    res.sendFile(path.join(__dirname , '..'  , 'views' , 'index.html') ) ;
 } ) ;
@@ -24,7 +24,7 @@ router.get('^/$|index(.html)?' , (req , res) => {
 // } ) ;
 
 // ---------------------------------
-// C] Export the defined routes :
+// C] Export the router class  :
 module.exports =  router ;
 
  

@@ -1,4 +1,4 @@
-//  {corsOptions} :  This file will include some of defined method required for  [third-party middelware] , and will be used in the {server} file [for cleaning up the server file scripts  ]    :
+//  {corsOptions} :  This file will include some of defined method required for [third-party middelware] , to called   and  used inside it's middelware method  assingment  the {server} file [for cleaning up the server file scripts  ]  :
 
 // Define required methods for defining the [third-party middleware], to be used inside the {server.js}  : 
 // [ corsOptions.js ]  inlclude main defined a middleware handler steps method [that calling the  imported  third-party library of the 'cors' ]  , by using 3 steps of definitnon :

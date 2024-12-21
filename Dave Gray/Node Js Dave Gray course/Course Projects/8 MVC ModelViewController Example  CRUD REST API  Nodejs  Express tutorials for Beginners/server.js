@@ -74,7 +74,7 @@
 // --------------------------------------------------------------------------
 // --------------------------------------------------------------------------
 
-// C] Define {Handlers methods} using different middlewares types   : 
+// C] Define {Events Handlers methods} using different middlewares types   : 
 
   // I] [Custom Middleware] type :    
     //  I]  / 1] Calling the Defined and imported [Custom Middleware {Logger} ]  as the return of the express defined method of {app.use()}   => 
@@ -104,7 +104,7 @@
 
 
     // III]  / 3] Define the several routes using the {get} method on the express +  assign an annonymous function of the reqiured method => [instead of define {server} variable in default node ]  :
-      // a- Define the main route of the [index page : '^/$' || 'index.html' ] using the {get} method on the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :
+      // a- Define the main Route (according to the default method ) of the [index page : '^/$' || 'index.html' ] using the {get} method on the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :
       app.get('^/$|index(.html)?', (req, res) => {
         // 1- [sending a dare testing text ]  => this message  will be dispalyed at the page : 
         // res.send('welcome to the express web server !') ;
@@ -168,10 +168,15 @@
       // app.get('/chain(.html)?', [one, two, three]);
 
   // -----------------------------------  
-    //  First route of the {'/'} : Define main index/home route of handling return , by importing it from  the 'routes/root' folder : //  
+  
+  // D]  Importing both of  defined Routes & its  crud (according to the {mvc} )   :
+     // 1-  [main Routes  + return  ] method =>  from : [routes/root.js]   
+     // 2-  [Routes CRUD operations handlers methods  ]   => from : [routes/api/employees.js]   
+  
+    //  1- Route of the {'/'} : Define main index/home route of handling return , by importing it from  the 'routes/root' folder : //  
       app.use('/' , require('./routes/root') ) ;
       
-    //  Second route of the {'/employees'} :  Define inner page route + CRUD ops  by importing form the 'routes/api' folder : //         
+    //  2- Routes of the {'/employees'} :   Defined routes's CRUD opts    :          
       app.use('/employees' , require('./routes/api/employees') ) ;
     
     //  third route [canceled route ]  of subdir  :
