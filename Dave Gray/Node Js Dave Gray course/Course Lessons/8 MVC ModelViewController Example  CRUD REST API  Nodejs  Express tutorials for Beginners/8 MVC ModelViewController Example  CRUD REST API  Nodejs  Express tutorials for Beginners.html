@@ -857,29 +857,24 @@
                               </code>
                           </li>   <br> <br>
                         
-                          <li> b- Inside {server.js}  file => calling/importing  the defined route  method and assign it insde3 the express method    <br>
+                          <li> b- Inside {server.js}  file => calling/importing  the defined route  method and assign it inside the express method    <br>
                             //  Importing both of defined Routes & its  crud (according to the {mvc} )   : <br>
                             <code> 
                               // importing Route of the {'/'}  [main Route(s)  + return handling ] method =>  from : [routes/root.js] : <br> 
                                   // Define main index/home route and handling return  :  <br>
-                                  <span class="one"></span>  app.use('/' ,  require('./routes/root') ) <br>   <br>
-                                  
-                                <!-- // 2-  [Routes CRUD operations handlers methods  ]   => from : [routes/api/employees.js] : <br>
-                                  <span class="one"></span>    app.use('/employees' , require('./routes/api/employees') ) ;  <br>   -->
+                                  <span class="one"></span>  app.use('/' ,  require('./routes/root') ) <br>   <br>                                 
                             </code>                     
                           </li> 
                         </ul>
                       </p>   
                   </li> <br>
  
- 
-                  <li> [II] {Route CRUD operations}  method , (according to [MVC] pattern design)   by following steps : <br>
-                      <!-- <p> 2] Main CRUD method definitions =>  inside the { routes/api/employee.js}  :  <br> -->
-                      <p>  1]  Inside the { controllers/employeesControllers.js => Main Data model  + CRUD method definitions => : <br>
+                  <li> [II] {Route CRUD operations} methodology steps , (according to [MVC] pattern design)   by following steps : <br>                       
+                      <p>  1]  Inside the { controllers/employeesControllers.js => define Main Data model +  CRUD method definitions  , as next  => : <br>
                           <ol>
-                            <li> a- Define the {data} source object { routes/api/employees.js}  file ,   by using  one of  (2)  methods  as following : <br>                               
+                            <li> a- Define the {data} source object { routes/api/employees.js} file ,   by using  one of  (2)  methods  as following : <br> 
                               <code>  
-                                   // First method : default Node method ] - [ will not be used in this project ] :   <br>
+                                   // First method : default Node method ] - [ will NOT be used in this project ]  {this method is not include the assignning function inside  } :   <br>
                            
                                    <span class="one" > </span> // 1- Define an empty object of the data : <br>
                                    <span class="one" > </span>   const data = {} ; <br>   <br>
@@ -890,42 +885,206 @@
                                    <span class="one" > </span>  data.employees = require('../model/employees.json'); <br>  <br>  
 
                                     
-                                   // Second method : Reactful method ] - [ will not be used in this project ] :   <br>
+                                   // Second method : Reactful method ] - [  to be used in this project ] :   <br>
                                    <span class="one" > </span> 1- Define a {data} object of the (2) properties as following [will be used inside the crud  opterations  methods  : <br>                                 
                                </code>                           
                             </li>  <br><hr><br>  
 
-                            <li> b- Define the main custom handling CRUD operations method  for each  the Route used in this server  as following : <br> 
-                               <p> 1- CRUD operations  of the  of first Route { '/'}  : <br>    
-                                <code>  
-                                     // First CRUD method [get opt]   :  <br>
-                                     // Second  CRUD method [get opt]   :  <br>
-                                     // Third  CRUD method [get opt]   :  <br>
-                                     // Fourth  CRUD method [get opt]   :  <br>
-                             
-                                 </code>                              
-                              </p> 
-                               
-                              
-                                      <!-- im herer >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  -->
-                               <p> 2- CRUD operations  of the  of second  Route { '/:id'}  : <br>    
-                                <code>  
-                                     // First CRUD method [get opt]   :  <br>
-                                     // Second  CRUD method [get opt]   :  <br>
-                                     // Third  CRUD method [get opt]   :  <br>
-                                     // Fourth  CRUD method [get opt]   :  <br>
-                             
-                                 </code>                              
-                              </p>   
-                            </li>
-                           
-                          </ol>
-                         
-                      </p>  
+                             <li> b- Define the main custom handling CRUD operations method  for each  the Route used in this server  as following : <br> 
+                                <p> 1- CRUD operations of the  of first Route { '/'}  : <br>    
+                                    <ol> 
+                                        <li> First CRUD method [get opt]  :  [get opertaion] of all current  employees data object ,  as  to next steps   :   <br> 
+                                          <code>  
+                                            // --  Define the method of the handling [get opertaion] of all employees data object inside the current response json [ using the parmeter of the (res) ]:   <br>
+                                            <span class="one" > </span> const getAllEmployees = (req, res) => { <br>
+                                              <span class=" two " > </span>  // Assign the  obained  data of the employees inside the {res} parameter [in json form ] :    <br>
+                                              <span class="two" > </span>    res.json(data.employees); <br>
+                                            <span class="one" > </span> }  <br> 
+                                          </code>                                
+                                        </li>  <br> <hr> <br> <br>
 
-                    
-                  
-                  </li>
+  
+                                        <li>  Second CRUD method [post/add new elment] opt:  [create new log/element inside the  current data  and post/add it inside the current data json object ] , as next steps  :  <br> 
+                                          <code> 
+                                              const  createNewEmployee = (req, res) => { <br>
+                                              <span class="one" > </span> // 1 - define an object of a new employee object  [ including the incomming each field of  new element's request] :  <br>
+                                              <span class="one" > </span>  const newEmployee = { <br>
+                                                  <span class="two" > </span>   id: data.employees[data.employees.length - 1].id + 1 || 1 ,  => [getting the (id) of current element/employee - using the data array's length  &  consitnial assgin   -  - ] <br>
+                                                  <span class="two" > </span>   firstname: req.body.firstname ,  => [ getting [firstname] value as a property of the (req) ] <br>
+                                                  <span class="two" > </span>   lastname: req.body.lastname      => [ getting [lastname] value as a property of the (req) ] <br>
+                                              <span class="one" > </span>  } <br> </br>
+                                              
+                                              
+                                              <span class="one" > </span> //  2-  handle the error of the unexisted value of one of boht  fields of [first name] or [last name]  of the inserted new element/employee - using the conditional  + {res.status()}  method  : <br>
+                                              <span class="one" > </span>   if (!newEmployee.firstname || !newEmployee.lastname) { <br>
+                                                <span class="two" > </span>    return res.status(400).json({ 'message': 'First and last names are required...' }); <br>
+                                              <span class="one" > </span>  } <br> </br>
+    
+                                              <span class="one" > </span>  //  3- Adding the new element object {newEmployee} [after handling the upper error ]  into the upper defined object variable of [data.employees]  => by using the {setEmployees} setter function by using the  destructuring method : <br>
+                                              <span class="one" > </span>    data.setEmployees([...data.employees, newEmployee] ); <br>  <br>
+
+                                              <span class="one" > </span>  //  4-  Assign the final {data} value ( after adding the new object - newEmployee - ]  ) into the [res] parameter , with use a new record code (201) :  : <br>
+                                              <span class="one" > </span>    res.status(201).json(data.employees)  ;  <br>
+                                              }   <br>   
+                                          </code>                              
+                                        </li> <br> <hr> <br> <br>
+
+                                        
+                                        <li> Third  CRUD method [put/update opt]:  [ update a certain existed element in the current data ]  , as next steps  :<br> 
+                                          <code>  
+                                            const updateEmployee = (req, res) => {     <br>
+
+                                              <span class=one > </span> // 1-  finding the requested element from the data object according to its {id} , usign the {find()} method  and inner condition of the existed id   : <br>
+                                              <span class=one > </span>   const employee = data.employees.find(emp => emp.id === parseInt(req.body.id))  ;  <br>  <br>  
+                                            
+                                              <span class=one > </span> // 2- handling Error of the requested element [id] unexisted/not found  , by Sending an error status code (400)  : <br>
+                                              <span class=one > </span>  if (!employee) {  <br>
+                                                  <span class=two > </span> return res.status(400).json({ "message": `Employee  ID ${req.body.id} not found ! ` });  <br> 
+                                              <span class=one > </span> }  <br>  <br>
+                                        
+                                              <span class=one > </span> // 3-  check if the [firstname requested element] is existed ,  and assign the new element's firstname {employee.firstname} value with the value of the  obtained value  from request  {req.body.firstname}   : <br>
+                                              <span class=one > </span> if (req.body.firstname) employee.firstname = req.body.firstname ;  <br>
+                                                  
+                                              <span class=one > </span>  // 4-  check if the [lastname requested element] is existed , and assign the new element's lastname {employee.lastname} value with the value of the  obtained value  from request  {req.body.lastname}   : <br>
+                                              <span class=one > </span> if (req.body.lastname) employee.lastname = req.body.lastname ;  <br>
+
+                                              <span class=one > </span> // 5-  define  a variable of  filtered array  of all existed elements - except the current  updated helement  -  [ using  the filter() ]  : <br>
+                                              <span class=one > </span>    const filterArray = data.employees.filter(emp => emp.id !== parseInt(req.body.id));  <br>
+                                                  
+                                              <span class=one > </span> // 6-  define an unsorted array as accumaltated  the upper defined array of the all existed elements concateanated with the current updated element :  : <br>
+                                              <span class=one > </span>    const  unsortedArray =  [ ...filterArray , employee ] ; <br>
+                                                
+                                              <span class=one > </span> // 7- adding the [upper accumaltated array] into the [current main data object] , by using the setter function + with assign the proper [id] value using the sort() method  : <br>
+                                              <span class=one > </span>   data.setEmployees( unsortedArray.sort(  (a, b) => a.id &gt; b.id ? 1 :  a.id &lt; b.id ? -1 : 0  ) ) ; <br>
+                                                  
+                                              <span class=one > </span> // 8-  sending the [employees] property of [new data] after being filled -> into the  response parameter in json form  :: <br>
+                                              <span class=one > </span>   res.json( data.employees ) ; <br>                                               
+                                            }   <br>  
+                                          </code>                                                                    
+                                        </li>   <br> <hr> <br> <br>
+
+
+                                        <li> Fourth CRUD method [ delete/remove opt]:   [delete a certain  element from the data json ] :   <br> 
+                                          <code>  
+                                            const deleteEmployee = (req, res) => {   <br>
+                                              <span class=one > </span> // 1-  finding the requested element from the data object according to its {id} , usign the {find()} method and inner condition of the existed id   : <br>
+                                              <span class=one > </span>   const employee = data.employees.find(emp => emp.id === parseInt(req.body.id))  ;  <br>  <br>  
+                                                                                        
+                                              <span class=one > </span>  // 2- handling Error of the requested element [id] unexisted/not found  , by Sending an error status code (400)  : <br>
+                                              <span class=one > </span>  if (!employee) {  <br>
+                                                  <span class=two > </span> return  res.status(400).json({ "message": `Employee  ID ${req.body.id} not found ! ` });  <br> 
+                                              <span class=one > </span> }  <br>  <br>
+                                        
+                                              <span class=one > </span> // 3- define an filtered array of all existed elements - except the current requested  element  -  [ using the filter() ] :   <br>
+                                              <span class=one > </span> const filterArray = data.employees.filter(emp => emp.id !== parseInt(req.body.id)); <br>
+                                          
+                                              <span class=one > </span>  // 4- set/assign  the upper defined [filtered array ]  of all existed elements (only)  inside  the data  [ using the setter function +  destrucurtring method ] :   <br>
+                                              <span class=one > </span>   data.setEmployee([...filterArray]);   <br>
+                                          
+                                              <span class=one > </span> // 5-  sending the [employees] property object (after being filled with filterd array ) into the  response parameter (res) [ with json form]  :   <br>
+                                              <span class=one > </span>   res.json( data.employees );   <br>
+                                            }  <br>
+
+                                          </code>                              
+                                        </li>    
+                                    </ol>
+                                </p>  <br> <hr> <br> <br> 
+                                  
+                                <p> 2- CRUD operations [only one ] of the  of second  Route of dynamic element  { '/:id'}  : <br>    
+                                  <code>  
+                                      // CRUD method of [get data of requested dynamic element ] opt  :  <br>
+                                          
+                                          const getEmployee = (req, res) => { <br>
+                                      
+                                            <span class=one></span> 1- Finding the requested element from the current data object according to its {id}  :    <br>
+                                            <span class=one></span>  const employee = data.employees.find(emp => emp.id === parseInt(req.body.id)) ; <br><br>  
+
+                                            <span class=one > </span> 2- handling Error of the requested element [id] unexisted/not found  , by Sending an error status code (400)  : <br>
+                                            <span class=one > </span>  if (!employee) {  <br>
+                                                <span class=two > </span> return  res.status(400).json({ "message": `Employee  ID ${req.body.id} not found ! ` });  <br> 
+                                            <span class=one > </span> }  <br>  <br>
+                                        
+                                            <span class=one></span>  3-  sending the [requested obtained employee object only ]  after being  found  into the response parameter as json format :   <br>
+                                            <span class=one>  </span>  res.json(employee);   <nbr>  
+                                            <br> 
+                                          }   <br> 
+                                    </code>                              
+                                </p>   
+                            </li>   <br> <br> <br>
+ 
+
+                            <li> c- Exporting all upper defined method of the CRUD  method of   every  route as object :  <br>
+                              <p> These metond will be called inside the [empoyees.js] file  while defining the  routes of this project : </p> 
+                                  <span class="one"></span> module.exports = {   <br>
+                                      <span class="two "></span> getAllEmployees,  <br>
+                                      <span class="two "></span> createNewEmployee, <br>
+                                      <span class="two "></span> updateEmployee , <br>
+                                      <span class="two "></span> deleteEmployee,  <br>
+                                      <span class="two "></span> getEmployee   <br>
+                                  <span class="one"></span> }  <br>
+                            </li>
+                          </ol>
+                      </p>  
+                      <!--   --------------------  -->
+ 
+                      <p> 2] Inside {routes/api/employees.js}  => calling and assign the imported CRUD methods  : <br>   
+                        <ul> 
+                            <li>  a] Preperations procedures :   <br>
+                              <ol> 
+                                <li> a- Importing the main [express server] :  <br>
+                                    <span class="one"></span>   const express = require('express') ;    
+                                </li>    <br> <br>  
+                                
+                                <li> b-  Define the main [express Router] :  <br>
+                                    <span class="one"></span>   const router  =  express.Router();     
+                                </li>  <br> <br>
+                                
+                                <li> c-  Importing the [controller file] (that including the all defined handling crud methods) :  <br>
+                                    <span class="one"></span>   const   employeesController = require('../../controllers/employeesController') ;  
+                                </li>  <br> <br>
+        
+    
+    
+                              </ol> 
+                            </li>  <br><br>     
+
+                            <li>  b] Defining the main routes with assign the imported CRUD  operations methods  : <br>
+                              <ol> 
+                                <li> [First route] :  Define all CRUD opts of the main index || home page route  {'/'}  +   assign all CRUD operations using the chained Notation method  :  <br> 
+                                  <code>
+                                    <span class="one"> </span>   router.route('/') <br>
+                                        <span class="two" > </span>  .get(employeesController.getAllEmployees)                // [get all elements crud  operation] <br>
+                                          <span class="three"  > </span>  .post(employeesController.createNewEmployee)        // [create new element  operation]    <br>
+                                            <span class="four"  > </span>   .put(employeesController.updateEmployee)          // [update an existed entry]          <br>
+                                              <span class="five "  > </span>   .delete(employeesController.deleteEmployee) ;   // [delete a certain element]        <br>
+                                  </code>
+                                </li>  <br>  <br> 
+
+
+                                <li> [Second route] : Define the  dynamic page route + assign it's CRUD operation  [only one crud of : getting requested element] :  <br> 
+                                  <code> 
+                                    <span  classs="one " ></span>  router.route('/:id').get( employeeController.getEmployee) ;  // [ getting all data of the requested element]  <br>
+                                  </code>                                  
+                                </li>
+                              </ol>
+                            </li>    <br> <br>     
+
+                            <li>  c]  Exporting the defined {router} class :   <br> 
+                              <code>
+                                <span clas=one> </span>   exports.module = router   ;      <br>
+                              </code>                              
+                            </li>
+                        </ul>                      
+                      </p>
+                        <!-- ------------------------------------------- -->
+
+                      <p> 3] Inside the {server.js}  file =>  Define the main routes with handling return  ( wiht assign the imported CRUD methods )    :  </p>
+                          <code>
+                            <span   class=one > </span>    <br> 
+                          
+                          </code>
+                        
+                    </li>
                 </ol>
             </li> 
             
