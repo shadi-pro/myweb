@@ -571,12 +571,12 @@
                           <p>  {employees.js} file ->   Define the main api routes CRUD ops pattern  (as simluted DB)  of this server  [using   controller external source of defiend method of each crud  the  {employeesController} ]   </p>
                         </li>                           
                         
-                        <li> 2- {root.js} file => include  the main handling return method of the  main route  [with using the regular expresssion ]  </li>
+                        <li> 2- {root.js} file => include  the main handling return method of the  main route  [with using the regular expression ]  </li>
 
                       </ul>                        
                     </li>  
                   </ol>
-                </li>  
+                </li>   
               </ul>              
             </p> 
             
@@ -1031,19 +1031,17 @@
                         <ul> 
                             <li>  a] Preperations procedures :   <br>
                               <ol> 
-                                <li> a- Importing the main [express server] :  <br>
+                                <li> 1- Importing the main [express server] :  <br>
                                     <span class="one"></span>   const express = require('express') ;    
                                 </li>    <br> <br>  
                                 
-                                <li> b-  Define the main [express Router] :  <br>
+                                <li> 2- Define the main [express Router] :  <br>
                                     <span class="one"></span>   const router  =  express.Router();     
                                 </li>  <br> <br>
                                 
-                                <li> c-  Importing the [controller file] (that including the all defined handling crud methods) :  <br>
+                                <li> 3-  Importing the [controller file] (that including the all defined handling crud methods) :  <br>
                                     <span class="one"></span>   const   employeesController = require('../../controllers/employeesController') ;  
                                 </li>  <br> <br>
-        
-    
     
                               </ol> 
                             </li>  <br><br>     
@@ -1078,101 +1076,143 @@
                       </p>
                         <!-- ------------------------------------------- -->
 
-                      <p> 3] Inside the {server.js}  file =>  Define the main routes with handling return  ( wiht assign the imported CRUD methods )    :  </p>
-                          <code>
-                            <span   class=one > </span>    <br> 
-                          
-                          </code>
-                        
+                      <p> 3] Inside the {server.js}  file =>  Define the main routes with handling return  ( with assign the imported defined  CRUD methods )   :  </p>
+                          <ul>    
+                             <li>  a] Importing Section  :    <br>                   
+                                <ol>
+                                  <li> 1]  Required importings for [node  web server] :   <br>
+                                    <code>
+                                        <span  class=one > </span> // importing the {path} class from the  [node core common module]      :   <br> 
+                                        <span  class=one > </span>  const path = require('path');   <br>                                  
+                                    </code>                                     
+                                  </li>  <br> 
+                                    
+                                  <li> 2]  Required importings for creating [Node Web Server] using the [express] framework  :   <br>
+                                    <code>
+                                        <span  class=one > </span> // a- importing the {express} custom class from the  [node custom module]  :   <br> 
+                                        <span  class=one > </span>   const express = require('express') ;  <br>  <br> 
+                                    </code>
+                                  </li> <br>
+                                  
+                                  <li> 3] Required  Importings for Middlleware of the [third-party] type  :   <br>
+                                    <code>
+                                        <span  class=one > </span> // a-  exracting the {cors} from [cors] library that requried for using the [third-party middleware] type  :   <br> 
+                                        <span  class=one > </span>   const cors = require('cores ') ;  <br>  <br> 
+                                        
+                                        <span  class=one > </span> // b- import the   external  defined  third-party middleware method {corsOptions} =>  to be able use it here   :   <br> 
+                                        <span  class=one > </span>   const cors = require('cores ') ;  <br>  <br> 
+                                    </code>
+                                  </li>  <br> 
+
+                                  <li> 4] Required Importing for [Events defined Custom middleware] from outside files  :   <br>
+                                    <code>
+                                        <span  class=one > </span> // a-   Importing {logger} defined and exported function from the {logEvents.js} file to be used  here inside express method - instead of define the custom middleware here  - :   <br> 
+                                        <span  class=one > </span>    const { logger } = require('./middleware/logEvents'); <br>  <br> 
+                                        
+                                        <span  class=one > </span> // b- Importing {errorHandler} defined and exported function from the {errorHandler.js} file to be used  here [inside express method] - instead of define the custom middleware here    -   :   <br> 
+                                        <span  class=one > </span>    const errorHandler = require('./middleware/errorHandler'); <br>  <br> 
+                                    </code>
+                                  </li>  <br> 
+                                </ol> 
+                            </li>
+                            
+                             <li>  b] [Express Server public configuration definitions processes steps] section [according to the midddleware  +  MVC  pattern ]  :    <br> 
+                                <code>
+                                    <span  class=one > </span> // 1-  Define the { Port(s) } to be used for connecting with the [localhost] OR with other custom node server {3500} :   <br> 
+                                    <span  class=one > </span>  const PORT = process.env.PORT || 3500;    <br> <br>
+
+                                    <span  class=one > </span> // 2-   Define the {app} as extracted variable from the defined express  [instead of the   {server} defined variable ]  :   <br> 
+                                    <span  class=one > </span>  const app = express() ;   <br><br> 
+                                </code>    
+                             </li> 
+                            
+                             <li>  c]  Define {Events Handlers methods} using different middlewares types  :    <br>  
+                                  <ol> 
+                                        <li>  1- Calling the Defined and imported [Custom Middleware {Logger} ]  as the return of the express defined method of {app.use()} :   <br>                                       
+                                          <code>
+                                            <span  class=one > </span>  app.use(Logger) ; <br> <br>
+                                          </code>
+                                        </li> <br> 
+                                    
+                                        <li>  2-  Define the main middleware method of [third-party] type , by calling the imported {cors} as an imported  method with assigning the upper defined object {corsOptions} as its  paramter  :   <br> 
+                                          <code>
+                                            <span  class=one > </span>  app.use (cors(corsOptions) )  ; <br> <br>
+                                          </code>
+                                        </li> <br> 
+                                      
+                                        <li>  3- Define some essential public Built-in middleware methods :   <br> 
+                                          <code>
+                                            <span  class=one > </span> //  a-  Built-in middleware to  handle urlencoded form data  [ content-type : application/x-www-form-urlnccoded ] :   <br>
+                                            <span  class=one > </span>   app.use(express.urlencoded({ extended: false }));  <br> <br>
+                                            
+                                            <span  class=one > </span> //  b-   Built-in middleware to handle json data:   <br>
+                                            <span  class=one > </span>    app.use(express.json());  <br> <br>
+                                            
+                                            <span  class=one > </span> //  c-   Define the method the public folder's files reader to be accesable to  all other files in the project server  [extrated from the express] :  <br>  
+                                            <span  class=one > </span>    app.use( '/' , express.static(path.join(__dirname, '/public')));    <br> <br>
+                                        </code>
+                                      </li> <br> 
+                                      
+                                  </ol>   
+                             </li>
+
+                              <li>  D] Defining main Routes + its crud operastions  +  handling return  -  (according to the {mvc} )  => by Importing related methods :  <br> 
+                                  <ol>
+                                    <li>  1-  Route of the {'/'} : Define [main index/home route + handling return] , by importing the {'root.js'} file  from : [routes/root.js]  :      <br>
+                                        <code> 
+                                            <span class=one > </spanc>  app.use('/' , require('./routes/root') ) ; <br>
+                                        </code>
+                                    </li> <br>  
+                                    
+                                    <li>  2-  Routes of the[ {'/employees'} +  routes's CRUD operation] , by importing the {'employees.js }  file from : [routes/api/employees.js]   :      <br>
+                                        <code> 
+                                            <span class=one > </spanc>  app.use('/' , require('./routes/root') ) ; <br>
+                                        </code>
+                                    </li> <br>  
+                                  </ol> <br>
+                              </li>
+
+                              <li> E] Define the [last route - due to the  node express  reading flow    -  ] of handling undefined requested routes values  ,  with using the [app.use()] of '*' and followed by any value => and display the inner 404 error page {404.html} incase of any Non existed path is written]  :  <br>
+                                   <code> 
+                                      <span class = one  ></span>   app.all('*', (req, res) => {  <br>
+                                        <span class = two  ></span>   // 1- assign the current response with error code   :  <br>
+                                        <span class = two  ></span>   res.status(404);  <br> <br>  
+                                    
+                                        <span class = two  ></span>  // 2-  define a conditional returned according to the requested extension of html  :   <br>
+                                        <span class = two  ></span>  if (req.accepts('html')) {   <br> 
+                                          <span class =three  ></span> // we need to use both the method of {statusCode} & {sendFile} in a chained to make the error page is not as [200]  : <br>
+                                          <span class =three  ></span> res.sendFile(path.join(__dirname, 'views', '404.html'));    <br>
+                                
+                                        <span class =two  ></span> } else if (req.accepts('json')) { <br>
+                                          <span class =three  ></span> // Send a json error if error is type of json  : <br>  
+                                          <span class =three  ></span> res.json({ error: "404 is not found! " });  <br>  
+                                
+                                        <span class =two  ></span> } else {  <br> 
+                                          <span class =three  ></span>  // Send an error if error is any type else :  <br>       
+                                          <span class =three  ></span> res.type('txt').send('404 is not found! ');  <br>
+                                        <span class =two   ></span> } <br>
+                                        <span class =one  ></span> }); <br>  
+                                   </code>
+                              </li>
+
+                              <li> F] Define [Custom middleware method of Error log Event handler] by express method of calling the defined and imported  :  <br>
+                                <code> 
+                                  <span clas=one> </span> app.use(errorHandler);  <br>
+                                 </code>
+                              </li>
+                              
+                              <li>  G]  Launching the [Listen] process on the defined variable of server {app} [to be able to listen its request]  :  <br>
+                                <code> 
+                                  <span clas=one> </span> app.listen(PORT, () => console.log(`Server running on port : ${PORT} `))   <br>
+                                 </code>
+                              </li>
+
+
+                          </ul>
                     </li>
                 </ol>
             </li> 
-            
-            <li>  {app.get('request url -  accept a regular expressions  - ', ( req , res, next ) {})} => used to define a certain route , and than adding the certain hanlding procedures will ber implementted awhen this reqest url is being called  , which can include folwlowing procdueres :  <br> 
-              <ol> 
-                <li>  {res.send('textual value') }  =>  which will sent this value in the current page when the assinged request url is being called  </li>
-                <li>  {res.send(File() }  =>  which will send a certain file to be displayed when the assinged request url is being called  </li>
-                <li>  {res.send(File() }  =>  has several syntaxes  as following : <br> 
-                  <code> 
-                      1-  the  Basic method of the  node => <br>
-                      <span class=one > </span>     { res.sendFile( './views/FileName.extension' , {root:  __dirname } )  }  <br>  <br>
-                                          
-                      2-  the  path.join  method   => <br>
-                      <span class=one > </span>     { res.sendFile( path.join( __dirname  ,'views' ,  'FileName.extension' ) )  }  <br> 
-                  </code>
-                </li>
-
-                <li>  Regular expression could be included inside the requested url used for controled url request  , and can contain  the  folllwing :  
-                  <ul> 
-                     <li> '^'  =>  means  Must begins with the next assigned text  , such as the next example : <br> 
-                        <code> 
-                            <span clas="one" > </span> app.get('^/', (res , req) => {}  ) ; => [the req route url must begins with the '/' ] <br>
-                        </code>  
-                    </li>  <br>
-
-                     <li> '$'  =>  means  Must Ends with the  previous assigned text,   such as the next example :  <br>
-                        <code> 
-                          <span clas="one" > </span> app.get('/$', (res , req) => {}  ) ; => [the req route url must ends  with the '/' ] <br>
-                        </code>
-                     </li> <br>
-
-                     <li> '|'  =>  means could include the previous assigned text or the next  assinged text  , such as  the next example : <br> 
-                      <code> 
-                        <span clas="one" > </span> app.get('/|index.html' , (res , req) => {}  ) ; => [the req route url could be '/' OR 'index'   ] <br>
-                      </code>
-                    </li>  <br>  
-                    
-                     <li> '(text)?'  =>  means the in-between brackets is an optionally to be added , such as  the next example : <br> 
-                      <code> 
-                        <span clas="one" > </span> app.get('index(.html)?' , (res , req) => {}  ) ; => [the req route url is 'index' and could include '.html' after the index ] <br>
-                      </code>
-                    </li>  <br>  
-
-                    <li> '*'  =>  means  to accepting any  value will be come  , such as  the next example : <br> 
-                      <code> 
-                        <span clas="one" > </span> app.get('/*' , (res , req) => {}  ) ; => [the req route url is '/'  and followed by any value  ] <br>
-                      </code>
-                    </li>  <br>  
-                    
-                    <li> using Multiple regular expressions in one method   =>    such as  the next example : <br> 
-                      <code> 
-                        <span clas="one" > </span> app.get('^/$|/index(.html)?' , (res , req) => {}  ) ; => [the req route url Must start and ends with '/'   OR '/index and could be followed by '.html' ] <br>
-                      </code>
-                    </li>  <br>  
-
-                    <li>  The route defintion could include  chained callback functions  and also couuld include using of the [next()] partater to accesss to the next chained function , and this inlcuding   (2) types  of methods , as folowting  : <br>     
-                        <ul> 
-                          <li>
-                             <code> 
-                              <span class="one" > </span> res.get('', (res , req , next ) => { <br>
-                                  <span class="two" > </span>  console.log ('hello ') ;     <br>
-                                  <span class="two" > </span>  next() ;   // using the this parameter method  will allow to move to the next chained function  <br>
-                              <span class="one" > </span> } , (res ,req) => {  <br> 
-                                  <span class="two " > </span>   res.sendFile(path.join(full path of a file ) )  ; <br>
-                              <span class="one " > </span>}  )   ;                        
-                            </code>                          
-                          </li>
-
-                        </ul>
-                      
-                    </li>
-
-
-
-                  </ul>                  
-                </li>
-              </ol>
-            </li>
-
-            <li> [express.js]  node framework server : has built-in inner benefits of the basic node parameters and funciots    , such as :  <br>
-                <ol>
-                  <li> Auto sending the status code of the current respond , such as [200: inkcase of the sucessful  responding , 301 : in case of the  redirecting  ,  404 : in case of server response error ]      </li>
-                  <li> Auto create the [content-Type]   => that was had to be assigned manually  in the defualt noden web server        </li>
-                  <li> Auto handle the error type page , instead of the  default  [404.html]       </li>
-                  <li> </li>
-                </ol>
-            </li>
-
+       
             <li> The express is handling  the methods inside the scirpts file by a first by first [as a flow] ->  s we put hte default route to the very end of the script    </li> 
 
 

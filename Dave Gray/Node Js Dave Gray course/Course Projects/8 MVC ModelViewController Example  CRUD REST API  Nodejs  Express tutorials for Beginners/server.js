@@ -23,8 +23,8 @@
 
   // Second : Routes definition  Section [according to the {MVC} design pattern ]  =>   
     //  I/ Main [MVC] methods used for organizing Routes  =>
-      // 1- Method of the handling main index route {'/'}      => imported  from  the [routes/root.js]            
-      // 2- Method of the handling inner route {'/employees'}  => imported   from  the [routes/api/employees.js]            
+      // 1- Method of the main index route {'/'}  + handling return   => imported  from  the [routes/root.js]            
+      // 2- Method of the inner route {'/employees'} +  crud operation method  =>  imported from  the [routes/api/employees.js]            
 
 // ---------------------------------------------
 
@@ -54,7 +54,7 @@
     // a)  Importing {logger} defined and exported function from the {logEvents.js} file to be used  here inside express method - instead of define the custom middleware here  -  :
     const { logger } = require('./middleware/logEvents');
 
-    // b) Importing {errorHandler} defined and exported function from the {errorHandler.js} file to be used  here [inside express method] - instead of define the custom middleware here    -  :
+    // b) Importing {errorHandler Errorlog event } defined and exported function from the {errorHandler.js} file to be used  here [inside express method] - instead of define the custom middleware here    -  :
     const errorHandler = require('./middleware/errorHandler');
 
     // c) Importing {logEvents} defiend and exported function from  the {logEvents.js} file to be here int  the [server.js] => not need for now    :
@@ -82,21 +82,21 @@
   // --------------------------------------
 
   // II] [ Third-party Middleware] type to handle the {{request host}} and solve the cors issue , by using the next (3) steps :   
-    //  Define the main middleware method of [third-party] type , by calling the imported {cors} as an imported  method with assigning the upper defined object {corsOptions} as its  paramter :   
+    //  1] Define the main middleware method of [third-party] type , by calling the imported {cors} as an imported  method with assigning the upper defined object {corsOptions} as its  paramter :   
     app.use(  cors(corsOptions) ) ;     // [{cors}  => refers to the cross origin resourse sharing  ]
 
   // --------------------------------------
 
   // III] Define [Built-in Middleware] Type  :   
     // III] /  1] Define public methods :  
-      // Built-in middleware to  handle urlencoded form data  [ content-type : application/x-www-form-urlnccoded ] :
+      // a- Built-in middleware to  handle urlencoded form data  [ content-type : application/x-www-form-urlnccoded ] :
       app.use(express.urlencoded({ extended: false }));
       
-      // Built-in middleware to handle json data :
+      //  b- Built-in middleware to handle json data :
       app.use(express.json());
 
 
-      // III]  /  2]  Define the method the public folder's files reader to be accesable to  all other files in the project server  [extrated from the express] :
+      // c-  Define the method the public folder's files reader to be accesable to  all other files in the project server  [extrated from the express] :
       app.use( '/' , express.static(path.join(__dirname, '/public')));
 
       // app.use( '/subdir' , express.static(path.join(__dirname, '/public')));
@@ -105,6 +105,7 @@
 
     // III]  / 3] Define the several routes using the {get} method on the express +  assign an annonymous function of the reqiured method => [instead of define {server} variable in default node ]  :
       // a- Define the main Route (according to the default method ) of the [index page : '^/$' || 'index.html' ] using the {get} method on the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :
+       //  => [this method of main route defininion has canceld by  being replaced with  {root.js} according to [mvc] patern methodology    ] 
       app.get('^/$|index(.html)?', (req, res) => {
         // 1- [sending a dare testing text ]  => this message  will be dispalyed at the page : 
         // res.send('welcome to the express web server !') ;
@@ -169,14 +170,14 @@
 
   // -----------------------------------  
   
-  // D]  Importing both of  defined Routes & its  crud (according to the {mvc} )   :
+  // D] Defined main Routes + its crud opts +  handling return  -  (according to the {mvc} )  => by  Importing both :
      // 1-  [main Routes  + return  ] method =>  from : [routes/root.js]   
      // 2-  [Routes CRUD operations handlers methods  ]   => from : [routes/api/employees.js]   
   
-    //  1- Route of the {'/'} : Define main index/home route of handling return , by importing it from  the 'routes/root' folder : //  
+    //  1- Route of the {'/'} : Define main index/home route + handling return , by importing it from  the 'routes/root' folder : //  
       app.use('/' , require('./routes/root') ) ;
       
-    //  2- Routes of the {'/employees'} :   Defined routes's CRUD opts    :          
+    //  2- Routes of the {'/employees'} +  routes's CRUD opts    :    
       app.use('/employees' , require('./routes/api/employees') ) ;
     
     //  third route [canceled route ]  of subdir  :
@@ -184,11 +185,10 @@
       
   // -----------------------------------
 
-    //  III] / e-  Define the [last route] with using the [app.use()]  of  '*' and followed by any value => and display the inner 404 error page {404.html} incase of any No existed path is written  =>
+    //  III] / e-  Define the [last route of undefiend requested route value  ] with using the [app.use()] of '*' and followed by any value => and display the inner 404 error page {404.html} incase of any No existed path is written  =>
       // by using the {app.all()} that more for routing error due accepting all of http methods :
       // app.use() -> used for middleware definition , and not accepting the rejects          
-      // app.all() -> used more for routing , and accept all of 'http' methods  
-      // app.get('/*',  (req , res ) => {
+      // app.all() -> used more for routing   with provides more features , such as : [accept all of 'http' methods ] 
       app.all('*', (req, res) => {
         // assing the current response with error code   :
         res.status(404);
@@ -207,14 +207,14 @@
 
   //  --------------------------------------------------------------------------
 
-  //  I] [Custom Middleware] type  / 2] Define [Custom middleware method of Error handler] by express method of calling the defined and imported  :
-  app.use(errorHandler);
+  //  I] [Custom Middleware] type  / 2] Define [Custom middleware method of Error Event log handler] by express method of calling the defined and imported  :
+  app.use(errorHandler);  
 
 //  --------------------------------------------------------------------------
 //  --------------------------------------------------------------------------
 
 // D] Launching the [Listen] process on the defined variable of server {app} [to be able to listen its request] :
-app.listen(PORT, () => console.log(`Server running on port : ${PORT} `))
+   app.listen(PORT, () => console.log(`Server running on port : ${PORT} `)) 
 
 // -------------------------------------------------------------------------
 // -------------------------------------------------------------------------
