@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <!-- IE compatiblity Meta -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- First Mobile Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta content="Learning Node.js  Course" description="This is Lesson 8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners ">
+
+    <title> 8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners </title>
+
+    <link rel="stylesheet" href="8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners.css" media="all">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" media="all">
+
+    <link rel="stylesheet" href="css/fontawesome.min.css" media="all">
+
+    <link rel="stylesheet" href="css/all.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine|Inconsolata|Droid+Sans">
+
+    <link rel="stylesheet" href="css/style.css" media="all">
+
+    <link rel="stylesheet" href="css/media.css" media="all">
+
+    <link rel="stylesheet" href="css/hover.css" media="all">
+
+    <link rel="stylesheet" href="css/animate.css" media="all">
+
+    <link rel="stylesheet" href="css/default_theme.css" media="all">
+
+    <style>
+        body {
+            background-color: rgb(100, 196, 228);
+        }
+
+        .display>h3,
+        .display>h2 {
+            display: none
+        }
+
+        .display1>h3,
+        .display>h2 {
+            display: none
+        }
+
+        .display {
+            position: relative;
+
+        }
+
+        #group1,
+        #group2,
+        #group3,
+        #group4,
+        #group5,
+        #group6,
+        #group7 {
+            display: none;
+        }
+
+        .shadi {
+            width: 300px;
+            padding: 30px;
+            height: 100px;
+            border-radius: 20px;
+        }
+
+        .br {
+            border: 5px solid blue;
+            font-size: 30px
+        }
+
+        .input1,
+        .input2 {
+            font-size: 13px;
+            text-align: center;
+            min-height: 50px;
+            height: 50px;
+        }
+
+        .add {
+            width: 100px;
+            background-color: red;
+            font-size: 15px;
+            cursor: pointer;
+            display: lnline;
+        }
+
+        .custom  {
+            width: 300px;
+            height: 300px;
+            padding: 20px;
+            margin: 10px auto;
+            border: 5px solid gray;
+            background-color: #ccc;
+            text-align: center;
+        }
+
+        .dis {
+            border: 3px solid red;
+            border-radius: 30px;
+            width: 100%;
+            text-align: center;
+            line-height: 2em;
+        }
+
+        .item {
+            color: red;
+            font-size: 30px;
+            font-family: monospace;
+            background-color: blue;
+        }
+
+        .sh {
+            background-color: blue;
+            color: #fff;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .btn {
+            background-color: black;
+            border-radius: 20px;
+            margin: 20px auto;
+            color: #fff;
+            font-size: 15px;
+            transition: .5s all ease-in-out;
+        }
+
+        .btn:hover {
+            font-size: 18px;
+            border: 3px solid gold;
+            color: #fff;
+        }
+
+        .codes .elem1,
+        .codes .elem2,
+        .codes .elem3,
+        .codes .elem4 {
+            font-size: 15px;
+            border: 5px solid red;
+            padding: 50px;
+        }
+
+        .codes h3 {
+            text-decoration: underline;
+        }
+
+        .mainCont .subCont div {
+            border: 2px solid gray;
+            font-size: 25px;
+            color: blue;
+        }
+
+        .mainCont .subCont div p span {
+            display: block;
+        }
+
+        .color {
+            background-color: blue;
+            color: red;
+        }
+
+        #divn {
+            display: none;
+        }
+
+        .codes0 .g41 {
+            background-color: #ddd;
+            border: solid 3px gray;
+            width: 500px;
+            height: 200px;
+        }
+
+        .codes0 .g41 h3 {
+            color: red
+        }
+
+        .codes0 .g41 p {
+            font-family: Arial, Helvetica, sans-serif
+        }
+
+        .codes0 .g41t,
+        .codes0 .g41c {
+            margin: 10 0 0;
+            padding: 10px;
+        }
+
+        .codes0 .screen {
+
+            color: red;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1000%;
+            height: 1000%;
+            z-index: 9999;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .codes0 .hidden {
+            display: none;
+        }
+
+        /* border-radius:50%; */
+        .codes0 .circle,
+        .codes0 .circle1,
+        .codes0 .circle3 {
+            width: 100px;
+            height: auto;
+            border: solid 2px blue;
+            background-color: red;
+            /* display: none; */
+        }
+
+        #each {
+            background-color: #080;
+            color: #fff;
+        }
+    </style>
+
+    <!--[if It IE 9]>
+        <script src="js/html5shiv.min.js"> </script>
+        <script src="js/respond.min.js"> </script>
+    <[endif]!-->
+</head>
+
+<body>
+
+    <!-------------------------------------------------------------------------------------------------------->
+    <header id="Main" class="Main wow fadeInDown" data-wow-duration="1s">
+        8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners  [Dave Gray]   
+    </header>
+
+    <!-------------------------------------------------------------------------------------------------------->
+    <!-- Bootstrap Navigation Bar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+
+            <!-- 1] {Navbar Container / Header} : Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ToggleMenu"
+                    aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand hvr-pop" href="#"> Shindow Pro <span>lnc.</span> </a>
+            </div>
+
+            <!-- 2] {Navbar Container / Menu Items} : Collect the nav links, forms, and other content for toggling -->
+            <div id="ToggleMenu" class="collapse navbar-collapse">
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="active"><a href="#MainC"> Main Topics <span class="sr-only">(current)</span></a></li>
+
+                    <li><a href="#JSDOMCon">Concept</a></li>
+                    <li><a href="#JSDOMImp">Importance & Benefits</a></li>
+                    <li><a href="#JSDOMSyntx">Syntax & Examples</a></li>
+                    <li><a href="#JSDOMPract">Practical Applications</a></li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">
+                            Hot Links <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for BeginnersSection" target="_self" class="8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for BeginnersLink"> Lesson 8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners </a></li>
+
+                            <li role="separator" class="divider"></li>
+
+                            <li><a href="http://shadi-pro.epizy.com" target="_blank"> My References </a></li>
+
+                            <li role="separator" class="divider"></li>
+
+                            <li><a href="http://shadi-cv.epizy.com" target="_blank"> My Personal Website </a></li>
+                            <!-- <li><a href="#">Something else here</a></li> -->
+                            <!-- <li><a href="#">Separated link</a></li>
+                            <li role="separator" class="divider"></li>                            
+                            <li><a href="#">one more separated link</a></li> -->
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form> -->
+
+                <!-- <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                </ul> -->
+
+            </div><!-- /.navbar-collapse -->
+
+        </div><!-- /.container-fluid -->
+
+        <a class="Home hvr-wobble-horizontal" href="#Main" title="Go to page header"> Home </a>
+        <a class="End hvr-wobble-horizontal" href="#footer" title="Go to page footer"> End </a>
+    </nav>
+    <!-- ------------------------ -->
+
+    <!-- The following Tag can be as <main> Tag, but the Editor is old for HTML5-->
+    <main class="Welcome container text-center center-block wow bounceInDown" data-wow-duration="2s">
+        <span> Welcome to  Node.js   full  Course  [Dave Gray]   | </span> <br>
+        8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners
+    </main>
+    <!-- ---------------------------------------------------------------------------------------------------- -->
+    <!-- Options Tool box -->
+    <section class="option-box" style="min-height: fit-content; " >
+        <!-- First Tool OPtion {Changing the color of the Whole the Website Template } -->
+
+        <!-- <div class="color-option text-center" style="float:left; height:auto "> -->
+        <div class="color-option text-center">
+            
+            <!-- <aside style="float:left ; width:auto " > -->
+                <div class="container"  >
+                    <div class="row"> 
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                            <h4> Color Options </h4>
+                            
+                            <ul class="list-unstyled">
+                                <li data-value="css/default_theme.css"></li>
+                                <li data-value="css/blue_theme.css"></li>
+                                <li data-value="css/purple_theme.css"></li>
+                                <li data-value="css/yellow_theme.css"></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row"> 
+                        <!--  Lesson Video  -->
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+                            
+                            <h3 style="margin-bottom:-10px "> Lesson # Video File: </h3>
+                            <video controls  height="300" width="300" style="margin-top:-10px; ">
+                                <source
+                                    src="E:\Web videos lessons\Web Framworks\Node.js \Apps\recommended\React Portfolio\React portfolio website with animation Full.mp4"
+                                    type="video/mp4">
+                                Your browser Does Not Support the Video file ...
+                            </video>
+                        </div>
+                         
+                        <!--  Course Requriments & Course Map & MyPortfolio Website  -->
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+                            <h3>Course Requirments : </h3>
+                            <ol style=" list-style: none;"  >
+                                <li> HTML </li>
+                                <li> CSS </li>
+                                <li> Bootstrap & React Bootstrap </li>
+                                <li> JS [advanced] => [ES6+] </li>
+                                <li> Node.js  </li>
+                            </ol>
+
+                            <h3> Course Map : </h3>
+                            <ol class="list-unstyled">
+                                <li> <a target="_blank"  href="course map/Node.js   course map.html"> Node.js  Course Map </a> </li>
+                            </ol>
+                             
+                            <h3> My portfolio website  : </h3>
+                            <ol class="list-unstyled">
+                                <li> <a  target="_blank" class='brand' href=" https://shindowpro.github.io/">  My Portfolio  </a> </li>
+                            </ol>
+                             
+                        </div>
+                    </div>
+            </div>
+        
+            
+        </div>
+ 
+        <i class="fas fa-gear fa-2x gear-option"></i>
+
+    </section>
+    <!-- ---------------------------------------------------------------------------------------------------- -->
+
+    <!-- About Section  -->
+    <section class="about text-center wow bounceInLeft" data-wow-duration="2s" id="about">
+        <div class="container">
+            <h2 class="h1" class="hidden-xs"> About Section =>  Building a [Web node Server] with  ( express.js) Framework orgaized by  <span><strong>   MVC [model view control]  pattern  </strong> </span> </h2>
+            <h3 class="visible-xs"> About Section => This lesson about 
+              <strong>   Organize the Node.js &  express API Web Server  using MVC [Model view controllor] design pattern  </strong>  
+              <span>           </span> 
+            </h3>
+            <!-- <p class="lead"> This lesson is commands to handle Stashing-UnStashing] Files and then Pushing to Remote Repo Account by <span> <strong>  {CMD} </strong> </span> </p> -->
+        </div>
+    </section>
+    <!-- ---------------------------------------- -->
+
+    <!-- Footer Section -->
+    <section class="footer">
+
+        <div class="container">
+            <div class="row">
+                <!-- First Column {Site Map + Social Media} -->
+                <div class="col-lg-4 col-md-6">
+                    <!-- 1) Site Map  -->
+                    <h3> Site Map </h3>
+                    <ul class="list-unstyled three-columns">
+                        <li> <a href="#myslider"> Home </a> </li>
+                        <li> <a href="#about"> About </a> </li>
+                        <li> <a href="#"> Company </a> </li>
+                        <li> <a> Design </a> </li>
+                        <li> <a> Solutions </a> </li>
+                        <li herf="#"> <a> Contact </a> </li>
+                        <li> <a> Services </a> </li>
+                        <li> <a> Activities </a> </li>
+                        <li> <a> Featured </a> </li>
+                        <li> <a href="http://shindowpro.github.io">My Portfolio Website</a></li>
+                        <li> <a href="http://shadi-pro.epizy.com">My Refs</a></li>
+                        <li> <a href="http://gtmatrix.com"> GTmatrix.com [Testing website online ]</a></li>
+                        <li> <a href="https://github.com/shindowpro" target="self">My Github Repoes </a></li>
+                    </ul>
+
+                    <!-- 2) Social Media Links -->
+                    <ul class="list-unstyled social-list text-center">
+                        <li> <img src="img/social/facebook-48.png" alt="facebook"> </li>
+                        <li> <img src="img/social/twitter-48.png" alt="twitter"> </li>
+                        <li> <img src="img/social/whatsapp-48.png" alt="whatsapp"> </li>
+                        <li> <img src="img/social/google-plus-48.png" alt="google-plus"> </li>
+                        <li> <img src="img/social/linkedin-48.png" alt="linkedin"> </li>
+                        <li> <img src="img/social/tiktok-48.png" alt="tiktok"> </li>
+                        <li> <img src="img/social/mail-48.png" alt="mail"> </li>
+                        <li> <img src="img/social/instagram-48.png" alt="instagram"> </li>
+                        <li> <img src="img/social/rss-48.png" alt="rss"> </li>
+                        <li> <img src="img/social/myspace-48.png" alt="myspace"> </li>
+                        <li> <img src="img/social/bebo-48.png" alt="bebo"> </li>
+                    </ul>
+                </div>
+
+                <!-- Second column {Latest Articles} -->
+                <div class="col-lg-4 col-md-6">
+                    <h3> Latest Articles </h3>
+
+                    <!-- First media -->
+                    <div class="media">
+                        <a href="#" class="pull-left">
+                            <img src="img/social/bebo-48.png" class="media-object" alt="">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"> Programming </h4>
+                            This articles about the Programing and just for testing purposes for Display
+                        </div>
+                    </div>
+
+                    <!-- Second media -->
+                    <div class="media">
+                        <a href="#" class="pull-left">
+                            <img src="img/social/facebook-48.png" class="media-object" alt="">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"> Design </h4>
+                            This articles about the Design and just for testing purposes for Display
+                        </div>
+                    </div>
+
+                    <!-- Third media -->
+                    <div class="media">
+                        <a href="#" class="pull-left">
+                            <img src="img/social/tiktok-48.png" class="media-object" alt="">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"> Social </h4>
+                            This articles about the Social and just for testing purposes for Display
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Third column {Featured Works} -->
+                <div class="col-lg-4 col-md-12 text-center">
+                    <h3> Latest Articles </h3>
+                    <img src="img/footer/1.png" class="img-thumbnail" alt="image1">
+                    <img src="img/footer/2.png" class="img-thumbnail" alt="image2">
+                    <img src="img/footer/3.png" class="img-thumbnail" alt="image3">
+                    <img src="img/footer/4.png" class="img-thumbnail" alt="image4">
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- {copyright} -->
+        <div class="copyright1 text-center">
+            Copyright &copy; 2023 by <span> Shindow </span> lnc.
+        </div>
+
+    </section>
+    <!-- ---------------------------------------- -->
+ 
+   
+    <!-- ---------------------------------------- --> 
+    <div class="Post" id=post>
+        <Section id="MainC" class="MainC">
+            <header>
+               Node.js  [8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners] Main Topics : <br>
+            </header>
+
+            <article>
+                <p> &gt; Main Subjects in this lesson will be Node Express  Web sever ( with using the  {MVC} pattern )   =>   as following : </p>
+
+                <h2> Main Subjects : </h2>
+
+                <ol type="A">
+                    <li> Main points of this lesson , practical application  of the mamnaging the built [express  node webserver]   by using [MVC] design pattern : <br>
+                        <ol>
+                          <li> A] The main concept of ( [MVC] design pattern) & main benefites  </li>
+                          
+                          <li> B] Main Practical steps of using [MVC] design pattern] to organize the Express Node wseb server  , by applying the  next  steps  : <br>
+                            <ol>
+                              <li> Project  file structure  modifications    </li>  
+                              <li> Managing and cleaning the routes  methods definitions </li>  
+                              <li> Managing API  main CRUD operations methods using the  [MVC] design pattern methodology    </li>  
+                            </ol>
+                          </li>
+
+                          <li> C] Notes about using [MVC]  design pattern  to organize the  web [Express Node server]  </li>
+
+                        </ol>
+                     </li> <br> <br>
+                </ol>
+            </article>
+        </Section>
+
+        <!------------------------------------------------------------------------------>
+        <!------------------------------------------------------------------------------>
+        <section class="JSDOMCon" id="JSDOMCon">
+            <header>
+                <h3> 8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners concept : </h3>
+            </header>
+ 
+          <h1> A]  The main concept of ( [MVC] design pattern) : </h1> <br>
+            <p> The {MVC}  Design pattern used with the [express.js] server to organize  the  project    ,  due to the [express.js] is unopinionated for  web framework </p> 
+            
+            <p> The {MVC} is one of the most popular Design pattern used to organize the [express.js] server project ,  but there are other design patterns  </p> 
+            
+            <p> The {MVC} system   is about certain  steps methodology  , as following  : <br>
+              <ul> 
+                <li> creating certain folder of including certain methods as following  :   <br>   
+                  <ol> 
+                    <li> a- [ controller ] folder => contains Each file of the certain Route's CRUD custom handling methods  => such as : <br>  
+                        <p> { employeesController.js} file  => to handle  all CRUD operations methods of  'employees.html'  route </p>
+                    </li>   <br>  
+
+                    <li> b- [routes] folder  => include essentially  the following  :  <br>  
+                      <ul>   
+                        <li> 1- [api]  folder => including api files of each database section [] as following :   <br>
+                          <p>  {employees.js} file ->   Define the main api routes CRUD ops pattern  (as simluted DB)  of this server  [using   controller external source of defiend method of each crud  the  {employeesController} ]   </p>
+                        </li>                           
+                        
+                        <li> 2- {root.js} file => include  the main handling return method of the  main route  [with using the regular expression ]  </li>
+
+                      </ul>                        
+                    </li>  
+                  </ol>
+                </li>   
+              </ul>              
+            </p> 
+            
+            
+            <p> Adding the {Thunder Client} extension  of [server Api CRUD testing] via  VS code      </p> 
+           
+          <!--------------------------------------------------------  -->
+            
+            <h1>  B]  Main  steps of methods to  build Express Node server + by using   MVC pattern design    :   </h1>
+              <ol>          
+                <li> First/ Modify the file structure of  Express Node server  [ the same  destructure  , with change some folder and create some new ] : <br> 
+                    <ul> 
+                      <li> a- {package.json} file  => with next modifications    :  <br>
+                        <ol> 
+                            <li> adding the [express] npm => "express": "^4.21.1"    </li> 
+                        </ol>                          
+                      </li>
+
+                      <li> b- inside  main root =>   including the next files and folders  :  <br>      
+                        <ol>   
+                          <li> [Files] inside the main root :   <br>
+                              <ul>  
+                                <li> 1-  {server.js} => <br> 
+                                  <p> The main file to be run as default [as set in  package.json ] </p>
+                                  <p> This file will include all Server configurations methods and procedures & steps   </p>
+                                  <p> This file will include also importing and using of hte defeind {logEvent} methods and procedures practical steps   </p>
+                                </li>  <br>   
+                                  
+                                <li> 2-  {package.json} : the manifest of application and libraries  </li>
+                                
+                                <li> 3-  {.gitigonre} :  exectutive file include all ignored files and folders  </li>
+                              </ul> 
+                          </li>  <br>  <br>
+
+                          
+                          <li>  [Folders] inside the main root   : <br>
+                              <ul> 
+                                  <li> 1- [views]  => the main server folder that will include all essential server files , as following  : <br> 
+                                    <ol> 
+                                      <li>  [subdir]  :   another  sub directory inside the [views], that include another inner {index.html} </li>
+                                      <li>  {index.html}  : the main home html  page       </li>
+                                      <li>  {new-page.html}  : a testitng html  page used to redirecting into it   by requestng a unexisted {old-page.html} </li>
+                                      <li>  {404.html}  : the 404 Error html page       </li>
+                                    </ol>
+                                  </li>   <br>   
+                                  
+                                  <li> 2- [logs]  => the folder to include the log files that will by  created by Node server scripting , such as :    <br>
+                                    <ul>
+                                      <li>  {eventLog.txt} ->  to hold all written main default Logs records     </li>  
+                                      <li>  {reqLog.txt}   ->  to hold all written request Logs records  </li>  
+                                      <li>  {errLog.txt}   ->  to hold all written catched [erros Logs]  records  </li>  
+                                    </ul>
+                                  </li> <br> 
+                                  
+                                  <li> 3- [model] instead of [data] => and change inner file of  [data.json] -> [employees.json  ] : <br>
+                                    <ul>
+                                      <li>  { employees.json}  ->  a json file of testing object of data of employees data in form of a json format  </li>  
+                                    </ul>
+                                  </li>    <br>  
+                                    
+                                  <li> 4- [middleware] : include the defined events files of the basuc methods and middelware methods     <br>
+                                    <ul>
+                                      <li>  { logEvents.js }     ->  include the main 2 methods of  <br> 
+                                        <ol> 
+                                          <li>  { logEvents() } => Basic event method  </li>
+                                          <li>  { logger() }    => Custom Middleware event method </li>
+                                        </ol> 
+                                      </li>  <br> 
+
+                                         <li>  { errorHandler.js }  ->   include the main  custom middleware error method of the  [ errorHandler() ]    </li>  
+                                    </ul>
+                                  </li>    <br>  
+                                    
+                                  <li> 5- [public]  => this folder will hold all [public project server folders and files  ] such as :  <br>
+                                    <ul>
+                                        <li>  [css]  => this  folder will hold all [ CSS styling files] such as :  <br>
+                                          <ul>
+                                            <li>  {style.css}  ->  a  css styling testing file   </li>  
+                                          </ul>
+                                        </li>    <br>  
+                                          
+                                        <li>  [img]  => this folder will hold all [ images files] such as :  <br>
+                                          <ul>
+                                            <li>  {1.jpg}  ->  testing image to be used inside a application      </li>  
+                                          </ul>
+                                        </li>    <br>  
+                                        
+                                        <li> [text]  => this folder will hold all [ texual files] such as :  <br>
+                                          <ul>
+                                            <li>  {data.txt}  ->  testing  textual data  </li>  
+                                          </ul>
+                                        </li>    <br>  
+
+                                      </ul>
+                                  </li>    <br>  
+                                  
+                                  <li> 6- [controllers]  => new folder that  will hold all defined contlllers metod of the our server hosts  , and include  following files :
+                                      <ul> 
+                                        <li>   {employeesController.js} :    will include some of contolring CRUD routes  methods that awill be used in the server [for cleangingm up ht4e serve fiel   ]     </li>
+                                      </ul>      
+                                  </li>   <br>  
+                                  
+                                  <li> 7- [routes]  => new folder that will hold all defined routes and APIs logic files of the server , as following  : <br> 
+                                       <ol>
+                                          <li> [api] folder => include the api files => {employees.js} , which contain the following defintions   :   <br>    
+                                            <p> Express Routes definitions -> [defisned by the route  middlware method hanlders  </p>
+                                            <p> Each defined Express Route  include all  CRUD API operations : [get , post , put , delete]  </p>
+                                          </li>
+
+                                          <li> {root.js} file => include  </li>
+                                          <li> {subdir.js} file => include    [will delete it ]   </li>
+                                      </ol>                                    
+                                  </li> <br>  
+                                   
+                                  <li> 8- [config]  => new folder that will hold   fiels for  more shorthand method  inside the  the  {server.js} file  , as following  : <br> 
+                                       <ol>
+                                          <li> {corsOptions.js} file => include defined methods used in the server file for more clean script     </li>
+                                          <li> {subdir.js} file => include  [include the subdirectories route defniintions ]  [will delete it ] </li>
+                                      </ol>                                    
+                                  </li> <br>  
+                                
+                                  <li> 9- [node_modules]  => the folder will hold all installed core and custom [ npm libaries ]   </li>    <br>  
+                                    
+                              </ul>
+                          </li>
+                        </ol>
+                      
+                      </li>
+                    </ul>
+                </li> <br> <br>  
+
+                <li> Second/ Modifications in related files : <br>
+                    <ol> 
+                      <li>  1- {server.js} file   :   <br>      
+                        <p> This the file of [server.js] , will be including Re-factoring of the express node server with   using  [MVC]  methodology  +  cleaning procedures of defined  Middlewares  ,  as folwoing    : <br> 
+                          <ol>  
+                            <li>  A] Importing Section :     <br>     
+                                <code> 
+                                  // 1]  Importing for [node and express]   : <br> 
+                                    // a-  importing the {path} class from the  [node core common module]   :  <br>   
+                                     <span class="one " > </span>   const path = require('path') ;   <br>   <br>
+      
+                                    // b-  importing the {express} custom class from the  [node custom module] :     <br>
+                                    <span class="one " > </span>    const express  = require('express') ;    <br>   <br>
+                                    
+                                  // 2]  Importing for [ Third-party Middleware ]   : <br> 
+                                    // a-  importing the {cors} library required for using the [third-party] type  ] :  <br>
+                                    <span class="one " > </span>    const cors  = require('cors') ;    <br>   <br>
+
+                                    // b-  importing the external  defined  third-party middleware method {corsOptions} =>  to use be able it here [as assigned method inside the {cors}  ] : <br>
+                                    <span class="one " > </span>    const corsOoptions  = require('config/corsOptions') ;    <br>   <br>
+
+                                  // 3]  Importing the defined  Events [ Custom middleware ] : <br> 
+                                    // a-  importing the {Logger} defined Custom middleware method , and exproted class  from the {logEvents.js} file to be used and called  here inside express method - instead of defining it here     :  <br>
+                                    <span class="one " > </span>    const { logger } = require('./middleware/logEvents');    <br>   <br>
+
+                                    // b- importing {errorHandler} defined and exported function from the {errorHandler.js} file to be used  here [inside express method] - instead of define the custom middleware here : <br>
+                                    <span class="one " > </span>    const errorHandler = require('./middleware/errorHandler');  <br>   <br>
+ 
+                                </code>       
+                            </li>   <br><hr> <br>  <br>     
+                            
+                        
+                            <li>  B]  [Express Server configuration processes and procedures ] section    :   <br>
+                              <ul>  
+                                <li> 1] Define the {port(s)} to be used for connecting with the [localhost] OR with other custom node  server {3500}  :   <br>
+                                  <code>
+                                    <span  class=one > </span>    const PORT = process.env.PORT || 3500 ;  <br>  
+                                  </code>
+                                </li>    <br> <br> 
+      
+                                  <li> 2]  Define the {app} as extracted variable from the defined express  [instead of the   {server} defined variable ]  :   <br>
+                                  <code>
+                                    <span  class=one > </span>  const app = express() ;  <br>  
+                                  </code>
+                                </li>    <br> <br> 
+      
+                                   
+                                <li> 3] Define the main route of the [index page : '/'] using the {get} method of the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :   :   <br>
+                                    <ul> 
+                                      <li>  a- Define the main route of the [index page : '/'] using the {get} method on the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :     <br>
+                                        <code>
+                                          <span  class=one > </span>     <br>  
+                                        </code>                                   
+                                      </li>    
+                                      
+                                      <li> 
+                                        
+                                      </li>    
+                                      
+                                      <li>
+                                        
+                                      
+                                      
+                                      </li>    
+                                    
+                                    
+                                    
+                                    
+                                    </ul> 
+                                </li>    <br> <br> 
+      
+      
+                                <li>    []     </li>
+      
+      
+                                <li> 5] Launching the [Listen] process  of server [to be able to listen  its  request]  ->  [wiht using hte app instead of  the server ]:  <br>    
+                                  <code> 
+                                      <span  class="one "> </span>     app.listen(PORT , () => console.log(`Server running on port : ${PORT} `)  )   <br>
+                                  </code>
+                                </li>  
+      
+                              </ul>                           
+                            </li> 
+                            <br><hr>  <br>     
+                          </ol> 
+                        </p>
+                      </li>
+                    </ol>
+                 
+                </li>
+  
+              <!-- ----------------------------------------------------------                 -->
+              </ol>                              
+            <!-- ---------------------------------------------------------- -->
+ 
+            <h1>  C] Practical exps of [using {MVC} pattern design to organize the Node Server]    :   </h1>
+            <p>         </p> 
+             
+            <hr> <br>  <hr> <br>            
+            <!-- ----------------------------------------------------- -->        
+           
+
+        <p>  Next lesson  => talking about the [middle ware] role in the node server      </p> 
+        
+        <!-- --------------------------------------------------------------------- -->
+        
+        
+        <h1>  C] Notes about  building [Node web server] using   ,  [express.js] Framework   :     </h1> 
+          <ul>
+              
+            <li> This lesson is building the express node web server with organizing the script by  using the  [MVC] pattern    </li> 
+            
+            <li> By using the {MVC} pattern design =>  there are essential differneces  between the defined the {main Route +  handling it's return } , and defined it's {Route CRUD operations} as following : <br>  
+                <ol> 
+                  <li> [I] Define the main [route] {server url value +  return handling ] => by using (2) methods  as following  : <br>
+                      <p> 1] [First method] : Default express.js only [without using MVC] Method  => according to the next steps   : <br>
+                        <code> 
+                          //  a- Define the main method inside the {server.js} file    : <br>
+                            <span class="one"></span>  app.get('route' , (res , req) => { <br>
+                              <span class="two"></span> // handling procedures codes  <br>
+                              <span class="two"></span>  res.sendFile('./views/index.html', { root: __dirname }) ; <br>
+                              <span class="two"></span>  res.sendFile(path.join( __dirname , 'views' , 'index.html')  ) ; <br>
+                              <span class="two"></span>  res.send('welcome to the express web server !') ; <br>
+                            <span class="one" ></span> } ) ;     <br> 
+                        </code> <br> <hr>  <br>   <br>
+                      </p>     
+                          
+                      <p> 2] [Second method  ] : [Express.js + using MVC] pattern method =>  according to next steps   :  <br> 
+                         <ul> 
+                          <li> a- Inside {routes/root.js}  file => main routes  defintion    <br>
+                            <code> 
+                                //  1-   Importing  requirments [express , router , path ]  :  <br>
+                                <span class="one"></span> express = require ('express')  ;         <br>
+                                <span class="one"></span> router =  express.Router() ;    <br> 
+                                <span class="one"></span> path  = require('path')  ;     <br> <br>
+                                
+                                //  2- Define the main method of  route + handling return :  <br>
+                                  <span class="one"></span>  app.get('route' , (res , req) => { <br>
+                                    <span class="two"></span> // handling procedures codes  <br>
+                                    <span class="two"></span>  res.sendFile('./views/index.html', { root: __dirname }) ; <br>
+                                    <span class="two"></span>  res.sendFile(path.join( __dirname , 'views' , 'index.html')  ) ; <br>
+                                    <span class="two"></span>  res.send('welcome to the express web server !') ; <br>
+                                  <span class="one" ></span> } ) ;     <br>      
+        
+                                //  3 - Exporting the  {router}  class   :  <br>
+                                  <span class="one"></span>  module.exports   =    router  <br>       
+                              </code>
+                          </li>   <br> <br>
+                        
+                          <li> b- Inside {server.js}  file => calling/importing  the defined route  method and assign it inside the express method    <br>
+                            //  Importing both of defined Routes & its  crud (according to the {mvc} )   : <br>
+                            <code> 
+                              // importing Route of the {'/'}  [main Route(s)  + return handling ] method =>  from : [routes/root.js] : <br> 
+                                  // Define main index/home route and handling return  :  <br>
+                                  <span class="one"></span>  app.use('/' ,  require('./routes/root') ) <br>   <br>                                 
+                            </code>                     
+                          </li> 
+                        </ul>
+                      </p>   
+                  </li> <br>
+ 
+                  <li> [II] {Route CRUD operations} methodology steps , (according to [MVC] pattern design)   by following steps : <br>                       
+                      <p>  1]  Inside the { controllers/employeesControllers.js => define Main Data model +  CRUD method definitions  , as next  => : <br>
+                          <ol>
+                            <li> a- Define the {data} source object { routes/api/employees.js} file ,   by using  one of  (2)  methods  as following : <br> 
+                              <code>  
+                                   // First method : default Node method ] - [ will NOT be used in this project ]  {this method is not include the assignning function inside  } :   <br>
+                           
+                                   <span class="one" > </span> // 1- Define an empty object of the data : <br>
+                                   <span class="one" > </span>   const data = {} ; <br>   <br>
+                                      
+                                  
+                                   <span class="one" > </span> //  2- Define the [employees data] as extracted property from the main empty object <br>
+                                      <span class="two" > </span> by importing them from the main defined file  {model/employees.json} :  <br>
+                                   <span class="one" > </span>  data.employees = require('../model/employees.json'); <br>  <br>  
+
+                                    
+                                   // Second method : Reactful method ] - [  to be used in this project ] :   <br>
+                                   <span class="one" > </span> 1- Define a {data} object of the (2) properties as following [will be used inside the crud  opterations  methods  : <br>                                 
+                               </code>                           
+                            </li>  <br><hr><br>  
+
+                             <li> b- Define the main custom handling CRUD operations method  for each  the Route used in this server  as following : <br> 
+                                <p> 1- CRUD operations of the  of first Route { '/'}  : <br>    
+                                    <ol> 
+                                        <li> First CRUD method [get opt]  :  [get opertaion] of all current  employees data object ,  as  to next steps   :   <br> 
+                                          <code>  
+                                            // --  Define the method of the handling [get opertaion] of all employees data object inside the current response json [ using the parmeter of the (res) ]:   <br>
+                                            <span class="one" > </span> const getAllEmployees = (req, res) => { <br>
+                                              <span class=" two " > </span>  // Assign the  obained  data of the employees inside the {res} parameter [in json form ] :    <br>
+                                              <span class="two" > </span>    res.json(data.employees); <br>
+                                            <span class="one" > </span> }  <br> 
+                                          </code>                                
+                                        </li>  <br> <hr> <br> <br>
+
+  
+                                        <li>  Second CRUD method [post/add new elment] opt:  [create new log/element inside the  current data  and post/add it inside the current data json object ] , as next steps  :  <br> 
+                                          <code> 
+                                              const  createNewEmployee = (req, res) => { <br>
+                                              <span class="one" > </span> // 1 - define an object of a new employee object  [ including the incomming each field of  new element's request] :  <br>
+                                              <span class="one" > </span>  const newEmployee = { <br>
+                                                  <span class="two" > </span>   id: data.employees[data.employees.length - 1].id + 1 || 1 ,  => [getting the (id) of current element/employee - using the data array's length  &  consitnial assgin   -  - ] <br>
+                                                  <span class="two" > </span>   firstname: req.body.firstname ,  => [ getting [firstname] value as a property of the (req) ] <br>
+                                                  <span class="two" > </span>   lastname: req.body.lastname      => [ getting [lastname] value as a property of the (req) ] <br>
+                                              <span class="one" > </span>  } <br> </br>
+                                              
+                                              
+                                              <span class="one" > </span> //  2-  handle the error of the unexisted value of one of boht  fields of [first name] or [last name]  of the inserted new element/employee - using the conditional  + {res.status()}  method  : <br>
+                                              <span class="one" > </span>   if (!newEmployee.firstname || !newEmployee.lastname) { <br>
+                                                <span class="two" > </span>    return res.status(400).json({ 'message': 'First and last names are required...' }); <br>
+                                              <span class="one" > </span>  } <br> </br>
+    
+                                              <span class="one" > </span>  //  3- Adding the new element object {newEmployee} [after handling the upper error ]  into the upper defined object variable of [data.employees]  => by using the {setEmployees} setter function by using the  destructuring method : <br>
+                                              <span class="one" > </span>    data.setEmployees([...data.employees, newEmployee] ); <br>  <br>
+
+                                              <span class="one" > </span>  //  4-  Assign the final {data} value ( after adding the new object - newEmployee - ]  ) into the [res] parameter , with use a new record code (201) :  : <br>
+                                              <span class="one" > </span>    res.status(201).json(data.employees)  ;  <br>
+                                              }   <br>   
+                                          </code>                              
+                                        </li> <br> <hr> <br> <br>
+
+                                        
+                                        <li> Third  CRUD method [put/update opt]:  [ update a certain existed element in the current data ]  , as next steps  :<br> 
+                                          <code>  
+                                            const updateEmployee = (req, res) => {     <br>
+
+                                              <span class=one > </span> // 1-  finding the requested element from the data object according to its {id} , usign the {find()} method  and inner condition of the existed id   : <br>
+                                              <span class=one > </span>   const employee = data.employees.find(emp => emp.id === parseInt(req.body.id))  ;  <br>  <br>  
+                                            
+                                              <span class=one > </span> // 2- handling Error of the requested element [id] unexisted/not found  , by Sending an error status code (400)  : <br>
+                                              <span class=one > </span>  if (!employee) {  <br>
+                                                  <span class=two > </span> return res.status(400).json({ "message": `Employee  ID ${req.body.id} not found ! ` });  <br> 
+                                              <span class=one > </span> }  <br>  <br>
+                                        
+                                              <span class=one > </span> // 3-  check if the [firstname requested element] is existed ,  and assign the new element's firstname {employee.firstname} value with the value of the  obtained value  from request  {req.body.firstname}   : <br>
+                                              <span class=one > </span> if (req.body.firstname) employee.firstname = req.body.firstname ;  <br>
+                                                  
+                                              <span class=one > </span>  // 4-  check if the [lastname requested element] is existed , and assign the new element's lastname {employee.lastname} value with the value of the  obtained value  from request  {req.body.lastname}   : <br>
+                                              <span class=one > </span> if (req.body.lastname) employee.lastname = req.body.lastname ;  <br>
+
+                                              <span class=one > </span> // 5-  define  a variable of  filtered array  of all existed elements - except the current  updated helement  -  [ using  the filter() ]  : <br>
+                                              <span class=one > </span>    const filterArray = data.employees.filter(emp => emp.id !== parseInt(req.body.id));  <br>
+                                                  
+                                              <span class=one > </span> // 6-  define an unsorted array as accumaltated  the upper defined array of the all existed elements concateanated with the current updated element :  : <br>
+                                              <span class=one > </span>    const  unsortedArray =  [ ...filterArray , employee ] ; <br>
+                                                
+                                              <span class=one > </span> // 7- adding the [upper accumaltated array] into the [current main data object] , by using the setter function + with assign the proper [id] value using the sort() method  : <br>
+                                              <span class=one > </span>   data.setEmployees( unsortedArray.sort(  (a, b) => a.id &gt; b.id ? 1 :  a.id &lt; b.id ? -1 : 0  ) ) ; <br>
+                                                  
+                                              <span class=one > </span> // 8-  sending the [employees] property of [new data] after being filled -> into the  response parameter in json form  :: <br>
+                                              <span class=one > </span>   res.json( data.employees ) ; <br>                                               
+                                            }   <br>  
+                                          </code>                                                                    
+                                        </li>   <br> <hr> <br> <br>
+
+
+                                        <li> Fourth CRUD method [ delete/remove opt]:   [delete a certain  element from the data json ] :   <br> 
+                                          <code>  
+                                            const deleteEmployee = (req, res) => {   <br>
+                                              <span class=one > </span> // 1-  finding the requested element from the data object according to its {id} , usign the {find()} method and inner condition of the existed id   : <br>
+                                              <span class=one > </span>   const employee = data.employees.find(emp => emp.id === parseInt(req.body.id))  ;  <br>  <br>  
+                                                                                        
+                                              <span class=one > </span>  // 2- handling Error of the requested element [id] unexisted/not found  , by Sending an error status code (400)  : <br>
+                                              <span class=one > </span>  if (!employee) {  <br>
+                                                  <span class=two > </span> return  res.status(400).json({ "message": `Employee  ID ${req.body.id} not found ! ` });  <br> 
+                                              <span class=one > </span> }  <br>  <br>
+                                        
+                                              <span class=one > </span> // 3- define an filtered array of all existed elements - except the current requested  element  -  [ using the filter() ] :   <br>
+                                              <span class=one > </span> const filterArray = data.employees.filter(emp => emp.id !== parseInt(req.body.id)); <br>
+                                          
+                                              <span class=one > </span>  // 4- set/assign  the upper defined [filtered array ]  of all existed elements (only)  inside  the data  [ using the setter function +  destrucurtring method ] :   <br>
+                                              <span class=one > </span>   data.setEmployee([...filterArray]);   <br>
+                                          
+                                              <span class=one > </span> // 5-  sending the [employees] property object (after being filled with filterd array ) into the  response parameter (res) [ with json form]  :   <br>
+                                              <span class=one > </span>   res.json( data.employees );   <br>
+                                            }  <br>
+
+                                          </code>                              
+                                        </li>    
+                                    </ol>
+                                </p>  <br> <hr> <br> <br> 
+                                  
+                                <p> 2- CRUD operations [only one ] of the  of second  Route of dynamic element  { '/:id'}  : <br>    
+                                  <code>  
+                                      // CRUD method of [get data of requested dynamic element ] opt  :  <br>
+                                          
+                                          const getEmployee = (req, res) => { <br>
+                                      
+                                            <span class=one></span> 1- Finding the requested element from the current data object according to its {id}  :    <br>
+                                            <span class=one></span>  const employee = data.employees.find(emp => emp.id === parseInt(req.body.id)) ; <br><br>  
+
+                                            <span class=one > </span> 2- handling Error of the requested element [id] unexisted/not found  , by Sending an error status code (400)  : <br>
+                                            <span class=one > </span>  if (!employee) {  <br>
+                                                <span class=two > </span> return  res.status(400).json({ "message": `Employee  ID ${req.body.id} not found ! ` });  <br> 
+                                            <span class=one > </span> }  <br>  <br>
+                                        
+                                            <span class=one></span>  3-  sending the [requested obtained employee object only ]  after being  found  into the response parameter as json format :   <br>
+                                            <span class=one>  </span>  res.json(employee);   <nbr>  
+                                            <br> 
+                                          }   <br> 
+                                    </code>                              
+                                </p>   
+                            </li>   <br> <br> <br>
+ 
+
+                            <li> c- Exporting all upper defined method of the CRUD  method of   every  route as object :  <br>
+                              <p> These metond will be called inside the [empoyees.js] file  while defining the  routes of this project : </p> 
+                                  <span class="one"></span> module.exports = {   <br>
+                                      <span class="two "></span> getAllEmployees,  <br>
+                                      <span class="two "></span> createNewEmployee, <br>
+                                      <span class="two "></span> updateEmployee , <br>
+                                      <span class="two "></span> deleteEmployee,  <br>
+                                      <span class="two "></span> getEmployee   <br>
+                                  <span class="one"></span> }  <br>
+                            </li>
+                          </ol>
+                      </p>  
+                      <!--   --------------------  -->
+ 
+                      <p> 2] Inside {routes/api/employees.js}  => calling and assign the imported CRUD methods  : <br>   
+                        <ul> 
+                            <li>  a] Preperations procedures :   <br>
+                              <ol> 
+                                <li> 1- Importing the main [express server] :  <br>
+                                    <span class="one"></span>   const express = require('express') ;    
+                                </li>    <br> <br>  
+                                
+                                <li> 2- Define the main [express Router] :  <br>
+                                    <span class="one"></span>   const router  =  express.Router();     
+                                </li>  <br> <br>
+                                
+                                <li> 3-  Importing the [controller file] (that including the all defined handling crud methods) :  <br>
+                                    <span class="one"></span>   const   employeesController = require('../../controllers/employeesController') ;  
+                                </li>  <br> <br>
+    
+                              </ol> 
+                            </li>  <br><br>     
+
+                            <li>  b] Defining the main routes with assign the imported CRUD  operations methods  : <br>
+                              <ol> 
+                                <li> [First route] :  Define all CRUD opts of the main index || home page route  {'/'}  +   assign all CRUD operations using the chained Notation method  :  <br> 
+                                  <code>
+                                    <span class="one"> </span>   router.route('/') <br>
+                                        <span class="two" > </span>  .get(employeesController.getAllEmployees)                // [get all elements crud  operation] <br>
+                                          <span class="three"  > </span>  .post(employeesController.createNewEmployee)        // [create new element  operation]    <br>
+                                            <span class="four"  > </span>   .put(employeesController.updateEmployee)          // [update an existed entry]          <br>
+                                              <span class="five "  > </span>   .delete(employeesController.deleteEmployee) ;   // [delete a certain element]        <br>
+                                  </code>
+                                </li>  <br>  <br> 
+
+
+                                <li> [Second route] : Define the  dynamic page route + assign it's CRUD operation  [only one crud of : getting requested element] :  <br> 
+                                  <code> 
+                                    <span  classs="one " ></span>  router.route('/:id').get( employeeController.getEmployee) ;  // [ getting all data of the requested element]  <br>
+                                  </code>                                  
+                                </li>
+                              </ol>
+                            </li>    <br> <br>     
+
+                            <li>  c]  Exporting the defined {router} class :   <br> 
+                              <code>
+                                <span clas=one> </span>   exports.module = router   ;      <br>
+                              </code>                              
+                            </li>
+                        </ul>                      
+                      </p>
+                        <!-- ------------------------------------------- -->
+
+                      <p> 3] Inside the {server.js}  file =>  Define the main routes with handling return  ( with assign the imported defined  CRUD methods )   :  </p>
+                          <ul>    
+                             <li>  a] Importing Section  :    <br>                   
+                                <ol>
+                                  <li> 1]  Required importings for [node  web server] :   <br>
+                                    <code>
+                                        <span  class=one > </span> // importing the {path} class from the  [node core common module]      :   <br> 
+                                        <span  class=one > </span>  const path = require('path');   <br>                                  
+                                    </code>                                     
+                                  </li>  <br> 
+                                    
+                                  <li> 2]  Required importings for creating [Node Web Server] using the [express] framework  :   <br>
+                                    <code>
+                                        <span  class=one > </span> // a- importing the {express} custom class from the  [node custom module]  :   <br> 
+                                        <span  class=one > </span>   const express = require('express') ;  <br>  <br> 
+                                    </code>
+                                  </li> <br>
+                                  
+                                  <li> 3] Required  Importings for Middlleware of the [third-party] type  :   <br>
+                                    <code>
+                                        <span  class=one > </span> // a-  exracting the {cors} from [cors] library that requried for using the [third-party middleware] type  :   <br> 
+                                        <span  class=one > </span>   const cors = require('cores ') ;  <br>  <br> 
+                                        
+                                        <span  class=one > </span> // b- import the   external  defined  third-party middleware method {corsOptions} =>  to be able use it here   :   <br> 
+                                        <span  class=one > </span>   const cors = require('cores ') ;  <br>  <br> 
+                                    </code>
+                                  </li>  <br> 
+
+                                  <li> 4] Required Importing for [Events defined Custom middleware] from outside files  :   <br>
+                                    <code>
+                                        <span  class=one > </span> // a-   Importing {logger} defined and exported function from the {logEvents.js} file to be used  here inside express method - instead of define the custom middleware here  - :   <br> 
+                                        <span  class=one > </span>    const { logger } = require('./middleware/logEvents'); <br>  <br> 
+                                        
+                                        <span  class=one > </span> // b- Importing {errorHandler} defined and exported function from the {errorHandler.js} file to be used  here [inside express method] - instead of define the custom middleware here    -   :   <br> 
+                                        <span  class=one > </span>    const errorHandler = require('./middleware/errorHandler'); <br>  <br> 
+                                    </code>
+                                  </li>  <br> 
+                                </ol> 
+                            </li>
+                            
+                             <li>  b] [Express Server public configuration definitions processes steps] section [according to the midddleware  +  MVC  pattern ]  :    <br> 
+                                <code>
+                                    <span  class=one > </span> // 1-  Define the { Port(s) } to be used for connecting with the [localhost] OR with other custom node server {3500} :   <br> 
+                                    <span  class=one > </span>  const PORT = process.env.PORT || 3500;    <br> <br>
+
+                                    <span  class=one > </span> // 2-   Define the {app} as extracted variable from the defined express  [instead of the   {server} defined variable ]  :   <br> 
+                                    <span  class=one > </span>  const app = express() ;   <br><br> 
+                                </code>    
+                             </li> 
+                            
+                             <li>  c]  Define {Events Handlers methods} using different middlewares types  :    <br>  
+                                  <ol> 
+                                        <li>  1- Calling the Defined and imported [Custom Middleware {Logger} ]  as the return of the express defined method of {app.use()} :   <br>                                       
+                                          <code>
+                                            <span  class=one > </span>  app.use(Logger) ; <br> <br>
+                                          </code>
+                                        </li> <br> 
+                                    
+                                        <li>  2-  Define the main middleware method of [third-party] type , by calling the imported {cors} as an imported  method with assigning the upper defined object {corsOptions} as its  paramter  :   <br> 
+                                          <code>
+                                            <span  class=one > </span>  app.use (cors(corsOptions) )  ; <br> <br>
+                                          </code>
+                                        </li> <br> 
+                                      
+                                        <li>  3- Define some essential public Built-in middleware methods :   <br> 
+                                          <code>
+                                            <span  class=one > </span> //  a-  Built-in middleware to  handle urlencoded form data  [ content-type : application/x-www-form-urlnccoded ] :   <br>
+                                            <span  class=one > </span>   app.use(express.urlencoded({ extended: false }));  <br> <br>
+                                            
+                                            <span  class=one > </span> //  b-   Built-in middleware to handle json data:   <br>
+                                            <span  class=one > </span>    app.use(express.json());  <br> <br>
+                                            
+                                            <span  class=one > </span> //  c-   Define the method the public folder's files reader to be accesable to  all other files in the project server  [extrated from the express] :  <br>  
+                                            <span  class=one > </span>    app.use( '/' , express.static(path.join(__dirname, '/public')));    <br> <br>
+                                        </code>
+                                      </li> <br> 
+                                      
+                                  </ol>   
+                             </li>
+
+                              <li>  D] Defining main Routes + its crud operastions  +  handling return  -  (according to the {mvc} )  => by Importing related methods :  <br> 
+                                  <ol>
+                                    <li>  1-  Route of the {'/'} : Define [main index/home route + handling return] , by importing the {'root.js'} file  from : [routes/root.js]  :      <br>
+                                        <code> 
+                                            <span class=one > </spanc>  app.use('/' , require('./routes/root') ) ; <br>
+                                        </code>
+                                    </li> <br>  
+                                    
+                                    <li>  2-  Routes of the[ {'/employees'} +  routes's CRUD operation] , by importing the {'employees.js }  file from : [routes/api/employees.js]   :      <br>
+                                        <code> 
+                                            <span class=one > </spanc>  app.use('/' , require('./routes/root') ) ; <br>
+                                        </code>
+                                    </li> <br>  
+                                  </ol> <br>
+                              </li>
+
+                              <li> E] Define the [last route - due to the  node express  reading flow    -  ] of handling undefined requested routes values  ,  with using the [app.use()] of '*' and followed by any value => and display the inner 404 error page {404.html} incase of any Non existed path is written]  :  <br>
+                                   <code> 
+                                      <span class = one  ></span>   app.all('*', (req, res) => {  <br>
+                                        <span class = two  ></span>   // 1- assign the current response with error code   :  <br>
+                                        <span class = two  ></span>   res.status(404);  <br> <br>  
+                                    
+                                        <span class = two  ></span>  // 2-  define a conditional returned according to the requested extension of html  :   <br>
+                                        <span class = two  ></span>  if (req.accepts('html')) {   <br> 
+                                          <span class =three  ></span> // we need to use both the method of {statusCode} & {sendFile} in a chained to make the error page is not as [200]  : <br>
+                                          <span class =three  ></span> res.sendFile(path.join(__dirname, 'views', '404.html'));    <br>
+                                
+                                        <span class =two  ></span> } else if (req.accepts('json')) { <br>
+                                          <span class =three  ></span> // Send a json error if error is type of json  : <br>  
+                                          <span class =three  ></span> res.json({ error: "404 is not found! " });  <br>  
+                                
+                                        <span class =two  ></span> } else {  <br> 
+                                          <span class =three  ></span>  // Send an error if error is any type else :  <br>       
+                                          <span class =three  ></span> res.type('txt').send('404 is not found! ');  <br>
+                                        <span class =two   ></span> } <br>
+                                        <span class =one  ></span> }); <br>  
+                                   </code>
+                              </li>
+
+                              <li> F] Define [Custom middleware method of Error log Event handler] by express method of calling the defined and imported  :  <br>
+                                <code> 
+                                  <span clas=one> </span> app.use(errorHandler);  <br>
+                                 </code>
+                              </li>
+                              
+                              <li>  G]  Launching the [Listen] process on the defined variable of server {app} [to be able to listen its request]  :  <br>
+                                <code> 
+                                  <span clas=one> </span> app.listen(PORT, () => console.log(`Server running on port : ${PORT} `))   <br>
+                                 </code>
+                              </li>
+
+
+                          </ul>
+                    </li>
+                </ol>
+            </li> 
+       
+            <li> The express is handling  the methods inside the scirpts file by a first by first [as a flow] ->  s we put hte default route to the very end of the script    </li> 
+
+
+          </ul>
+ 
+          <!-- --------------------------------------------------------------------- -->
+
+             <h3>  Source code  scripts files of this  lesson as following : </h3> <br>
+
+             <ol class="codes">
+                <li> Page Sources : </li>
+                
+                <h3> A]  Frontend Section  : </h3>
+                <!-- <code>
+
+                   <h4> (1) Project  files of  main [React-Vite] system :     </h4>
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/index.html">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js   Source code of public HTML file  [index.html] file </button>
+                    </a> <br> <hr> <br> 
+                    
+                    
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/main.jsx">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js  Source code of  wrapping application [main] file JS [main.jsx] file </button>
+                    </a> <br> <hr> <br> 
+
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/App.jsx">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js  Source code of main [App] file {Main Component} [App.jsx] file </button>
+                    </a> <br> <hr> <br> 
+                     
+
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/index.css">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js  Source code of main formating css properties file JS [index.css] file </button>
+                    </a> <br> <hr> <br> 
+
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/public/style.css">  
+                        <button id=btn class="btn0" onclick="display()">    Moon icons library  Source code of  [ all icons in the project ]  formating  file JS [style.css] file </button>
+                    </a> <br> <hr> <hr> <br> 
+                     
+
+                    <h4> (2) Project files of main Components :  </h4>
+                       <h5> (a) First Header section child  Compoents {TopBar} :  </h5>
+                       <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/TopBar.jsx">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js  Source code of First part of Header [TopBar] child component JS [TopBar.jsx] file </button>
+                       </a> <br> <hr> <br> 
+    
+                       
+                       <h5> (b) Second Header section child  Compoents {SideBar} :  </h5>
+                       <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/SideBar.jsx">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js  Source code of Second part of Header [SideBar] child component JS [SideBar.jsx] file </button>
+                       </a> <br> <hr> <br> 
+                       
+
+                       
+                       <h5> (b) Hero section Compoents  : </h5>
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/2-hero/Hero.jsx">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js  Source code of Second  [Hero] child  component JS [Hero.jsx] file </button>
+                       </a> <br> <hr> <br>  
+   
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/2-hero/hero.css">  
+                           <button id=btn class="btn0" onclick="display()">  CSS code of formating Second [Hero] child  component JS [hero.css] file </button>
+                       </a> <br> <hr> <br>   
+
+                       <h5> (c) Main section Components  :     </h5>
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/3-main/Main.jsx">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js  Source code of Third [Main] child  component JS [Main.jsx] file </button>
+                       </a> <br> <hr> <br>  
+                       
+                    
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/3-main/main.css">  
+                           <button id=btn class="btn0" onclick="display()">  CSS code of formating Third [Main] child  component JS [main.css] file </button>
+                       </a> <br> <hr> <br>   
+                       
+ 
+                       <h5> (d) Contact-us section Compoent  :     </h5>
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/4-contact/Contact.jsx">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js  Source code of Fourth  [Contact] child  component JS [Contact.jsx] file </button>
+                       </a> <br> <hr> <br>  
+   
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/4-contact/contact.css">  
+                           <button id=btn class="btn0" onclick="display()">  CSS code of formating Fourth  [Contact] child  component JS [contact.css] file </button>
+                       </a> <br> <hr> <br>  
+                        
+                    
+                       <h5> (e) Footer section Compoent  :     </h5> 
+                         <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/5-footer/Footer.jsx">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js  Source code of Fifth [Footer] child  component JS [Footer.jsx] file </button>
+                       </a> <br> <hr> <br>   
+
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/5-footer/footer.css">  
+                           <button id=btn class="btn0" onclick="display()">  CSS code of formating Fifth [Footer] child  component JS [footer.css] file </button>
+                       </a> <br> <hr> <br>  
+                    
+                    
+                    
+                    <h4>  (3) Project backend files of all downloaded and setup libraries of  main React project  :  </h4>     
+                        <h5> (a)  RTK Query files [inside the  src / Redux ]   :     </h5> 
+                         <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/frontend/src/Redux/product.js">  
+                            <button id=btn class="btn0" onclick="display()">  Node.js   Source code of main RTk Query () system file in the  [product.js] file </button>
+                        </a> <br> <hr> <br> 
+                          
+                         <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/frontend/src/Redux/store.js">  
+                            <button id=btn class="btn0" onclick="display()">  Node.js   Source code of main RTk Query (store) system file in the  [store.js] file </button>
+                        </a> <br> <hr> <br>  
+                            
+                   <h4>  (4) Project files of all downloaded and setup libraries of  main React project  :  </h4>    
+                       
+                       <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/package.json">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js   Source code of main configuration file [package.json] file </button>
+                       </a> <br> <hr> <br> 
+                             
+                       <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/jsconfig.json">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js   Source code of JS custom  configuration file [jsconfig.json] file </button>
+                       </a> <br> <hr> <hr> <br>
+                      
+                </code> -->
+                <hr> <br> <br> 
+                <!-- -------------------------------------------------------- -->
+
+                <h3> B] Backend Section  : </h3>
+                <code>
+
+                   <!-- <h4> (1) Project files of main configuration  of [Strapi] system :     </h4>
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/backend/package.json">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js   Source code of Backend strapi's package file [package.json] file </button>
+                    </a> <br> <hr>  <br><br>  -->
+                       
+                   
+                   <!-- <h4> (2) Project files of main [config] folder  of [Strapi] backend  system :     </h4>
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/backend/config/plugins.js">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js   Source code of strapi's plugins file [plugins.js] file </button>
+                    </a> <br> <hr> <br> 
+                     
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/backend/config/database.js">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js   Source code of  strapi's  database file [database.js] file </button>
+                    </a> <br> <hr> <br>  
+                     
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/backend/config/middlewares.js">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js   Source code of  strapi's  middlewares file [middlewares.js] file </button>
+                    </a> <br> <hr> <br> 
+           
+                    
+                   <h4> (3) Project files of database structure  [] folder  of [Strapi] backend  system :     </h4>
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/backend/src/api/product/content-types/product/schema.json">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js   Source code of strapi's database schema structure  file [schema.json] file </button>
+                    </a> <br> <hr> <br>  -->
+                     
+                     
+                 </code>
+
+               <!-- -------------------------------------------------------- -->
+
+               <!-- <h3> C] General Deployment Framework  Section  : </h3>
+                   <code>      
+                       <h4>  (1) Project files of all downloaded and setup libraries of  main React project  :  </h4>    
+                       
+                       <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/package.json">  
+                          <button id=btn class="btn0" onclick="display()">  Node.js   Source code of main Deployment Framework configuration file [package.json] file </button>
+                       </a> <br> <hr> <br>  
+                            
+                   </code> -->
+
+            </ol>             
+            <br> <hr>
+        </section>
+
+        <!------------------------------------------------------------------------------------------------------>
+        <!------------------------------------------------------------------------------------------------------>
+
+        <section class="JSDOMImp" id="JSDOMImp">
+            <header>
+                <h3> [8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners] Importance & Benefits : </h3>
+            </header>
+            <ul>
+
+            </ul>
+        </section>
+
+        <!------------------------------------------------------------------------------------------------------>
+
+        <section class="JSDOMSyntx" id="JSDOMSyntx">
+            <header>
+                <h3> [8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners] Syntax & Methods: </h3>
+            </header>
+
+            <p> =&gt; Scenario Procedures : </p>
+
+            <hr>
+        </section>
+
+        <!------------------------------------------------------------------------------------------------------>
+        <section class="JSDOMPract container" id="JSDOMPract">
+            <header>
+                <h3> CMD [8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners] => {this lesson can be accessed through the github repo [webpages] } </h3>
+            </header>
+
+
+        </section>
+
+        <!-- <button type="button" class="btn" onclick="myTest()"> Click to Start [ (this) operator testing with both functions ] method  Application </button> -->
+
+        <script src="main.js"></script>
+
+        <br><br><br>
+
+        <div id="note" class="dis"></div> <br><br><br><br>
+
+        <!-- <button class="btn" id="elem" onclick="display()"> Click to activate {this} operator dispalying value  </button> <br>              -->
+
+
+        <!-- <button id=btn class="btn0" onclick="display()">Display JS Code [plugins.js] file </button> -->
+        <!------------------------------------------------------------------------------------->
+        <!---------------------------------------------------------------------------------------->
+
+        <footer id="footer" class="footer0">
+            All right reserved by &nbsp; &copy; &nbsp; Initiated by <a target='_self'  class="brand" href="https://shindowpro.github.io/"> ShindowPro </a> &trade;
+        </footer>
+    
+    </div>
+    <!------------------------------------------------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------>
+    
+    <!-- Here is the Aside  -->
+    
+    <div class="Clear"></div>
+    <!-------------------------------------------------------------------------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------------->
+
+    <dialog class="Note" open>
+        <details>
+            <summary> Hypernate Links: </summary>
+            <ul>
+                <li> <a href="http://shindowpro.github.io" target="_self">My Portfolio website </a></li>
+                <li> <a href="https://github.com/shindowpro/git-course" target="_self">My Github Repo </a></li>
+            </ul>
+        </details>
+    </dialog>
+
+
+    <!-- loading overlay  -->
+    <section class="loading-overlay">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </section>
+
+    <!-- <script src="main.js">
+    </script> -->
+
+
+    <!-- Scrolling top button -->
+    <section id="scroll-top">
+        <i class="fas fa-chevron-up fa-2x fa-align-center"></i>
+    </section>
+
+    <script>
+        alert("Welcome to 8 MVC ModelViewController Example  CRUD REST API  Nodejs  Express tutorials for Beginners");
+    </script>
+
+    <!-- Resources files -->
+    <script src="js/jquery-1.12.4.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/plugins.js"></script>
+
+    <script src="js/myplugins.js"></script>
+
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+
+    <script src="js/jquery.nicescroll.min.js"></script>
+
+</body>
+
+</html>
+
+
+ 
