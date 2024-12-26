@@ -1,4 +1,9 @@
-// lesson 7 :  Continue Building a [Node server]  using the [express] framework  +  using the [middleware]  , including the next types   :
+// lesson 8 :  Continue Building a [Node server] by building  server {Routes}  using the [express] framework with the [Router] tool , including next :
+
+
+
+
+
 
 // I- [Built-in Middleware] =>  that used in the previous lesson : 
     // 1- {app.use}  -> Define the basic route of the express server                  
@@ -105,9 +110,28 @@
   // III] Define [Built-in Middleware] Type /  1] Define public methods :  
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
+// ----------------------------------------
+ 
+  // III] Define [Built-in Middleware] Type /  
+  // {allowing routes to access to  public files} inside the [public] directory:  
+     //  a]  Define the method the public folder's files reader to be accesable by {main directory} [and all of inner pages] of project server  [extrated from the express] :
+      app.use('/' ,  express.static(path.join(__dirname, '/public')));
 
-  // III] Define [Built-in Middleware] Type /  2]  Define the method the public folder's files reader to be accesable to  all other files in the project server  [extrated from the express] :
-  app.use(express.static(path.join(__dirname, '/public')));
+      //  b]  Define the method the public folder's files reader to be accesable by {subdir inner directory} [and all of inner pages ]  of project server  [extrated from the express] :
+      app.use('/subdir' ,  express.static(path.join(__dirname, '/public')));
+
+
+  // [IV]  Define Routes using the defiened routes by using  express method  :
+    // a] {Assign/call a defined main route of {/root}  according to the Express method  }  : [Express Route method]  Calling the defined route (and all of it's inner pages )  from its directory : 
+    app.use( '/ ',  require('./routes/root'))  ;
+
+    // b] {Assign/call a defined inner route of {/subdir}  according to the Express method  }  : [Express Route method]  Calling the defined route (and all of it's inner pages )  from its directory : 
+    app.use( '/subdir',  require('./routes/subdir'))  ;
+
+ 
+
+// ----------------------------------------------------+
+ 
 
   // III] Define [Built-in Middleware] Type / 3] Define the several routes using the {get} method on the express +  assign an annonymous function of the reqiured method => [instead of define {server} variable in default node ]  :
 
@@ -139,6 +163,9 @@
     });
   // -----------------------------------
 
+
+
+  
   // d- Define Routes  with  returned  chained functions => by using  (2) methods    : 
 
     // [first Method ]  : [return default built-in paramters ] method  :

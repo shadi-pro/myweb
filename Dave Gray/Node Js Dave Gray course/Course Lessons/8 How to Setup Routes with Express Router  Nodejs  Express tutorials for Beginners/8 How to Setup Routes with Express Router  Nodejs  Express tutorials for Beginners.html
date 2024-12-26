@@ -531,9 +531,9 @@
                           
                           <li> B] Main Practical steps of using [ Router ] of the Express.js to build  project's Routes of  web server   <br>
                             <ol>
-                              <!-- <li> Project  file structure  modifications    </li>  
-                              <li> Managing and cleaning the routes  methods definitions </li>  
-                              <li> Managing API  main CRUD operations methods using the  [MVC] design pattern methodology    </li>   -->
+                              <li> Project file structure  modifications    </li>  
+                              <!-- <li> Managing and cleaning the routes  methods definitions </li>   -->
+                              <!-- <li> Managing API  main CRUD operations methods using the  [MVC] design pattern methodology    </li>   -->
                             </ol>
                           </li>
 
@@ -553,19 +553,26 @@
             </header>
  
           <h1> A]   The main concept of Express (Router) tool of the & main benefites : </h1> <br>
-            <p> The {MVC}  Design pattern used with the [express.js] server to organize  the  project    ,  due to the [express.js] is unopinionated for  web framework </p> 
+            <p>  Creating {Routes} in the node server using express.js framework        </p> 
+            <p>   Building {Routes} using express.js framework   provide the next  benfites :  <br>
+              <ol>
+                <li>  Allow to build several applications in the same server , by building  a Route for each app , and this include  structure specifications as main dirctory of [routes -> file for each route ]    </li> 
+  
+              </ol>   
+            </p> 
             
-            <p> The {MVC} is one of the most popular Design pattern used to organize the [express.js] server project ,  but there are other design patterns  </p> 
             
-            <p> The {MVC} system   is about certain  steps methodology  , as following  : <br>
-              <ul> 
-                <li> creating certain folder of including certain methods as following  :   <br>   
-                  <ol> 
-                    <li> a- [ controller ] folder => contains Each file of the certain Route's CRUD custom handling methods  => such as : <br>  
-                        <p> { employeesController.js} file  => to handle  all CRUD operations methods of  'employees.html'  route </p>
+            <p>  Building routes wiht using the {Router} tool of the [express.js]  methodology require next steps as following  : <br>
+                <p> creating certain folder of including certain methods as following  :   <br>   
+                  <ol>  
+                    <li> a- [ routes ] folder => contains Each route file for each app  =>  as follwing  : <br>  
+                        <p> {  subdir.js} route file  => to handle all of subdirectory & all of inside  inner routes  </p>
+                        
+                        <p> {  subdir.js} route file  => to handle       </p>
+                        <p> {  subdir.js} route file  => to handle       </p>
                     </li>   <br>  
 
-                    <li> b- [routes] folder  => include essentially  the following  :  <br>  
+                    <li> b- [] folder  => include essentially  the following  :  <br>  
                       <ul>   
                         <li> 1- [api]  folder => including api files of each database section [] as following :   <br>
                           <p>  {employees.js} file ->   Define the main api routes CRUD ops pattern  (as simluted DB)  of this server  [using   controller external source of defiend method of each crud  the  {employeesController} ]   </p>
@@ -576,13 +583,10 @@
                       </ul>                        
                     </li>  
                   </ol>
-                </li>   
-              </ul>              
+                </p>              
             </p> 
-            
-            
-            <p> Adding the {Thunder Client} extension  of [server Api CRUD testing] via  VS code      </p> 
-           
+               
+             
           <!--------------------------------------------------------  -->
             
             <h1>  B]   Main Practical steps of using [ Router ] of the Express.js to build  project's Routes of  web server    :   </h1>
@@ -815,406 +819,59 @@
         <!-- --------------------------------------------------------------------- -->
         
         
-        <h1>  C] Notes about  building [Node web server] using   ,  [express.js] Framework   :     </h1> 
+        <h1>  C] Notes about building routes of [Node web server] using [express.js] Framework and Router tool   :     </h1> 
           <ul>
               
-            <li> This lesson is building the express node web server with organizing the script by  using the  [MVC] pattern    </li> 
+            <li> This lesson is building several Routes by using express tool of the {Router}  methodology    </li> 
+
+            <li>  by building inner routes of the [subdir] =>  it will not be able to read public files [such as css files]  , and to solve this issue must assign a sepertaed assingment for the subdir inside the {server.js}  , as following : <br>
             
-            <li> By using the {MVC} pattern design =>  there are essential differneces  between the defined the {main Route +  handling it's return } , and defined it's {Route CRUD operations} as following : <br>  
+              <code> 
+                  <span  class="one "></span>   app.use('/subdir' ,  express.static(path.join(__dirname, '/public')));  <br>
+              </code>
+            </li> 
+            
+
+
+            <li> Main Requirments of using the { Express  Router } tool to define the Node Routes as following : <br>  
                 <ol> 
-                  <li> [I] Define the main [route] {server url value +  return handling ] => by using (2) methods  as following  : <br>
-                      <p> 1] [First method] : Default express.js only [without using MVC] Method  => according to the next steps   : <br>
-                        <code> 
-                          //  a- Define the main method inside the {server.js} file    : <br>
-                            <span class="one"></span>  app.get('route' , (res , req) => { <br>
-                              <span class="two"></span> // handling procedures codes  <br>
-                              <span class="two"></span>  res.sendFile('./views/index.html', { root: __dirname }) ; <br>
-                              <span class="two"></span>  res.sendFile(path.join( __dirname , 'views' , 'index.html')  ) ; <br>
-                              <span class="two"></span>  res.send('welcome to the express web server !') ; <br>
-                            <span class="one" ></span> } ) ;     <br> 
-                        </code> <br> <hr>  <br>   <br>
-                      </p>     
-                          
-                      <p> 2] [Second method  ] : [Express.js + using MVC] pattern method =>  according to next steps   :  <br> 
-                         <ul> 
-                          <li> a- Inside {routes/root.js}  file => main routes  defintion    <br>
-                            <code> 
-                                //  1-   Importing  requirments [express , router , path ]  :  <br>
-                                <span class="one"></span> express = require ('express')  ;         <br>
-                                <span class="one"></span> router =  express.Router() ;    <br> 
-                                <span class="one"></span> path  = require('path')  ;     <br> <br>
-                                
-                                //  2- Define the main method of  route + handling return :  <br>
-                                  <span class="one"></span>  app.get('route' , (res , req) => { <br>
-                                    <span class="two"></span> // handling procedures codes  <br>
-                                    <span class="two"></span>  res.sendFile('./views/index.html', { root: __dirname }) ; <br>
-                                    <span class="two"></span>  res.sendFile(path.join( __dirname , 'views' , 'index.html')  ) ; <br>
-                                    <span class="two"></span>  res.send('welcome to the express web server !') ; <br>
-                                  <span class="one" ></span> } ) ;     <br>      
-        
-                                //  3 - Exporting the  {router}  class   :  <br>
-                                  <span class="one"></span>  module.exports   =    router  <br>       
-                              </code>
-                          </li>   <br> <br>
-                        
-                          <li> b- Inside {server.js}  file => calling/importing  the defined route  method and assign it inside the express method    <br>
-                            //  Importing both of defined Routes & its  crud (according to the {mvc} )   : <br>
-                            <code> 
-                              // importing Route of the {'/'}  [main Route(s)  + return handling ] method =>  from : [routes/root.js] : <br> 
-                                  // Define main index/home route and handling return  :  <br>
-                                  <span class="one"></span>  app.use('/' ,  require('./routes/root') ) <br>   <br>                                 
-                            </code>                     
-                          </li> 
-                        </ul>
-                      </p>   
-                  </li> <br>
- 
-                  <li> [II] {Route CRUD operations} methodology steps , (according to [MVC] pattern design)   by following steps : <br>                       
-                      <p>  1]  Inside the { controllers/employeesControllers.js => define Main Data model +  CRUD method definitions  , as next  => : <br>
-                          <ol>
-                            <li> a- Define the {data} source object { routes/api/employees.js} file ,   by using  one of  (2)  methods  as following : <br> 
-                              <code>  
-                                   // First method : default Node method ] - [ will NOT be used in this project ]  {this method is not include the assignning function inside  } :   <br>
-                           
-                                   <span class="one" > </span> // 1- Define an empty object of the data : <br>
-                                   <span class="one" > </span>   const data = {} ; <br>   <br>
-                                      
-                                  
-                                   <span class="one" > </span> //  2- Define the [employees data] as extracted property from the main empty object <br>
-                                      <span class="two" > </span> by importing them from the main defined file  {model/employees.json} :  <br>
-                                   <span class="one" > </span>  data.employees = require('../model/employees.json'); <br>  <br>  
-
-                                    
-                                   // Second method : Reactful method ] - [  to be used in this project ] :   <br>
-                                   <span class="one" > </span> 1- Define a {data} object of the (2) properties as following [will be used inside the crud  opterations  methods  : <br>                                 
-                               </code>                           
-                            </li>  <br><hr><br>  
-
-                             <li> b- Define the main custom handling CRUD operations method  for each  the Route used in this server  as following : <br> 
-                                <p> 1- CRUD operations of the  of first Route { '/'}  : <br>    
-                                    <ol> 
-                                        <li> First CRUD method [get opt]  :  [get opertaion] of all current  employees data object ,  as  to next steps   :   <br> 
-                                          <code>  
-                                            // --  Define the method of the handling [get opertaion] of all employees data object inside the current response json [ using the parmeter of the (res) ]:   <br>
-                                            <span class="one" > </span> const getAllEmployees = (req, res) => { <br>
-                                              <span class=" two " > </span>  // Assign the  obained  data of the employees inside the {res} parameter [in json form ] :    <br>
-                                              <span class="two" > </span>    res.json(data.employees); <br>
-                                            <span class="one" > </span> }  <br> 
-                                          </code>                                
-                                        </li>  <br> <hr> <br> <br>
-
-  
-                                        <li>  Second CRUD method [post/add new elment] opt:  [create new log/element inside the  current data  and post/add it inside the current data json object ] , as next steps  :  <br> 
-                                          <code> 
-                                              const  createNewEmployee = (req, res) => { <br>
-                                              <span class="one" > </span> // 1 - define an object of a new employee object  [ including the incomming each field of  new element's request] :  <br>
-                                              <span class="one" > </span>  const newEmployee = { <br>
-                                                  <span class="two" > </span>   id: data.employees[data.employees.length - 1].id + 1 || 1 ,  => [getting the (id) of current element/employee - using the data array's length  &  consitnial assgin   -  - ] <br>
-                                                  <span class="two" > </span>   firstname: req.body.firstname ,  => [ getting [firstname] value as a property of the (req) ] <br>
-                                                  <span class="two" > </span>   lastname: req.body.lastname      => [ getting [lastname] value as a property of the (req) ] <br>
-                                              <span class="one" > </span>  } <br> </br>
-                                              
-                                              
-                                              <span class="one" > </span> //  2-  handle the error of the unexisted value of one of boht  fields of [first name] or [last name]  of the inserted new element/employee - using the conditional  + {res.status()}  method  : <br>
-                                              <span class="one" > </span>   if (!newEmployee.firstname || !newEmployee.lastname) { <br>
-                                                <span class="two" > </span>    return res.status(400).json({ 'message': 'First and last names are required...' }); <br>
-                                              <span class="one" > </span>  } <br> </br>
-    
-                                              <span class="one" > </span>  //  3- Adding the new element object {newEmployee} [after handling the upper error ]  into the upper defined object variable of [data.employees]  => by using the {setEmployees} setter function by using the  destructuring method : <br>
-                                              <span class="one" > </span>    data.setEmployees([...data.employees, newEmployee] ); <br>  <br>
-
-                                              <span class="one" > </span>  //  4-  Assign the final {data} value ( after adding the new object - newEmployee - ]  ) into the [res] parameter , with use a new record code (201) :  : <br>
-                                              <span class="one" > </span>    res.status(201).json(data.employees)  ;  <br>
-                                              }   <br>   
-                                          </code>                              
-                                        </li> <br> <hr> <br> <br>
-
-                                        
-                                        <li> Third  CRUD method [put/update opt]:  [ update a certain existed element in the current data ]  , as next steps  :<br> 
-                                          <code>  
-                                            const updateEmployee = (req, res) => {     <br>
-
-                                              <span class=one > </span> // 1-  finding the requested element from the data object according to its {id} , usign the {find()} method  and inner condition of the existed id   : <br>
-                                              <span class=one > </span>   const employee = data.employees.find(emp => emp.id === parseInt(req.body.id))  ;  <br>  <br>  
-                                            
-                                              <span class=one > </span> // 2- handling Error of the requested element [id] unexisted/not found  , by Sending an error status code (400)  : <br>
-                                              <span class=one > </span>  if (!employee) {  <br>
-                                                  <span class=two > </span> return res.status(400).json({ "message": `Employee  ID ${req.body.id} not found ! ` });  <br> 
-                                              <span class=one > </span> }  <br>  <br>
-                                        
-                                              <span class=one > </span> // 3-  check if the [firstname requested element] is existed ,  and assign the new element's firstname {employee.firstname} value with the value of the  obtained value  from request  {req.body.firstname}   : <br>
-                                              <span class=one > </span> if (req.body.firstname) employee.firstname = req.body.firstname ;  <br>
-                                                  
-                                              <span class=one > </span>  // 4-  check if the [lastname requested element] is existed , and assign the new element's lastname {employee.lastname} value with the value of the  obtained value  from request  {req.body.lastname}   : <br>
-                                              <span class=one > </span> if (req.body.lastname) employee.lastname = req.body.lastname ;  <br>
-
-                                              <span class=one > </span> // 5-  define  a variable of  filtered array  of all existed elements - except the current  updated helement  -  [ using  the filter() ]  : <br>
-                                              <span class=one > </span>    const filterArray = data.employees.filter(emp => emp.id !== parseInt(req.body.id));  <br>
-                                                  
-                                              <span class=one > </span> // 6-  define an unsorted array as accumaltated  the upper defined array of the all existed elements concateanated with the current updated element :  : <br>
-                                              <span class=one > </span>    const  unsortedArray =  [ ...filterArray , employee ] ; <br>
-                                                
-                                              <span class=one > </span> // 7- adding the [upper accumaltated array] into the [current main data object] , by using the setter function + with assign the proper [id] value using the sort() method  : <br>
-                                              <span class=one > </span>   data.setEmployees( unsortedArray.sort(  (a, b) => a.id &gt; b.id ? 1 :  a.id &lt; b.id ? -1 : 0  ) ) ; <br>
-                                                  
-                                              <span class=one > </span> // 8-  sending the [employees] property of [new data] after being filled -> into the  response parameter in json form  :: <br>
-                                              <span class=one > </span>   res.json( data.employees ) ; <br>                                               
-                                            }   <br>  
-                                          </code>                                                                    
-                                        </li>   <br> <hr> <br> <br>
-
-
-                                        <li> Fourth CRUD method [ delete/remove opt]:   [delete a certain  element from the data json ] :   <br> 
-                                          <code>  
-                                            const deleteEmployee = (req, res) => {   <br>
-                                              <span class=one > </span> // 1-  finding the requested element from the data object according to its {id} , usign the {find()} method and inner condition of the existed id   : <br>
-                                              <span class=one > </span>   const employee = data.employees.find(emp => emp.id === parseInt(req.body.id))  ;  <br>  <br>  
-                                                                                        
-                                              <span class=one > </span>  // 2- handling Error of the requested element [id] unexisted/not found  , by Sending an error status code (400)  : <br>
-                                              <span class=one > </span>  if (!employee) {  <br>
-                                                  <span class=two > </span> return  res.status(400).json({ "message": `Employee  ID ${req.body.id} not found ! ` });  <br> 
-                                              <span class=one > </span> }  <br>  <br>
-                                        
-                                              <span class=one > </span> // 3- define an filtered array of all existed elements - except the current requested  element  -  [ using the filter() ] :   <br>
-                                              <span class=one > </span> const filterArray = data.employees.filter(emp => emp.id !== parseInt(req.body.id)); <br>
-                                          
-                                              <span class=one > </span>  // 4- set/assign  the upper defined [filtered array ]  of all existed elements (only)  inside  the data  [ using the setter function +  destrucurtring method ] :   <br>
-                                              <span class=one > </span>   data.setEmployee([...filterArray]);   <br>
-                                          
-                                              <span class=one > </span> // 5-  sending the [employees] property object (after being filled with filterd array ) into the  response parameter (res) [ with json form]  :   <br>
-                                              <span class=one > </span>   res.json( data.employees );   <br>
-                                            }  <br>
-
-                                          </code>                              
-                                        </li>    
-                                    </ol>
-                                </p>  <br> <hr> <br> <br> 
-                                  
-                                <p> 2- CRUD operations [only one ] of the  of second  Route of dynamic element  { '/:id'}  : <br>    
-                                  <code>  
-                                      // CRUD method of [get data of requested dynamic element ] opt  :  <br>
-                                          
-                                          const getEmployee = (req, res) => { <br>
-                                      
-                                            <span class=one></span> 1- Finding the requested element from the current data object according to its {id}  :    <br>
-                                            <span class=one></span>  const employee = data.employees.find(emp => emp.id === parseInt(req.body.id)) ; <br><br>  
-
-                                            <span class=one > </span> 2- handling Error of the requested element [id] unexisted/not found  , by Sending an error status code (400)  : <br>
-                                            <span class=one > </span>  if (!employee) {  <br>
-                                                <span class=two > </span> return  res.status(400).json({ "message": `Employee  ID ${req.body.id} not found ! ` });  <br> 
-                                            <span class=one > </span> }  <br>  <br>
-                                        
-                                            <span class=one></span>  3-  sending the [requested obtained employee object only ]  after being  found  into the response parameter as json format :   <br>
-                                            <span class=one>  </span>  res.json(employee);   <nbr>  
-                                            <br> 
-                                          }   <br> 
-                                    </code>                              
-                                </p>   
-                            </li>   <br> <br> <br>
- 
-
-                            <li> c- Exporting all upper defined method of the CRUD  method of   every  route as object :  <br>
-                              <p> These metond will be called inside the [empoyees.js] file  while defining the  routes of this project : </p> 
-                                  <span class="one"></span> module.exports = {   <br>
-                                      <span class="two "></span> getAllEmployees,  <br>
-                                      <span class="two "></span> createNewEmployee, <br>
-                                      <span class="two "></span> updateEmployee , <br>
-                                      <span class="two "></span> deleteEmployee,  <br>
-                                      <span class="two "></span> getEmployee   <br>
-                                  <span class="one"></span> }  <br>
+                  <li> 1] Basic server structure files ,  as following    : <br>
+                      <ul> 
+                        <li>  [views]  folder : that represent the main container directory  of all other server files , that will be included mainly by  (2) main sections   , as next : <br>
+                          <ol> 
+                            <li> a- [[root]] => the basic direct location  of  server files , that essentialy inlcude  the next files  :  <br>
+                              <p>  {index.html}  => the main home page  , and it usually requrested by '/' or 'index.html'   </p>
+                              <p>  {404.html}  => the main error page    </p>
+                              <p>  any other files , such as in the current  project => {new-page.html}   </p>
+                            </li>
+                            
+                            <li> b-  [subdir ]  Sub folder/ Sub directory   ->    <br> 
+                                <ol>
+                                  <li> another {index.html}  => this file differs from the main index.html file in the main root      </li> 
+                                  <li> {test.html}  </li>                                  
+                                </ol>                            
                             </li>
                           </ol>
-                      </p>  
-                      <!--   --------------------  -->
- 
-                      <p> 2] Inside {routes/api/employees.js}  => calling and assign the imported CRUD methods  : <br>   
-                        <ul> 
-                            <li>  a] Preperations procedures :   <br>
-                              <ol> 
-                                <li> 1- Importing the main [express server] :  <br>
-                                    <span class="one"></span>   const express = require('express') ;    
-                                </li>    <br> <br>  
-                                
-                                <li> 2- Define the main [express Router] :  <br>
-                                    <span class="one"></span>   const router  =  express.Router();     
-                                </li>  <br> <br>
-                                
-                                <li> 3-  Importing the [controller file] (that including the all defined handling crud methods) :  <br>
-                                    <span class="one"></span>   const   employeesController = require('../../controllers/employeesController') ;  
-                                </li>  <br> <br>
-    
-                              </ol> 
-                            </li>  <br><br>     
 
-                            <li>  b] Defining the main routes with assign the imported CRUD  operations methods  : <br>
-                              <ol> 
-                                <li> [First route] :  Define all CRUD opts of the main index || home page route  {'/'}  +   assign all CRUD operations using the chained Notation method  :  <br> 
-                                  <code>
-                                    <span class="one"> </span>   router.route('/') <br>
-                                        <span class="two" > </span>  .get(employeesController.getAllEmployees)                // [get all elements crud  operation] <br>
-                                          <span class="three"  > </span>  .post(employeesController.createNewEmployee)        // [create new element  operation]    <br>
-                                            <span class="four"  > </span>   .put(employeesController.updateEmployee)          // [update an existed entry]          <br>
-                                              <span class="five "  > </span>   .delete(employeesController.deleteEmployee) ;   // [delete a certain element]        <br>
-                                  </code>
-                                </li>  <br>  <br> 
+                        
+                        </li>
+
+                      </ul>
+                  </li>
+
+                  <li> 2]   [routes]  folder =>   including the all files of routes definitions , by file for each route, as following in this project :  <br> 
+                    <ul> 
+                      <li> a-  {root.js} file : include defining Routes to access all files  in the main root location ,  such as :  {index.html} & {404.html} & {new-page.html} </li>
+                      <li> b-  {subdir.js} file : include defining Routes to access all files inside the [subdir] sub direcotry ,  such as :  {index.html} & {test.html}    </li>
+                    </ul>                  
+                  </li>
 
 
-                                <li> [Second route] : Define the  dynamic page route + assign it's CRUD operation  [only one crud of : getting requested element] :  <br> 
-                                  <code> 
-                                    <span  classs="one " ></span>  router.route('/:id').get( employeeController.getEmployee) ;  // [ getting all data of the requested element]  <br>
-                                  </code>                                  
-                                </li>
-                              </ol>
-                            </li>    <br> <br>     
-
-                            <li>  c]  Exporting the defined {router} class :   <br> 
-                              <code>
-                                <span clas=one> </span>   exports.module = router   ;      <br>
-                              </code>                              
-                            </li>
-                        </ul>                      
-                      </p>
-                        <!-- ------------------------------------------- -->
-
-                      <p> 3] Inside the {server.js}  file =>  Define the main routes with handling return  ( with assign the imported defined  CRUD methods )   :  </p>
-                          <ul>    
-                             <li>  a] Importing Section  :    <br>                   
-                                <ol>
-                                  <li> 1]  Required importings for [node  web server] :   <br>
-                                    <code>
-                                        <span  class=one > </span> // importing the {path} class from the  [node core common module]      :   <br> 
-                                        <span  class=one > </span>  const path = require('path');   <br>                                  
-                                    </code>                                     
-                                  </li>  <br> 
-                                    
-                                  <li> 2]  Required importings for creating [Node Web Server] using the [express] framework  :   <br>
-                                    <code>
-                                        <span  class=one > </span> // a- importing the {express} custom class from the  [node custom module]  :   <br> 
-                                        <span  class=one > </span>   const express = require('express') ;  <br>  <br> 
-                                    </code>
-                                  </li> <br>
-                                  
-                                  <li> 3] Required  Importings for Middlleware of the [third-party] type  :   <br>
-                                    <code>
-                                        <span  class=one > </span> // a-  exracting the {cors} from [cors] library that requried for using the [third-party middleware] type  :   <br> 
-                                        <span  class=one > </span>   const cors = require('cores ') ;  <br>  <br> 
-                                        
-                                        <span  class=one > </span> // b- import the   external  defined  third-party middleware method {corsOptions} =>  to be able use it here   :   <br> 
-                                        <span  class=one > </span>   const cors = require('cores ') ;  <br>  <br> 
-                                    </code>
-                                  </li>  <br> 
-
-                                  <li> 4] Required Importing for [Events defined Custom middleware] from outside files  :   <br>
-                                    <code>
-                                        <span  class=one > </span> // a-   Importing {logger} defined and exported function from the {logEvents.js} file to be used  here inside express method - instead of define the custom middleware here  - :   <br> 
-                                        <span  class=one > </span>    const { logger } = require('./middleware/logEvents'); <br>  <br> 
-                                        
-                                        <span  class=one > </span> // b- Importing {errorHandler} defined and exported function from the {errorHandler.js} file to be used  here [inside express method] - instead of define the custom middleware here    -   :   <br> 
-                                        <span  class=one > </span>    const errorHandler = require('./middleware/errorHandler'); <br>  <br> 
-                                    </code>
-                                  </li>  <br> 
-                                </ol> 
-                            </li>
-                            
-                             <li>  b] [Express Server public configuration definitions processes steps] section [according to the midddleware  +  MVC  pattern ]  :    <br> 
-                                <code>
-                                    <span  class=one > </span> // 1-  Define the { Port(s) } to be used for connecting with the [localhost] OR with other custom node server {3500} :   <br> 
-                                    <span  class=one > </span>  const PORT = process.env.PORT || 3500;    <br> <br>
-
-                                    <span  class=one > </span> // 2-   Define the {app} as extracted variable from the defined express  [instead of the   {server} defined variable ]  :   <br> 
-                                    <span  class=one > </span>  const app = express() ;   <br><br> 
-                                </code>    
-                             </li> 
-                            
-                             <li>  c]  Define {Events Handlers methods} using different middlewares types  :    <br>  
-                                  <ol> 
-                                        <li>  1- Calling the Defined and imported [Custom Middleware {Logger} ]  as the return of the express defined method of {app.use()} :   <br>                                       
-                                          <code>
-                                            <span  class=one > </span>  app.use(Logger) ; <br> <br>
-                                          </code>
-                                        </li> <br> 
-                                    
-                                        <li>  2-  Define the main middleware method of [third-party] type , by calling the imported {cors} as an imported  method with assigning the upper defined object {corsOptions} as its  paramter  :   <br> 
-                                          <code>
-                                            <span  class=one > </span>  app.use (cors(corsOptions) )  ; <br> <br>
-                                          </code>
-                                        </li> <br> 
-                                      
-                                        <li>  3- Define some essential public Built-in middleware methods :   <br> 
-                                          <code>
-                                            <span  class=one > </span> //  a-  Built-in middleware to  handle urlencoded form data  [ content-type : application/x-www-form-urlnccoded ] :   <br>
-                                            <span  class=one > </span>   app.use(express.urlencoded({ extended: false }));  <br> <br>
-                                            
-                                            <span  class=one > </span> //  b-   Built-in middleware to handle json data:   <br>
-                                            <span  class=one > </span>    app.use(express.json());  <br> <br>
-                                            
-                                            <span  class=one > </span> //  c-   Define the method the public folder's files reader to be accesable to  all other files in the project server  [extrated from the express] :  <br>  
-                                            <span  class=one > </span>    app.use( '/' , express.static(path.join(__dirname, '/public')));    <br> <br>
-                                        </code>
-                                      </li> <br> 
-                                      
-                                  </ol>   
-                             </li>
-
-                              <li>  D] Defining main Routes + its crud operastions  +  handling return  -  (according to the {mvc} )  => by Importing related methods :  <br> 
-                                  <ol>
-                                    <li>  1-  Route of the {'/'} : Define [main index/home route + handling return] , by importing the {'root.js'} file  from : [routes/root.js]  :      <br>
-                                        <code> 
-                                            <span class=one > </spanc>  app.use('/' , require('./routes/root') ) ; <br>
-                                        </code>
-                                    </li> <br>  
-                                    
-                                    <li>  2-  Routes of the[ {'/employees'} +  routes's CRUD operation] , by importing the {'employees.js }  file from : [routes/api/employees.js]   :      <br>
-                                        <code> 
-                                            <span class=one > </spanc>  app.use('/' , require('./routes/root') ) ; <br>
-                                        </code>
-                                    </li> <br>  
-                                  </ol> <br>
-                              </li>
-
-                              <li> E] Define the [last route - due to the  node express  reading flow    -  ] of handling undefined requested routes values  ,  with using the [app.use()] of '*' and followed by any value => and display the inner 404 error page {404.html} incase of any Non existed path is written]  :  <br>
-                                   <code> 
-                                      <span class = one  ></span>   app.all('*', (req, res) => {  <br>
-                                        <span class = two  ></span>   // 1- assign the current response with error code   :  <br>
-                                        <span class = two  ></span>   res.status(404);  <br> <br>  
-                                    
-                                        <span class = two  ></span>  // 2-  define a conditional returned according to the requested extension of html  :   <br>
-                                        <span class = two  ></span>  if (req.accepts('html')) {   <br> 
-                                          <span class =three  ></span> // we need to use both the method of {statusCode} & {sendFile} in a chained to make the error page is not as [200]  : <br>
-                                          <span class =three  ></span> res.sendFile(path.join(__dirname, 'views', '404.html'));    <br>
-                                
-                                        <span class =two  ></span> } else if (req.accepts('json')) { <br>
-                                          <span class =three  ></span> // Send a json error if error is type of json  : <br>  
-                                          <span class =three  ></span> res.json({ error: "404 is not found! " });  <br>  
-                                
-                                        <span class =two  ></span> } else {  <br> 
-                                          <span class =three  ></span>  // Send an error if error is any type else :  <br>       
-                                          <span class =three  ></span> res.type('txt').send('404 is not found! ');  <br>
-                                        <span class =two   ></span> } <br>
-                                        <span class =one  ></span> }); <br>  
-                                   </code>
-                              </li>
-
-                              <li> F] Define [Custom middleware method of Error log Event handler] by express method of calling the defined and imported  :  <br>
-                                <code> 
-                                  <span clas=one> </span> app.use(errorHandler);  <br>
-                                 </code>
-                              </li>
-                              
-                              <li>  G]  Launching the [Listen] process on the defined variable of server {app} [to be able to listen its request]  :  <br>
-                                <code> 
-                                  <span clas=one> </span> app.listen(PORT, () => console.log(`Server running on port : ${PORT} `))   <br>
-                                 </code>
-                              </li>
-
-
-                          </ul>
-                    </li>
+                  <li> 3]  {server.js}  file   => that including  the main configuration of the sever , including clling and assigning the defiend ruotes     </li>
                 </ol>
             </li> 
        
-            <li> The express is handling  the methods inside the scirpts file by a first by first [as a flow] ->  s we put hte default route to the very end of the script    </li> 
-
+        
 
           </ul>
  
