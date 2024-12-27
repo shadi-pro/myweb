@@ -1,6 +1,6 @@
 //   # [11:26] =>
 
-// This file including =>  setting up the [ main route] of  [views/]  files :
+// This file including =>  setting up the [main route] of [views/]  files :
   // using express method to define a route inside the main root  of  [views/] main file :  
 
 // --------------------------------------------------
@@ -56,24 +56,12 @@
   // ---------------------------------------------------
 
   // C] Exporting  the defined {router}  :  
-  module.exports= router ; 
+  module.exports = router ; 
 
    // ------------------------------------------- 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 

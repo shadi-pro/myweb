@@ -1,15 +1,11 @@
 // lesson 8 :  Continue Building a [Node server] by building  server {Routes}  using the [express] framework with the [Router] tool , including next :
 
 
-
-
-
-
 // I- [Built-in Middleware] =>  that used in the previous lesson : 
     // 1- {app.use}  -> Define the basic route of the express server                  
     // 2- {app.get}  -> Define several main routes of the server                   
     // 3- {app.all}  -> Define the error route as the last route                   
-
+ 
 // II- [Custom  Middleware] =>  
     // 1-  {app.use()}  -> define a custom middleware of calling a ouside defined event of [ {logger}  : logging  entries inside the assigned file  within event method ] 
     // 2-  {app.use()}  -> define a custom middleware of calling outside defined event of [ {errorHandler} : logging errror entieds insdie teh assinged file within the event method 
@@ -119,16 +115,17 @@
 
       //  b]  Define the method the public folder's files reader to be accesable by {subdir inner directory} [and all of inner pages ]  of project server  [extrated from the express] :
       app.use('/subdir' ,  express.static(path.join(__dirname, '/public')));
+    // --------------------------
 
-
-  // [IV]  Define Routes using the defiened routes by using  express method  :
+  // [IV]  Define Routes using the defiened routes by using  [express method]  :
     // a] {Assign/call a defined main route of {/root}  according to the Express method  }  : [Express Route method]  Calling the defined route (and all of it's inner pages )  from its directory : 
-    app.use( '/ ',  require('./routes/root'))  ;
+    app.use( '/',  require('./routes/root'))  ;
 
     // b] {Assign/call a defined inner route of {/subdir}  according to the Express method  }  : [Express Route method]  Calling the defined route (and all of it's inner pages )  from its directory : 
     app.use( '/subdir',  require('./routes/subdir'))  ;
 
- 
+    // c] {Assign/call a defined inner route of {/employees}  according to the Express method  }  : [Express Route method]  Calling the defined route (and all of it's inner pages files  )  from its directory : 
+    app.use( '/employees',  require('./routes/api/employees'))  ;
 
 // ----------------------------------------------------+
  
@@ -136,70 +133,67 @@
   // III] Define [Built-in Middleware] Type / 3] Define the several routes using the {get} method on the express +  assign an annonymous function of the reqiured method => [instead of define {server} variable in default node ]  :
 
     // a- Define the main route of the [index page : '^/$' || 'index.html' ] using the {get} method on the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :
-    app.get('^/$|index(.html)?', (req, res) => {
-      // 1- [sending a dare testing text ]  => this message  will be dispalyed at the page : 
-      // res.send('welcome to the express web server !') ;
+    // app.get('^/$|index(.html)?', (req, res) => {
+    //   // 1- [sending a dare testing text ]  => this message  will be dispalyed at the page : 
+    //   // res.send('welcome to the express web server !') ;
 
-      // 2- [sending a file from the [views] folder of the server]  =>  this file  will be displayed the current req url , by using several methods    : 
+    //   // 2- [sending a file from the [views] folder of the server]  =>  this file  will be displayed the current req url , by using several methods    : 
 
-      // a) basic  method syntax :  res.sendFile('./views/file.ext' , { root : 'main path value  of the file  root :  [__dirname] } ) ;  
-      res.sendFile('./views/index.html', { root: __dirname });
+    //   // a) basic  method syntax :  res.sendFile('./views/file.ext' , { root : 'main path value  of the file  root :  [__dirname] } ) ;  
+    //   res.sendFile('./views/index.html', { root: __dirname });
 
-      // b) node [path join()] method  syntax :  res.sendFile(path.join(__dirname,   'views' , 'filename.extension' ) ;  
-      // res.sendFile(path.join( __dirname , 'views' , 'index.html')  ) ;
-    });
+    //   // b) node [path join()] method  syntax :  res.sendFile(path.join(__dirname,   'views' , 'filename.extension' ) ;  
+    //   // res.sendFile(path.join( __dirname , 'views' , 'index.html')  ) ;
+    // });
   // -----------------------------------
 
     // b-  Define the another route of the [ new-page : '/new-page.html'] using the {get} method on the express +  assign an annonymous function of the reqiured method => [instead of define {server} variable in default node ]  :
-    app.get('/new-page.html', (req, res) => {
-      res.sendFile(path.join(__dirname, 'views', 'new-page.html'));
-    });
+    // app.get('/new-page.html', (req, res) => {
+    //   res.sendFile(path.join(__dirname, 'views', 'new-page.html'));
+    // });
   // -----------------------------------
 
     // c-  Define the  another route with a re-directing into another page  :
-    app.get('/old-page(.html)?', (req, res) => {
-      // we need to assign the redirecting code of the '301' , because the defualt assinged code is the  '302' which will  not display the requested redirected page   
-      res.redirect(301, '/new-page.html');
-    });
+    // app.get('/old-page(.html)?', (req, res) => {
+    //   // we need to assign the redirecting code of the '301' , because the defualt assinged code is the  '302' which will  not display the requested redirected page   
+    //   res.redirect(301, '/new-page.html');
+    // });
   // -----------------------------------
-
-
-
   
   // d- Define Routes  with  returned  chained functions => by using  (2) methods    : 
 
     // [first Method ]  : [return default built-in paramters ] method  :
-    // d/1 Define a custom Route handlers of reaching a  [hello || hello.html] => [using the first method ]  :
-    app.get('/hello(.html)?', (req, res, next) => {
-      console.log('Attempt to reach a hello.html inner page ');
-      next()   // calling the next chained function 
-    }, (req, res) => {
-      res.send('hello world !');
-    });
+    // d/1 Define a [custom Route] handlers of reaching a  [hello || hello.html] => [using the first method ]  :
+    // app.get('/hello(.html)?', (req, res, next) => {
+    //   console.log('Attempt to reach a hello.html inner page ');
+    //   next()   // calling the next chained function 
+    // }, (req, res) => {
+    //   res.send('hello world !');
+    // });
     // --------------------------------------
     
     // [second Method] : [return  array of defiend  functions parameters ]    :  
     // d/2 Define a custom Route handlers of calling (3)  seperated defined  methods  => [using the second method ]  :
     //  Define the first seperated function :
-    const one = (res, req, next) => {
-      console.log('this the first seperated function  ');
-      next();
-    }
+    // const one = (res, req, next) => {
+    //   console.log('this the first seperated function  ');
+    //   next();
+    // }
 
     // Define the second seperated function :
-    const two = (res, req, next) => {
-      console.log('this the second seperated function  ');
-      next();
-    }
+    // const two = (res, req, next) => {
+    //   console.log('this the second seperated function  ');
+    //   next();
+    // }
 
     // Define the third seperated function :
-    const three = (res, req) => {
-      console.log('this the third seperated function  ');
-      // res.send('Finshed !') ;
-    }
+    // const three = (res, req) => {
+    //   console.log('this the third seperated function  ');
+    //   // res.send('Finshed !') ;
+    // }
 
     // Define the main router of  ['chain' with optional followed after by '.html' ] that chaining all of previous (3) functions  as array parameter  :  
-    app.get('/chain(.html)?', [one, two, three]);
+    // app.get('/chain(.html)?', [one, two, three]);
 
 // -----------------------------------
 
@@ -212,7 +206,7 @@
       // assing the current response with error code   :
       res.status(404);
 
-      // define a condition of the returned extension of html  :    
+      // define a condition of the returned extension of html  [ other than  previous defined routs  ]  :    
       if (req.accepts('html')) {
         res.sendFile(path.join(__dirname, 'views', '404.html')); // we need to use both the method of {statusCode} & {sendFile} in a chained to make the error page is not as [200]  
 
