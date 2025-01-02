@@ -1,8 +1,10 @@
-//   # [11:26] =>
 
-// This file including =>  setting up the [main route] of [views/]  files :
-  // using express method to define a route inside the main root  of  [views/] main file :  
-
+// This file including =>  
+  // setting/defining  the {default Routes} of main root files [according to the express method ] , to acess the next file : 
+    // 1-  {'/'} || ('index.html'}  => the  home page        
+    // 2-  {'new-page.html'}        => a re-dirctring page  
+    // 3-  {'404.html'}             => Error page 
+ 
 // --------------------------------------------------
 // --------------------------------------------------
 
@@ -19,11 +21,10 @@
   // -----------------------------------------------
   // -----------------------------------------------
    
-
-//  B] Setting up the Routes of files inside {views/subdir/} directory  : 
+//  B] Setting up the default Routes of files inside {views/subdir/} directory  : 
 
   // 1- [First Route] {views/index.html} file :
-// a- Define the main route of the [index page : '^/$' || 'index.html' ] using the {get} method on the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :
+    // a- Define the main route of the [index page : '^/$' || 'index.html' ] using the {get} method on the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :
     router.get('^/$|index(.html)?', (req, res) => {
       // 1- [sending a dare testing text ]  => this message  will be dispalyed at the page : 
       // res.send('welcome to the express web server !') ;
@@ -56,7 +57,7 @@
   // ---------------------------------------------------
 
   // C] Exporting  the defined {router}  :  
-  module.exports = router ; 
+    module.exports = router ; 
 
    // ------------------------------------------- 
 

@@ -552,64 +552,202 @@
                 <h3> 8 How to Setup Routes with Express Router  Nodejs  Express tutorials for Beginners concept : </h3>
             </header>
  
-          <h1> A]  The main concept of Setting up the {Routes} and {RestApi} using [Express (Router) tool]   & main benefites : </h1> <br>
-            <p>  Creating {Routes} in the node server using express.js framework        </p> 
+          <h1> A]  The main concept of Setting up the {default Routes} and {RestApi Routes} using [Express (Router) tool]   & main benefites : </h1> <br>
             <p>  Building {Routes} using express.js framework   provide the next  benfites :  <br>
-              <ol>
-                <li> 1] {Express method} to define Routes -> Allow to build several applications in the same server , by building  a Route for each app , and this include files structure specifications   [ creating  dirctory of [routes] -> file for each route] , accrding to the next steps  and procedures  :  <br>   
-                    <p> Building routes wiht using the {Router} tool of the [express.js]  methodology require next steps as following  : <br>
-                        <p> creating certain folder of including certain methods as following  :   <br>   
-                          <ol>  
-                            <li> a- [ routes ] folder => contains Each route file for each app  =>  as follwing  : <br>  
-                                <p> {  subdir.js} route file  => to handle all of subdirectory & all of inside  inner routes  </p>
-                                
-                                <p> {  subdir.js} route file  => to handle       </p>
-                                <p> {  subdir.js} route file  => to handle       </p>
-                            </li>   <br>  
+            <p>  Allow to build API to serve several  different platform stacks  such as  [  MERN: react , mogoDB -or any other Database - , Express.js ] ,  acording to next steps and procedures :   <br> </p>
         
-                            <li> b- [] folder  => include essentially  the following  :  <br>  
-                              <ul>   
-                                <li> 1- [api]  folder => including api files of each database section [] as following :   <br>
-                                  <p>  {employees.js} file ->   Define the main api routes CRUD ops pattern  (as simluted DB)  of this server  [using   controller external source of defiend method of each crud  the  {employeesController} ]   </p>
-                                </li>                           
-                                
-                                <li> 2- {root.js} file => include  the main handling return method of the  main route  [with using the regular expression ]  </li>
-        
-                              </ul>                        
-                            </li>  
-                          </ol>
-                        </p>              
-                    </p>     
-                </li> 
-                
-                <li> 2] {Express method} to define API -> Allow to build API to serve several  different platform stacks  such as  [  MERN: react , mogoDB -or any other Database - , Express.js ] ,  acording to next steps and procedures :   <br>
-   
-                
-                
-                
-                </li> 
-                
-              </ol>   
-            </p> 
-            
-            
-             
+            <p>  Creating {Routes} in the node server using express.js framework    </p> 
+                <ol>
+                  <li> 1] {Express method} to define [Routes] -> Allow to build several applications in the same server , by building a Route for each app , and this requirments include files structure specifications [ creating dirctory of [routes] -> file for each route] , according to the next steps and procedures  :  <br>   
+                      <p> Building routes with using the {Router} tool of the [express.js] methodology require next steps as following  : <br>
+                          <p> creating certain folder of including certain methods as following  :   <br>   
+                            <ol>  
+                              <li> a- [ routes ] folder => contains Each route file for each app  =>  as follwing  : <br>  
+                                  <p> {  subdir.js} route file  => to handle all of subdirectory & all of inside  inner routes  </p>
+                                  
+                                  <p> {  subdir.js} route file  => to handle       </p>
+                                  <p> {  subdir.js} route file  => to handle       </p>
+                              </li>   <br>  
+          
+                              <li> b- [] folder  => include essentially  the following  :  <br>  
+                                <ul>   
+                                  <li> 1- [api]  folder => including api files of each database section [] as following :   <br>
+                                    <p>  {employees.js} file ->   Define the main api routes CRUD ops pattern  (as simluted DB)  of this server  [using   controller external source of defiend method of each crud  the  {employeesController} ]   </p>
+                                  </li>                           
+                                  
+                                  <li> 2- {root.js} file => include  the main handling return method of the  main route  [with using the regular expression ]  </li>
+          
+                                </ul>                        
+                              </li>  
+                            </ol>
+                          </p>              
+                      </p>     
+                  </li> 
+                  
+                  <li> 2] {Express method} can used to define (2) types of Routes as following  :  <br>  
+                    <ul>   
+                        <li> a) {Default Route} to access certain  directory & (all files inside it) inside the server files structure   =>  <br>
+                            <p> This Route type defined to access a certain directory location inside the node server structure of the project  (including all files inside)  </p>   <br> 
+                            
+                            <p> This Route type definiotin will be created inside the ->  [routes/file.js]  , the next syntax :  <br> 
+                              <code> 
+                                  <span class = "one" > </span>  router.get('request Url value - with using regex or not' , (res, req)  => {// handling route displaying})    <br>
+                              </code>                            
+                            </p> <br>
+
+                            <p> Some practical as next examples  :   <br>   
+                              <ol> 
+                                  <li> 1)  [Definintion inside the {routes/root.js}] => Define several [Default Routes] to access each file inside the [main root directory] of the node server [views/] [according to Express method ] ,  inside {routes/root.js}   file   :  <br> 
+                                      <p> a- Define a [default route] to access main page  [index.html] file WIHTIN (main root directory of  server ) : <br>
+                                        <code>
+                                          <span class=one></span> // [Default express route definitin of home page or [index.html] file , by assign simple req url shortcut value  ] :  <br>   
+                                          <span class=one></span>  router.get(  '/' ,  (res , req)  => { // Displaying handling codes} ) ;    <br> <br>   
+                                          
+                                          <span class=one></span> // [Default express route definition of home page or [index.html] file , by assign simple req url full value  ] :  <br>   
+                                          <span class=one></span>   router.get(  '/index.html' ,  (res , req)  => { // Displaying handling codes} ) ;   [ => Default express route definitin of home page or [index.html] file ]  <br>   <br> 
+                                          
+                                          <span class=one></span> // [Default express route definition of home page or [index.html] file , by assign req url with regex flags ] :  <br>   
+                                          <span class=one></span>   router.get(  '^/$|index(.html)?' ,  (res , req)  => { // Displaying handling codes} ) ;    <br>  <br>    
+                                        </code>                              
+                                      </p> <br>  <br>     
+    
+                                      <p> b- Define a [default route] to access custom page [page.html] file WITHIN (main root directory of server) :  <br>
+                                        <code>   
+                                          <span class=one></span> // [Default express route definition of another custom page file in the server root   ] :  <br>   
+                                          <span class=one></span>   router.get(  '/page(.html)?' ,  (res , req)  => { // Displaying handling codes} ) ;   <br> 
+                                        </code>                              
+                                      </p>  
+                                  </li> <br> <hr>  <br>  
+                                  
+                                  <li> 2) [Definintion inside the {routes/subdir.js} ] => Define several [Default Routes] to access certain [sub-directory] inside the node server structure [views/subdir/]  -> to be created inside the {routes/subdir.js} :  <br>
+                                      <p> a-  [First Default Route] to access  {views/subdir/index.html} file inside the [sub-directory] in server node structure : <br>
+                                        <code> 
+                                            <span  class="one"> </span> router.get('^/$|index(.html)?', (req, res) => { <br>
+                                              <span  class="two "> </span> // [sending a file from the [views/subdir/index.html] folder of the server]  =>  this file  will be displayed the current req url , by using several methods : <br>     
+                                              <span  class="two"> </span> res.sendFile(path.join( __dirname , '..', 'views' , 'subdir' , 'index.html')  ) ;  <br>
+                                            <span  class="one"> </span>  });   <br>
+                                        </code>
+                                      </p>   <br><br> 
+                                      
+                                      <p> b-  [Second Default Route] to access  {views/subdir/test.html} file inside the [sub-directory] in server node structure  :  <br>
+                                        <code> 
+                                            <span  class="one"> </span> router.get('^/$|test(.html)?', (req, res) => { <br>
+                                              <span  class="two "> </span> // [sending a file from the [views/subdir/test.html] folder of the server] => this file will be displayed at the current req url  , by using several method  : <br>     
+                                              <span  class="two"> </span> res.sendFile(path.join( __dirname , '..', 'views' , 'subdir' , 'test.html')  ) ;  <br>
+                                            <span  class="one"> </span>  });   <br>
+                                        </code>
+                                      </p>
+                                  </li>
+    
+                              </ol>
+                            </p>        
+                        </li>  <br> <hr> <br>
+
+                        <li>  b- {Api Route} => to access/connect a certain defined data source structure and handling major CRUD opertations or dynamic route  ,   and this type has mainly (2) type , as following :   <br>      
+                            <ul> 
+                                <li> 1- [Api Route] to connect and access certain [defined data source] + handle its CRUD operations responding :  <br>
+                                    <p> This method is being defined inside the [routes/api]  folder within a certain file , for each datasource </p>  <br>
+
+                                    <p> The Major sytnax of this [api route] method as following  :   <br> 
+                                      <code>  
+                                        <span class = "one" ></span> router.route('request Url').get().post().put().delete() ; =>  define the route and its CRUD hanlding  :  <br>  
+                                      </code> 
+                                    </p> <br> 
+                                      
+                                    <p> practicals examples on this  [api route] method  as  following  :   <br> 
+                                      <code>  
+                                          <span class=one > </span>  // Define the main route of connecting to {employees.json} datasource + including all CRUD opertaions : <br>
+                                          <span class=one > </span>  router.route('/').get((res, req) => {  <br>
+                                            <span class=two> </span> res.json(data.employees);  <br> 
+                                          <span class=one > </span> }).post((res, req) => {    <br>
+                                            <span class=two> </span> res.json({ <br>
+                                              <span class=three> </span> "firstname": req.body.firstname,  <br>
+                                              <span class=three> </span> "lastname": req.body.lastname <br>
+                                            <span class=two> </span> }); <br>
+                                          <span class=one> </span> }).put((res, req) => {  <br>  
+                                            <span class=two> </span> res.json({  <br>
+                                              <span class=three> </span>"firstname": req.body.firstname, <br>
+                                              <span class=three> </span> "lastname": req.body.lastname  <br>
+                                            <span class=two> </span> }); <br>
+                                          <span class=one> </span> }).delete((res, req) => { <br>
+                                            <span class=two> </span> res.json({ "id": req.body.id });  <br>
+                                          <span class=one> </span> }); <br>
+                                      </code> 
+                                    </p> 
+                                </li>
+                                <br> <hr> <br> 
+                                      
+                                <li>  2- [Api Route] to connect/access to a certain [defined data source] +  and get access to a dynamic data within  a dynamic page  responding   :  <br> 
+                                  
+                                  <p> This method is being defined inside the [routes/api] folder within a certain file , for each datasource to get a dynamic access    </p>  <br>
+
+                                  <p> The Major sytnax of this [api route] method as following  :   <br> 
+                                      <code>  
+                                          <span class = "one" ></span> router.route('/:id').get( (res , req) =>  { // handling code } ); => [ define the dynamic route  and get access to a dynamic data  responding  (according to a cetain data property) ] <br>  
+                                      </code> 
+                                  </p>  <br>  
+
+                                  <p> Pracical example of defining the a dynamic route of [id api route] (assign the [id] property by the incomming value of the [id] from the requested url ) : <br>
+                                      <code>
+                                        <span  class=one ></span>  router.route('/:id').get((res , req ) => {    <br>
+                                            <span  class=two ></span>  res.json({  "id" : req.params.id   }) ;    [setting the response id data by the requested data ]  <br>
+                                        <span  class=one ></span> } ) <br>  <br>             
+                                      </code>
+                                  </p> 
+                                </li>
+                                <br> <hr> <br> 
+                            </ul>
+                        </li>
+                    </ul> 
+                  </li>                 
+                </ol>   
+              </p> 
+              
           <!--------------------------------------------------------  -->
             
-            <h1>  B]  Main Practical steps of Setting up the {Routes} and {api} using [Express (Router) tool] in  our project web server :   </h1>
-              <li> 1] Project file structure  modifications :   <br> 
+            <h1>  B]  Main Practical steps of Setting up the {Routes} and {api} using [Express (Router) tool] in the  project web server :   </h1>
+              <li> 1] Project file structure modifications :   <br> 
                 <ol>          
-                  <li> First/ Modify the file structure of  Express Node server  [ the same  destructure  , with change some folder and create some new ] : <br> 
-                      <ul> 
-                        <li> a- {package.json} file  => with next modifications    :  <br>
-                          <ol> 
-                              <li> adding the [express] npm => "express": "^4.21.1"    </li> 
-                          </ol>                          
-                        </li>
-    
-                        <li> b- inside  main root =>   including the next files and folders  :  <br>      
-                          <ol>   
-                            <li> [Files] inside the main root :   <br>
+                  <li> a) [Inside the main project root]  : <br>                        
+                        <ol>   
+                          <li> a- [data] new folder  => that include  :  <br>
+                            <p>  {employees.json} file :      <br>   
+                              <ol> 
+                                  <li> this file is represeting the data source file {employees} , which  about an array of the objects  (including  several elements 'employees' , each  including several properties   [ each element must include  [id] property)]  </li> 
+                                  <li> by dealing with a real database  => this file  will be replaced by DB file (which is now as simulated database)  </li> 
+                              </ol>                          
+                            </p>
+                          </li>
+      
+                          <li> b- [routes] new folder  => that include  :  <br>
+                            <p> a) [api] folder :      <br>   
+                              <p> this folder will hold [api route] type definintion files , one file for each api route define and handle {data source} file    </p> 
+                              <p> in this project we have only one  defiend Data source  , so will  have the next file :  <br>
+                                <ol> 
+                                    <li> {employees.js}  => will include defintion of (2) methods  of [api routes] type , as following :  <br>
+                                      <ul>
+                                        <li> express [api route "/"] method -> of handling [CRUD opts]  of the defined  data source of {employees.json}  </li>
+                                        <li> [api route ":/id"] method -> of handling [ dynamic get] form  the defined data source of {employees.json}  </li>
+                                      </ul>  
+                                    </li> 
+                                </ol>                          
+                              </p> 
+                            </p>
+                            
+                            <p> b- {root.js} file   :  <br>
+                              <p> include several [default routes] methods definintions of access to the ['views/' :  main root decrectory of server structure - including all its the inner files - ]  </p> 
+                            </p>
+
+
+                            <p> c- {subdir.js} file   :  <br>
+                              <p> include several [default routes] methods definintions of access to the ['views/subdir/' : sub directory  inside server structure - including all its the inner files - ]  </p> 
+                            </p>
+
+
+                          </li>
+                        </ol>
+                        
+                            <li> 2- [Files] inside the main root :   <br>
                                 <ul>  
                                   <li> 1-  {server.js} => <br> 
                                     <p> The main file to be run as default [as set in  package.json ] </p>
@@ -624,7 +762,7 @@
                             </li>  <br>  <br>
     
                             
-                            <li>  [Folders] inside the main root   : <br>
+                            <li> 3- [Folders] inside the main root   : <br>
                                 <ul> 
                                     <li> 1- [views]  => the main server folder that will include all essential server files , as following  : <br> 
                                       <ol> 
@@ -758,52 +896,126 @@
                                     <code>
                                       <span  class=one > </span>    const PORT = process.env.PORT || 3500 ;  <br>  
                                     </code>
-                                  </li>    <br> <br> 
+                                  </li>    <br> <hr>  <br> 
         
-                                    <li> 2]  Define the {app} as extracted variable from the defined express  [instead of the   {server} defined variable ]  :   <br>
+                                  <li> 2]  Define the {app} as extracted variable from the defined express  [instead of the   {server} defined variable ]  :   <br>
                                     <code>
                                       <span  class=one > </span>  const app = express() ;  <br>  
                                     </code>
-                                  </li>    <br> <br> 
+                                  </li>    <br> <hr>  <br>
         
                                     
-                                  <li> 3] Define the main route of the [index page : '/'] using the {get} method of the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :   :   <br>
-                                      <ul> 
-                                        <li>  a- Define the main route of the [index page : '/'] using the {get} method on the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ]  :     <br>
-                                          <code>
-                                            <span  class=one > </span>     <br>  
-                                          </code>                                   
-                                        </li>    
+                                  <li> 3]  Calling the Defined and imported [Custom Middleware {Logger}  event ]  as the return of the express defined method of {app.use()} :  <br>
+                                    <code>
+                                      <span  class=one > </span> app.use(logger);  <br>  
+                                    </code>                                   
+                                  </li>    <br> <hr>  <br>
+        
+        
+                                  <li> 4] Define a third-party middleware event of handling requested hosts , by next (3) steps :  <br>
+                                      <ol>
+                                        <li> a- Define a [whitelist] array of the accepted list  of hosts to be handled as allowed to access our backend [your website  , your localhost ,  the virtual custom server - such as the react -  ]  :  <br>  
+                                          <code> 
+                                            <span class=one ></span>   const whiteList = ['https://www.yourdomain.com', 'http://localhost:3500', 'http://127.0.0.1:5500'] ;    <br>
+                                          </code>   
+                                        </li>   <br> <br> 
+                                      
+                                        <li> b-  Define a object of {cors} configutration properties to handle the [whitelist] array to be able to access to the our backend ]   :  <br>
+                                          <code> 
+                                            <span class=one ></span> const corsOptions = {  <br>
+                                              <span class=two ></span> // 1- The first property to handle the comming host , through a anonymous function  : <br>
+                                              <span class=two ></span>  origin: (origin, callback) => {    <br>
+                                                  <span class=three  ></span>   // Create a condition of the received origin value (host sender request) :  <br>
+                                                  <span class=three  ></span> if (whiteList.indexOf(origin) !== -1 || !origin) {  // if the comming request host value IS existed in previous defined list of the accepted host  OR the no request host came at all ]    <br> 
+                                                    <span class=four   ></span>  callback(null, true);  <br> 
+                                                  <span class= three  ></span> } else { <br> 
+                                                    <span class= four   ></span>   callback(new Error('Not allowed by Cors ')); <br>                                                     
+                                                  <span class= three  ></span>   }   <br> 
+                                                <span class= two  ></span>   },   <br>   <br>
+         
+                                              <span class= two  ></span>  // 2- the second property of cors object of the halding the received request :      <br>   
+                                              <span class= two  ></span>   optionSuccessStatus: 200 <br>    
+                                            <span class= one   ></span>    } <br>                               
+                                          </code>   
+                                        </li>    <br> <br> 
+ 
+                                        <li> c-  Define the main middleware method of [third-party] type , using  the previous defined object of [{cors} configutration]    :  <br>
+                                            <code> 
+                                              <span class=one  ></span>   app.use( cors(corsOptions) ) ;  <br> 
+                                            </cod>                                          
+                                        </li>  <br> <br> 
+                                      </ol>                                    
+                                  </li>  <br> <hr>  <br>
+
+                                  <li> 5] Define some essential public methods of  [Built-in Middleware] Type , requried for express :    <br>
+                                      <code> 
+                                        <span class=one></span> app.use(express.urlencoded({ extended: false }));  <br> 
                                         
-                                        <li> 
+                                        <span class=one></span> app.use(express.json());  <br> 
+                                      </code> 
+                                  </li>  <br> <hr>  <br>
+ 
+                                  <li> 6]  Define the method that allow to access to public folder's files wihtin  { 'public' directory } [and all of inner pages] of project server  [ using (express.static) method ]  :    <br>
+                                      <code> 
+                                        <span class=one></span>  a-  Define a method to allow [files in the main server root] to access to the [public] folder in the project structure    :  <br> 
+                                        <span class=one></span> app.use(  '/' ,  express.static(path.join(__dirname, '/public')) )  ; <br>  <br>   
+                                        
+                                        <span class=one></span>  b-  Define a method to allow [files in the server's  [subdir] directory] to access to the [public] folder in the project structure:  <br> 
+                                      </span class=one></span> app.use(  '/subdir' ,  express.static(path.join(_dirname, '/public')) )  ; <br> 
+                                        
+                                      </code> 
+                                  </li>     <br> <hr>  <br>
+         
+        
+                                  <li> 7]  Define the method that calling defined  both of the [default routes ]  & [api routes ]  (according to the express methodology  )  : <br>
+                                      <code> 
+                                        <span class=one></span>  a-  Assign/call a defined main [default route] of {main root of server directory}] from  {routes/root.js}  according to the Express method :  <br> 
+                                        <span class=one></span> app.use(  '/' , require('/routes/root')  )  ; <br>  <br>   
+                                         
+                                        <span class=one></span>  b-  Assign/call a defined a [default route] of {   'subdir' sub directory of server }] from  {routes/subdir.js}  according to the Express method :  <br> 
+                                        <span class=one></span> app.use(  '/' , require('/routes/subdir')  )  ; <br>  <br>   
+                                        
+                                        <span class=one></span>  c- Assign/call a defined inner [api route] of { CRUD opts of {data.json} }  from {routes/api/employees.js}  according to the Express method :  <br> 
+                                        <span class=one></span>  app.use( '/employees',  require('./routes/api/employees')) ;  <br>  <br>   
+
+                                      </code> 
+                                  </li>     <br> <hr>  <br>
+         
+                                  <li>  8]  Define the method  of handling other than the previous req url defined routes handling  method  : <br>
+                                      <code>  
+                                        <span class=one></span> app.all('*', (req, res) => { <br>  
+                                          <span class=two ></span>  // a- assign the current response with error code  : <br>  
+                                          <span class=two ></span>   res.status(404); <br>   <br>   
+
+                                          <span class=two ></span>  // b- define a condition of the returned extension of html  [ other than  previous defined routs  ]  : <br>   
+                                          <span class=two ></span>  if (req.accepts('html')) {  <br>   
+
+                                            <span class= three  ></span> // 1) we need to use both the method of {statusCode} & {sendFile} in a chained to make the error page is not as [200]  :   <br>   
+                                            <span class= three  ></span>  res.sendFile(path.join(__dirname, 'views', '404.html'));  <br>
+                                            
+                                          <span class=two ></span>  } else if (req.accepts('json')) {   <br>
                                           
-                                        </li>    
-                                        
-                                        <li>
+                                            <span class=three ></span> // 2) Send a json error if  error is type of json <br> 
+                                            <span class=three ></span>  res.json({ error: "404 is not found! " }); <br>
                                           
+                                          <span class=two ></span> } else  {   <br>   
+                                            <span class= three ></span> res.type('txt').send('404 is not found! '); // Send an error if error is any type else     <br>   
+                                          <span class=two ></span> }   <br>   
                                         
-                                        
-                                        </li>    
-                                      
-                                      
-                                      
-                                      
-                                      </ul> 
-                                  </li>    <br> <br> 
-        
-        
-                                  <li>    []     </li>
-        
-        
-                                  <li> 5] Launching the [Listen] process  of server [to be able to listen  its  request]  ->  [wiht using hte app instead of  the server ]:  <br>    
+                                        <span class=one ></span>  });   <br>   
+                                           
+                                      </code> 
+                                  </li>     <br> <hr>  <br>
+         
+
+                                  <li>  9] Launching the [Listen] process  of server [to be able to listen  its  request]  ->  [with using hte app instead of  the server ]:  <br>    
                                     <code> 
                                         <span  class="one "> </span>     app.listen(PORT , () => console.log(`Server running on port : ${PORT} `)  )   <br>
                                     </code>
                                   </li>  
         
                                 </ul>                           
-                              </li> 
-                              <br><hr>  <br>     
+                              </li>  <br>  <hr>  <br>     
                             </ol> 
                           </p>
                         </li>
@@ -853,51 +1065,97 @@
                   <span  class="one "></span>   app.use('/subdir' ,  express.static(path.join(__dirname, '/public')));  <br>
               </code>
             </li> 
-            
-
-
-            <li> Main Requirments of using the { Express  Router } tool to define the Node Routes as following : <br>  
-                <ol> 
-                  <li> 1] Basic server structure files ,  as following    : <br>
-                      <ul> 
-                        <li>  [views]  folder : that represent the main container directory  of all other server files , that will be included mainly by  (2) main sections   , as next : <br>
-                          <ol> 
-                            <li> a- [[root]] => the basic direct location  of  server files , that essentialy inlcude  the next files  :  <br>
-                              <p>  {index.html}  => the main home page  , and it usually requrested by '/' or 'index.html'   </p>
-                              <p>  {404.html}  => the main error page    </p>
-                              <p>  any other files , such as in the current  project => {new-page.html}   </p>
-                            </li>
-                            
-                            <li> b-  [subdir ]  Sub folder/ Sub directory   ->    <br> 
-                                <ol>
-                                  <li> another {index.html}  => this file differs from the main index.html file in the main root      </li> 
-                                  <li> {test.html}  </li>                                  
-                                </ol>                            
-                            </li>
-                          </ol>
-
-                        
-                        </li>
-
-                      </ul>
-                  </li>
-
-                  <li> 2]   [routes]  folder =>   including the all files of routes definitions , by file for each route, as following in this project :  <br> 
+             
+            <li> Main Requirments of using the { Express Router} tool to define the [Node Routes] as following : <br>  
+              <ol> 
+                <li> 1] inside Server structure [views/] folder ,  as following    : <br>
                     <ul> 
-                      <li> a-  {root.js} file : include defining Routes to access all files  in the main root location ,  such as :  {index.html} & {404.html} & {new-page.html} </li>
-                      <li> b-  {subdir.js} file : include defining Routes to access all files inside the [subdir] sub direcotry ,  such as :  {index.html} & {test.html}    </li>
-                    </ul>                  
-                  </li>
+                      <p> The node server structure represented by  [views] folder and all inner files  : that represent the main container directory of all other server files , that can be  seperated  mainly into (2) main sections , as next : <br>
+                        <ol> 
+                          <li> a] [[root]] => the basic direct location  of  server files , that essentialy inlcude  the next files  :  <br>
+                            <p>  {index.html}  => the main home page  , and it usually requrested by '/' or 'index.html'   </p>
+                            <p>  {404.html}  => the main error page    </p>
+                            <p>  any other files , such as in the current  project => {new-page.html}   </p>
+                          </li>
+                          
+                          <li> b] [subdir] Sub folder/ Sub directory , inside the main root of  node server  ->    <br> 
+                              <ol>
+                                <li> another {index.html}  => this file differs from the main index.html file in the main root   </li> 
+                                <li> {test.html} => another file  inside  the [subdir]  sub directory </li>                                  
+                              </ol>                            
+                          </li>
+                        </ol>
+                      </p>
+                    </ul>
+                </li>
 
+                <li> 2] inside the main project files structure  :  <br>       
+                  <ol> 
+                    <li> a] [data]  folder  =>     <br>
+                        <p> this folder should include the datasouce(s) files wihtin json format , as one json file  for each datasouce </p>
+                        <p> due in this project we have only one datasouce {employees.json} => so this folder will include the next file :  <br> 
+                          <ol> 
+                            <li>  {employees.json} </li>
+                          </ol>
+                        </p>                                              
+                    </li>
+                    
+                    <li> b]  [routes]  folder     =>  <br>
+                      <p> including the all files requrid for routes definitions , by file for each route, as following in this project :  <br> 
+                        <ul>    
+                          <li> 1-  {root.js} file   : <br>
+                            <p> include definition [Default Routes] type  => to access all files located in the server main root location ,  such as :  {index.html} & {404.html} & {new-page.html}    </p>
+                          </li> <br>  
+                            
+                          <li> 2-  {subdir.js} file :   <br> 
+                            <p> include definitoin of [Default Routes] type => to access all files located in the server's [subdir] sub direcotry location ,  such as :  {index.html} & {test.html} </p> 
+                            </li>
 
-                  <li> 3]  {server.js}  file   => that including  the main configuration of the sever , including clling and assigning the defiend ruotes     </li>
-                </ol>
-            </li>   <br>
+                            <li> 3- [api]  folder  :  <br>
+                              <p>  this folder should include all files of [Api Routes] definitions that conoecting to the a cetain defeined datasource, by one for each defined datasource      </p> 
+                              <p>  due to we have one defined datasource  , so this folder will  include  one as follwoing  : <br>
+                                  <ul>
+                                      <li> {employess.js} file => including the required [Api Routes] definitions + importing datasource , as folwing   :   <br>
+                                      <ol> 
+                                        <li>  a- {data.employees} =>   the main defiend datasource of   {employees.json}          </li>
+                                        <li>  b- { router.route('/')} =>   define the main route of connecting the {employees.json}  datasource + CRUD operation  </li>
+                                        <li>  c- { router.route('/:id')} =>   define the dynamic route of connecting the {employees.json}  datasource + dynamic access  process   </li>
+                                      </ol>
+                                    </li>  
+                                  </ul>  
+                              </p> 
+                          </li>
 
-            <li>   general notes :     
-                <p>  the newest/current version  of  [express.js] is supprorting  using the regex in assingng the  route value    </p>            
+                        </ul>                                       
+                      </p>  
+                    </li>
+  
+                    <li> c] {server.js} file  =>   <br> 
+                      <p>  this the main server intiative file , that will include the :  <br>
+                        <ul>
+                          <li> main configuration steps and  procedures of the sever   </li>  
+                          <li> calling and assigning the defiend routes  [default + api] routes types   </li>  
+                        </ul>
+                      </p>
+                    </li> 
+                  </ol>
+                </li>
+              </ol>
+            </li>  <br>
+
+            <li>   General  notes :  <br>
+                <p>  the newest/current version  of  [express.js] is supporting  using the regex in assinging the  route value    </p>            
                 <p>  Express and node provide built-in method to define and create API  , but MongoDB or other DB can provide its own technequies  method to handle the  api creating </p>            
                 <p>  By using Express and node  to define and create API   , we dont need to define the public files handling  method like we did in defualt route defintion </p>            
+                <p>  Some hints of using the express method to define Route : <br>
+                    <ul> 
+                      <li>  we use {router.get()}  method to define a Router instead  of using node method of {app.get()}  </li>
+                      <li>  after define the route method inside specific files inside [routes] fodler =>
+                         we must assign each defined method of the route inside {server.js} the main server initail file  , using the express method {app.use()} 
+                         + with using the { require(defintion file path) } to be assigned for this method req url value [the path inide the server ]      </li>
+                    </ul>
+                </p>            
+
             </li>
        
         
