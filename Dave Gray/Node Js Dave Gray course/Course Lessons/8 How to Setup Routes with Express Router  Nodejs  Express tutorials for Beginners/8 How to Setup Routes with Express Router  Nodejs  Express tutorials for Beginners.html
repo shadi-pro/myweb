@@ -520,20 +520,20 @@
             </header>
 
             <article>
-                <p> &gt; Main Subjects in this lesson will be aout using the  {Router} of the  [Node Express]  to  build  the project routes  Web sever  =>   as following : </p>
+                <p> &gt; Main Subjects in this lesson will be aout using the  {Router} the tool of  [Node Express] to build the project's routes Web sever of all types  => as following : </p>
                  
                 <h2> Main Subjects : </h2>
 
                 <ol type="A">
-                    <li> Main points of this lesson , practical application  of the mamnaging the built [express  node webserver]   by using [MVC] design pattern : <br>
+                    <li> Main points of this lesson , practical application of the building [default routes] & [api routes 'RESTapi' ]   using  express tool [Router]  : <br>
                         <ol>
-                          <li> A] The main concept of Setting up the {Routes} and {Restapi} using [Express (Router) tool]   & main benefites   </li>
+                          <li> A] The main concept of Setting up the {Routes} and {Restapi} using [Express (Router) tool] & main benefites & main reqwuremnts  </li>
                           
-                          <li> B] Main Practical steps of Setting up the {Routes} and {api} using [Express (Router) tool] in  our project web server  :   <br>
+                          <li> B] Main Practical steps and procedures  of Setting up the {Routes} and {api} using [Express (Router) tool] in  our project web server  :   <br>
                             <ol>
-                               <li> 1] Project file structure  modifications    </li>  
-                               <li> 2] Using the express {Router} tool to set up [Routes] definitions in node server of our project    </li>  
-                               <li> 3] Using the express {Router} tool to set up [RestAPI] definitions in node server of our project    </li>  
+                               <li> 1] Project file structure modifications requirments for this method       </li>  
+                               <li> 2] Using the express {Router} tool to define and set up [Routes] definitions in node server of our project    </li>  
+                               <li> 3] Using the express {Router} tool to define and set up [RestAPI] definitions in node server of our project    </li>  
                             </ol>
                           </li>
 
@@ -552,37 +552,124 @@
                 <h3> 8 How to Setup Routes with Express Router  Nodejs  Express tutorials for Beginners concept : </h3>
             </header>
  
-          <h1> A]  The main concept of Setting up the {default Routes} and {RestApi Routes} using [Express (Router) tool]   & main benefites : </h1> <br>
-            <p>  Building {Routes} using express.js framework   provide the next  benfites :  <br>
-            <p>  Allow to build API to serve several  different platform stacks  such as  [  MERN: react , mogoDB -or any other Database - , Express.js ] ,  acording to next steps and procedures :   <br> </p>
-        
-            <p>  Creating {Routes} in the node server using express.js framework    </p> 
+          <h1> A] The main concept of Setting up the {default Routes} and {RestApi Routes} using [Express (Router) tool] & main benefites & requremits : </h1> <br>
+            <p> 1] Main conept of the  {router} express  tool is about using the extracted module from the express library ,  to  use it to define the router  to be used to defiend the route instead of using the  default express tool {app}   </p>
+            
+            <p> 2]  Building {Routes} using express.js framework provide the next benfites :  <br>
+              <ol> 
+                <li> {Express method}  [Route] tool  to define [Routes] -> Allow to build several applications in the same server , by building a Route for each app , and this requirments include files structure specifications [ creating dirctory of [routes] -> file for each route]  </li>
+                <li> Allow to build both types of  [defailt Routes] & [Routes API] easily to serve several  different platform stacks  such as [ MERN: react , mogoDB -or any other Database - , Express.js ] ,  acording to next steps and procedures :   <br>  </li> 
+                <li> allow easily oraganizing  the Routes using the  [MVC] pattern ( will be studied in the  next lesson )     </li>
+              </ol>
+            </p>
+ 
+            <p> 3] Main requriments for  usign  {Routes} in the node server using [Router] the express.js framework tool  :  </p> 
+              <p> according to the [Router] the express.js framework tool , we need to the set next steps and procedures  :  <br>   
                 <ol>
-                  <li> 1] {Express method} to define [Routes] -> Allow to build several applications in the same server , by building a Route for each app , and this requirments include files structure specifications [ creating dirctory of [routes] -> file for each route] , according to the next steps and procedures  :  <br>   
-                      <p> Building routes with using the {Router} tool of the [express.js] methodology require next steps as following  : <br>
-                          <p> creating certain folder of including certain methods as following  :   <br>   
-                            <ol>  
-                              <li> a- [ routes ] folder => contains Each route file for each app  =>  as follwing  : <br>  
-                                  <p> {  subdir.js} route file  => to handle all of subdirectory & all of inside  inner routes  </p>
-                                  
-                                  <p> {  subdir.js} route file  => to handle       </p>
-                                  <p> {  subdir.js} route file  => to handle       </p>
-                              </li>   <br>  
-          
-                              <li> b- [] folder  => include essentially  the following  :  <br>  
-                                <ul>   
-                                  <li> 1- [api]  folder => including api files of each database section [] as following :   <br>
-                                    <p>  {employees.js} file ->   Define the main api routes CRUD ops pattern  (as simluted DB)  of this server  [using   controller external source of defiend method of each crud  the  {employeesController} ]   </p>
-                                  </li>                           
-                                  
-                                  <li> 2- {root.js} file => include  the main handling return method of the  main route  [with using the regular expression ]  </li>
-          
-                                </ul>                        
-                              </li>  
-                            </ol>
-                          </p>              
-                      </p>     
-                  </li> 
+                    <li> I] Modifications in the general files  of the project structure  as following  :   <br>   
+                      <ol>  
+
+                        <li> a) [data] folder (main datasource(s) definition - DB(s) - )  => include essentially the following  :  <br>  
+                          <p>  This folder should include each file of defined datasource of the project (with a json format )  , and in this project we have only one file as following  :    <br>
+                            <ul>     
+                              <li> {employees.json}  file   </li> 
+                            </ul>                        
+                          </p>
+                        </li> 
+                        
+                        <li> b) [ routes ] folder (main routes defniintons )    => contains Each route file for each [api app / inner  path] =>  as following  : <br>  
+                          <ul>
+                              <li> 1- [api]  folder => including [api routes]  files of each database  datasource  [employees.json] as following :   <br>
+                                <p>  {employees.js} file (api route) ->   Define the main api routes CRUD ops pattern  (as simluted DB)  of this server  [using   controller external source of defiend method of each crud  the  {employeesController} ]   </p>
+                              </li>                           
+                              
+                              <li> 2- {root.js} file (3 default routes)  => to handle access to the main root path [/views ] of the node structure files ( including all files inside the root files) + handling return method of the main route ,  including the next files  :  
+                                <ol >  
+                                  <li> 1- first route method : define [default route] of the  {views/index.html} file   (access to the main home page - in main root of the Node )  </li> 
+                                  <li> 2- second route method : define [default route] of the {views/new-page.html} file  (access to another chlld page  - in main root of the Node )  </li> 
+                                  <li> 3- third route method : define [default route] of the  {views/old-page.html} file   (the redirect to  another page route  -in main root of the Node - )  </li> 
+                                </ol>
+                              </li>
+                                
+                              <li> 3- {subdir.js} file ( 2 default routes)   => to handle access to route of the [/subdir] Subdirecrory inside the Node structures fies + handling return method of the main route , including the next  files :   <br> 
+                                <ol>   
+                                  <li> 1- first route method : define [default route] of the  {views/index.html} file   (access to the subdirectory home page  - in  subdirectory  of the Node )  </li> 
+                                  <li> 2- second route method : define [default route] of the {views/new-page.html} file  (access to another subdirectory chlld page  - ikn  subdriectroy of hte Node )  </li>  
+                                </ol>                              
+                            </li>
+
+                          </ul>
+                          
+                            <p> { subdir.js} route file  => to handle all of subdirectory & all of inside  inner routes  </p>
+                              
+                              <p> { subdir.js} route file  => to handle       </p>
+                        </li>   <br>  
+      
+                        <li> c) [public] folder : the main public files to be reached by all other project pages , including : 
+                          <ol> 
+                            <li> [img] folder -> contains all images files of the project </li>
+                            <li> [css] folder ->  contains all css files of the project      </li>
+                            <li> [text] folder -> continas all textual files of porejct   </li>
+                          </ol>
+                        </li>
+
+
+                        <li>  d) [middleware] folder ( include the defined events files  - previous defined  -) , including :  <br>
+                          <ul> 
+                            <li> {errorHandler.js} =>  error handling event file   </li>
+                            <li> {logEvents.js} => default loging log evcetn file      </li>
+                          </ul>  
+                        </li>
+
+                        <li>  e) [ logs] folder ( include the  resulted textual files of log  - previous defined  -) , including :  <br>
+                          <ul> 
+                              <li> {errLog.txt} =>  contains result of error handling event file    [error logs ]  </li>
+                              <li> {logEvents.txt} => contains result of default  log event file [logs entries]    </li>
+                              <li> {reqLog.txt} => contains result of requested log event file [logs entries]    </li>
+                            </ul>  
+                        </li>
+
+                        <li>  f)  {index.js} file  :  <br>
+                           <p> the old initiative file of the node server </p>
+                           <p> NO changes will be implemented  </p>
+                        </li>
+      
+      
+                        <!-- im herer >>>>>>>>>>>>>> -->
+                        <li>  g)  {server.js} file  :  <br>
+                           <p> the main initiative file of the node server with express library  </p>
+                           <p>  will be included the following modifications :  <br>
+                              <ul> 
+                                <li>  Defintions of (3) defined Routes methods (according to the express tools  of {Router}  ) => [as imported from it's main files] :   <br>
+                                    <ul>     
+                                      <li>     </li>
+                                      <li>     </li>
+                                      <li>     </li>
+                                    </ul> 
+                                </li>   
+
+
+                              </ul> 
+                            
+                          
+                          
+                          </p>
+                        </li>
+    
+                      </ol>
+                    </li> 
+                  
+                  <li> II] Modifications in the node server directory [/views] : <br>  
+                    <ol> 
+                      <li>      {  } </li>
+
+
+
+                    </ol>                    
+                  </li>
+
+                </ol>
+              </p> 
                   
                   <li> 2] {Express method} can used to define (2) types of Routes as following  :  <br>  
                     <ul>   
