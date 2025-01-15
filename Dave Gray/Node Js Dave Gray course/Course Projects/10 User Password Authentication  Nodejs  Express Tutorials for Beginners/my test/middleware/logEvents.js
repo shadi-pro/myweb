@@ -1,6 +1,6 @@
 //   lesson 4 : Testing  [ Node events ] of the advanced   [Node Core Modules] :
 
-console.log('==================== Welcome to Node.js course -> lesson 6 [Building Node Web Server ] using {Express.js} server framework + with using the middleware + [logEvents]      =============================== ')
+console.log('==================== Welcome to Node.js course -> lesson 10  Building [ Authentciaton + Regisration ] using {Express.js} node server   =============================== ')
 
 //  This lesson will include practical using of the [Node Events] of  npm modlues proceudures and methods acording to the express    :
 

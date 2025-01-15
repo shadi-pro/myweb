@@ -2,9 +2,9 @@
 
 // Define required methods for defining the [third-party middleware], to be used inside the {server.js}  : 
 // [ corsOptions.js ]  inlclude main defined a middleware handler steps method [that calling the  imported  third-party library of the 'cors' ]  , by using 3 steps of definitnon :
-      // 1- Define the accepted request host [whiteList]       
-      // 2- Define  {corsOption} object  that including =>  [cors] configuraions properties  of handling the recieved request hosts + solve cors issue
-      // 3- Define the main middleware method of [third-party] type , by calling the imported {cors} as an imported  method with assigning the upper defined object {corsOptions} as its  paramter
+// 1- Define the accepted request host [whiteList]       
+// 2- Define  {corsOption} object  that including =>  [cors] configuraions properties  of handling the recieved request hosts + solve cors issue
+// 3- Define the main middleware method of [third-party] type , by calling the imported {cors} as an imported  method with assigning the upper defined object {corsOptions} as its  paramter
 // -----------------------------------------------------------
 
 // 1] Define a [whitelist] array of the accepted hosts to be handled as allowed to access to the our backend [your website  , your localhost ,  the virtual custom server - such as the react -  ]   : 

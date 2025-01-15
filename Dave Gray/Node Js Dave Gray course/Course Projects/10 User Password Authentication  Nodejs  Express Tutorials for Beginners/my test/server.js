@@ -1,5 +1,5 @@
 
-// lesson 8 :  Re-factoring Continue Building a [Node server]  using the [express] framework  +  using the [middleware]  + organazied  [MVC] including the next types   :
+// lesson 10 :  Re-factoring Continue Building a [Node server]  using the [express] framework  +  using the [middleware]  + organazied  [MVC] including the next types   :
 
   // First : Middleware Section  =>   
     // I] [Custom  Middleware] =>  
@@ -100,98 +100,34 @@
       app.use( '/' , express.static(path.join(__dirname, '/public')));
 
 
-      //   this  next method has been [canceled ]due  to [removing the 'subdir' subdirectory] : 
+      //   this  next method has been [canceled ]due to [removing the 'subdir' subdirectory] : 
       // app.use( '/subdir' , express.static(path.join(__dirname, '/public')));
-    // -----------------------------------------------------
-
-
-    // III]  / 3] Define the single routes of using the {get} method on the express +  assign an annonymous function of the reqiured method => [instead of define {server} variable in default node ]  :
-      
-      // a- Define the main Route (according to the express default method ) of the [index page : '^/$' || 'index.html' ] using the {get} method on the express +  assign an annonomous function of the reqiured method => [instead of define {server} variable in default node ] :
-       //  => [this method of main route defininion has canceled [due it has been replaced with  {root.js} according to [mvc] pattern methodology ] 
-      // app.get('^/$|index(.html)?', (req, res) => {
-        // 1- [sending a dare testing text ]  => this message  will be displayed at the page : 
-        // res.send('welcome to the express web server !') ;
-
-        // 2- [sending a file from the [views] folder of the server]  =>  this file  will be displayed the current req url , by using several methods    : 
-
-        // a) basic method syntax :  res.sendFile('./views/file.ext' , { root : 'main path value  of the file  root :  [__dirname] } ) ;  
-        // res.sendFile('./views/index.html', { root: __dirname });
-
-        // b) node [path join()] method  syntax :  res.sendFile(path.join(__dirname,   'views' , 'filename.extension' ) ;  
-        // res.sendFile(path.join( __dirname , 'views' , 'index.html')  ) ;
-      // });
-    // -----------------------------------
-
-      // b-  Define the another route of the [ new-page : '/new-page.html'] using the {get} method on the express +  assign an annonymous function of the reqiured method => [instead of define {server} variable in default node]  (removed defintion )   :
-      // app.get('/new-page.html', (req, res) => {
-      //   res.sendFile(path.join(__dirname, 'views', 'new-page.html'));
-      // });     // [canceled route ]
-    // -----------------------------------
-
-      // c-  Define the  another route with a re-directing into another page  :
-      // app.get('/old-page(.html)?', (req, res) => {
-      //   // we need to assign the redirecting code of the '301' , because the defualt assinged code is the  '302' which will  not display the requested redirected page   
-      //   res.redirect(301, '/new-page.html');
-      // });    //   [cancled route ]
-    // -----------------------------------
-
-    // d- Define Routes  with  returned  chained functions => by using  (2) methods    : 
-
-      // [first Method ]  : [return default built-in paramters ] method  :
-      // d/1 Define a custom  testing  Route handlers of reaching a  [hello || hello.html] => [using the first method ]  :
-      // app.get('/hello(.html)?', (req, res, next) => {
-      //   console.log('Attempt to reach a hello.html inner page ');
-      //   next()   // calling the next chained function 
-      // }, (req, res) => {
-      //   res.send('hello world !');
-      // });     // [ canceled route  ]
-      // --------------------------------------
-      
-      // [second Method] : [return  array of defiend  functions parameters ]  [ canceled methodology   ]  :  
-      // d/2 Define a custom Route handlers of calling (3)  seperated defined  methods  => [using the second method ]  :
-      //  Define the first seperated function :
-      // const one = (res, req, next) => {
-      //   console.log('this the first seperated function  ');
-      //   next();
-      // }
-
-      // Define the second seperated function :
-      // const two = (res, req, next) => {
-      //   console.log('this the second seperated function  ');
-      //   next();
-      // }
-
-      // Define the third seperated function :
-      // const three = (res, req) => {
-      //   console.log('this the third seperated function  ');
-      //   // res.send('Finshed !') ;
-      // }
-
-      // Define the main router of  ['chain' with optional followed after by '.html' ] that chaining all of previous (3) functions  as array parameter  :  
-      // app.get('/chain(.html)?', [one, two, three]);
-
+ 
   // -----------------------------------  
   
-  // D] Calling main imported Routes + related Defined crud opts +  handling return  -  (according to the {mvc} )  => by Importing both :
-     // 1-  [main Routes  + return  ] method =>  from : [routes/root.js]   
-     // 2-  [Routes CRUD operations handlers methods  ]   => from : [routes/api/employees.js]   
+  // D] Calling main imported Routes's  related Defined crud opts +  handling return  -  (according to the {mvc} )  => by Importing following :
+     // 1-  [main Default Route  + Display return  ] method =>  from : [routes/root.js]   
+     // 2-  [Api Routes + CRUD operations handlers methods ] => from : [routes/api/employees.js]   
+     // 3-  [Auth Route + operations authentciation handler method ]   => from : [routes/auth.js]   
+     // 4-  [Registration Route  + operations Registratoin  handler method  ]   => from : [routes/register.js]   
   
     //  1- Assign [Default Route] of the {'/'} : Define main index/home route + handling return , by calling the  main source of definition 'routes/root'  file :   
       app.use('/' , require('./routes/root') ) ;
       
-    //  2- Assign [Api Routes] of the {'/employees'} +  routes's CRUD opts (by calling the  main source of definition 'routes/api/employees'  file  )    :    
-      app.use('/employees' , require('./routes/api/employees') ) ;
-    
-    // third route [canceled route ]  of 'subdir' subdirectory of the node file structure    :
-    // app.use('/subdir' , require('./routes/subdir') ) ;  -> [ canceled route and removed subdir ]
+    //  2- Assign [Default Route] of the {'/register'} : Define  sub route of the [registration]  of posting crud opt  of creating a new user , by calling the  main source of definition 'routes/register.js'  file :   
+      app.use('/register' , require('./routes/register') ) ;
       
+    //  3- Assign [Default Route] of the {'/auth'} : Define  sub route of the [Authentication] of posting crud opt of access the logged in a user , by calling the  main source of definition 'routes/auth.js'  file :   
+      app.use('/auth' , require('./routes/auth') ) ;
+      
+    //  4- Assign [Api Routes] of the {'/employees'} + routes's CRUD opts (by calling the  main source of definition 'routes/api/employees'  file  )    :    
+      app.use('/employees' , require('./routes/api/employees') ) ;  
   // -----------------------------------
 
     //  III] / e-  Define the [route of non-defined requested route value (after all upper defined routes  )] with using the [app.use()] of '*' and followed by any value => and display the inner 404 error page {404.html} incase of any No existed path is written  =>
-      // by using the {app.all()} that more for routing error due accepting all of http methods :
-      // app.use() -> used for middleware definition , and not accepting the rejects          
-      // app.all() -> used more for routing   with provides more features , such as : [accept all of 'http' methods ] 
+      // by using the {app.all()} that used more for routing error due accepting all of http methods , and better than the other express  methods  as following   :
+      // -  app.use() -> used for middleware definition , and not accepting the rejects 
+      // -  app.all() -> used more for routing   with provides more features , such as : [accept all of 'http' methods ] 
       app.all('*', (req, res) => {
         // assign the current response with error code :
         res.status(404);
@@ -201,7 +137,7 @@
           res.sendFile(path.join(__dirname, 'views', '404.html')); // we need to use both the method of {statusCode} & {sendFile} in a chained to make the error page is not as [200]  
 
         } else if (req.accepts('json')) {
-          res.json({ error: "404 is not found! " }); // Send a json error if   error is type of json    
+          res.json({ "error": "404 is not found! " }); // Send a json error if   error is type of json    
 
         } else {
           res.type('txt').send('404 is not found! '); // Send an error if error is any type else       
