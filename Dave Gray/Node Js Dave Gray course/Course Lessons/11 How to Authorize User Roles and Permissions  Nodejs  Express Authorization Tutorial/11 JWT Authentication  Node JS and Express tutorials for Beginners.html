@@ -3,6 +3,7 @@
 <html>
 
 <head>
+  
 
     <meta charset="utf-8">
 
@@ -401,10 +402,10 @@
     <!-- About Section  -->
     <section class="about text-center wow bounceInLeft" data-wow-duration="2s" id="about">
         <div class="container">
-             <h2 class="h1" class="hidden-xs"> About Section =>  Adding the {JWT}  tool  to  the previous built {authentication} of  [ user and password ]     <span><strong>    {node.js} server  and  ( express.js) Framework  </strong> </span> </h2>
+             <h2 class="h1" class="hidden-xs"> About Section =>  Adding the {JWT user authentication}  tool  to       <span><strong>  { protect [the built route]  & add {Roled based Authentication}  </strong> </span> </h2>
             <h3 class="visible-xs"> About Section => This lesson about 
-              <strong> Building a [ user and password ] {authentication} and {Regsitration}  with adding the  {JWT}  </strong>  
-              <span> using {JWT} tool with {node.js} server and (express.js) Framework      </span> 
+              <strong> Building a [protected Routes + Roled bases authentication]     </strong>  
+              <span>  with using  {JWT Authenticatoin} tool  within  {node.js} server and (express.js) Framework      </span> 
             </h3>
             <!-- <p class="lead"> This lesson is commands to handle Stashing-UnStashing] Files and then Pushing to Remote Repo Account by <span> <strong>  {CMD} </strong> </span> </p> -->
         </div>
@@ -527,17 +528,120 @@
                 <ol type="A">
                     <li> Main points of this lesson , practical application of adding the {JwT } building [user password Authentication and (authorization)]  into  express api route within  the currrent project node server by  : <br>
                         <ol>
-                          <li> A]  The main concept of  {JWT} Routes protection strategy ,  contains  , Importance ,  requirments and properties  </li>
-                          
-                          <li> B] Main Practical steps of setting up and bulding the {JWT}  tool of protection of the project's defined routes within the [MVC] , by applying the next steps  : <br>
-                            <ol>
-                              <!-- <li> Project file structure modifications    </li>   -->
-                              <!-- <li> Registration  main stpes and   methodology        </li>   -->
-                              <!-- <li> Authentication main steps and methodology    </li>   -->
-                            </ol>
-                          </li>
+                            <li> A]  The main concept of  {JWT} Routes protection strategy ,  contains  , Importance ,  requirments and properties  </li>
+                            
+                            <li> B] Main Practical steps of setting up and bulding the {JWT}  tool of protection of the project's routes + Roled bases authenticatoin  within the [MVC] , by applying the next steps : <br>
+                              <ol>
+                                <li>  1] Project file structure modifications , by  adding / modify next files :  <br>
+                                    <ul>  
+                                      <li> a- Inside the [controllers]  folder  : <br> 
+                                        <ol> 
+                                          <li> {refreshTokenControllers.js}  => new file </li> 
+                                          <li> {authControllers.js}          => modify file  </li> 
+                                        </ol>
+                                      </li>    <br>
+                                    
+                                      <li> b- Inside the [routes]  folder  : <br> 
+                                        <ol> 
+                                          <li> [api/ {employess.js} ]  => modify file   </li> 
+                                          <li> {refresh.js}            =>  new file   </li> 
+                                        </ol>
+                                      </li>   <br> 
+                                    
+                                      <li> c- Inside the [middleware]  folder  : <br> 
+                                        <ol> 
+                                          <li> {verifyJWT.js}            =>  new file   </li> 
+                                        </ol>
+                                      </li>   <br> 
+                                      
+                                      <li>  d- Inside the  main root : <br>         
+                                        <ol> 
+                                          <li> {server.js}   => several modifications in file     </li> 
+                                          <li> {.env}        => new file      </li> 
+                                          <li> {.gitignore}  => modify file      </li> 
+                                        </ol>
+                                      </li>
+                                    </ul> 
+                                </li>  
+                                
+                                <li>  2] Authentication Process methodology modifications  : <br> 
+                                  <ul> 
+                                    <li> a- {authControllers.js} [authenticaton process handling controling] file  : Modify the main Authtentication process methodology [by adding the main  {jwt}  methodology tool], including the next :  <br>
+                                        <ol>   
+                                          <li> define the main jwt (2) types of  [accces token] & [refresh token] </li> 
+                                          <li> saving the authorized  jwt (2) types of [accces token] & [refresh token] into the each type suitable location : <br>
+                                            <ul>
+                                                <li> 1- [access token]  =>   json response [accessible for  frontend]         </li>   
+                                                <li> 2- [refresh token]  =>   httpOnly cookie [Un-accessible for frontend]         </li>   
+                                            </ul>  
+                                          </li> 
+                                        </ol>  
+                                    </li>
 
-                          <li> C] Notes about building [JWT] protection tool to our defined routes within the current project node server within in the [MVC]  </li>
+                                    <li> b- {verifyJWT.js} [Authentication Verification middleware] file : Create handling [authentication verification] , including : <br>   
+                                      <p> Event Middleware function definition , contains the next steps :  <br>  
+                                        <ol>   
+                                          <li>  Define the [Requested authorization Haeder]  variable </li>
+                                          <li>  Define the [Token] as modified splittted value from the recieved [authHeader]  </li>
+                                          <li>  Define the [JWT]  Verifying configuration object + assign its  parameters  </li>
+                                        </ol>                                       
+                                      </p>
+                                    </li>
+
+                                    <li> c- {server.js} the main server initial file : including the following modifications :  <br>
+                                      <ol>  
+                                          <li> Importing  defined  middleware  of the  [ Authentication  verfication] => [to be used in protecting routes ]        </li>
+                                          <li> Protecting the desired  routes using the general of define the route of [jwt verification  Middleware] before the desired routes [/employees] </li>
+                                      </ol>
+                                    </li>
+                                  </ul>
+                                </li>  
+                                
+                                <li> 3] [Refresh Token handling] process , including the  next procedures  :  <br>                                
+                                  <ul> 
+                                    <li>  a- {controllers /refreshTokenControllers.js} the [Refresh Token handling function] file =>  new file including the following  :  <br>  
+                                      <p>  This file will contains  defining [RefreshToken Handling] function , that will  include the  next steps :  
+                                        <ol>  
+                                          <li> 1- Checking  availability of the requested  [Cookies] & [jwt]   </li> 
+                                          <li> 2- Define  a [Refresh Token]  as a value extracted from the returned requested  [jwt of cookies]   </li> 
+                                          <li> 3- Checking if the requested [Refresh Token] is equal to the exsited value of the in the database {usersDB}   </li> 
+                                          <li> 4- Handling the Error of equlity of the requested [Refresh Token]  and the value in the database {usersDB}      </li> 
+                                          <li> 5- Starting  [jwt verfying]  process including the next  procedures  : <br>  
+                                            <p>  Verifying  the [jwt] is being implemented through assign  (3) parameters , as following  : <br>     
+                                              <ul> 
+                                                <li> a) Assign the name of jwt   ->  [ refreshToken ]    </li>
+                                                <li> b) Assign the value of the jwt -> [ process.env.REFRESH_TOKEN_SECRET ]  </li>
+                                                <li> c) Assign the  Jwt verificatoin  Callback function's  parameters handling  , as following :   <br> 
+                                                  <ol>
+                                                      <li> 1) Handling the (err) parameter :   <br>  
+                                                        <p> Returning a Forbiden Error {403}in case of returend (err) parmater OR  or if uneaquality  beween the existed username in the DB & Decoded username </p> 
+                                                      </li> <br>
+
+                                                      <li> 2) Handling the (decoded) parameter  :  <br>      
+                                                        <p>  used within the Creating a [Access Token] - after the verfying  [refresh token]  , by using the     </p>
+                                                      </li>  <br>
+                                                      
+                                                      <li> 3) Sending the upper created [accessToken] jwt to the json response  </li> 
+                                                  </ol>                                                
+                                                </li>    
+                                              </ul>
+                                            </p> 
+                                          </li>     
+                                        </ol>  
+                                      </p>
+                                    </li> <br> 
+                                    
+                                    <li>  b- {routes/api/refresh.js} the [refresh Token route file] , including next procedures  :  <br> 
+                                      <p> Define a route of [Get] Crud operation  => of getting obtained [Refresh Token] process according to the defined refresh token handling function  </p> 
+                                    </li>
+  
+                                  </ul>
+                                  
+                                </li>
+                              </ol>                                                             
+                            </li>
+
+                            <li> C] Notes about building [JWT]  protection tool to our defined routes +  based role login within the current project node server within in the [MVC]  </li>
                         </ol>
                      </li> <br> <br>
                 </ol>
@@ -623,17 +727,16 @@
                           <code> 
                             <span class=one> </span>  npm i dotenv  jsonwebtoken cookie-parser  <br>
                           </code>                     
-                          //  the installed libraries  as following : <br>
-                           -- [dotenv] => 
-                           -- [jsonwebtoken] =>   
-                           -- [cookie-parser] =>    <br>
+                          //  the installed libraries as following : <br>
+                           -- [dotenv] => allow to define and use the {.env} inner defined  variables  <br>
+                           -- [jsonwebtoken] => allow to define the [jwt] and [access Token] & [Reresh Token]     <br>  
+                           -- [cookie-parser] => allow to define and handle cookies wihtin authentication and cookies handling prcodures    <br>
                         </p>  
                       </li>  <br> <br>     
                       
                       
-                      <li> b] [Project files structure ] requriments modifications steps   :    <br>
+                      <li> b] [Project files structure ] requriments modifications steps [briefly] :  <br>
                         <ol>            
-
                           <li> 1-  {.env} in the root => this file will lnclude the environment variables [all ikn uppershift letter case ] , as following :  <br>
                             <code> 
                               <span class = one ></span>  ACCESS_TOKEN_SECRET =   value (the hexal code we will retrive by using {crypto} in  the node CLI )    <br>
@@ -641,9 +744,9 @@
                             </code>                        
                           </li> 
                           
-                          <li> 2-  Running the node cli (by typing the node ) => and running the  next codes   :   <br>                           
+                          <li> 2- Getting the encrypted values of  {Access Token} & {Refresh Token} , by  Running the node CLI (by typing the node ) => and running the next codes  :   <br>  
                             <code> 
-                              <span class = one ></span> // enter the node CLI    :    <br>
+                              <span class = one ></span> // enter the node CLI [ctrl+ `]   :    <br>
                               <span class = one ></span> node    <br> <br>
                               
                               <span class = one ></span> [crypto] node core module  => [to a hex code for crypting {Access Token} & another one for  {Refresh Token} ]  :  <br>
@@ -659,7 +762,7 @@
                           <li> 3- Adding the {.env}  file to the {.gitignore} file to NOT be shared with other in github  </li> 
                           <br>  <hr> <br>
                         
-                          <li>  4-  Modify  the  {authController.js}  with {JWT} steps codes as following :   <br>    
+                          <li> 4- Modify  the  {authController.js}  of the [Authentication process] including {JWT} steps codes as following :   <br>    
                             I] Define  [datasoruce {users.json}] section : <br>  
                              <code> 
                                <span class = one ></span>  const  usersDB = {   <br>  
@@ -669,7 +772,7 @@
                               </code>  <br> <br>     
 
                               
-                            II ] Importing  required classes and libraries  section : <br>  
+                            II ] Importing  required classes and libraries section : <br>  
                               <code> 
                                 // 1- Define the [bcrypt] from the installed node custom module library  :   <br> 
                                 <span class = one ></span> const bcrypt = require('bcrypt') ;   <br>    
@@ -689,7 +792,7 @@
                             
 
                               III] [Authentication Handling] function section   : <br>
-                                <p>  This is the  main [Authentication handling] function  including the [defualt authentication + JWT] :  </p>
+                                <p>  This is the  main [Authentication handling] function  including the [default authentication + JWT] :  </p>
                                 <code> 
                                   <span class = one ></span> const handleLogin = async ( req  , res) => {  <br>
                                     <span class = two ></span> 1- Define  both of the username and password as extreqacted values from requested object : <br>
@@ -699,7 +802,7 @@
                                     <span class = two ></span>  if (!user , !pwd) returnd res.status(400).json({'message' ; 'the username or/and password are required! ' })  ;  <br> <br>
                                     
                                     <span class = two ></span> 3-  Checking if the requested username of the user is equal to the one in the defined s datasource {usersDB.users} [  ]  :         <br> <br>
-                                    <span class = two></span>  const  foundUser  =  usersDB.users.find( person =>  person.usrname === user ) ;   <br>     <br>
+                                    <span class = two></span>  const  foundUser  =  usersDB.users.find( person =>  person.username === user ) ;   <br>     <br>
                                       
                                     <span class = two ></span> 4- Sending an error of  [unAuthentications] to the node server   : <br>
                                     <span class = two></span>  if (!foundUser)  return  res.sendStatus(401) ;   <br>  <br>
@@ -708,61 +811,181 @@
                                     <span class = two></span>  const match = bcrypt.compare ( pwd , foundUser.password )  ;  //  [ if this variable has a value -> the passwoird is matched ]    <br>  <br>
                                     
                                     
-                                    <span class = two ></span> 6-   Starting  the [Authentication proceduers] upon the pervious defiend {match} variable  : <br>
+                                    <span class = two ></span> 6-  Starting  the [ JWT  Authentication proceduers] upon the upper defiend {match} variable if this  var has a value        : <br>
                                     <span class = two></span>   if  (match)  {   <br>
-                                      <span class = three></span> // a- Creating [JWT] for the {Access Token}  [using the imported defined  {jwt} ]: <br>
+                                    
+                                      <span class = three></span> // a- Start creating the [JWT] configaration definitions of both [Access Token ]  &  [Refresh Token] :   <br>
+                                      <span class = three></span>  // 1) Creating [JWT] for the {Access Token}  [using the imported defined  {jwt} & username payload ] : <br>
                                       <span class = three></span>  const  accessToken =  jwt.sign(   <br>
-                                        <span class = four></span> {  "usename" : founderUser.username} <br>
-                                        <span class = four></span>  process.env.ACCESS_TOKEN_SECRET , <br>
-                                        <span class = four></span>  {expiresIn : '30s'}  <br>
-                                      <span class = three></span> }   <br>   <br> 
+                                        <span class = four></span>   {"usename" : founderUser.username} <br>
+                                        <span class = four></span>   process.env.ACCESS_TOKEN_SECRET , <br>
+                                        <span class = four></span>   {expiresIn : '30s'}  <br>
+                                      <span class = three></span>  ) ;  <br>   <br> 
                                       
-                                      
-                                      <!-- // im here  >>>>>>>>>>>>>>>>>>>>>>>>    -->
-                                      <span class = three></span> // b- Creating [JWT] for the {Refresh Token}  [using the imported defined  {jwt} ]: <br>
+                                       
+                                      <span class = three></span> // 2) Creating [JWT] for the {Refresh Token}  [using the imported defined  {jwt}  & payload of the username ]: <br>
                                       <span class = three></span>  const  refreshToken =  jwt.sign(   <br>
-                                        <span class = four></span> {  "usename" : founderUser.username} <br>
-                                        <span class = four></span>  process.env.ACCESS_TOKEN_SECRET , <br>
-                                        <span class = four></span>  {expiresIn : '30s'}  <br>
-                                      <span class = three></span> }   <br>
+                                        <span class = four></span>   {"usename" : foundUser.username} <br>
+                                        <span class = four></span>   process.env.REFRESH_TOKEN_SECRET , <br>
+                                        <span class = four></span>   {expiresIn : '1d'}  <br>
+                                      <span class = three></span> ) ;   <br>  <br>  
                                       
-                                      
-                                    <span class = two></span> )   ; <br>
+                                         
+                                      <span class = three></span>   b - Start securing the {Refresh Token}  using  the  Fs files module method - instead of the using [MongoDb]  :    <br>   
+                                        <span class = four></span> // 1) Define the [otherUsers] (all users except the  current user) : <br>   
+                                        <span class = four></span>  const  otherUsers = usresDB.users.filter( person => person.usename !== foundUser.user ) ;  <br>    <br>  
+                                        
+                                        <span class = four></span> // 2) Re-Define {foundUser} object ,  by adding the [refresh token]  to it  - using the destructiuring  -    : <br>   
+                                        <span class = four></span>  const   currentUser = {  ...foundUser , refreshToken    }  ;  <br>  <br>   
 
 
+                                        <span class = four></span> // 3) Re-set the  main  [ usersDB ]  by adding the upper defined [currentUser] to the [otherUsers] : <br>   
+                                        <span class = four></span>   usersDB.users( [ ...otherUsers , currentUser ]  )    ;  <br>  <br>   
 
-
-
-                                    <span class = two></span> } <br>
-                                    
-                                    
-
-
+                                        <span class = four></span> // 4) Saving the current final users by using the fs modlue [ for now , but will use the DongoDB mehod instead  ] : <br>   
+                                        <span class = four></span> await fsPromises.writeFile(   <br>  
+                                          <span class = five></span>   path.join( __dirname , '..' ,  'model' , 'users.json' )  <br>  
+                                          <span class = five></span>   JSON.stringfy( usersDB.users )   <br>  
+                                        <span class = four ></span> ) ;    <br>  <br>   
+                                        
  
+                                        <span class=four></span>   c-  Securing the [Refresh Token] by sending tyo he [http cookies]  ( whcih is completely secured with the  [JS]   )     <br>  
+                                        <span class=four></span>    res.cookie(                                          
+                                          <span class=five ></span>   'jwt' /// [the name of data sent to the  cookies]  <br>
+                                          <span class=five ></span>    refreshToken /// [the  data defined  variable sent to  the cookies]  <br>
+                                          <span class=five ></span>    { httpOnly : true , maxAge :  24 * 60 * 60 * 1000} /// [ cookies type and cookies duratoin ]  <br>
+                                        <span class=four></span> )  <br>   <br>  
 
 
-
+                                        <span class = four></span> // d- Securing by upper defined {Access Token } by Sending it json node response [ instead of the  message ] : <br>   
+                                        <span class = four></span>  res.json( accessToken ) ;    <br> <br>  
+                                        
+                                    <span class = two></span> } else {
+                                      <span class = three ></span> // Sending the [unauthoriozed error code ]  the server   [in case  of the null value  of the {match} variable ]   :  <br>  
+                                      <span class = three ></span>   res.sendStatus(401);    <br>  
+                                    <span class =  two></span>  }    <br>
+                                
                                   <span class = one ></span>  } <br>
-
+                                </code>   <br> <br>  
+                                
+                                //  IV] Exporting the defined  {handleLogin} function :   <br> 
+                                <code> 
+                                  <span class = one ></span>   module.exports  =  { handleLogin  }  <br>
                                 </code>
-
-
-
-
                           </li> 
+                          <br>  <hr> <br>
+                                                     
+                          <li> 5- Creating a new [middleware file] of (verfiying the [jwt]) within {verfiyJWT.js}  file :  <br>  
+                            <p>  This file will handle the varification of the defined {jwt} by executing the next tasks on both  the {Access Token} & {Refresh Token}  : <br> 
+                              <ol> 
+                                <li> Reciecving  </li>
+                                <li> Verifying </li>
+                                <li> Securing  </li>                                 
+                              </ol>  
+                            </p>  <br>
 
-                                 
+                            <code>     
+                              // I]  Importing section :  <br>      
+                              <span class = one ></span>  // Define the {jwt} variable  using the {installed library of [jsonwebtoken]   } : <br>
+                              <span class = one ></span>    jwt  = require('jsonwebtoken')  ; <br> <br>
+
+                              <span class = one ></span>  // Importing the {.env} configruation   using the {installed library of [dotenv] }  : <br>
+                              <span class = one ></span>   require('dotenv').config() ;
+                              <br> <hr>  <br> 
+    
+    
+    
+                              // II]  Event Middleware function define   :  <br> 
+                              <span class = one ></span> const verifyJWT = (res ,req , next )  => {    <br>
+                                <span class = two ></span>  //  1-   Define the requested authorization value in a variable  :   <br>
+                                <span class = two ></span>  const authHeader  = req.headers['authorization'] ;   <br>  <br>  
+
+                                <span class = two ></span>  //  2-  Checking the defined  {authHeader} is not a null value [and sending an UnAuthorized code if it is null ]:   <br>
+                                <span class = two ></span>   if (!authHeader)    return res.sendStatus( 401 ) ; <br>  <br>  
+
+                                <span class = two ></span>  //  3- Testing print of the {authHeader}  value in the console  :   <br>
+                                <span class = two ></span>   console.log(authHeader)  ; <br>  <br>  
+                                
+                                
+                                <span class = two ></span>  //  4- Define a  variable  of modified splitted value  of the recieved requested  [authorized header]:    <br>
+                                <span class = two ></span> const  token   = authHeader.split(' ')[1] ;       <br>  <br>  
+
+
+                                <span class = two ></span>  //  5- Assign the {jwt} verfication parameters object :    <br>
+                                <span class = two ></span>  jwt.verify(   <br>  
+                                <span class = three ></span>    // a- [ assign the defiend token as the value of the  requested  { Acces Token } ]  : <br>  
+                                <span class = three ></span>  token ,   <br>  <br>
+                                
+                                <span class = three ></span>   // b- [ assign the main  defiend {Access Token}  that defiend in hte main {.env }]  :  <br>  
+                                <span class = three ></span>   process.env.ACESS_TOKEN_SECRET   ,    <br> <br>
+                                
+                                  <span class = three ></span>   // c- [ assign the inner tasks of callback function with (2) parameters  ]  :  <br>  
+                                  <span class = three ></span>   (  err , encoded  ) =>   {   <br>
+                                    <span class = four ></span>   ///  Handling hte invlid Token as [Forbided token]    <br>
+                                    <span class = four ></span>   if (err) return res.sendStatus(403) ;    <br> <br>
+                                    
+                                    <span class = four ></span>  ///  assign the requested [user] varible by the encoded username value : <br>
+                                    <span class = four ></span>   req.user  =   encoded.username ;    <br>  <br>
+                                    
+                                    <span class = four ></span> next() ;    <br>
+                                    
+                                    <span class = three ></span> } <br>
+
+                                <span class = two ></span>  ) ; <br>   
+
+                              <span class = one ></span> }     <br> <br>
+                              
+                              //  Exporting section  :      <br>
+                              <span class = one ></span>  module.exports = verifyJWT  ; <br>    
+                            </code>  
+                          </li> 
+                          <br>  <hr> <br>
+
+                          <li> 6- Using the imported defiend [Authentication  verification] middleware  to protect the desired routes   :  <br>   
+                            <p> After we defined and verify our [JWT : {Access Token} & {Refresh Token } in the verify middleware file] , now we will be able to use it to protect our routes [by using one of next (2) methods  ] : <br>  
+                              <ol> 
+                                <li> a)  [Solo method ] within the api route's crud opts  definiton file controller file of auth {authControllers.js} , as following  : <br> 
+                                    <code>  
+                                      //  I] Importing section   : <br>   
+                                      <span class = one ></span>  // Impoprting the defined [jwt verifying Middleware] file : <br> 
+                                      <span class = one ></span>  const verifyJWT =  require('../../middleware/verifyJWT') ;  <br>   <br>  
+                                        
+                                      //  II] Define the main routes using the express router +   it's CRUD operations for each route   : <br>   
+                                      <span class = one ></span>  router.route('/')  <br> 
+                                        <span class = two ></span>  // get all elements operation [will be protected  using (verifyJWT)  -   according to  second method wihtn the main server file  -  ]  <br>  
+                                        <span class = two ></span>  .get(verifyJWT, employeesController.getAllEmployees) <br>    
+                                    </code>                                 
+                                </li>   <br>
+                                
+                                
+                                <li> b)  [public method ] within the  main server file befire the defined route to be protected  {server.js}  , as following  : <br> 
+                                    <code>  
+                                      //  I] Importing section   : <br>   
+                                      <span class = one ></span>  // Impoprting the defined [jwt verifying Middleware] file : <br> 
+                                      <span class = one ></span>  const verifyJWT =  require('../../middleware/verifyJWT') ;  <br>   <br>  
+                                        
+                                      //  II]  Calling the imoprted {jwtverfity} middleware before the defined route of {'/employees'}     : <br>   
+                                      <span class = one ></span>   app.use(jwtverify);  <br> 
+                                      <span class = one ></span>   app.use('/employees' , require('./routes/api/employees') ) ;        <br>  
+                                    </code>                                 
+                                </li>
+                              </ol>
+
+                            </p> 
+                          </li>
+
+                          <li>       </li>
+                          <li> </li>
+                          
+                          <!--  #[40:00] -->
+
                         </ol>  
                       </li>
     
                   </ul> 
               </li> 
             </ol>   
-          
-            
-            
-             
-             
+           
           <!--------------------------------------------------------  -->
             
           <h1>  B] Main Practical steps of setting up and building [user authurization] witin built express [api route] within the [MVC] , by applying the next  steps :   </h1>
@@ -770,14 +993,139 @@
               <li> Project file structure modifications steps : <br> 
                   <p>  Create new folders and files  : <br>
                       <ul>
-                        <li> 1- inside [model]  folder  :  <br>
+                        <li> 1- inside [model] folder  :  <br>
                           <p> create the new {users.json} file of users datasource [empty  array with a json format ] </p>
                         </li> 
-                         
+                         <!-- -----------------------------------------  -->
+
                         <li> 2- inside [controllers] folder  :   <br>
-                           <p> create new both of next controllers files :  <br>
+                           <p> create new/modify of next controllers files :  <br>
                             <ol>
-                              <li>  { registerController.js}   => the [Checking proces] + [{post} Crud operation] definition of [regitration process] , including the next script :    <br> 
+
+                              <li> a- { authController.js} modify file   => the [ Authentication Ckecking proeces + JWT ] Crud operations definition of authentication process :  <br>
+                                // I] Datasource definition section : <br>
+                                <code> 
+                                  //  1-  Define {users} DataBase's configuration object as an imported datasource array of objects   from the {model/users.json}   :   <br>
+                                  <span  class = one ></span> const  usersDB = { <br>
+                                    <span  class = two ></span>  // the initial value of the users datasource :     <br>
+                                    <span  class = two ></span>   users : require('../model/users.json') ,  <br>   <br> 
+                                  
+                                    <span  class = two ></span>  //  the setter function of the users datasource :  <br>
+                                    <span  class = two ></span>   setUsers :  function (data) { this.users = data } <br>
+                                  <span  class = one  ></span>  } <br>
+                                </code> <br>    <hr>   <br>  
+                            
+                                // II]  Importing  section : <br>
+                                <code> 
+                                  //  1-  Define the [bcrypt] from the installed node custom module library  :  <br>
+                                  <span  class = one ></span>   const bcrypt = require('bcrypt') ;  <br>  <br>  
+                                  
+                                  //  2- Define the [JWT] from the installed {jsonwebtoken} node custom module library   :  <br>
+                                  <span  class = one ></span>    const jwt = require('jsonwebtoken');   <br> <br>   
+                                  
+                                  //  3- Imported {.env} file  and its configurations using the imported  [dotenv] library :  <br>
+                                  <span  class = one ></span>   const bcrypt = require('bcrypt') ;  <br> <br> 
+                                  
+                                  //  4-   define the {fs} module [due we still need to write changes into a files , and not using the MongoDB or any other DB ]   :  <br>
+                                  <span  class = one ></span>    const fsPromises = require('fs').promises;   <br>  <br>  
+                                 
+                                  //  5-  define the {path} module    :  <br>
+                                  <span  class = one ></span>    const path = require('path') ;   <br>  <br>  
+                                 
+                                </code>  <br>    <hr>   <br>   
+ 
+                                // III]  [Authentication Handling] function section  : <br>
+                                <code> 
+                                  <span  class = one ></span>  const handleLogin =  async (req, res) => {  <br>
+                                      
+                                    // 1-  Define the [user] and [pwd] [as destructed varaibles from the requested object] of the retunred requested value from the user form to be checked later  : <br>
+                                    <span  class =two></span>  const  {user, pwd } =  req.body ;  <br>  <br>
+
+                                    // 2- Checking from the returned values username or password  if it is not existed + and send response error code + message  :  <br>
+                                    <span  class = two  ></span>  if ( !user || !pwd ) return res.status(400).json({ 'message' : 'User name or/and password are required !' }) ;   <br>  <br> 
+                              
+                                    // 3- Checking if the inserted/requested [ username] is existed in the [usersDB] , or not  :  <br>
+                                    <span  class = two  ></span>  const foundUser = usersDB.users.find( person => person.username  === user) ;  <br>  <br> 
+                              
+                                    // 4-  return an error of [unAuthurized code '401' ]  to the response if [foundUser] is not-existed (means that the usre has not found in the current database)  :  <br>
+                                    <span  class = two  ></span> if  (!foundUser) return res.sendStatus(401); <br>  <br>                               
+                                    
+                                     // 5-  Start [password evaluating] process (after passing the upperstep of : finding {username} is existed in the [usersDB] ) , according to next steps : <br>
+                                    // -- apply the {match} comparison method on the [requested password] with the existed [password] in the current DB , by using the {bcrypt} imported library :  <br> 
+                                    <span  class = two  ></span> const match = await bcrypt.compare( pwd , foundUser.password) ;     // [ if the match has a value => that means the password is found in DB]   <br></br>  
+
+                                    
+                                    // 6-  Start the [JWT authentication prcodrues] uppon the upper defined {match} variable - if this var has a value-   , according to the  next steps  : <br>
+                                    <span class=two></span> // [ if the {match} has a value => that means the password is found in DB]   <br>
+                                    <span class=two></span> if ( match) {    <br>
+                                      
+                                      <span class=three></span>  // a- starting creating the [JWT]  Authentication procedures - before persuing the login process : <br>
+                                      
+                                      <span class=three></span>  /// 1) Creating [JWTs] 's [access token] ->   [with passing the payload  inlcuding only the [userame] (NOT password) ] with both types of  access and refresh token : <br>
+                                      <span class=three></span>  const accessToken = jwt.sign( <br> 
+                                        <span class=four></span>    { "username" : foundUser.username } ,  // [This is the payload  by usign the  uername ] <br>
+                                        <span class=four></span>    process.env.ACCESS_TOKEN_SECRET ,    // [The access token value ]  <br>
+                                        <span class=four></span>    {expiresIn : '30s'}  // [  This is a very short duration , just for testing to be able to see the [access token] , in the real time : 5 - 50 min ]  <br>
+                                      <span class=three></span>  ) ;    <br> <br>    
+  
+                                      <span class=three></span>  /// 2) Create [JWTs]'s  [refresh token] :  <br>   
+                                      <span class= three></span> const refreshToken = jwt.sign(  <br>  
+                                        <span class=four></span>    { "username" : foundUser.username } ,   // [ passing through the username to be encoded by jwt later when verifying ]   <br>       
+                                        <span class=four></span>    process.env.REFRESH_TOKEN_SECRET ,   <br> 
+                                        <span class=four></span>    {expiresIn : '1d'}  // [ a testing duration time for [Refresh token]  , in the real time : 1 day  -  several days  ]  <br>
+                                      <span class=three></span>) ;  <br>  <hr>  <br>    
+                                  
+
+                                      <span class=three></span> // b-  Securing the [Refresh Token] to the file [ using the file system module instead of using  the real database - we will modify thses steps by taking the {MongoDB} - ] :   <br>
+                                      <span class=three></span> // The following step will allow secruting the refresh Token if the user logged out before the expiration duraton is up :  <br>
+
+                                      <span class=three></span> /// 1)  Define a {otherUsers } which is the  filtered  [users]  that get all users expect the current foundUser : <br>  
+                                      <span class=three></span> const otherUsers = usersDB.users.filter( person => person.username  !== foundUser.user ) ;  <br> <br>  
+                                  
+                                      <span class=three></span> /// 2) Re-define the current user by the foundUser that including the [Refresh Token] , by adding the defined [Refresh token] to the upper defiend [founduser : which is found user that inserted his value  ]  : <br>  
+                                      <span class=three></span>  const currentUser  =  { ...foundUser , refreshToken }  ; <br>   <br>
+                                  
+
+                                      <span class=three></span> /// 3) Re-set the main datasource [userDB] by adding both of upper defined [currentUser] & [otherUsers] -> by using  the {setter function} to the filtered new array of users [otherUsers]  :  <br> 
+                                      <span class=three></span> usersDB.setUsers( [...otherUsers , currentUser]  ) ;  <br> <br>   
+
+
+                                      <span class=three></span> /// 4) Saving the new [users ] [after upper modifications of adding the {access token}] into datasource json format {users.json} [instead of using a real Database for now ] :   <br>  
+                                      <span class=three></span> await fsPromises.writeFile(  <br>   
+                                        <span class=four></span>   path.join(__dirname , '..'  , 'model' ,  'users.json' )  ,   <br>  
+                                        <span class=four ></span>   JSON.stringify(usersDB.users) <br>
+                                      <span class=three></span> ) ; <br>  <br>  
+                                        
+                                        
+                                      <span class=three></span> // c-  Securing the [Refresh Token] , by sending it [http cookies]  ( to be NOT vulneriable to the JS )  with following configurations    : <br>   
+                                      <span class=three></span>  ///  [any cookie is being sent with each request , but [httpOnly cookie] is perfect secured and not matched by the js ]  :  <br>
+                                      <span class=three></span>  res.cookie(  <br>
+                                        <span class=four ></span>  'jwt' ,  // [the cookie name]   <br>     
+                                        <span class=four ></span>   refreshToken ,  // [cookie value ]  <br>  
+                                        <span class=four ></span>   { httpOnly: true ,  maxAge : 24 * 60 * 60  * 1000 }   // [ cookie type &  cookie [1 day] duration by the miliiseconds ] <br>
+                                      <span class=three ></span>  )  ;  <br><br>  
+                                  
+ 
+                                      <span class=three ></span>  // d- Securing the  [Access Token] , by sending it  to the secured node server memory JWT [this the user and frontend can grap] :   <br>
+                                      <span class=three ></span> res.json({ accessToken }) ;   <br>  <br> 
+
+ 
+                                    <span class=two></span>  } else {     <br>  
+                                        <span class=three ></span>  res.sendStatus(401) ;    // [sending the  {unAuthorized code} to the server if the upper {match} variable has no value]   <br> 
+                                    <span class=two></span> }   <br>                                
+                                </code>     <br>    <hr>   <br>  
+ 
+                                //  IV] Exporting section : <br>
+                                <code> 
+                                  // Exporting the defined function of handling the  process [handleLogin] as object to be able to pull/call the full name of the controller when is being used inside route file :    <br> 
+                                  <span  class = one ></span>  module.exports  =  {handleLogin}  ; <br>
+                                </code>
+                                 
+                              </li>
+                              <br> <hr> <br> 
+
+
+                              <li> b- { refreshTokenController.js}  new file   => the [Checking proces] + [{post} Crud operation] definition of [regitration process] , including the next script :    <br> 
                                   // I] Datasource definition section : <br>
                                   <code> 
                                     //  1-  Define {users} DataBase's configuration object as an imported datasource array of objects   from the {model/users.json}   :   <br>
@@ -861,73 +1209,17 @@
                                 </code>   <br>    
                               </li>
                                <br> <hr> <br> 
-
-                              <li> { authContorller.js} => the [ Ckecking proeces ] Crud operations definition of authentication process :  <br>
-                                // I] Datasource definition section : <br>
-                                <code> 
-                                  //  1-  Define {users} DataBase's configuration object as an imported datasource array of objects   from the {model/users.json}   :   <br>
-                                  <span  class = one ></span> const  usersDB = { <br>
-                                    <span  class = two ></span>  // the initial value of the users datasource :     <br>
-                                    <span  class = two ></span>   users : require('../model/users.json') ,  <br>   <br> 
-                                  
-                                    <span  class = two ></span>  //  the setter function of the users datasource :  <br>
-                                    <span  class = two ></span>   setUsers :  function (data) { this.users = data } <br>
-                                  <span  class = one  ></span>  } <br>
-                                </code> <br>    <hr>   <br>  
-                            
-                                // II]  Importing  section : <br>
-                                <code> 
-                                  //  1-  Define the [bcrypt] from the installed node custom module library  :  <br>
-                                  <span  class = one ></span>   const bcrypt = require('bcrypt') ;  <br>
-                                </code>  <br>    <hr>   <br>   
- 
-                                // III]  [Authentication Handling] function section  : <br>
-                                <code> 
-                                  <span  class = one ></span>  const handleLogin =  async (req, res) => {  <br>
-                                      
-                                    // 1-  Define the [user] and [pwd] [as destructed varaibles from the requested object] of the retunred requested value from the user form to be checked later  : <br>
-                                    <span  class =two></span>  const  {user, pwd } =  req.body ;  <br>  <br>
-
-                                    // 2- Checking from the returned values username or password  if it is not existed + and send response error code + message  :  <br>
-                                    <span  class = two  ></span>  if ( !user || !pwd ) return res.status(400).json({ 'message' : 'User name or/and password are required !' }) ;   <br>  <br> 
-                              
-                                    // 3- Checking if the inserted/requested [ username] is existed in the [usersDB] , or not  :  <br>
-                                    <span  class = two  ></span>  const foundUser = usersDB.users.find( person => person.username  === user) ;  <br>  <br> 
-                              
-                                    // 4-  return an error of [unAuthurized code '401' ]  to the response if [foundUser] is not-existed (means that the usre has not found in the current database)  :  <br>
-                                    <span  class = two  ></span> if  (!foundUser) return res.sendStatus(401); <br>  <br> 
-                              
-
-                                    // 5-  Start [password evaluating] process  (after passing the upper step of : finding   {usename} is existed in the [usersDB] ) , according to the  next steps  : <br>
-                                      <span class=one></span> // a-  apply the {match}  comparison method on the [requested password] with the existed [password] in the current DB , by usinghte {bcrypt}  imported library :  <br>  
-                                      <span class=one></span>  const match = await bcrypt.compare( pwd , foundUser.password) ;      <br>   <br>  
-
-                                      <span class=one></span>  // [ if the {match} has a value => that means the password is found in DB]   <br>
-                                      <span class=one></span> if ( match) {    <br>
-                                        <span class=two></span>  //  [in next lessons] : here we will add  [JWTs] Creation  as (2) types of access token ...    <br>  
-                                        <span class=two></span>   res.json({ "success" : `User ${user} Logged in successfully ` }) ;  <br> <br>   
-                                        
-                                      <span class=one></span>  } else {     <br>  
-                                        <span class=two></span>  res.sendStatus(401) ;    // [sending the  {unAuthorized code} to the server  if the upper  {match} variable has no value      ]   <br> 
-                                      <span class=one></span> }   <br>                                
-                                </code>     <br>    <hr>   <br>  
- 
-                                //  IV] Exporting section : <br>
-                                <code> 
-                                  // Exporting the defined function of handling the  process [handleLogin] as object to be able to pull/call the full name of the controller when is being used inside route file :    <br> 
-                                  <span  class = one ></span>  module.exports  =  {handleLogin}  ; <br>
-                                </code>
-                                 
-                              </li>
-                              <br> <hr> <br> 
+  
                             </ol>   
                           </p>
                         </li>
+
+                        <!-- ----------------------------- -->
                         
                         <li> 3- inside [routes] folder  :   <br>
-                           <p> create  new both of next routes files :  <br>
+                           <p> create new next routes files :  <br>
                             <ol>
-                              <li>  { register.js}  => the  route definition of the registration process , including  the next  script :   <br>
+                              <li> a- { refresh.js} route file   => the route for [refreshToken] by using the defiend {handleRefreshToken}  , including  the next  script :  <br>
                                   <code>
                                     //  A] Importing section :   <br>
                                     <span class = one > </span>   // 1- Import the express  :    <br> 
@@ -937,15 +1229,15 @@
                                     <span class = one > </span> const router  = express.Router() ; <br>  <br>
                                     
                                     <span class = one > </span>  // 3- Import the file of defined registration function : <br> 
-                                    <span class = one > </span> const registerController   = require('../controllers/registerController')  ;  <br>  <br>
+                                    <span class = one > </span> const refershTokenController   = require('../controllers/refershTokenController')  ;  <br>  <br>
                                     //  --------------------------------
                                     <br> <hr> <br>
 
                                     // B] Route Definition  section : 
-                                    <span class = one > </span>  // 1- Define Route of handling registeration process  as following :  <br>
-                                      <span class = two > </span>  - Using the [post Crud operation](due we are posting the new user into the DB - registration - ) <br>  
+                                    <span class = one > </span>  // 1- Define Route of handling Get curd operation of [Refresh Token]   as following :  <br>
+                                      <span class = two > </span>  - Using the [get Crud operation](due we are getting the user [Refresh Token] that created via {handleRefreshToken()}  imported function from  -  {refershTokenController} file  - ) <br>  
                                       <span class = two > </span>  - Assign the  defined and imported  {handleNewUsers} in router handling method : <br>
-                                    <span class = one > </span> router.post( '/' , registerController.handleNewUser) ;
+                                    <span class = one > </span> router.get( '/' , refershTokenController.handleRefreshToken) ;
                                     //-----------------------------                                    
                                     <br> <hr> <br> 
 
@@ -956,39 +1248,88 @@
                                   <br> <hr> <br>
                                </li>
                               <br><hr> <br>
-
-                              
-                              <li> { auth.js}    => the  route definition of authentcation process :  <br>
-                                // A] Importing secton :   <br>
-                                  <code>
-                                    // 1- Import the express  :  <br>
-                                    <span class = one > </span>  const express = require('express');  <br>  <br>
-                                    
-                                    // 2- Import the Router tool from express  :  <br>
-                                    <span class = one > </span>  const router  = express.Router() ;  <br>
-                                    
-                                    // 3- Import the file of defined Authentication function :  <br>
-                                    <span class = one > </span> const authController   = require('../controllers/authController')  ; <br>
-                                  </code>     <br> <hr> <br>
-
-                                  // B] Route Definition section :   <br>  
-                                  <code> 
-                                    <span class = one > </span>  router.post( '/' , authController.handleLogin) ; <br>
-                                  </code>  <br> <hr> <br>
-                              
-                                  // C] Exporting the upper defined [router] :  <br>
-                                  <code> 
-                                    <span class = one > </span> module.exports  = router ;   <br> 
-                                  </code>  <br> <hr> <br>
-                                
-                              
-                              </li>
                             </ol>   
                           </p>
                         </li>
                         <!-- ------------------------------- -->
+                        
+                        <li> 4-  [middleware]  folder   : <br>
+                          <p>  create new middleware file  : <br> 
+                            <ol>
+                               <li> a-  {verifyJWT.js} middleware =>  creating new file of handling the verification of the [JWT] as an event midleware   , including the next  script  : <br>
+                                <p>  This file will contains Recieving , verify , and securing  the [AccessToken] & [Refresh Token]  </p>
+                                  // I] Importing section   :  <br>
+                                  <code>    
+                                    <span class=one  ></span> // Define the [jwt] using the [jsonwebtoken] library :     <br>
+                                    <span class=one  ></span>   const jwt = require( 'jsonwebtoken' ) ;   <br>
+                                  
+                                    <span class=one  ></span> // importing the [.env]  file inner definitions using  [dotenv] library : <br>
+                                    <span class=one  ></span>  require('dotenv').config();  <br>                                
+                                  </code> 
+                                   <br> <br>  <br>   
+                                  
+                                  // II]  Event middleware function definition section   :  <br>
+                                  <code>    
+                                    <span class=one  ></span>  //  Define Event middleware function definition   :   <br>
+                                    <span class=one  ></span>  const verifyJWT= (res , req , next) => {   <br>
+                                  
 
-                        <li> 4- inside [server.js ] file    :   <br>
+                                      <span class=two></span> // 1-  Getting the requested [authorization Haeder] value as a defined variable :  <br> 
+                                      <span class=two></span> const  authHeader = req.headers['authorization'] ;  <br>     
+                                       
+                                      <span class=two></span>  // 2-  Checking if defined recieved [authHeader] is not a null value  [send code error of [unAuthorized] to the server if it is not recived ] :  <br> 
+                                      <span class=two></span>  if (!authHeader)  return res.sendStatus(401) ;    // [ { 401 : Unauthorized error} ]      <br>     
+                                       
+                                      <span class=two></span>  // 3- Testing print of the recieved  [authHeader] to the console : <br> 
+                                      <span class=two></span>   console.log(authHeader) ;    // [ recieved as bearer token value  ]          <br>     
+                                       
+                                      <span class=two></span>  // 3- Testing print of the recieved  [authHeader] to the console : <br> 
+                                      <span class=two></span>   console.log(authHeader) ;    // [ recieved as bearer token value  ]          <br>     
+                                       
+
+                                      <span class=two></span> // 4- Define the [Token] as modified splittted value  from the recieved [authHeader]  :  <br>  
+                                      <span class=two></span> // [by splitting the value of given [authorizedHeader] according the first char after the empty space] : <br>       
+                                      <span class=two></span>  const  token = authHeader.split(' ')[1] ; <br>   
+                                  
+                                      <span class=two></span>  // 5- Assign [JWT] Verifying configuration object parameters , by using the {.verify()} method : <br>  
+                                      <span class=two></span>   jwt.verify(    <br>   
+                                        <span class=three></span>  // a- assign the defined  [token] variable (as a modified value) of the requested [Access Token] :  <br> 
+                                        <span class=three></span>   token ,   <br> <br>         
+                                  
+                                        <span class=three></span>  // b- assign the main Access Token value : <br>   
+                                        <span class=three></span>  process.env.ACCESS_TOKEN_SECRET,  <br>    <br>
+                                      
+                                        <span class=three></span>  // c-  Assign the callback function inner (2) parameters of the {error} and {encoded}   :  <br>   
+                                        <span class=three></span>  (err , decoded )  => {  <br>
+                                          <span class=four></span>  // 1) Handling  [invalid Token error] => by Sending it  as [Forbiden error]  :  <br>  
+                                          <span class=four></span>  if  (err)  return  res.sendStatus(403) ;  // [ {403 : forbidden error} : means the user are forbidon from the access]  <br> <br> 
+                                            
+                                          <span class=four></span>  // 2) Set the [user] requested value with the (decoded) username value :  <br>
+                                          <span class=four></span>  req.user =  decoded.username ;  <br>   <br> 
+                                    
+                                          <span class=four></span> next();  <br>
+                                        <span class=three></span> }  <br>
+                                       
+                                      <span class=two></span>   ) ;    <br>   
+                                     
+                                    <span class=one  ></span>  }     <br>                                
+                                  </code>            
+                                  <br> <br>  <br>      
+                                  
+                                  // III]   Exporting section    : <br>  
+                                  <code> 
+                                    <span class="one"></span>     module.exports = verifyJWT ;  <br>   
+                                  </code>
+                                  <br> <br>  <br>      
+                              </li>
+                            </ol>
+                          </p>
+                        </li>
+                        <br> <br>  <br>      
+                        <!-- ----------------------------------------- -->
+                        
+                        
+                        <li> *- inside [server.js ] file    :   <br>
                            <p> Adding new both of route methods wihtin the express   :  <br>
                             <ol>
                               <li> Assign the express route of the [register]  :  <br>
@@ -1009,6 +1350,8 @@
                     </ul>
                   </p>
                 
+
+
                   <ul> 
                     <li> a- {package.json} file  => with next modifications    :  <br>
                       <ol> 
