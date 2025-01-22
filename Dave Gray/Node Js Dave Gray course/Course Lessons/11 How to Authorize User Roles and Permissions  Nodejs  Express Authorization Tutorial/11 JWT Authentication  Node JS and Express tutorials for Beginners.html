@@ -638,6 +638,16 @@
                                   </ul>
                                   
                                 </li>
+                                
+                                <li> 4 ] [Logoff] || [Logout] process , inlcuding  the next procedures :  <br>
+                                  <p>  This process is about deleting created existed [Refresh Token] that has been created , and prevnt it for it last perioed        </p> 
+                                
+                                </li> 
+
+
+
+
+
                               </ol>                                                             
                             </li>
 
@@ -761,7 +771,7 @@
 
                           <li> 3- Adding the {.env}  file to the {.gitignore} file to NOT be shared with other in github  </li> 
                           <br>  <hr> <br>
-                        
+                         
                           <li> 4- Modify  the  {authController.js}  of the [Authentication process] including {JWT} steps codes as following :   <br>    
                             I] Define  [datasoruce {users.json}] section : <br>  
                              <code> 
@@ -974,7 +984,18 @@
                             </p> 
                           </li>
 
-                          <li>       </li>
+                          <li> 7- [Log-off] process :  <br>
+                            <p>  After login succesful process  wtith full authenticated and procteded , we need to persue the [loggin off]  || [loggin out] process , by implmenting the  as following : <br>
+                              <ol> 
+                                  <li>      </li>
+                                  <li>      </li>
+                              </ol>
+ 
+                            </p>
+                          
+                          </li>
+                        
+                        
                           <li> </li>
                           
                           <!--  #[40:00] -->
@@ -1125,7 +1146,8 @@
                               <br> <hr> <br> 
 
 
-                              <li> b- { refreshTokenController.js}  new file   => the [Checking proces] + [{post} Crud operation] definition of [regitration process] , including the next script :    <br> 
+                              
+                              <li> b- { refreshTokenController.js}  new file   => the [Checking process] + [{post} Crud operation] definition of [regitration process] , including the next script :    <br> 
                                   // I] Datasource definition section : <br>
                                   <code> 
                                     //  1-  Define {users} DataBase's configuration object as an imported datasource array of objects   from the {model/users.json}   :   <br>
@@ -1209,11 +1231,95 @@
                                 </code>   <br>    
                               </li>
                                <br> <hr> <br> 
+
   
+                                <li> c- {  logoutController.js}  new file   => the [Logout process] + [{post} Crud operation] definition of [ logingotu  process] , including the next script :    <br> 
+                                  // I] Datasource definition section : <br>
+                                  <code> 
+                                    //  1-  Define {users} DataBase's configuration object as an imported datasource array of objects   from the {model/users.json}   :   <br>
+                                    <span  class = one ></span> const  usersDB = { <br>
+                                      <span  class = two ></span>  // the initial value of the users datasource :     <br>
+                                      <span  class = two ></span>   users : require('../model/users.json') ,  <br>   <br> 
+                                    
+                                      <span  class = two ></span>   //  the setter function of the users datasource :  <br>
+                                      <span  class = two ></span>   setUsers :  function (data) { this.users = data } <br>
+                                    <span  class = one  ></span>  } <br>
+                                  </code>  <br> <br>  
+                                                            
+                                  // II]  Importing  section : <br>
+                                  <code> 
+                                    //  1-  Define the [fs promises] as imported from the node module :   :   <br>
+                                    <span  class = one ></span>  const fsPromises = require('fs').promises ;  <br>
+
+                                    //  2-  Define the [path]  from the node core  module :  <br>
+                                    <span  class = one ></span>  const path  = require('path') ;   <br>
+                                  </code>   <br>  <br> 
+  
+                                  // III]  [ Logout  Handling] function section  : <br>
+                                  <code> 
+                                      <span  class = one ></span>   const  handleLogout    =  async (req, res) => {  <br>
+                                      
+                                        // 1-  Define the [user] and [pwd] [as destructed values] of the retunred requested value from the user from to be checked later  : <br>
+                                        <span  class =two></span>  const  {user, pwd } =  req.body ;  <br>  <br>
+
+                                        // 2- Checking from the returned values username or password   if it is not existed + and send response error code + message  :  <br>
+                                        <span  class = two  ></span>  if ( !user || !pwd ) return res.status(400).json({ 'message' : 'User name or/and password are required !' }) ;   <br>  <br> 
+
+                                        // 3- Checking of the requested username value is duplicated value with the existed value in the current defined [usersDB]  [by using find() method to figure out if inserted user name by the user is equal to the username existed in usersDB ] :  <br>
+                                        <span  class = two ></span>  // if there is a value of duplicate varable => [that will mean there is a dubplciated value of the  username] :   <br>
+                                        <span  class = two ></span>  const  duplicate = usersDB.users.find( person => person.username === user );     <br> <br>
+
+                                        // 4- if there is a value of  the {duplicate}  => Sending an error code into the response of the conflict duplication [409] {if there is is a value of duplicate variable } :  <br>
+                                        <span  class = two ></span>  if (duplicate) return res.sendStatus(409);    <br> <br> 
+
+
+                                        // 5- Starting handling the [registration]  process after previous error handling using the [try-catch]  : <br>                                       
+                                        <span  class = two ></span>  try  {   <br>  
+                                          <span  class = three ></span> // a) Encrypting the [password] value using the imported library {bcrypt} (with using the await ) , by assigning (2) paramters  :  <br>
+                                              <span  class = four ></span> // [pwd] pramater   : the requested password value   <br>
+                                              <span  class = four  ></span> // [salt] rounds pramater  :  method used to encrypt the passowrd  - to make much harder to hackers to break - (10 : standerd value ) : <br>
+                                          <span  class = three ></span> const  hashedPwd = await bcrypt.hash( pwd  , 10 ) ;  <br>  <br>  
+                                          
+                                          <span  class = three ></span> // b) Creating/define the   [newUser] account as an object variable with [assign it's properties: 'username' ,  'password' by values of upper defined and checked values of requested varaiables [user , hashedPwd] ]  :  <br>
+                                          <span  class = three ></span> const newUser = {"username" : user   ,   "password" : hashedPwd  } ;   <br>   <br>
+                                          
+
+                                          <span  class = three ></span> // c) Storing a the created {newUser} varaible =>  into the [usersDB] confiuraton object     using the  [destructuring methodology  + setter function of the [usersDB]  :  <br>
+                                          <span  class = three ></span> usersDB.users  = ([...usersDB , newUser]) ;    <br>  <br>
+                                          
+                                          <span  class = three ></span> //  d) Writing the new object[users] after storing the {newUser}  in to the {users.json} main datasource file  [usign the defined {fsPromises} of writing file     ]  :  <br>  
+                                          <span  class = three ></span>  await fsPromises.writeFile(    <br>                                               
+                                              <span  class = four ></span> path.join(__dirname , '..'  , 'model' , 'users.json'), <br>
+                                              <span  class = four ></span> JSON.stringify(usersDB.users)      [// -> converting the object data into a strinified json fomrat ]  <br>
+                                          <span  class = three ></span> ) ;  <br><br>          
+                                          
+                                          
+                                          <span  class = three ></span>  // e) printing the new object {users} into the console   : <br> 
+                                          <span  class = three ></span> console.log(usersDB.users) ; <br><br>          
+                                          
+                                          <span  class = three ></span>  // f) Sending a successful process code [201] into the response  + json message [of newuser account creation confirmation ]  : <br> 
+                                          <span  class = three ></span> res.status(201).json({"success" :   `The new user ${user} Account has been creeted and  added into the DB`})   ;  <br><br>          
+
+                                        <span  class = two ></span> } catch (err) { <br>
+
+                                          <span  class = three ></span> // Catching the server error code (500) (the error type still need handling ) :<br> 
+                                          <span  class = three ></span> res.status(500).json({'message' : err.message }) ;  <br>
+
+                                        <span  class = two ></span>   }  <br>    
+                                      <span  class = one ></span>   }  <br>  <br>    
+                                  
+                                      // IV]  Exporting section : <br>
+                                      <span  class = one ></span> // Exporting the defined function of handling  the registration process [handleNewUser] as object to be able to pull/call the full name of the controller when is being used inside route file :  <br>
+                                      <span  class = one ></span>  module.exports = {handleNewUser}  ;  <br> 
+                                </code>   <br>    
+                              </li>
+                               <br> <hr> <br> 
+  
+
+
                             </ol>   
                           </p>
                         </li>
-
                         <!-- ----------------------------- -->
                         
                         <li> 3- inside [routes] folder  :   <br>
@@ -1328,30 +1434,89 @@
                         <br> <br>  <br>      
                         <!-- ----------------------------------------- -->
                         
+
+
+
+
                         
+                        
+                        
+                        <!-- ----------------------------------------- -->
                         <li> *- inside [server.js ] file    :   <br>
                            <p> Adding new both of route methods wihtin the express   :  <br>
                             <ol>
-                              <li> Assign the express route of the [register]  :  <br>
-                                <code>  
-                                    <span class = one ></span> app.use('/register' , require('./routes/register') ) ; <br>
-                                </code>                  
-                              </li>
+                              <li> a- Adding reqiured imports :  <br>
+                                <ul> 
+                                  <li> 1)  Importing {verifyJWT} the middleware file to be used here for assing  the protecting routes : <br>   
+                                    <code>  
+                                      <span class=one  >  </span> const verifyJWT = require('./middleware/verifyJWT') ;       <br>     
+                                    </code> 
+                                  </li>  <br> 
+
+                                  <li> 2)  Importing {cookiesParser}  library : <br>   
+                                    <code>  
+                                      <span class=one  >  </span> const  cookiesParser  = require('cookie-parser') ;       <br>     
+                                    </code> 
+                                  </li>                                 
+                                </ul>
+                              </li>   <br><hr>  <br>   
+
+
+                              <li> b- Define the new required definition  :   <br> 
+                                <p> 1) define a extraced variable from the imported   [cookies]  :    <br>   
+                                    <code>
+                                      <span  class=one ></span>   app.use(cookiesParser()) ;  <br>
+                                    </code>        
+                                </p>
+                              </li>   
+                               <br><hr>  <br>   
                               
-                              <li>  { authContorller.js}      => the  Crud operations definition of authentcation process :  <br>
-                                <code>  
-                                    <span class = one ></span> app.use('/register' , require('./routes/register') ) ; <br>
-                                </code>                  
-                              </li>
+
+
+
+
+                              <li> c- Assign new routes  : <br > 
+                                <ol> 
+                                  <li> 1)  Assign the new route of the {refresh.js } that responsbible for hanlding the [refresh token]  proces :  <br>
+                                    <code>  
+                                        <span class = one ></span> app.use('/refresh' , require('./routes/refresh') ) ; <br>
+                                    </code>                  
+                                  </li>  <br>
+                                 
+                                  <li> 2)  Assign the  protector route of the [middleware verify JWT]  :  <br>
+                                    <p> This protector route should be located after non protected  & before the route desired to be protected  as  following  :    </p>
+                                    <code>  
+                                        
+                                        // Assign the first non-protected [main root   route  ]  :  <br> 
+                                        <span class = one ></span> app.use('/=' , require('./routes/root ') ) ; <br> <br>
+                                        
+                                        
+                                        //  Assign  second  non-protected  [sub route of  register ]  :  <br> 
+                                        <span class = one ></span> app.use('/refresh' , require('./routes/refresh') ) ; <br><br>  
+                                         
+                                        //  Assign  third  non-route [sub route of  authentication  ]        :  <br> 
+                                        <span class = one ></span> app.use('/auth' , require('./routes/auth') ) ; <br> <br>
+                                        
+
+                                        // Assign the protector route of [verifyJWT] middelweer    :  <br>
+                                        <span class = one ></span> app.use( verfiyJWT) ; <br><br>
+
+                                        // Assign the protected route of [employees]   :  <br>
+                                        <span class = one ></span> app.use(' /employees' , require('route/api/employees')   ) ; <br><br>
+
+                                    </code>                  
+                                  </li>
+
+                                </ol>
+                              </li> 
+
                             </ol>   
                           </p>
                         </li>
 
                     </ul>
                   </p>
-                
-
-
+ 
                   <ul> 
                     <li> a- {package.json} file  => with next modifications    :  <br>
                       <ol> 
@@ -1611,19 +1776,20 @@
               <li> the main status  code  to be used with  the node :  <br>
                   <p>  the Access token  definition  by using defined varialbe {jwt} and {.sign()} extracted method   ,  as following   :   <br>
                     <ol> 
-                      <li>  Main concpt  :    <br>  
+                      <li> Main concpt  :    <br>  
                         <p> this method is being used to create  the both of  the [Acceas Token]  & [Refresh Token]  wtihin  the Authenctcatoin procudes and  before  the defautl authenticatoin </p>  <br> 
                       </li>  <br> 
                       
-                      <li>  Main Syntax :  <br>  
+                      <li> Main Syntax :  <br>  
                         <code> 
                           <span class=one  ></span>  jwt.sign( {payload} ,  {accessToken || refreshToken} var defined in the {.env} file  , expiration duration pararamtner )    <br>  
                         </code > 
                       </li> 
                     </ol>
-                   </p>
-                     
+                   </p>                 
               </li>
+
+              <li>   This lesson in this course of  the Node.js backend , byut in real project we might need to link both the created  backend mehtodologies with forntend tools       </li>
  
             </ul>
             

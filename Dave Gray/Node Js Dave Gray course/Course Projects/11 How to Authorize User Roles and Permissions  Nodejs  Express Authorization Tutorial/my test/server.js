@@ -12,6 +12,7 @@
         // 1- Define the accepted request host [whiteList]       
         // 2- Define  {corsOption} object  that including =>  [cors] configuraions properties  of handling the recieved request hosts + solve cors issue
         // 3- Define the main middleware method of [third-party] type , by calling the imported {cors} as an imported  method with assigning the upper defined object {corsOptions} as its  paramter
+        // 4- Define the route of middleware of protection [ authenticatoin verfiying] 
 
     // III] [Built-in Middleware] =>  that used in the previous lesson ( methods used   ) : 
       // 1- {app.use}  -> Define the basic route of the express server                  
@@ -57,8 +58,11 @@
     // b) Importing {errorHandler Errorlog event } defined and exported function from the {errorHandler.js} file to be used  here [inside express method] - instead of define the custom middleware here    -  :
     const errorHandler = require('./middleware/errorHandler');
 
-    // c) Importing {logEvents} defiend and exported function from  the {logEvents.js} file to be here int  the [server.js] => not need for now [using the upper logger event instead  ]    :
-    // const logEvents = require('./middleware/logEvents') ;
+    // c) Importing {verifyJWT} the middleware file to be used here for protecting routes [   we will use it for access {employees route} - but not for {root} {auth} , {register} routes - ] :
+     const verifyJWT = require('./middleware/verifyJWT') ;
+
+    // d) Importing {cookiesParser}  library  :
+     const  cookiesParser = require('cookie-parser') ;
 
 //  -------------------------------------------------------------
 //  -------------------------------------------------------------
@@ -95,8 +99,11 @@
       //  b- Built-in middleware to handle json data :
       app.use(express.json());
 
+      // c- define a middleware for the   [cookies] : 
+      app.use(cookiesParser()) ;
 
-      // c-  Define the method of reading files from  [public] folder's  to be accessible for this [main root route]   in the project server  [extrated from the express] - within  allocating it to the main route - :
+
+      // d-  Define the method of reading files from  [public] folder's  to be accessible for this [main root route]   in the project server  [extrated from the express] - within  allocating it to the main route - :
       app.use( '/' , express.static(path.join(__dirname, '/public')));
 
 
@@ -114,13 +121,27 @@
     //  1- Assign [Default Route] of the {'/'} : Define main index/home route + handling return , by calling the  main source of definition 'routes/root'  file :   
       app.use('/' , require('./routes/root') ) ;
       
+      
     //  2- Assign [Default Route] of the {'/register'} : Define  sub route of the [registration]  of posting crud opt  of creating a new user , by calling the  main source of definition 'routes/register.js'  file :   
       app.use('/register' , require('./routes/register') ) ;
       
+
     //  3- Assign [Default Route] of the {'/auth'} : Define  sub route of the [Authentication] of posting crud opt of access the logged in a user , by calling the  main source of definition 'routes/auth.js'  file :   
       app.use('/auth' , require('./routes/auth') ) ;
-      
-    //  4- Assign [Api Routes] of the {'/employees'} + routes's CRUD opts (by calling the  main source of definition 'routes/api/employees'  file  )    :    
+    
+
+    //  4- Assign [Default Route] of the {'/refresh'} : Define sub route  that realted [ Refresh Token] of geting crud opt of access the logged in a user  :   
+      app.use('/refresh' , require('./routes/refresh') ) ;
+    
+    //  5- Assign [Default Route] of the {'/logout'} : Define sub route that realted [ logout ] of gettign the new   :   
+      app.use('/logout' , require('./routes/logout') ) ;
+    
+
+    //  6- Assign [verifyJWT] the protection middleware [- according to the second public method  -] before the desired route to be protected :    
+      app.use(verifyJWT) ; // any thing after this line will use the verification of the JWT , but before will NOT use this protection  ]         
+
+
+    //  7- Assign [Api Routes] of the {'/employees'} + routes's CRUD opts (by calling the  main source of definition 'routes/api/employees'  file  )    :    
       app.use('/employees' , require('./routes/api/employees') ) ;  
   // -----------------------------------
 
@@ -137,7 +158,7 @@
           res.sendFile(path.join(__dirname, 'views', '404.html')); // we need to use both the method of {statusCode} & {sendFile} in a chained to make the error page is not as [200]  
 
         } else if (req.accepts('json')) {
-          res.json({ "error": "404 is not found! " }); // Send a json error if   error is type of json    
+          res.json({ "error": "404 is not found! " }); // [Send a json error if error is type of json]    
 
         } else {
           res.type('txt').send('404 is not found! '); // Send an error if error is any type else       

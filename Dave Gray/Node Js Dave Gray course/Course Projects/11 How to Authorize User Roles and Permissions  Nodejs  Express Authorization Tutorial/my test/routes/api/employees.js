@@ -11,16 +11,19 @@
   
 // c- Importing the [controller file] (that including all defined handling crud methods) :  
   const employeesController = require('../../controllers/employeesController') ;
+
+// d- Impoprting the defined [jwt verifying Middleware] file :      
+  // const verifyJWT =  require('../../middleware/verifyJWT') ;
+ 
 // ------------------------------------------ 
 
 // d- Define the main routes using the express router +  including assigning all it's CRUD operations for each route  ( by calling each operation using the chained method ) :
   // 1- [first route] :  Define all CRUD opts of the main index || home page route - to access DB datasource 'employees.json'   : 
   router.route('/')
-    // we will use the [employees controller] file  to handle this operation - instead of calling all of the  object -  :
-    // .get((req,res) => {    
-    //    res.json(data.employees);  
-    // }) 
-    .get(employeesController.getAllEmployees)       // get all elements  operation 
+      
+    // .get(verifyJWT, employeesController.getAllEmployees)       // get all elements operation [include using (verifyJWT) before the protecting route's contrling file - according to first method - ] 
+
+    .get(employeesController.getAllEmployees)       // get all elements operation [will be protected  using (verifyJWT)  -   according to  second method wihtn the main server file  -  ] 
     .post(employeesController.createNewEmployee)    // create new element  operation
     .put(employeesController.updateEmployee)        // update an existed entry    
     .delete(employeesController.deleteEmployee) ;   // delete a certain element 
