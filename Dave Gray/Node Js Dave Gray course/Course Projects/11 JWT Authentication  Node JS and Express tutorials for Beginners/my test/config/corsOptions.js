@@ -7,20 +7,25 @@
 // 3- Define the main middleware method of [third-party] type , by calling the imported {cors} as an imported  method with assigning the upper defined object {corsOptions} as its  paramter
 // -----------------------------------------------------------
 
-// 1] Define a [whitelist] array of the accepted hosts to be handled as allowed to access to the our backend [your website  , your localhost ,  the virtual custom server - such as the react -  ]   : 
-const whiteList = [
-  'https://www.yourdomain.com',
-  'http://localhost:3500',
-  'http://127.0.0.1:5500'
-];
 
+// 1]  Importing sectoin :         
+  const allowedOrigins  = require( './allowedOrigins') ;
+// -----------------------------------------------------------
 
-// 2] Define a object of {cors} configutration properties to handle the [whitelist] array to be able to access to the our backend] : 
+// 2] Define a [whitelist] array of the accepted hosts [[ allowed origins  ]] to be handled as allowed to access to the our backend [your website  , your localhost ,  the virtual custom server - such as the react -  ]   : 
+// const whiteList = [
+//   'https://www.yourdomain.com',
+//   'http://localhost:3500',
+//   'http://127.0.0.1:5500'
+// ];
+// -----------------------------------------
+
+// 3] Define a object of {cors} configutration properties to handle the [whitelist] array to be able to access to the our backend] : 
 const corsOptions = {
   // a- The first property to handle the comming host , through a anonymous function    : 
   origin: (origin, callback) => {
     // Create a condition of the recived origin value (host sender request) :
-    if (whiteList.indexOf(origin) !== -1 || !origin) {  // if the comming request host  IS  existed in  previous defined list of the accepted host  OR the no request host came at all ]
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {  // if the comming request host  IS  existed in  previous defined list of the accepted host  OR the no request host came at all ]
       callback(null, true);
     } else {
       callback(new Error('Not allowed by Cors '));

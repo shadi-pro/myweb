@@ -58,11 +58,16 @@
     // b) Importing {errorHandler Errorlog event } defined and exported function from the {errorHandler.js} file to be used  here [inside express method] - instead of define the custom middleware here    -  :
     const errorHandler = require('./middleware/errorHandler');
 
-    // c) Importing {verifyJWT} the middleware file to be used here for protecting routes [   we will use it for access {employees route} - but not for {root} {auth} , {register} routes - ] :
-     const verifyJWT = require('./middleware/verifyJWT') ;
+  // c) Importing {verifyJWT} the middleware file to be used here for protecting routes [   we will use it for access {employees route} - but not for {root} {auth} , {register} routes - ] :
+    const verifyJWT = require('./middleware/verifyJWT') ;
 
-    // d) Importing {cookiesParser}  library  :
-     const  cookiesParser = require('cookie-parser') ;
+  
+    // d) Importing {cookiesParser}  library from the node core modlue   :
+    const  cookiesParser = require('cookie-parser') ;
+
+
+    // e) Importing defined middleware of  {credentials}   :
+    const   credentials  = require('./middleware/credentials') ;
 
 //  -------------------------------------------------------------
 //  -------------------------------------------------------------
@@ -83,6 +88,11 @@
   // I] [Custom Middleware] type :    
     //  I]  / 1] Calling the Defined and imported [Custom Middleware {Logger} ]  as the return of the express defined method of {app.use()}   => 
     app.use(logger);
+    // --------------------------------------
+  
+
+  //  I]  / 2] Calling the Defined and imported [  Middleware {credentials } ]  as the return of the express defined method of {app.use()}  [[  before calling the  corsOptions    ]]   => 
+    app.use( credentials );
   // --------------------------------------
 
   // II] [ Third-party Middleware] type to handle the {{request host}} and solve the cors issue , by using the next (3) steps :   
@@ -133,11 +143,11 @@
     //  4- Assign [Default Route] of the {'/refresh'} : Define sub route  that realted [ Refresh Token] of geting crud opt of access the logged in a user  :   
       app.use('/refresh' , require('./routes/refresh') ) ;
     
-    //  5- Assign [Default Route] of the {'/logout'} : Define sub route that realted [ logout ] of gettign the new   :   
+    //  5- Assign [Default  Route] of the {'/logout'} : Define sub route that realted [ logout ] of gettign the new   :   
       app.use('/logout' , require('./routes/logout') ) ;
     
 
-    //  6- Assign [verifyJWT] the protection middleware [- according to the second public method  -] before the desired route to be protected :    
+    //  6- Assign [verifyJWT] the (protector route) via protection middleware [- according to the second {public method}  -] before the desired route to be protected :    
       app.use(verifyJWT) ; // any thing after this line will use the verification of the JWT , but before will NOT use this protection  ]         
 
 

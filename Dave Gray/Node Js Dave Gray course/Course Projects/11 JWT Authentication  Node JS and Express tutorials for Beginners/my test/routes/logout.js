@@ -15,7 +15,7 @@ const  logoutController  =  require ('../controllers/logoutController')    ;
 // ----------------------------------
 
 
-// II]    Definition of the main route  section :
+// II] Definition of the main route  section :
   // define a router with using the (get) crud opt  :   
   router.get('/'  ,  logoutController.handleLogout );
   // ----------------------------------

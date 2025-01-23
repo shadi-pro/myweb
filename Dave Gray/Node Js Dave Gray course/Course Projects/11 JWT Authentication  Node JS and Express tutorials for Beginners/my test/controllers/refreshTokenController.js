@@ -28,7 +28,7 @@ const handleRefreshToken = (req, res) => {
   if (!cookies?.jwt) return res.sendStatus(401);
 
   // 3- Testing print of the retured value of  {cookies.jwt}] :      
-  console.log(cookies.jwt);
+  // console.log(cookies.jwt);
 
   // 4- Define [refreshToken]  a variable  with the return value of { cookies.jwt}   :      
   const refreshToken = cookies.jwt;
@@ -45,7 +45,7 @@ const handleRefreshToken = (req, res) => {
     process.env.REFRESH_TOKEN_SECRET,
     (err, decoded) => {
       // a- send an error of [Forbiden code '403'] if there is a return error  or the username is not equal the encoced value  :
-      if (err || foundUser.username !== decoded.username) return res.sendStatus(403)
+      if (err || foundUser.username !== decoded.username) return res.sendStatus(403);
 
       // b- Creating a [Access Token] - after the [refresh token] has verfied in upper steps  -   :
       const accessToken = jwt.sign(

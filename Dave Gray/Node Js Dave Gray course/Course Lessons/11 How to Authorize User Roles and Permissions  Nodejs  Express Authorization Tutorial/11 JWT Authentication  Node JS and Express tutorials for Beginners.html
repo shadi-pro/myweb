@@ -323,7 +323,7 @@
         <a class="Home hvr-wobble-horizontal" href="#Main" title="Go to page header"> Home </a>
         <a class="End hvr-wobble-horizontal" href="#footer" title="Go to page footer"> End </a>
     </nav>
-    <!-- ------------------------ -->
+     <!-- ------------------------ -->
 
     <!-- The following Tag can be as <main> Tag, but the Editor is old for HTML5-->
     <main class="Welcome container text-center center-block wow bounceInDown" data-wow-duration="2s">
@@ -536,21 +536,24 @@
                                     <ul>  
                                       <li> a- Inside the [controllers]  folder  : <br> 
                                         <ol> 
-                                          <li> {refreshTokenControllers.js}  => new file </li> 
                                           <li> {authControllers.js}          => modify file  </li> 
-                                        </ol>
+                                          <li> {refreshTokenControllers.js}  => new file </li> 
+                                          <li> {logoutControllers.js}        => new file </li> 
+                                         </ol>
                                       </li>    <br>
-                                    
+                                      <br>
                                       <li> b- Inside the [routes]  folder  : <br> 
                                         <ol> 
                                           <li> [api/ {employess.js} ]  => modify file   </li> 
                                           <li> {refresh.js}            =>  new file   </li> 
+                                          <li> {logout.js}             =>  new file   </li> 
                                         </ol>
                                       </li>   <br> 
                                     
                                       <li> c- Inside the [middleware]  folder  : <br> 
                                         <ol> 
                                           <li> {verifyJWT.js}            =>  new file   </li> 
+                                          <li> {credentials.js}          =>  new file   </li> 
                                         </ol>
                                       </li>   <br> 
                                       
@@ -560,6 +563,11 @@
                                           <li> {.env}        => new file      </li> 
                                           <li> {.gitignore}  => modify file      </li> 
                                         </ol>
+                                      </li>
+
+                                      <li>   e- inside the [config]  folder :  <br> 
+                                          <p>  {allowedOrigns.js }  =>   new file     </p>
+                                          <p>  {corsOptions.js }    =>   modify file     </p>
                                       </li>
                                     </ul> 
                                 </li>  
@@ -639,19 +647,32 @@
                                   
                                 </li>
                                 
-                                <li> 4 ] [Logoff] || [Logout] process , inlcuding  the next procedures :  <br>
-                                  <p>  This process is about deleting created existed [Refresh Token] that has been created , and prevnt it for it last perioed        </p> 
-                                
+                                <li> 4 ] [Logoff] || [Logout] process , including  the next procedures :  <br>
+                                  <p>  This process is about deleting created existed [Refresh Token] that has been created within the previous step  of the  {Refresh Token handling} and prevent it for readcihg it's last perioed  , according to the nwxt (2) steps : <br>   
+                                    <ol>      
+                                      <li> Create the main method of the [logout process]  in ->  [logoutController.js] file         </li>  
+                                      <li> Apply the defined  logout process methood wthi the a new route {logout.js} file        </li>  
+                                      <li> assign the defined route of the [logout]  in the {server.js }  file before hte protector of route of the {verifyjwt} </li>  
+                                    </ol>  
+                                  </p> 
                                 </li> 
 
 
+                                <li> 5]   Fixing [cors credentials] issue of the server ,  by using the next procedurs   :    <br>
+                                  <p> This issue might be pop-up within the server backend in case of using {fetch}   in the frontend  , by theenxt steps     :  
+                                    <ol> 
+                                      <li>  Define  the defiend array of  [allowedOrgins]  in a sepertatd file {allowedOrigins.js } inside the [config] folder       </li>
+                                      <li>  Define the a new method of the middeleware of [credentials() ]  in a sepertatd file {crednetials.js } inside the [middleware] folder => to be esed in the server fiel  </li>
+                                      <li>  Import and  use thne defind method of the middeleware of [credentials.js]  file   [before caling [corsdOption] - considerin the on flow node mechanism - </li>
+                                    </ol>
+                                  </p> 
 
-
+                                </li>
 
                               </ol>                                                             
                             </li>
 
-                            <li> C] Notes about building [JWT]  protection tool to our defined routes +  based role login within the current project node server within in the [MVC]  </li>
+                            <li> C] Notes about building [JWT]  protection tool to our defined routes   within in the [MVC]  </li>
                         </ol>
                      </li> <br> <br>
                 </ol>
@@ -724,7 +745,7 @@
                </li>
                
                
-                <li> 5]  Requirments of {JWT} Authentication  :  <br>  
+                <li> 5] Requirments of {JWT} Authentication  :  <br>  
                   <ul> 
                       <li> a] Adding the next packages libraries : <br> 
                         <p> 1-  Install the source code of the previous project's libraries , by using the next code : <br>
@@ -951,7 +972,7 @@
                           </li> 
                           <br>  <hr> <br>
 
-                          <li> 6- Using the imported defiend [Authentication  verification] middleware  to protect the desired routes   :  <br>   
+                          <li> 6- Using the imported defiend [Authentication JWT  verification] middleware  to protect the desired routes   :  <br>   
                             <p> After we defined and verify our [JWT : {Access Token} & {Refresh Token } in the verify middleware file] , now we will be able to use it to protect our routes [by using one of next (2) methods  ] : <br>  
                               <ol> 
                                 <li> a)  [Solo method ] within the api route's crud opts  definiton file controller file of auth {authControllers.js} , as following  : <br> 
@@ -985,12 +1006,12 @@
                           </li>
 
                           <li> 7- [Log-off] process :  <br>
-                            <p>  After login succesful process  wtith full authenticated and procteded , we need to persue the [loggin off]  || [loggin out] process , by implmenting the  as following : <br>
+                            <p>  After login successful process  with full authenticated with jwt procteded , we need to persue the [login off]  || [login out] process , by implmenting the  as following : <br>
                               <ol> 
-                                  <li>      </li>
-                                  <li>      </li>
+                                  <li> Creating a new file within the [contrllers] folder  of the controling handling method of  [logout process] => {logoutController.js} </li>
+                                  <li> Creating a new route file wihtin th4e [routes] folder for the [logout] process that using the defined {logoutController.js}   </li>
+                                  <li> Adding the defined reoute inside the main server intial file as a non protected route (before hte protector  route of the {verifyJWT}  </li>
                               </ol>
- 
                             </p>
                           
                           </li>
@@ -1022,7 +1043,6 @@
                         <li> 2- inside [controllers] folder  :   <br>
                            <p> create new/modify of next controllers files :  <br>
                             <ol>
-
                               <li> a- { authController.js} modify file   => the [ Authentication Ckecking proeces + JWT ] Crud operations definition of authentication process :  <br>
                                 // I] Datasource definition section : <br>
                                 <code> 
@@ -1144,8 +1164,6 @@
                                  
                               </li>
                               <br> <hr> <br> 
-
-
                               
                               <li> b- { refreshTokenController.js}  new file   => the [Checking process] + [{post} Crud operation] definition of [regitration process] , including the next script :    <br> 
                                   // I] Datasource definition section : <br>
@@ -1232,8 +1250,7 @@
                               </li>
                                <br> <hr> <br> 
 
-  
-                                <li> c- {  logoutController.js}  new file   => the [Logout process] + [{post} Crud operation] definition of [ logingotu  process] , including the next script :    <br> 
+                              <li> c- {logoutController.js}  new file => the [Logout process] + [{get} Crud operation] definition of [ logout process] , including the next script :    <br> 
                                   // I] Datasource definition section : <br>
                                   <code> 
                                     //  1-  Define {users} DataBase's configuration object as an imported datasource array of objects   from the {model/users.json}   :   <br>
@@ -1311,12 +1328,11 @@
                                       // IV]  Exporting section : <br>
                                       <span  class = one ></span> // Exporting the defined function of handling  the registration process [handleNewUser] as object to be able to pull/call the full name of the controller when is being used inside route file :  <br>
                                       <span  class = one ></span>  module.exports = {handleNewUser}  ;  <br> 
-                                </code>   <br>    
+                                  </code>   <br>    
                               </li>
                                <br> <hr> <br> 
   
-
-
+ 
                             </ol>   
                           </p>
                         </li>
@@ -1325,7 +1341,7 @@
                         <li> 3- inside [routes] folder  :   <br>
                            <p> create new next routes files :  <br>
                             <ol>
-                              <li> a- { refresh.js} route file   => the route for [refreshToken] by using the defiend {handleRefreshToken}  , including  the next  script :  <br>
+                              <li> a- { refresh.js} route file   => the route for [refreshToken] by using the defiend {handleRefreshToken} method  , including  the next  script :  <br>
                                   <code>
                                     //  A] Importing section :   <br>
                                     <span class = one > </span>   // 1- Import the express  :    <br> 
@@ -1352,7 +1368,35 @@
                                     //-----------------------------                                    
                                   </code>
                                   <br> <hr> <br>
-                               </li>
+                              </li>
+                                
+                              <li> b- { logout.js } route file =>  the route of the  [logout proces ]  by using the defined  [logoutController] method , including the next  script :  <br>
+                                <code>
+                                  //  A] Importing section :   <br>
+                                  <span class = one > </span>   // 1- Import the express  :    <br> 
+                                  <span class = one > </span> const express = require('express');       <br>  <br>
+                                  
+                                  <span class = one > </span> // 2- Import the {Router} tool from express  : <br> 
+                                  <span class = one > </span> const router  = express.Router() ; <br>  <br>
+                                  
+                                  <span class = one > </span>  // 3- Import the file of defined registration function : <br> 
+                                  <span class = one > </span> const logoutController   = require('../controllers/logoutController')  ;  <br>  <br>
+                                  //  --------------------------------
+                                  <br> <hr> <br>                                 
+  
+                                  // B] Route Definition  section :  <br>  
+                                  <span class = one > </span>  // 1- Define Route of handling Get curd operation of [Logout] as following :  <br>
+                                    <span class = two > </span>  - Assign the  defined and imported  {handleNewUsers} in router handling method : <br>
+                                  <span class = one > </span> router.get('/'  ,  logoutController.handleLogout );  <br>
+                                  //-----------------------------                                    
+                                  <br> <hr> <br> 
+
+                                  // C] Exporting the upper defined [router] section :  <br>
+                                  <span class = one > </span>   module.exports  = router ; <br>
+                                  //-----------------------------                                    
+                                </code>
+                                <br> <hr> <br>
+                              </li>
                               <br><hr> <br>
                             </ol>   
                           </p>
@@ -1381,21 +1425,21 @@
                                   
 
                                       <span class=two></span> // 1-  Getting the requested [authorization Haeder] value as a defined variable :  <br> 
-                                      <span class=two></span> const  authHeader = req.headers['authorization'] ;  <br>     
+                                      <span class=two></span> const  authHeader = req.headers['authorization'] ;  <br>   <br>     
                                        
                                       <span class=two></span>  // 2-  Checking if defined recieved [authHeader] is not a null value  [send code error of [unAuthorized] to the server if it is not recived ] :  <br> 
-                                      <span class=two></span>  if (!authHeader)  return res.sendStatus(401) ;    // [ { 401 : Unauthorized error} ]      <br>     
+                                      <span class=two></span>  if (!authHeader)  return res.sendStatus(401) ;    // [ { 401 : Unauthorized error} ]      <br>      <br> 
                                        
                                       <span class=two></span>  // 3- Testing print of the recieved  [authHeader] to the console : <br> 
-                                      <span class=two></span>   console.log(authHeader) ;    // [ recieved as bearer token value  ]          <br>     
+                                      <span class=two></span>   console.log(authHeader) ;    // [ recieved as bearer token value  ]          <br> <br>     
                                        
                                       <span class=two></span>  // 3- Testing print of the recieved  [authHeader] to the console : <br> 
-                                      <span class=two></span>   console.log(authHeader) ;    // [ recieved as bearer token value  ]          <br>     
+                                      <span class=two></span>   console.log(authHeader) ;    // [ recieved as bearer token value  ] <br> <br>     
                                        
 
                                       <span class=two></span> // 4- Define the [Token] as modified splittted value  from the recieved [authHeader]  :  <br>  
                                       <span class=two></span> // [by splitting the value of given [authorizedHeader] according the first char after the empty space] : <br>       
-                                      <span class=two></span>  const  token = authHeader.split(' ')[1] ; <br>   
+                                      <span class=two></span>  const  token = authHeader.split(' ')[1] ; <br><br>   
                                   
                                       <span class=two></span>  // 5- Assign [JWT] Verifying configuration object parameters , by using the {.verify()} method : <br>  
                                       <span class=two></span>   jwt.verify(    <br>   
@@ -1433,19 +1477,12 @@
                         </li>
                         <br> <br>  <br>      
                         <!-- ----------------------------------------- -->
-                        
-
-
-
-
-                        
-                        
-                        
+                      
                         <!-- ----------------------------------------- -->
                         <li> *- inside [server.js ] file    :   <br>
                            <p> Adding new both of route methods wihtin the express   :  <br>
                             <ol>
-                              <li> a- Adding reqiured imports :  <br>
+                              <li> a- Adding required imports :  <br>
                                 <ul> 
                                   <li> 1)  Importing {verifyJWT} the middleware file to be used here for assing  the protecting routes : <br>   
                                     <code>  
@@ -1461,7 +1498,6 @@
                                 </ul>
                               </li>   <br><hr>  <br>   
 
-
                               <li> b- Define the new required definition  :   <br> 
                                 <p> 1) define a extraced variable from the imported   [cookies]  :    <br>   
                                     <code>
@@ -1471,19 +1507,21 @@
                               </li>   
                                <br><hr>  <br>   
                               
-
-
-
-
                               <li> c- Assign new routes  : <br > 
                                 <ol> 
-                                  <li> 1)  Assign the new route of the {refresh.js } that responsbible for hanlding the [refresh token]  proces :  <br>
+                                  <li> 1)  Assign the new route of the {refresh.js } that responsible for handling the [refresh token]  proces :  <br>
                                     <code>  
                                         <span class = one ></span> app.use('/refresh' , require('./routes/refresh') ) ; <br>
                                     </code>                  
                                   </li>  <br>
+                                  
+                                  <li> 2)  Assign the new route of the {logout.js } that responsible for hanlding the [ logout ]  process :  <br>
+                                    <code>  
+                                        <span class = one ></span> app.use('/logout ' , require('./routes/logout ') ) ; <br>
+                                    </code>                  
+                                  </li>  <br>
                                  
-                                  <li> 2)  Assign the  protector route of the [middleware verify JWT]  :  <br>
+                                  <li> 3)  Assign the  (protector route) of the [middleware verify JWT] before the {employees}  route and after all other defined routes :  <br>
                                     <p> This protector route should be located after non protected  & before the route desired to be protected  as  following  :    </p>
                                     <code>  
                                         
@@ -1655,6 +1693,9 @@
                                   // b-  importing the {express} custom class from the  [node custom module] :     <br>
                                   <span class="one " > </span>    const express  = require('express') ;    <br>   <br>
                                   
+                                  // c-  importing the {express} custom class from the  [node custom module] :     <br>
+                                  <span class="one " > </span>     cookiesParser = require('cookie-parser') ; <br>   <br>
+                                  
                                 // 2]  Importing for [ Third-party Middleware ]   : <br> 
                                   // a-  importing the {cors} library required for using the [third-party] type  ] :  <br>
                                   <span class="one " > </span>    const cors  = require('cors') ;    <br>   <br>
@@ -1667,6 +1708,9 @@
                                   <span class="one " > </span>    const { logger } = require('./middleware/logEvents');    <br>   <br>
 
                                   // b- importing {errorHandler} defined and exported function from the {errorHandler.js} file to be used  here [inside express method] - instead of define the custom middleware here : <br>
+                                  <span class="one " > </span>    const errorHandler = require('./middleware/errorHandler');  <br>   <br>
+
+                                  // c- Imporing the middleware  {verifyJWT} file to  be used in before  protected  the following defined route [employees]   : <br>
                                   <span class="one " > </span>    const errorHandler = require('./middleware/errorHandler');  <br>   <br>
 
                               </code>       
@@ -1691,25 +1735,34 @@
     
                       
                           <li> C] [Routes definition ] section :   <br> 
-                              <p> Calling main imported Routes's  related Defined crud opts +  handling return  -  (according to the express +  {mvc} )  => by Importing both : <br> 
-                                 <code> 
-                                      //  1- Assign [Default Route] of the {'/'} : Define main index/home route + handling return , by calling the  main source of definition 'routes/root'  file :  <br>    
-                                      <span  class="one "></span>    app.use('/' , require('./routes/root') ) ;   <br> <br>  
+                            <p> Calling main imported Routes's  related Defined crud opts +  handling return  -  (according to the express +  {mvc} )  => by Importing both : <br> 
+                                <code> 
+                                    //  1- Assign [Default Route] of the {'/'} : Define main index/home route + handling return , by calling the  main source of definition 'routes/root'  file :  <br>    
+                                    <span  class="one "></span>    app.use('/' , require('./routes/root') ) ;   <br> <br>  
 
-                                      //  2- Assign [Default Route] of the {'/register'} : Define  sub route of the [registration]  of posting crud opt  of creating a new user , by calling the  main source of definition 'routes/register.js'  file :   <br>
-                                      <span  class="one "></span>   app.use('/register' , require('./routes/register') ) ;    <br><br>
-                                     
-                                      //  3- Assign [Default Route] of the {'/auth'} : Define  sub route of the [Authentication] of posting crud opt of access the logged in a user , by calling the  main source of definition 'routes/auth.js'  file :  <br>  
-                                      <span  class="one "></span>   app.use('/auth' , require('./routes/auth') ) ;    <br><br>
-                                     
-                                      //  4- Assign [Api Routes] of the {'/employees'} + routes's CRUD opts (by calling the  main source of definition 'routes/api/employees'  file  ) :  <br>  
-                                      <span  class="one "></span>    app.use('/employees' , require('./routes/api/employees') ) ;    <br><br>
-                                 </code>
-                              </p>
+                                    //  2- Assign [Default Route] of the {'/register'} : Define  sub route of the [registration]  of posting crud opt  of creating a new user , by calling the  main source of definition 'routes/register.js'  file :   <br>
+                                    <span  class="one "></span>   app.use('/register' , require('./routes/register') ) ;    <br><br>
+                                    
+                                    //  3- Assign [Default Route] of the {'/auth'} : Define  sub route of the [Authentication] of posting crud opt of access the logged in a user , by calling the  main source of definition 'routes/auth.js'  file :  <br>  
+                                    <span  class="one "></span>   app.use('/auth' , require('./routes/auth') ) ;    <br><br>
+                                    
+                                    //  4- Assign [Default Route] of the {'/refresh'} : Define  sub route of the [refresh]  of posting crud opt  of creating a new user , by calling the  main source of definition 'routes/register.js'  file :   <br>
+                                    <span  class="one "></span>   app.use('/refresh' , require('./routes/refresh') ) ;    <br><br>
+                                    
+                                    //  5- Assign [Default Route] of the {'/logout} : Define sub route of the [logout]  of posting crud opt  of creating a new user , by calling the main source of definition 'routes/logout.js'  file :   <br>
+                                    <span  class="one "></span>   app.use('/logout' , require('./routes/logout') ) ;    <br><br>
+                                    
+                                    //  6- calling the [protectoro middleware] of the {'/verifyJWT}   of the [middleware ] of posting crud opt of creating a new user , by calling the main source of definition 'middleware/verifyJWt.js'  file :   <br>
+                                    <span  class="one "></span>    app.use(verifyJWt)  <br><br>
+                                    
+                                    //  7- Assign [Api Routes] of the {'/employees'} + routes's CRUD opts (by calling the  main source of definition 'routes/api/employees'  file  ) :  <br>  
+                                    <span  class="one "></span>    app.use('/employees' , require('./routes/api/employees') ) ;    <br><br>
+                                </code>
+                            </p>
                           </li>    <br><hr> <br>  <br>     
     
 
-                          <li> D]  Default handles methods :  <br>
+                          <li> D] Default handles methods :  <br>
                             <p>  Define the [route of non-defined requested route value (after all upper defined routes)] with using the [app.use()] of '*' and followed by any value => and display the inner 404 error page {404.html} incase of any No existed path is written  =>  <br>
                               // by using the {app.all()} that used  more for routing error due accepting all of http methods , , and better than the other express  methods  as following   :  
                               <ul>
@@ -1789,8 +1842,45 @@
                    </p>                 
               </li>
 
-              <li>   This lesson in this course of  the Node.js backend , byut in real project we might need to link both the created  backend mehtodologies with forntend tools       </li>
- 
+              <li> The differnce between the {res.status(code)} &  {res.sendStatus(code)}  :   <br>
+                  <ol>    
+                    <li>   {.status(code)}      =>  is changable method  => some extension is comming after it   , such as :    <br>
+                      <code>    
+                          <span  class=one></span>  // Sending a node server error of [Un-authoriazed] + messseg to the response      :  <br> 
+                          <span  class=one></span> res.status(401).json({  "message" : "error text message "   })   ;    <br> 
+                      </code>                        
+                    </li>
+                      <br>  <hr> <br>  
+                      
+                      
+                    <li>   {.sendStatus(code)}  =>   is NOT changable   method => No other extensions method will come after it , suchas  : <br>
+                      <code> 
+                        <span  class=one></span>  // Sending a node server error of [Un-authoriazed] to the response :           <br> 
+                        <span  class=one></span> res.sendStatus(401) ;    <br> 
+                      </code>  
+                    </li>
+                  </ol>
+                </li>
+                <br>  <hr> <br>  
+                
+                <li> to  implement  the  proper effect of  cors and defind  credential , it must be asdined before the cors witn9 inte server file , as next code : <br>
+                  <code> 
+                    <span  class=one></span>  // calling the deined and imopted file of the  [crednetials middleware]  :   <br> 
+                    <span  class=one></span> app.use(credentials) ;       <br>   <br>                    
+                    
+                    <span  class=one></span>  // calling the deined and imopted file of the  [cors third-party middleware] :  <br> 
+                    <span  class=one></span> app.use( cors( corsOptions)) ;       <br> 
+                  </code>  
+                <li>   
+
+
+
+
+
+
+
+              <li> This lesson in this course of  the Node.js backend , but in real project we might need to link both the created  backend mehtodologies with forntend tools , such as the lgoout proecess ->  [we need to conect the backend proeces and the frontend  event of [button]   </li>
+               
             </ul>
             
           <p>  Next lesson  =>  {JWT Authentication} methodlogy  withg the node   and epxress          </p> 
@@ -1805,7 +1895,7 @@
                 <li> Page Sources : </li>
                 
                 <h3> A]  Frontend Section  : </h3>
-                <!-- <code>
+                <!-- <code>       
 
                    <h4> (1) Project  files of  main [React-Vite] system :     </h4>
                     <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/index.html">  
