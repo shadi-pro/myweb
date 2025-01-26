@@ -76,7 +76,7 @@ const handleLogin = async (req, res) => {
       process.env.REFRESH_TOKEN_SECRET,
       { expiresIn: '1d' }  // [ a testing duration time for [Refresh token]  , in the real time : 1 day  -  several days  ] 
     );
-
+ 
 
     // b-  Securing the [Refresh Token] + save it in the file [ using the file system module instead of using  the real database - we will modify thses steps by taking the {MongoDB} - ] :
     // The following step will allow secruting the refresh Token if the user logged out before the expiration duraton is up  :  
@@ -101,7 +101,14 @@ const handleLogin = async (req, res) => {
     res.cookie(
       'jwt',   // [the cookie name] 
       refreshToken,  // [cookie value ]  
-      { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }   // [ cookie type &  cookie [1 day] duration by the miliiseconds ] 
+      {
+         httpOnly: true,     // [ cookie type ]
+         sameSite : 'None',  // [ solving the issue of the different [frontend] and [backend api]  ]
+         secure : true ,     // [ Turning the securing property to true to solve the 'https'  ]
+         //  this property does NOT need to be assinged when deleting/.clearing the cookies within the logout process ] 
+         maxAge: 24 * 60 * 60 * 1000   // [ cookie duration [1 day] duration by the miliiseconds :
+      }  
+        
     );
 
 

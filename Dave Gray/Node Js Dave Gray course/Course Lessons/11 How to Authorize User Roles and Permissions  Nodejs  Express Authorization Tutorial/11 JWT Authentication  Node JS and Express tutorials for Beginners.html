@@ -402,9 +402,9 @@
     <!-- About Section  -->
     <section class="about text-center wow bounceInLeft" data-wow-duration="2s" id="about">
         <div class="container">
-             <h2 class="h1" class="hidden-xs"> About Section =>  Adding the {JWT user authentication}  tool  to       <span><strong>  { protect [the built route]  & add {Roled based Authentication}  </strong> </span> </h2>
+             <h2 class="h1" class="hidden-xs"> About Section =>  Adding the {JWT authentication}  tool  to       <span><strong>  { protect [the built route]     </strong> </span> </h2>
             <h3 class="visible-xs"> About Section => This lesson about 
-              <strong> Building a [protected Routes + Roled bases authentication]     </strong>  
+              <strong> Building a [secured Authenticatoin] & [protected Routes]      </strong>  
               <span>  with using  {JWT Authenticatoin} tool  within  {node.js} server and (express.js) Framework      </span> 
             </h3>
             <!-- <p class="lead"> This lesson is commands to handle Stashing-UnStashing] Files and then Pushing to Remote Repo Account by <span> <strong>  {CMD} </strong> </span> </p> -->
@@ -521,161 +521,171 @@
             </header>
 
             <article>
-                <p> &gt; Main Subjects in this lesson will be about Adding   {JWT} Tool   to the previous (authorization) of the  [user & password authentication]  with using Express   ( framework  ) of [Node] server with    =>   as following : </p>
+              <p> &gt; Main Subjects in this lesson will be about Adding   {JWT} Tool   to the previous (authorization) of the  [user & password authentication]  with using Express   ( framework  ) of [Node] server with    =>   as following : </p>
 
-                <h2> Main Subjects : </h2>
+              <h2> Main Subjects : </h2>
 
-                <ol type="A">
-                    <li> Main points of this lesson , practical application of adding the {JwT } building [user password Authentication and (authorization)]  into  express api route within  the currrent project node server by  : <br>
-                        <ol>
-                            <li> A]  The main concept of  {JWT} Routes protection strategy ,  contains  , Importance ,  requirments and properties  </li>
-                            
-                            <li> B] Main Practical steps of setting up and bulding the {JWT}  tool of protection of the project's routes + Roled bases authenticatoin  within the [MVC] , by applying the next steps : <br>
-                              <ol>
-                                <li>  1] Project file structure modifications , by  adding / modify next files :  <br>
-                                    <ul>  
-                                      <li> a- Inside the [controllers]  folder  : <br> 
-                                        <ol> 
-                                          <li> {authControllers.js}          => modify file  </li> 
-                                          <li> {refreshTokenControllers.js}  => new file </li> 
-                                          <li> {logoutControllers.js}        => new file </li> 
-                                         </ol>
-                                      </li>    <br>
-                                      <br>
-                                      <li> b- Inside the [routes]  folder  : <br> 
-                                        <ol> 
-                                          <li> [api/ {employess.js} ]  => modify file   </li> 
-                                          <li> {refresh.js}            =>  new file   </li> 
-                                          <li> {logout.js}             =>  new file   </li> 
+              <ol type="A">
+                  <li> Main points of this lesson , practical application of adding the {JwT } building [user password Authentication and (authorization)]  into  express api route within  the currrent project node server by  : <br>
+                      <ol>
+                          <li> A]  The main concept of  {JWT} Routes protection strategy ,  contains  , Importance ,  requirments and properties  </li>
+                          
+                          <li> B] Main Practical steps of setting up and bulding the {JWT}  tool of protection of the project's routes + Roled bases authenticatoin  within the [MVC] , by applying the next steps : <br>
+                            <ol>
+                              <li>  1] Project file structure modifications , by  adding / modify next files :  <br>
+                                  <ul>  
+                                    <li> a- Inside the [controllers]  folder  : <br> 
+                                      <ol> 
+                                        <li> {authControllers.js}          => modify file  </li> 
+                                        <li> {refreshTokenControllers.js}  => new file </li> 
+                                        <li> {logoutControllers.js}        => new file </li> 
                                         </ol>
-                                      </li>   <br> 
+                                    </li>    <br>
+                                    <br>
+                                    <li> b- Inside the [routes]  folder  : <br> 
+                                      <ol> 
+                                        <li> [api/ {employess.js} ]  => modify file   </li> 
+                                        <li> {refresh.js}            =>  new file   </li> 
+                                        <li> {logout.js}             =>  new file   </li> 
+                                      </ol>
+                                    </li>   <br> 
+                                  
+                                    <li> c- Inside the [middleware]  folder  : <br> 
+                                      <ol> 
+                                        <li> {verifyJWT.js}            =>  new file   </li> 
+                                        <li> {credentials.js}          =>  new file   </li> 
+                                      </ol>
+                                    </li>   <br> 
                                     
-                                      <li> c- Inside the [middleware]  folder  : <br> 
-                                        <ol> 
-                                          <li> {verifyJWT.js}            =>  new file   </li> 
-                                          <li> {credentials.js}          =>  new file   </li> 
-                                        </ol>
-                                      </li>   <br> 
-                                      
-                                      <li>  d- Inside the  main root : <br>         
-                                        <ol> 
-                                          <li> {server.js}   => several modifications in file     </li> 
-                                          <li> {.env}        => new file      </li> 
-                                          <li> {.gitignore}  => modify file      </li> 
-                                        </ol>
-                                      </li>
-
-                                      <li>   e- inside the [config]  folder :  <br> 
-                                          <p>  {allowedOrigns.js }  =>   new file     </p>
-                                          <p>  {corsOptions.js }    =>   modify file     </p>
-                                      </li>
-                                    </ul> 
-                                </li>  
-                                
-                                <li>  2] Authentication Process methodology modifications  : <br> 
-                                  <ul> 
-                                    <li> a- {authControllers.js} [authenticaton process handling controling] file  : Modify the main Authtentication process methodology [by adding the main  {jwt}  methodology tool], including the next :  <br>
-                                        <ol>   
-                                          <li> define the main jwt (2) types of  [accces token] & [refresh token] </li> 
-                                          <li> saving the authorized  jwt (2) types of [accces token] & [refresh token] into the each type suitable location : <br>
-                                            <ul>
-                                                <li> 1- [access token]  =>   json response [accessible for  frontend]         </li>   
-                                                <li> 2- [refresh token]  =>   httpOnly cookie [Un-accessible for frontend]         </li>   
-                                            </ul>  
-                                          </li> 
-                                        </ol>  
-                                    </li>
-
-                                    <li> b- {verifyJWT.js} [Authentication Verification middleware] file : Create handling [authentication verification] , including : <br>   
-                                      <p> Event Middleware function definition , contains the next steps :  <br>  
-                                        <ol>   
-                                          <li>  Define the [Requested authorization Haeder]  variable </li>
-                                          <li>  Define the [Token] as modified splittted value from the recieved [authHeader]  </li>
-                                          <li>  Define the [JWT]  Verifying configuration object + assign its  parameters  </li>
-                                        </ol>                                       
-                                      </p>
-                                    </li>
-
-                                    <li> c- {server.js} the main server initial file : including the following modifications :  <br>
-                                      <ol>  
-                                          <li> Importing  defined  middleware  of the  [ Authentication  verfication] => [to be used in protecting routes ]        </li>
-                                          <li> Protecting the desired  routes using the general of define the route of [jwt verification  Middleware] before the desired routes [/employees] </li>
+                                    <li>  d- Inside the  main root : <br>         
+                                      <ol> 
+                                        <li> {server.js}   => several modifications in file     </li> 
+                                        <li> {.env}        => new file      </li> 
+                                        <li> {.gitignore}  => modify file      </li> 
                                       </ol>
                                     </li>
-                                  </ul>
-                                </li>  
-                                
-                                <li> 3] [Refresh Token handling] process , including the  next procedures  :  <br>                                
-                                  <ul> 
-                                    <li>  a- {controllers /refreshTokenControllers.js} the [Refresh Token handling function] file =>  new file including the following  :  <br>  
-                                      <p>  This file will contains  defining [RefreshToken Handling] function , that will  include the  next steps :  
-                                        <ol>  
-                                          <li> 1- Checking  availability of the requested  [Cookies] & [jwt]   </li> 
-                                          <li> 2- Define  a [Refresh Token]  as a value extracted from the returned requested  [jwt of cookies]   </li> 
-                                          <li> 3- Checking if the requested [Refresh Token] is equal to the exsited value of the in the database {usersDB}   </li> 
-                                          <li> 4- Handling the Error of equlity of the requested [Refresh Token]  and the value in the database {usersDB}      </li> 
-                                          <li> 5- Starting  [jwt verfying]  process including the next  procedures  : <br>  
-                                            <p>  Verifying  the [jwt] is being implemented through assign  (3) parameters , as following  : <br>     
-                                              <ul> 
-                                                <li> a) Assign the name of jwt   ->  [ refreshToken ]    </li>
-                                                <li> b) Assign the value of the jwt -> [ process.env.REFRESH_TOKEN_SECRET ]  </li>
-                                                <li> c) Assign the  Jwt verificatoin  Callback function's  parameters handling  , as following :   <br> 
-                                                  <ol>
-                                                      <li> 1) Handling the (err) parameter :   <br>  
-                                                        <p> Returning a Forbiden Error {403}in case of returend (err) parmater OR  or if uneaquality  beween the existed username in the DB & Decoded username </p> 
-                                                      </li> <br>
 
-                                                      <li> 2) Handling the (decoded) parameter  :  <br>      
-                                                        <p>  used within the Creating a [Access Token] - after the verfying  [refresh token]  , by using the     </p>
-                                                      </li>  <br>
-                                                      
-                                                      <li> 3) Sending the upper created [accessToken] jwt to the json response  </li> 
-                                                  </ol>                                                
-                                                </li>    
-                                              </ul>
-                                            </p> 
-                                          </li>     
-                                        </ol>  
-                                      </p>
-                                    </li> <br> 
-                                    
-                                    <li>  b- {routes/api/refresh.js} the [refresh Token route file] , including next procedures  :  <br> 
-                                      <p> Define a route of [Get] Crud operation  => of getting obtained [Refresh Token] process according to the defined refresh token handling function  </p> 
+                                    <li>   e- inside the [config]  folder :  <br> 
+                                        <p>  {allowedOrigns.js }  =>   new file     </p>
+                                        <p>  {corsOptions.js }    =>   modify file     </p>
                                     </li>
-  
-                                  </ul>
-                                  
-                                </li>
-                                
-                                <li> 4 ] [Logoff] || [Logout] process , including  the next procedures :  <br>
-                                  <p>  This process is about deleting created existed [Refresh Token] that has been created within the previous step  of the  {Refresh Token handling} and prevent it for readcihg it's last perioed  , according to the nwxt (2) steps : <br>   
-                                    <ol>      
-                                      <li> Create the main method of the [logout process]  in ->  [logoutController.js] file         </li>  
-                                      <li> Apply the defined  logout process methood wthi the a new route {logout.js} file        </li>  
-                                      <li> assign the defined route of the [logout]  in the {server.js }  file before hte protector of route of the {verifyjwt} </li>  
-                                    </ol>  
-                                  </p> 
-                                </li> 
+                                  </ul> 
+                              </li>  
+                              
+                              <li>  2] Authentication Process methodology modifications  : <br> 
+                                <ul> 
+                                  <li> a- {authControllers.js} [authenticaton process handling controling] file  : Modify the main Authtentication process methodology [by adding the main  {jwt}  methodology tool], including the next :  <br>
+                                      <ol>   
+                                        <li> define the main jwt (2) types of  [accces token] & [refresh token] </li> 
+                                        <li> saving the authorized  jwt (2) types of [accces token] & [refresh token] into the each type suitable location : <br>
+                                          <ul>
+                                              <li> 1- [access token]  =>   json response [accessible for  frontend]         </li>   
+                                              <li> 2- [refresh token]  =>  httpOnly cookie [Un-accessible for frontend]         </li>   
+                                          </ul>  
+                                        </li> 
+                                      </ol>  
+                                  </li>
 
+                                  <li> b- {verifyJWT.js} [Authentication Verification middleware] file : Create handling [authentication verification] , including : <br>   
+                                    <p> Event Middleware function definition , contains the next steps :  <br>  
+                                      <ol>   
+                                        <li>  Define the [Requested authorization Haeder]  variable </li>
+                                        <li>  Define the [Token] as modified splittted value from the recieved [authHeader]  </li>
+                                        <li>  Define the [JWT]  Verifying configuration object + assign its  parameters  </li>
+                                      </ol>                                       
+                                    </p>
+                                  </li>
 
-                                <li> 5]   Fixing [cors credentials] issue of the server ,  by using the next procedurs   :    <br>
-                                  <p> This issue might be pop-up within the server backend in case of using {fetch}   in the frontend  , by theenxt steps     :  
-                                    <ol> 
-                                      <li>  Define  the defiend array of  [allowedOrgins]  in a sepertatd file {allowedOrigins.js } inside the [config] folder       </li>
-                                      <li>  Define the a new method of the middeleware of [credentials() ]  in a sepertatd file {crednetials.js } inside the [middleware] folder => to be esed in the server fiel  </li>
-                                      <li>  Import and  use thne defind method of the middeleware of [credentials.js]  file   [before caling [corsdOption] - considerin the on flow node mechanism - </li>
+                                  <li> c- {server.js} the main server initial file : including the following modifications :  <br>
+                                    <ol>  
+                                        <li> Importing  defined  middleware  of the  [ Authentication  verfication] => [to be used in protecting routes ]        </li>
+                                        <li> Protecting the desired  routes using the general of define the route of [jwt verification  Middleware] before the desired routes [/employees] </li>
                                     </ol>
-                                  </p> 
+                                  </li>
+                                </ul>
+                              </li>  
+                              
+                              <li> 3] [Refresh Token handling] process , including the  next procedures  :  <br>                                
+                                <ul> 
+                                  <li>  a- {controllers /refreshTokenControllers.js} the [Refresh Token handling function] file =>  new file including the following  :  <br>  
+                                    <p>  This file will contains  defining [RefreshToken Handling] function , that will  include the  next steps :  
+                                      <ol>  
+                                        <li> 1- Checking  availability of the requested  [Cookies] & [jwt]   </li> 
+                                        <li> 2- Define  a [Refresh Token]  as a value extracted from the returned requested  [jwt of cookies]   </li> 
+                                        <li> 3- Checking if the requested [Refresh Token] is equal to the exsited value of the in the database {usersDB}   </li> 
+                                        <li> 4- Handling the Error of equlity of the requested [Refresh Token]  and the value in the database {usersDB}      </li> 
+                                        <li> 5- Starting  [jwt verfying]  process including the next  procedures  : <br>  
+                                          <p>  Verifying  the [jwt] is being implemented through assign  (3) parameters , as following  : <br>     
+                                            <ul> 
+                                              <li> a) Assign the name of jwt   ->  [ refreshToken ]    </li>
+                                              <li> b) Assign the value of the jwt -> [ process.env.REFRESH_TOKEN_SECRET ]  </li>
+                                              <li> c) Assign the  Jwt verificatoin  Callback function's  parameters handling  , as following :   <br> 
+                                                <ol>
+                                                    <li> 1) Handling the (err) parameter :   <br>  
+                                                      <p> Returning a Forbiden Error {403}in case of returend (err) parmater OR  or if uneaquality  beween the existed username in the DB & Decoded username </p> 
+                                                    </li> <br>
 
-                                </li>
+                                                    <li> 2) Handling the (decoded) parameter  :  <br>      
+                                                      <p>  used within the Creating a [Access Token] - after the verfying  [refresh token]  , by using the     </p>
+                                                    </li>  <br>
+                                                    
+                                                    <li> 3) Sending the upper created [accessToken] jwt to the json response  </li> 
+                                                </ol>                                                
+                                              </li>    
+                                            </ul>
+                                          </p> 
+                                        </li>     
+                                      </ol>  
+                                    </p>
+                                  </li> <br> 
+                                  
+                                  <li>  b- {routes/api/refresh.js} the [refresh Token route file] , including next procedures  :  <br> 
+                                    <p> Define a route of [Get] Crud operation  => of getting obtained [Refresh Token] process according to the defined refresh token handling function  </p> 
+                                  </li>
 
-                              </ol>                                                             
-                            </li>
+                                </ul>
+                                
+                              </li>
+                              
+                              <li> 4 ] [Logoff] || [Logout] process , including  the next procedures :  <br>
+                                <p>  This process is about deleting created existed [Refresh Token] that has been created within the previous step  of the  {Refresh Token handling} and prevent it for readcihg it's last perioed  , according to the nwxt (2) steps : <br>   
+                                  <ol>      
+                                    <li> Create the main method of the [logout process]  in ->  [logoutController.js] file         </li>  
+                                    <li> Apply the defined  logout process methood wthi the a new route {logout.js} file        </li>  
+                                    <li> assign the defined route of the [logout]  in the {server.js }  file before hte protector of route of the {verifyjwt} </li>  
+                                  </ol>  
+                                </p> 
+                              </li> 
 
-                            <li> C] Notes about building [JWT]  protection tool to our defined routes   within in the [MVC]  </li>
-                        </ol>
-                     </li> <br> <br>
-                </ol>
+
+                              <li> 5] Fixing [cors credentials] issue of the server ,  by using the next procedurs  :   <br>
+                                <p> This issue might be pop-up within the server backend incase of using {fetch()} in the frontend , by the next steps : <br>  
+                                  <ol> 
+                                    <li>  {config/allowedOrigins.js}  => Create the defiend array of [allowedOrgins] in a seperated file {allowedOrigins.js } inside the [config] folder [to bve used from inside several files ] </li>
+                                    <li>  {middelware/credentials.js} => Define a new method of the middeleware of [credentials() ]  in a sepertatd file {crednetials.js } inside the [middleware] folder => to handle the issue of hte [access-control-allow-credentials]  to be used in the server intial  file  </li>
+                                    <li>  {server.js} =>  Import and use the defined method of {credentlials()} of the middeleware of [credentials.js]  file [before caling [corsdOption] -  [to solve the cors issue]  considering the onflow node reading mechanism - </li>
+                                  </ol>
+                                </p> 
+                              </li>
+                              
+                              
+                              <li> 6] Fixing [ sameSite: of NON  the same frntend and backend   host url  name ] issue of the server ,  by using the next procedurs  :   <br>
+                                <p> This issue might be pop-up within the server backend incase of using {fetch()} in the frontend , by the next steps : <br>  
+                                  <ol> 
+                                    <li>  {config/allowedOrigins.js}  => Create the defiend array of [allowedOrgins] in a seperated file {allowedOrigins.js } inside the [config] folder [to bve used from inside several files ] </li>
+                                    <li>  {middelware/credentials.js} => Define a new method of the middeleware of [credentials() ]  in a sepertatd file {crednetials.js } inside the [middleware] folder => to handle the issue of hte [access-control-allow-credentials]  to be used in the server intial  file  </li>
+                                    <li>  {server.js} =>  Import and use the defined method of {credentlials()} of the middeleware of [credentials.js]  file [before caling [corsdOption] -  [to solve the cors issue]  considering the onflow node reading mechanism - </li>
+                                  </ol>
+                                </p> 
+                              </li>
+
+                            </ol>                                                             
+                          </li>
+
+                          <li> C] Notes about building [JWT]  protection tool to our defined routes   within in the [MVC]  </li>
+                      </ol>
+                    </li> <br> <br>
+              </ol>
             </article>
         </Section>
 
@@ -687,65 +697,65 @@
             </header>
  
           <h1> A] The main concept of {JWT} Routes protection strategy , [types of JWT contains] , Importance , [main procedures and steps of JWT working ] , requirments and properties : </h1> <br>
-              <ol>    
-                <li> 1] main concept : <br>
-                  <p> It is strategy of protecting the defined project' Routes  </p>    
-                  <p> It is a breviation of the [JSON web token] , which is can  be considered as form of  [user identification]  that issued after initial user identfication takes place   </p> 
-                  <p> After the user is completed the login processs and being successfully Authenticated   ->  the [RestApi] is sending (2) types of Client applications  : [Access Token] & [Fresh  Token] </p> 
-                </li>
-                
+            <ol>    
+              <li> 1] main concept : <br>
+                <p> It is strategy of protecting the defined project' Routes  </p>    
+                <p> It is a breviation of the [JSON web token] , which is can  be considered as form of  [user identification]  that issued after initial user identfication takes place   </p> 
+                <p> After the user is completed the login processs and being successfully Authenticated   ->  the [RestApi] is sending (2) types of Client applications  : [Access Token] & [Fresh  Token] </p> 
+              </li>
+              
 
-                <li> 2] {JWT}  strategy  types of JWT contains    :   <br>  
-                  <p> [JWT] Strategy contains on (2) types of  protection  tools , as  following   :   <br>
-                      <ul> 
-                        <li> 1- [Access Token ] tool   => : <br>
-                          <ol> 
-                            <li> It gives a [short duration ]  after is being expired [5 min => 50 min]  </li>
-                            <li> It being [sent & recieved]  as a [json Token] format , from and to the {RestApi} => to avoid the previous types of the hazards ]  </li>
-                            <li> It is recommended  for the frontend client applications => to only store the [Acesss Token] in the memory -> to be lost  when the browser or the web app is closed  </li>
-                            <li> It is NOT recommended for the frontend client applications => to store the [Acesss Token] in the [localhost memory] or  [cookies]  -> to prevent it  from being obtained by hackers using  [JS]   </li>
-                            <li> we can use the current application statesot store it </li> 
-                          </ol>  
-                        </li>  <br> <br> 
-     
-                        <li> 2- [Fresh Token] tool =>  : <br> 
-                          <ol> 
-                            <li> It gives a [longer duration]  after is being expired [  7 hrs =>  1 day  => several days  ]  </li>
-                            <li> It is also being [sent & recieved]  as a [json Token] format , from and to the {RestApi} => [to avoid the previous types of the hazards ]  </li> 
-                            <li> It is being provided as only by [http cookies] format , which is NOT accessibe by the [JS]  </li>
-                            <li> This type of token need to expiary in some point, which need to login again   </li>
-                            <li> It should NOT have the ablility to issue another new Fresh token , to prevent different accessiblity to be abtained by a wrong hand </li>
-                          </ol>  
-                        </li>
-                      </ul>  
-                  </p>                 
-                </li> 
-                
-                
-                <li> 3] Importance of using the  {JWT} as a protection  strategy  :    <br>  
-                  <p> It is being used to provide extra protection  layer to the porject's  routes  , after the essential protection of default of authectcaion procedures       </p>
-                    <p> It is being adding some protection against the (2) types of Hazards     :   <br>  
-                      <ul> 
-                        <li>  {XSS}  =>  the cross side scripting   </li>
-                        <li>  {CSRF} =>  the cross side Request Forgery  </li>
-                      </ul>                    
-                    </p>                
-                </li>
- 
-                <li> 4] Overall [Access Token] & [Refresh Token] main  mechanism steps  => <br>  
-                   <ol> 
-                       <li> Issuing  the [Access Token] [Refresh Token] during [User Authorization] process   </li>      
-                       <li> Access the  [RestApi protected Routes] by [user Application] using the given [Access Token] until it expires  </li>      
-                       <li> Our [Api] will verifty the [Access Token] by using the [Middelwrae] every time  the [Access Token] will be used to make a request </li>      
-                       <li> When the [Access Token]  does expired -> the [user Application] will need to send  the [RefFresh Token] to our [Api Refresh Endpoint] to get a new [Access Token]  </li>      
-                       <li> The [Refresh Token] which had issued during the  Authentication => will be verifed by the [RestApi Refresh Endpoint] and  cross the refernces of the [Refresh Token] to the database </li>      
-                       <li> Storing the  [Refresh Token] in the  database => will allow it to be terminated  if the user decieded to logout  </li>      
-                       <li> The [Refresh Token] need to be allowed to be expired => so different access will NOT be gained </li>        
-                   </ol>
-               </li>
-               
-               
-                <li> 5] Requirments of {JWT} Authentication  :  <br>  
+              <li> 2] {JWT}  strategy  types of JWT contains    :   <br>  
+                <p> [JWT] Strategy contains on (2) types of  protection  tools , as  following   :   <br>
+                    <ul> 
+                      <li> 1- [Access Token ] tool   => : <br>
+                        <ol> 
+                          <li> It gives a [short duration ]  after is being expired [5 min => 50 min]  </li>
+                          <li> It being [sent & recieved]  as a [json Token] format , from and to the {RestApi} => to avoid the previous types of the hazards ]  </li>
+                          <li> It is recommended  for the frontend client applications => to only store the [Acesss Token] in the memory -> to be lost  when the browser or the web app is closed  </li>
+                          <li> It is NOT recommended for the frontend client applications => to store the [Acesss Token] in the [localhost memory] or  [cookies]  -> to prevent it  from being obtained by hackers using  [JS]   </li>
+                          <li> we can use the current application statesot store it </li> 
+                        </ol>  
+                      </li>  <br> <br> 
+    
+                      <li> 2- [Refresh Token] tool =>  : <br> 
+                        <ol> 
+                          <li> It gives a [longer duration]  after is being expired [  7 hrs =>  1 day  => several days  ]  </li>
+                          <li> It is also being [sent & recieved]  as a [json Token] format , from and to the {RestApi} => [to avoid the previous types of the hazards ]  </li> 
+                          <li> It is being provided as only by [http cookies] format , which is NOT accessibe by the [JS]  </li>
+                          <li> This type of token need to expiary in some point, which need to login again   </li>
+                          <li> It should NOT have the ablility to issue another new Fresh token , to prevent different accessiblity to be abtained by a wrong hand </li>
+                        </ol>  
+                      </li>
+                    </ul>  
+                </p>                 
+              </li> 
+              
+              
+              <li> 3] Importance of using the  {JWT} as a protection  strategy  :    <br>  
+                <p> It is being used to provide extra protection  layer to the porject's  routes  , after the essential protection of default of authectcaion procedures       </p>
+                  <p> It is being adding some protection against the (2) types of Hazards     :   <br>  
+                    <ul> 
+                      <li>  {XSS}  =>  the cross side scripting   </li>
+                      <li>  {CSRF} =>  the cross side Request Forgery  </li>
+                    </ul>                    
+                  </p>                
+              </li>
+
+              <li> 4] Overall [Access Token] & [Refresh Token] main  mechanism steps  => <br>  
+                  <ol> 
+                      <li> Issuing  the [Access Token] [Refresh Token] during [User Authorization] process   </li>      
+                      <li> Access the  [RestApi protected Routes] by [user Application] using the given [Access Token] until it expires  </li>      
+                      <li> Our [Api] will verifty the [Access Token] by using the [Middelwrae] every time  the [Access Token] will be used to make a request </li>      
+                      <li> When the [Access Token]  does expired -> the [user Application] will need to send  the [RefFresh Token] to our [Api Refresh Endpoint] to get a new [Access Token]  </li>      
+                      <li> The [Refresh Token] which had issued during the  Authentication => will be verifed by the [RestApi Refresh Endpoint] and  cross the refernces of the [Refresh Token] to the database </li>      
+                      <li> Storing the  [Refresh Token] in the  database => will allow it to be terminated  if the user decieded to logout  </li>      
+                      <li> The [Refresh Token] need to be allowed to be expired => so different access will NOT be gained </li>        
+                  </ol>
+              </li>
+              
+              
+              <li> 5] Requirments of {JWT} Authentication  :  <br>  
                   <ul> 
                       <li> a] Adding the next packages libraries : <br> 
                         <p> 1-  Install the source code of the previous project's libraries , by using the next code : <br>
@@ -976,56 +986,71 @@
                             <p> After we defined and verify our [JWT : {Access Token} & {Refresh Token } in the verify middleware file] , now we will be able to use it to protect our routes [by using one of next (2) methods  ] : <br>  
                               <ol> 
                                 <li> a)  [Solo method ] within the api route's crud opts  definiton file controller file of auth {authControllers.js} , as following  : <br> 
-                                    <code>  
-                                      //  I] Importing section   : <br>   
-                                      <span class = one ></span>  // Impoprting the defined [jwt verifying Middleware] file : <br> 
-                                      <span class = one ></span>  const verifyJWT =  require('../../middleware/verifyJWT') ;  <br>   <br>  
-                                        
-                                      //  II] Define the main routes using the express router +   it's CRUD operations for each route   : <br>   
-                                      <span class = one ></span>  router.route('/')  <br> 
-                                        <span class = two ></span>  // get all elements operation [will be protected  using (verifyJWT)  -   according to  second method wihtn the main server file  -  ]  <br>  
-                                        <span class = two ></span>  .get(verifyJWT, employeesController.getAllEmployees) <br>    
-                                    </code>                                 
+                                  <code>  
+                                    //  I] Importing section   : <br>   
+                                    <span class = one ></span>  // Impoprting the defined [jwt verifying Middleware] file : <br> 
+                                    <span class = one ></span>  const verifyJWT =  require('../../middleware/verifyJWT') ;  <br>   <br>  
+                                      
+                                    //  II] Define the main routes using the express router +   it's CRUD operations for each route   : <br>   
+                                    <span class = one ></span>  router.route('/')  <br> 
+                                      <span class = two ></span>  // get all elements operation [will be protected  using (verifyJWT)  -   according to  second method wihtn the main server file  -  ]  <br>  
+                                      <span class = two ></span>  .get(verifyJWT, employeesController.getAllEmployees) <br>    
+                                  </code>                                 
                                 </li>   <br>
-                                
-                                
+                                                        
                                 <li> b)  [public method ] within the  main server file befire the defined route to be protected  {server.js}  , as following  : <br> 
-                                    <code>  
-                                      //  I] Importing section   : <br>   
-                                      <span class = one ></span>  // Impoprting the defined [jwt verifying Middleware] file : <br> 
-                                      <span class = one ></span>  const verifyJWT =  require('../../middleware/verifyJWT') ;  <br>   <br>  
-                                        
-                                      //  II]  Calling the imoprted {jwtverfity} middleware before the defined route of {'/employees'}     : <br>   
-                                      <span class = one ></span>   app.use(jwtverify);  <br> 
-                                      <span class = one ></span>   app.use('/employees' , require('./routes/api/employees') ) ;        <br>  
-                                    </code>                                 
+                                  <code>  
+                                    //  I] Importing section   : <br>   
+                                    <span class = one ></span>  // Impoprting the defined [jwt verifying Middleware] file : <br> 
+                                    <span class = one ></span>  const verifyJWT =  require('../../middleware/verifyJWT') ;  <br>   <br>  
+                                      
+                                    //  II]  Calling the imoprted {jwtverfity} middleware before the defined route of {'/employees'}     : <br>   
+                                    <span class = one ></span>   app.use(jwtverify);  <br> 
+                                    <span class = one ></span>   app.use('/employees' , require('./routes/api/employees') ) ;        <br>  
+                                  </code>                                 
                                 </li>
                               </ol>
-
                             </p> 
                           </li>
 
                           <li> 7- [Log-off] process :  <br>
-                            <p>  After login successful process  with full authenticated with jwt procteded , we need to persue the [login off]  || [login out] process , by implmenting the  as following : <br>
+                            <p>  After login successful process  with full authenticated with jwt proctected , we need to persue the [login off]  || [login out] process , by implmenting the  as following : <br>
                               <ol> 
                                   <li> Creating a new file within the [contrllers] folder  of the controling handling method of  [logout process] => {logoutController.js} </li>
                                   <li> Creating a new route file wihtin th4e [routes] folder for the [logout] process that using the defined {logoutController.js}   </li>
                                   <li> Adding the defined reoute inside the main server intial file as a non protected route (before hte protector  route of the {verifyJWT}  </li>
                               </ol>
-                            </p>
-                          
+                            </p>      
                           </li>
-                        
-                        
-                          <li> </li>
+                      
+                          <li>  8- Solving the {cors} issue to be compatable with using the {fetch( )} method within the client side :  <br> 
+                            <p> To solve the [cors] of server response  & achieve the compatablity with the  using {fetch}  method of the client-side   , we ned to appluy 0hte next stpes  :   <br>  
+                              <ol> 
+                                <li>  Define array of [allowedOrigins]  in a seperated file {config/allowedOrigins.js}      </li>
+                                <li>  Define a new custom middleware method of handling the response origins and it's credentials  in seperated file  {middleware/credentials.js  }  </li>
+                                <li>  Assing and use the defined  {credentials} before the assigned   [ thrid-party of cors]  </li>
+                              </ol>
+                            </p>  
+                          </li>
                           
-                          <!--  #[40:00] -->
-
+ 
                         </ol>  
                       </li>
     
                   </ul> 
-              </li> 
+              </li>
+
+
+              <li>  6]  Sovling  some  isues  in the server    :   <br> 
+                <ol> 
+                  
+                  <li> a- [ {cors issue} of using the  [Credentials Custom Middleware] events     </li>  <br><br> 
+                  
+                  
+                  <li> b- [ Conflict between the frontend & backend hostname url  ] using some modifications in the [cookies Creating -> inside {authController.js}   ] and   [cookies  Clearing ->  {logoutControllers.js }   ]      </li>  <br><br>     
+                </ol>
+              </li>
+              
             </ol>   
            
           <!--------------------------------------------------------  -->
@@ -1565,112 +1590,114 @@
                     <li> b- inside  main root =>   including the next files and folders  :  <br>      
                       <ol>   
                         <li> [Files] inside the main root :   <br>
-                            <ul>  
-                              <li> 1-  {server.js} => <br> 
-                                <p> The main file to be run as default [as set in  package.json ] </p>
-                                <p> This file will include all Server configurations methods and procedures & steps   </p>
-                                <p> This file will include also importing and using of hte defeind {logEvent} methods and procedures practical steps   </p>
-                              </li>  <br>   
-                                
-                              <li> 2-  {package.json} : the manifest of application and libraries  </li>
+                          <ul>  
+                            <li> 1-  {server.js} => <br> 
+                              <p> The main file to be run as default [as set in  package.json ] </p>
+                              <p> This file will include all Server configurations methods and procedures & steps   </p>
+                              <p> This file will include also importing and using of hte defeind {logEvent} methods and procedures practical steps   </p>
+                            </li>  <br>   
                               
-                              <li> 3-  {.gitigonre} :  exectutive file include all ignored files and folders  </li>
-                            </ul> 
+                            <li> 2-  {package.json} : the manifest of application and libraries  </li>
+                            
+                            <li> 3-  {.gitignore} :  exectutive file include all ignored files and folders  </li>
+                          </ul> 
                         </li>  <br>  <br>
 
                         
                         <li>  [Folders] inside the main root   : <br>
-                            <ul> 
-                                <li> 1- [views]  => the main server folder that will include all essential server files , as following  : <br> 
-                                  <ol> 
-                                    <li>  [subdir]  :   another  sub directory inside the [views], that include another inner {index.html} </li>
-                                    <li>  {index.html}  : the main home html  page       </li>
-                                    <li>  {new-page.html}  : a testitng html  page used to redirecting into it   by requestng a unexisted {old-page.html} </li>
-                                    <li>  {404.html}  : the 404 Error html page       </li>
-                                  </ol>
-                                </li>   <br>   
-                                
-                                <li> 2- [logs]  => the folder to include the log files that will by  created by Node server scripting , such as :    <br>
-                                  <ul>
-                                    <li>  {eventLog.txt} ->  to hold all written main default Logs records     </li>  
-                                    <li>  {reqLog.txt}   ->  to hold all written request Logs records  </li>  
-                                    <li>  {errLog.txt}   ->  to hold all written catched [erros Logs]  records  </li>  
-                                  </ul>
-                                </li> <br> 
-                                
-                                <li> 3- [model] instead of [data] => and change inner file of  [data.json] -> [employees.json  ] : <br>
-                                  <ul>
-                                    <li>  { employees.json}  ->  a json file of testing object of data of employees data in form of a json format  </li>  
-                                    <li>  { users.json}  ->  a json file of testing object of data of users  data in form of a json format  </li>  
-                                  </ul>
-                                </li>    <br>  
-                                  
-                                <li> 4- [middleware] : include the defined events files of the basuc methods and middelware methods     <br>
-                                  <ul>
-                                    <li>  { logEvents.js }     ->  include the main (2) Events methods of  : <br> 
-                                      <ol> 
-                                        <li>  { logEvents() } => Basic event method  </li>
-                                        <li>  { logger() }    => Custom Middleware event method </li>
-                                      </ol>                                                                              
-                                    </li>  <br> 
-
-                                    <li>  { errorHandler.js }  ->   include the main  custom middleware error method of the  [ errorHandler() ]    </li>  
-                                  </ul>
-                                </li>    <br>  
-                                  
-                                <li> 5- [public]  => this folder will hold all [public project server folders and files  ] such as :  <br>
-                                  <ul>
-                                      <li>  [css]  => this  folder will hold all [ CSS styling files] such as :  <br>
-                                        <ul>
-                                          <li>  {style.css}  ->  a  css styling testing file   </li>  
-                                        </ul>
-                                      </li>    <br>  
-                                        
-                                      <li>  [img]  => this folder will hold all [ images files] such as :  <br>
-                                        <ul>
-                                          <li>  {1.jpg}  ->  testing image to be used inside a application      </li>  
-                                        </ul>
-                                      </li>    <br>  
-                                      
-                                      <li> [text]  => this folder will hold all [ texual files] such as :  <br>
-                                        <ul>
-                                          <li>  {data.txt}  ->  testing  textual data  </li>  
-                                        </ul>
-                                      </li>    <br>  
-
-                                    </ul>
-                                </li>    <br>  
-                                
-                                <li> 6- [controllers]  => new folder that  will hold all defined contlllers metod of the our server hosts  , and include  following files :
-                                    <ul> 
-                                      <li>   {employeesController.js} :    will include some of controling CRUD routes  methods that awill be used in the server      </li>
-                                      <li>   {authController.js}      :    will include all functions and methods responsible for [Authentication process] , which will be imported and used inside the {routes/auth.js} route file </li>
-                                      <li>   {registerController.js}  :    will include all functions and methods responsible for [Registration process] , which will be imported  and useds inside the  {routes/regsiter.js} route file </li>
-                                    </ul>      
-                                </li>   <br>  
-                                
-                                <li> 7- [routes]  => new folder that will hold all defined routes and APIs logic files of the server , as following  : <br> 
-                                      <ol>
-                                        <li> [api] folder => include the [api] files => {employees.js} , which contain the following defintions   :   <br>    
-                                          <p> Express Routes definitions -> [defisned by the route  middlware method hanlders  </p>
-                                          <p> Each defined Express Route  include all  CRUD API operations : [get , post , put , delete]  </p>
-                                        </li>
-
-                                        <li> {root.js} file     => include the route defintion  of the main root route   </li>
-                                        <li> {auth.js} file     => Include the route defintion of the [Authentication ] route , by importing and using the deifined related functions of authentcication  from {authControllers.js} </li>
-                                        <li> {register.js} file => Include the route defintion of the [Registration] route , by  importing  and using the deifined related functions of regsitration from {regsiterControllers.js}    </li>
-                                    </ol>                                    
-                                </li> <br>  
-                                  
-                                <li> 8- [config]  => new folder that will hold   fiels for  more shorthand method  inside the  the  {server.js} file  , as following  : <br> 
-                                      <ol>
-                                        <li> {corsOptions.js} file => include defined methods used in the server file for more clean script     </li>
-                                    </ol>                                    
-                                </li> <br>  
+                          <ul> 
+                            <li> 1- [views]  => the main server folder that will include all essential server files , as following  : <br> 
+                              <ol> 
+                                <li>  [subdir]  :   another  sub directory inside the [views], that include another inner {index.html} </li>
+                                <li>  {index.html}  : the main home html  page       </li>
+                                <li>  {new-page.html}  : a testitng html  page used to redirecting into it   by requestng a unexisted {old-page.html} </li>
+                                <li>  {404.html}  : the 404 Error html page       </li>
+                              </ol>
+                            </li>   <br>   
+                            
+                            <li> 2- [logs]  => the folder to include the log files that will by  created by Node server scripting , such as :    <br>
+                              <ul>
+                                <li>  {eventLog.txt} ->  to hold all written main default Logs records     </li>  
+                                <li>  {reqLog.txt}   ->  to hold all written request Logs records  </li>  
+                                <li>  {errLog.txt}   ->  to hold all written catched [erros Logs]  records  </li>  
+                              </ul>
+                            </li> <br> 
+                            
+                            <li> 3- [model] instead of [data] => and change inner file of  [data.json] -> [employees.json  ] : <br>
+                              <ul>
+                                <li>  { employees.json}  ->  a json file of testing object of data of employees data in form of a json format  </li>  
+                                <li>  { users.json}  ->  a json file of testing object of data of users  data in form of a json format  </li>  
+                              </ul>
+                            </li>    <br>  
                               
-                                <li> 9- [node_modules]  => the folder will hold all installed core and custom [ npm libaries ]   </li>    <br>  
+                            <li> 4- [middleware] : include the defined events files of the basuc methods and middelware methods     <br>
+                              <ul>
+                                <li>  { logEvents.js }     ->  include the main (2) Events methods of  : <br> 
+                                  <ol> 
+                                    <li>  { logEvents() } => Basic event method  </li>
+                                    <li>  { logger() }    => Custom Middleware event method </li>
+                                  </ol>                                                                              
+                                </li>  <br> 
+
+                                <li>  { errorHandler.js }  ->   include the main  custom middleware error method of the  [ errorHandler() ]    </li>  
+                              </ul>
+                            </li>    <br>  
+                              
+                            <li> 5- [public]  => this folder will hold all [public project server folders and files  ] such as :  <br>
+                              <ul>
+                                  <li>  [css]  => this  folder will hold all [ CSS styling files] such as :  <br>
+                                    <ul>
+                                      <li>  {style.css}  ->  a  css styling testing file   </li>  
+                                    </ul>
+                                  </li>    <br>  
+                                    
+                                  <li>  [img]  => this folder will hold all [ images files] such as :  <br>
+                                    <ul>
+                                      <li>  {1.jpg}  ->  testing image to be used inside a application      </li>  
+                                    </ul>
+                                  </li>    <br>  
                                   
-                            </ul>
+                                  <li> [text]  => this folder will hold all [ texual files] such as :  <br>
+                                    <ul>
+                                      <li>  {data.txt}  ->  testing  textual data  </li>  
+                                    </ul>
+                                  </li>    <br>  
+
+                                </ul>
+                              </li>    <br>  
+                              
+                              <li> 6- [controllers]  => new folder that  will hold all defined contlllers metod of the our server hosts  , and include  following files :
+                                <ul> 
+                                  <li>   {employeesController.js} :    will include some of controling CRUD routes  methods that awill be used in the server      </li>
+                                  <li>   {authController.js}      :    will include all functions and methods responsible for [Authentication process] , which will be imported and used inside the {routes/auth.js} route file </li>
+                                  <li>   {registerController.js}  :    will include all functions and methods responsible for [Registration process] , which will be imported  and useds inside the  {routes/regsiter.js} route file </li>
+                                  <li>   {logoutController.js}    :    will include all functions and methods responsible for [ Logout process] , which will be imported and useds inside the  {routes/logout.js} route file </li>
+                                </ul>      
+                              </li>   <br>  
+                              
+                              <li> 7- [routes]  => new folder that will hold all defined routes and APIs logic files of the server , as following  : <br> 
+                                  <ol>
+                                    <li> [api] folder => include the [api] files => {employees.js} , which contain the following defintions   :   <br>    
+                                      <p> Express Routes definitions -> [defisned by the route  middlware method hanlders  </p>
+                                      <p> Each defined Express Route  include all  CRUD API operations : [get , post , put , delete]  </p>
+                                    </li>
+
+                                    <li> {root.js} file     => include the route defintion  of the main root route   </li>
+                                    <li> {auth.js} file     => Include the route defintion of the [Authentication ] route , by importing and using the defined related functions of authentcication  from {authControllers.js} </li>
+                                    <li> {register.js} file => Include the route defintion of the [Registration] route , by  importing  and using the defined related functions of regsitration from {regsiterControllers.js}    </li>
+                                    <li> {logout .js} file  => Include the route defintion of the [Logout] route , by  importing  and using the defined related functions  from {logoutControllers.js}    </li>
+                                </ol>                                    
+                              </li> <br>  
+                                
+                              <li> 8- [config]  => new folder that will hold   fiels for  more shorthand method  inside the  the  {server.js} file  , as following  : <br> 
+                                  <ol>
+                                    <li> {corsOptions.js} file => include defined methods used in the server file for more clean script     </li>
+                                </ol>                                    
+                              </li> <br>  
+                            
+                              <li> 9- [node_modules]  => the folder will hold all installed core and custom [ npm libaries ]   </li>    <br>  
+                                
+                          </ul>
                         </li>
                       </ol>
                     
@@ -1717,7 +1744,7 @@
                           </li>   <br><hr> <br>  <br>     
                           
                       
-                          <li>  B]  [Express Server configuration processes and procedures ] section    :   <br>
+                          <li>  B] [Express Server configuration  definitions ] section  :   <br>
                             <ul>  
                               <li> 1] Define the {port(s)} to be used for connecting with the [localhost] OR with other custom node  server {3500}  :   <br>
                                 <code>
@@ -1733,36 +1760,98 @@
                             </ul> 
                           </li>  <br><hr> <br>  <br>     
     
-                      
-                          <li> C] [Routes definition ] section :   <br> 
+
+                          <li> C] Assign the imported {Events Handlers methods} of different middlewares types [custom  +  third-party]  :  <br> 
+                            <ul> 
+                                <li> I] {Logger} logging events [Custom Middleware] : <br>  
+                                  <code>  
+                                      <span   class-=one  ></span>  app.use(logger);  <br>
+                                  </code>
+                                </li>  <br>  <br>
+                              
+                                <li> II] {credentials } of solving the cors issue  events [Custom Middleware] : <br>  
+                                    <code>  
+                                        <span   class-=one  ></span>  app.use(credentials);  <br>
+                                    </code>
+                                </li>    <br> <br>                                      
+                            
+                                <li> III] { cors(corsOptions) } of Define the  [third-party middleware] of method of [Cros origins resouerce sharing  ]  : <br>  
+                                    <code>  
+                                        <span   class-=one  ></span>  app.use( cors(corsOptions ));  <br>
+                                    </code>
+                                </li> 
+                                      
+                            </ul>
+                          </li>  <br><hr> <br>  <br>     
+                            
+
+                          <li> D] Assign the imported   [Built-in middleware methods]  :  <br> 
+                            <ul> 
+                                <li> I] Built-in middleware to  handle urlencoded from data  [ content-type : application/x-www-form-urlnccoded ] : : <br>  
+                                  <code>  
+                                      <span class-=one ></span>   app.use(express.urlencoded({ extended: false }));  <br>
+                                  </code>
+                                </li>  <br>  <br>
+                              
+ 
+                                <li> II] Built-in middleware of handling  [json data] :<br>  
+                                    <code>  
+                                        <span   class-=one  ></span>  app.use(express.json());  <br>
+                                    </code>
+                                </li>    <br> <br>                                      
+                            
+                                <li> III]  Define a middleware for the [cookies]  : <br>  
+                                    <code>  
+                                        <span   class-=one  ></span>  app.use( cors(corsOptions ));  <br>
+                                    </code>
+                                </li>   <br> <br> 
+
+                                <li> IV] Define a [Custom middleware] for the [cookies]  : <br>  
+                                    <code>  
+                                        <span  class-=one  ></span>  app.use(cookiesParser()) ;  <br>
+                                    </code>
+                                </li>    <br> <br> 
+
+
+                                <li> V] Define the method of reading files from  [public] folder's  to be accessible for this [main root route]  : <br>  
+                                    <code>  
+                                        <span  class-=one  ></span>   app.use( '/' , express.static(path.join(__dirname, '/public')));  <br>
+                                    </code>
+                                </li>  <br> <br>
+                                
+                            </ul>
+                          </li>  <br><hr> <br>  <br>     
+                            
+                                                        
+                          <li> E] [Routes definition ] section :   <br> 
                             <p> Calling main imported Routes's  related Defined crud opts +  handling return  -  (according to the express +  {mvc} )  => by Importing both : <br> 
                                 <code> 
                                     //  1- Assign [Default Route] of the {'/'} : Define main index/home route + handling return , by calling the  main source of definition 'routes/root'  file :  <br>    
-                                    <span  class="one "></span>    app.use('/' , require('./routes/root') ) ;   <br> <br>  
+                                    <span  class="one "></span>  app.use('/' , require('./routes/root') ) ;   <br> <br>  
 
                                     //  2- Assign [Default Route] of the {'/register'} : Define  sub route of the [registration]  of posting crud opt  of creating a new user , by calling the  main source of definition 'routes/register.js'  file :   <br>
-                                    <span  class="one "></span>   app.use('/register' , require('./routes/register') ) ;    <br><br>
+                                    <span  class="one "></span>  app.use('/register' , require('./routes/register') ) ;    <br><br>
                                     
                                     //  3- Assign [Default Route] of the {'/auth'} : Define  sub route of the [Authentication] of posting crud opt of access the logged in a user , by calling the  main source of definition 'routes/auth.js'  file :  <br>  
-                                    <span  class="one "></span>   app.use('/auth' , require('./routes/auth') ) ;    <br><br>
+                                    <span  class="one "></span>  app.use('/auth' , require('./routes/auth') ) ;    <br><br>
                                     
                                     //  4- Assign [Default Route] of the {'/refresh'} : Define  sub route of the [refresh]  of posting crud opt  of creating a new user , by calling the  main source of definition 'routes/register.js'  file :   <br>
-                                    <span  class="one "></span>   app.use('/refresh' , require('./routes/refresh') ) ;    <br><br>
+                                    <span  class="one "></span>  app.use('/refresh' , require('./routes/refresh') ) ;    <br><br>
                                     
                                     //  5- Assign [Default Route] of the {'/logout} : Define sub route of the [logout]  of posting crud opt  of creating a new user , by calling the main source of definition 'routes/logout.js'  file :   <br>
-                                    <span  class="one "></span>   app.use('/logout' , require('./routes/logout') ) ;    <br><br>
+                                    <span  class="one "></span>  app.use('/logout' , require('./routes/logout') ) ;    <br><br>
                                     
                                     //  6- calling the [protectoro middleware] of the {'/verifyJWT}   of the [middleware ] of posting crud opt of creating a new user , by calling the main source of definition 'middleware/verifyJWt.js'  file :   <br>
-                                    <span  class="one "></span>    app.use(verifyJWt)  <br><br>
+                                    <span  class="one "></span>  app.use(verifyJWt)  <br><br>
                                     
                                     //  7- Assign [Api Routes] of the {'/employees'} + routes's CRUD opts (by calling the  main source of definition 'routes/api/employees'  file  ) :  <br>  
-                                    <span  class="one "></span>    app.use('/employees' , require('./routes/api/employees') ) ;    <br><br>
+                                    <span  class="one "></span>  app.use('/employees' , require('./routes/api/employees') ) ;    <br><br>
                                 </code>
                             </p>
                           </li>    <br><hr> <br>  <br>     
     
 
-                          <li> D] Default handles methods :  <br>
+                          <li> F] Default handles methods :  <br>
                             <p>  Define the [route of non-defined requested route value (after all upper defined routes)] with using the [app.use()] of '*' and followed by any value => and display the inner 404 error page {404.html} incase of any No existed path is written  =>  <br>
                               // by using the {app.all()} that used  more for routing error due accepting all of http methods , , and better than the other express  methods  as following   :  
                               <ul>
@@ -1796,14 +1885,14 @@
                           </li>   <br> <hr> <br>  <br> 
 
 
-                          <li>  E] [Custom Middleware] type  / 2] Define [Custom middleware method of Error Event log handler] by express method of calling the defined and imported middleware method   : <br> 
+                          <li> G] [Custom Middleware] type  / 2] Define [Custom middleware method of Error Event log handler] by express method of calling the defined and imported middleware method   : <br> 
                              <code> 
                                 <span  class=one  ></span> app.use(errorHandler);  <br>
                               </code>
                           </li>  <br> <hr> <br>  <br>  
 
  
-                          <li> F] Launching the [Listen] process  of server [to be able to listen  its  request]  ->  [wiht using hte app instead of  the server ]:  <br>    
+                          <li>  H] Launching the [Listen] process  of server [to be able to listen  its  request]  ->  [wiht using the app instead of the server ]:  <br>    
                             <code> 
                                 <span  class="one "> </span>     app.listen(PORT , () => console.log(`Server running on port : ${PORT} `)  )   <br>
                             </code>
@@ -1821,7 +1910,7 @@
             </ol>                              
           <!-- ---------------------------------------------------------- -->
 
-          <h1>  C] Notes about  building [Authtinciacatoin] using {JWT} in  [express.js] Framework   :     </h1> 
+         <h1>  C] Notes about  building [Authtinciacation] using {JWT} in  [express.js] Framework   :     </h1> 
             <ul>                
                 
               <li> This lesson is implementation of the [authentication] and [registration]  processes using default  express node web server      </li> 
@@ -1842,7 +1931,7 @@
                    </p>                 
               </li>
 
-              <li> The differnce between the {res.status(code)} &  {res.sendStatus(code)}  :   <br>
+               <li> The differnce between the {res.status(code)} &  {res.sendStatus(code)}  :   <br>
                   <ol>    
                     <li>   {.status(code)}      =>  is changable method  => some extension is comming after it   , such as :    <br>
                       <code>    
@@ -1860,10 +1949,9 @@
                       </code>  
                     </li>
                   </ol>
-                </li>
-                <br>  <hr> <br>  
+              </li>   <br>  <hr> <br>  
                 
-                <li> to  implement  the  proper effect of  cors and defind  credential , it must be asdined before the cors witn9 inte server file , as next code : <br>
+                <li> to  implement the proper effect of  cors and defind  credential , it must be asdined before the cors witn9 inte server file , as next code : <br>
                   <code> 
                     <span  class=one></span>  // calling the deined and imopted file of the  [crednetials middleware]  :   <br> 
                     <span  class=one></span> app.use(credentials) ;       <br>   <br>                    
@@ -1871,25 +1959,57 @@
                     <span  class=one></span>  // calling the deined and imopted file of the  [cors third-party middleware] :  <br> 
                     <span  class=one></span> app.use( cors( corsOptions)) ;       <br> 
                   </code>  
-                <li>   
+                </li>   
+                    
+                <li> The differece between the [creating Cookie] an [clearing Cookie]   ,  as following   : <br>
+                  <ol> 
+                    <li> a- [creating Cookie] => {res.cookie('cookie Name' , cookie Method value ,  {cookie creating configurtion object -including all props-  } )} :    <br>
+                        <p> this method is being implemented within the JWT & RefreshToken securing procedure inside the  {authController.js} inside the {handleLogin} , as extracted method from the {res}     </p>
+                        <p> this method need for the full properties , as following :  <br>
+                          <code> 
+                            <span  class=one></span>  res.cookie(   <br> 
+                              <span  class=two></span>  'jwt',          // [the cookie name]    <br> 
+                              <span  class=two></span>   refreshToken,  // [cookie method  value ]      <br> 
+                                <span  class=three></span>   {   <br>  
+                                  <span  class=four ></span>   httpOnly: true,     // [ cookie type ]   <br>  
+                                  <span  class=four ></span>   sameSite : 'None',  // [ solving the issue of the different [frontend] and [backend api]  ]   <br>  
+                                  <span  class=four ></span>   secure : true ,     // [ Turning the securing property to true to solve the 'https'  ]   <br>  
+                                  <span  class=four ></span>   maxAge: 24 * 60 * 60 * 1000   // [ cookie duration [1 day] duration by the miliiseconds ,this property does NOT need to be assinged when deleting/clearing the cookies within the logout process ]  <br>  
+                                <span  class=three></span>  }    <br> 
+                                <span  class=two></span>   );    <br>  
+                              <span  class=one ></span>   );  <br>
+                          </code>  
+                        </p>                        
+                    </li>   <br>  <br> 
+                      
+                      
+                    <li> b- [clearing cookie ]  => {res.clearCookie( 'cookie Name' ,  {cookie  clearing  configurtion object - except both of ( maxAge , expiresIn )  -  } )}} :  <br>   
+                        <p> this method is being implemented within the [logout process] by  Deleting the defined cookie procedure , inside the {logoutController.js} file  in {handleLogout()}  method , as extracted method from the {res}  </p>
+                        <p> this method need for some of properties  [Except both of 'maxAge' , 'expiresIn'  , 'cookie method ' ] , as following :  <br>
+                          <code> 
+                            <span  class=one></span>  res.cookie(   <br> 
+                              <span  class=two></span>  'jwt',  // [the cookie name]    <br> 
+                                <span  class=three></span>   {   <br>  
+                                  <span  class=four ></span>   httpOnly: true,     // [ cookie type ]   <br>  
+                                  <span  class=four ></span>   sameSite : 'None',  // [ solving the issue of the different [frontend] and [backend api]  ]   <br>  
+                                  <span  class=four ></span>   secure : true ,     // [ Turning the securing property to true to solve the 'https'  ]   <br>  
+                                <span  class=three></span>   }    <br> 
+                              <span  class=two></span>   );    <br>  
+                            <span  class=one ></span>  );  <br>
+                          </code>  
+                        </p>        
+                    </li>
+                  </ol>                  
+                </li>   
 
-
-
-
-
-
-
-              <li> This lesson in this course of  the Node.js backend , but in real project we might need to link both the created  backend mehtodologies with forntend tools , such as the lgoout proecess ->  [we need to conect the backend proeces and the frontend  event of [button]   </li>
-               
-            </ul>
+              <li> This lesson in this course of  the Node.js backend , but in real project we might need to link both the created  backend mehtodologies with forntend tools , such as the lgoout proecess ->  [we need to conect the backend proeces and the frontend  event of [button]   </li> 
+            </ul>  <br>   <hr>  <br> 
             
-          <p>  Next lesson  =>  {JWT Authentication} methodlogy  withg the node   and epxress          </p> 
- 
-        
+          <p>  Next lesson  =>  {Roled based JWT Authentication} methodlogy with the node and express          </p> 
  
            <!----------------------------------------------  -->
 
-             <h3>  Source code  scripts files of this  lesson as following : </h3> <br>
+             <h3> Source code  scripts files of this  lesson as following : </h3> <br>
 
              <ol class="codes">
                 <li> Page Sources : </li>
@@ -2096,7 +2216,7 @@
         <!---------------------------------------------------------------------------------------->
 
         <footer id="footer" class="footer0">
-            All right reserved by &nbsp; &copy; &nbsp; Initiated by <a target='_self'  class="brand" href="https://shindowpro.github.io/"> ShindowPro </a> &trade;
+            All right reserved by &nbsp; &copy; &nbsp; Initiated by <a target='_self'  class="brand" href="https://shandowpro.github.io/"> ShandowPro </a> &trade;
         </footer>
     
     </div>

@@ -83,7 +83,7 @@
 // --------------------------------------------------------------------------
 // --------------------------------------------------------------------------
 
-// C] Assign the imported  {Events Handlers methods}  of different middlewares types [custom  +  third-party]  : 
+// C] Assign the imported {Events Handlers methods} of different middlewares types [custom  +  third-party]  : 
 
   // I] [Custom Middleware] type :    
     //  I]  / 1] Calling the Defined and imported [Custom Middleware {Logger} ]  as the return of the express defined method of {app.use()}   => 
@@ -97,7 +97,7 @@
 
   // II] [ Third-party Middleware] type to handle the {{request host}} and solve the cors issue , by using the next (3) steps :   
     //  1] Define the main middleware method of [third-party] type , by calling the imported {cors} as an imported  method with assigning the external defined object {corsOptions} as its paramter (according MVC) :   
-    app.use(  cors(corsOptions) ) ;     // [{cors}  => refers to the cross origin resourse sharing  ]
+    app.use(  cors(corsOptions) ) ;     //  [ {cors}  => refers to the cross origin resource sharing ]
 
   // --------------------------------------
 
@@ -109,11 +109,10 @@
       //  b- Built-in middleware to handle json data :
       app.use(express.json());
 
-      // c- define a middleware for the   [cookies] : 
+      // c- Define a [custom middleware] for the [cookies] : 
       app.use(cookiesParser()) ;
 
-
-      // d-  Define the method of reading files from  [public] folder's  to be accessible for this [main root route]   in the project server  [extrated from the express] - within  allocating it to the main route - :
+      // d- Define the method of reading files from  [public] folder's  to be accessible for this [main root route]   in the project server  [extrated from the express] - within  allocating it to the main route - :
       app.use( '/' , express.static(path.join(__dirname, '/public')));
 
 

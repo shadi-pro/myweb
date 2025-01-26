@@ -45,7 +45,15 @@
     // 5- Clear the [refresh token]  & sending the respond ( (if the obtained requested [ Refresh Token ] is NOT in the DB) ) : 
     if (!foundUser) { 
       // a) send clear of the defined Cookie [with a certain properties]  to  the response  :
-      res.clearCookie(  'jwt' , { httpOnly : true , maxAge: 24 * 60 * 60 * 1000 }  )
+      // this method will NOT include the [ 'maxAge' , 'expiresIn'  , 'cookie method '  ]  :
+      res.clearCookie( 
+         'jwt' ,
+        { 
+          httpOnly : true ,
+          sameSite : 'None',
+          secure : true 
+        }  
+      )
 
       // b) Send an error of  [204] {no content} :  
       return res.sendStatus(204)  ;
@@ -70,9 +78,16 @@
       )
   
     //  e) Deleting the defined upper cookie + [securing  in the production stage] :
-      res.clearCookies('jwt' , { httpOnly : true  } )  ;      // [ secure : true => will be added in the  production stage to serve http only ]  
+      // we NOT need to set each of ['maxAge' , 'expiresIn'  , 'cookie method'] here when deleting  the cookie) :
+      res.clearCookies(
+        'jwt' , 
+        {
+          httpOnly : true , 
+          sameSite : 'None',
+          secure : true // [ {secure : true} property => will be added in the  production stage to server http only ]  
+        } )  ;   
        
-    // f) Send the response of the statue {204}     :    
+  // f) Send the response of the statue {204}     :    
      res.sendStatus(204) ;
      
 }    
