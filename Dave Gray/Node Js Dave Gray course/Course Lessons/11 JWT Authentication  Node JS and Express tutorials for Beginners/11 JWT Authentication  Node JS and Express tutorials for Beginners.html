@@ -1,0 +1,2285 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  
+
+    <meta charset="utf-8">
+
+    <!-- IE compatiblity Meta -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- First Mobile Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta content="Learning Node.js  Course" description="This is Lesson 11 JWT Authentication  Node JS and Express tutorials for Beginners ">
+
+    <title> 11 JWT Authentication  Node JS and Express tutorials for Beginners </title>
+
+    <link rel="stylesheet" href="11 JWT Authentication  Node JS and Express tutorials for Beginners.css" media="all">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" media="all">
+
+    <link rel="stylesheet" href="css/fontawesome.min.css" media="all">
+
+    <link rel="stylesheet" href="css/all.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine|Inconsolata|Droid+Sans">
+
+    <link rel="stylesheet" href="css/style.css" media="all">
+
+    <link rel="stylesheet" href="css/media.css" media="all">
+
+    <link rel="stylesheet" href="css/hover.css" media="all">
+
+    <link rel="stylesheet" href="css/animate.css" media="all">
+
+    <link rel="stylesheet" href="css/default_theme.css" media="all">
+
+    <style>
+        body {
+            background-color: rgb(100, 196, 228);
+        }
+
+        .display>h3,
+        .display>h2 {
+            display: none
+        }
+
+        .display1>h3,
+        .display>h2 {
+            display: none
+        }
+
+        .display {
+            position: relative;
+
+        }
+
+        #group1,
+        #group2,
+        #group3,
+        #group4,
+        #group5,
+        #group6,
+        #group7 {
+            display: none;
+        }
+
+        .shadi {
+            width: 300px;
+            padding: 30px;
+            height: 100px;
+            border-radius: 20px;
+        }
+
+        .br {
+            border: 5px solid blue;
+            font-size: 30px
+        }
+
+        .input1,
+        .input2 {
+            font-size: 13px;
+            text-align: center;
+            min-height: 50px;
+            height: 50px;
+        }
+
+        .add {
+            width: 100px;
+            background-color: red;
+            font-size: 15px;
+            cursor: pointer;
+            display: lnline;
+        }
+
+        .custom  {
+            width: 300px;
+            height: 300px;
+            padding: 20px;
+            margin: 10px auto;
+            border: 5px solid gray;
+            background-color: #ccc;
+            text-align: center;
+        }
+
+        .dis {
+            border: 3px solid red;
+            border-radius: 30px;
+            width: 100%;
+            text-align: center;
+            line-height: 2em;
+        }
+
+        .item {
+            color: red;
+            font-size: 30px;
+            font-family: monospace;
+            background-color: blue;
+        }
+
+        .sh {
+            background-color: blue;
+            color: #fff;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .btn {
+            background-color: black;
+            border-radius: 20px;
+            margin: 20px auto;
+            color: #fff;
+            font-size: 15px;
+            transition: .5s all ease-in-out;
+        }
+
+        .btn:hover {
+            font-size: 18px;
+            border: 3px solid gold;
+            color: #fff;
+        }
+
+        .codes .elem1,
+        .codes .elem2,
+        .codes .elem3,
+        .codes .elem4 {
+            font-size: 15px;
+            border: 5px solid red;
+            padding: 50px;
+        }
+
+        .codes h3 {
+            text-decoration: underline;
+        }
+
+        .mainCont .subCont div {
+            border: 2px solid gray;
+            font-size: 25px;
+            color: blue;
+        }
+
+        .mainCont .subCont div p span {
+            display: block;
+        }
+
+        .color {
+            background-color: blue;
+            color: red;
+        }
+
+        #divn {
+            display: none;
+        }
+
+        .codes0 .g41 {
+            background-color: #ddd;
+            border: solid 3px gray;
+            width: 500px;
+            height: 200px;
+        }
+
+        .codes0 .g41 h3 {
+            color: red
+        }
+
+        .codes0 .g41 p {
+            font-family: Arial, Helvetica, sans-serif
+        }
+
+        .codes0 .g41t,
+        .codes0 .g41c {
+            margin: 10 0 0;
+            padding: 10px;
+        }
+
+        .codes0 .screen {
+
+            color: red;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1000%;
+            height: 1000%;
+            z-index: 9999;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .codes0 .hidden {
+            display: none;
+        }
+
+        /* border-radius:50%; */
+        .codes0 .circle,
+        .codes0 .circle1,
+        .codes0 .circle3 {
+            width: 100px;
+            height: auto;
+            border: solid 2px blue;
+            background-color: red;
+            /* display: none; */
+        }
+
+        #each {
+            background-color: #080;
+            color: #fff;
+        }
+    </style>
+
+    <!--[if It IE 9]>
+        <script src="js/html5shiv.min.js"> </script>
+        <script src="js/respond.min.js"> </script>
+    <[endif]!-->
+</head>
+
+<body>
+
+    <!-------------------------------------------------------------------------------------------------------->
+    <header id="Main" class="Main wow fadeInDown" data-wow-duration="1s">
+        11 JWT Authentication  Node JS and Express tutorials for Beginners  [Dave Gray]   
+    </header>
+
+    <!-------------------------------------------------------------------------------------------------------->
+    <!-- Bootstrap Navigation Bar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+
+            <!-- 1] {Navbar Container / Header} : Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ToggleMenu"
+                    aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand hvr-pop" href="#"> Shindow Pro <span>lnc.</span> </a>
+            </div>
+
+            <!-- 2] {Navbar Container / Menu Items} : Collect the nav links, forms, and other content for toggling -->
+            <div id="ToggleMenu" class="collapse navbar-collapse">
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="active"><a href="#MainC"> Main Topics <span class="sr-only">(current)</span></a></li>
+
+                    <li><a href="#JSDOMCon">Concept</a></li>
+                    <li><a href="#JSDOMImp">Importance & Benefits</a></li>
+                    <li><a href="#JSDOMSyntx">Syntax & Examples</a></li>
+                    <li><a href="#JSDOMPract">Practical Applications</a></li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">
+                            Hot Links <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#11 JWT Authentication  Node JS and Express tutorials for BeginnersSection" target="_self" class="11 JWT Authentication  Node JS and Express tutorials for BeginnersLink"> Lesson 11 JWT Authentication  Node JS and Express tutorials for Beginners </a></li>
+
+                            <li role="separator" class="divider"></li>
+
+                            <li><a href="http://shadi-pro.epizy.com" target="_blank"> My References </a></li>
+
+                            <li role="separator" class="divider"></li>
+
+                            <li><a href="http://shadi-cv.epizy.com" target="_blank"> My Personal Website </a></li>
+                            <!-- <li><a href="#">Something else here</a></li> -->
+                            <!-- <li><a href="#">Separated link</a></li>
+                            <li role="separator" class="divider"></li>                            
+                            <li><a href="#">one more separated link</a></li> -->
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form> -->
+
+                <!-- <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                </ul> -->
+
+            </div><!-- /.navbar-collapse -->
+
+        </div><!-- /.container-fluid -->
+
+        <a class="Home hvr-wobble-horizontal" href="#Main" title="Go to page header"> Home </a>
+        <a class="End hvr-wobble-horizontal" href="#footer" title="Go to page footer"> End </a>
+    </nav>
+     <!-- ------------------------ -->
+
+    <!-- The following Tag can be as <main> Tag, but the Editor is old for HTML5-->
+    <main class="Welcome container text-center center-block wow bounceInDown" data-wow-duration="2s">
+        <span> Welcome to  Node.js   full  Course  [Dave Gray]   | </span> <br>
+        11 JWT Authentication  Node JS and Express tutorials for Beginners
+    </main>
+    <!-- ---------------------------------------------------------------------------------------------------- -->
+    <!-- Options Tool box -->
+    <section class="option-box" style="min-height: fit-content; " >
+        <!-- First Tool OPtion {Changing the color of the Whole the Website Template } -->
+
+        <!-- <div class="color-option text-center" style="float:left; height:auto "> -->
+        <div class="color-option text-center">
+            
+            <!-- <aside style="float:left ; width:auto " > -->
+                <div class="container"  >
+                    <div class="row"> 
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                            <h4> Color Options </h4>
+                            
+                            <ul class="list-unstyled">
+                                <li data-value="css/default_theme.css"></li>
+                                <li data-value="css/blue_theme.css"></li>
+                                <li data-value="css/purple_theme.css"></li>
+                                <li data-value="css/yellow_theme.css"></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row"> 
+                        <!--  Lesson Video  -->
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+                            
+                            <h3 style="margin-bottom:-10px "> Lesson # Video File: </h3>
+                            <video controls  height="300" width="300" style="margin-top:-10px; ">
+                                <source
+                                    src="E:\Web videos lessons\Web Framworks\Node.js \Apps\recommended\React Portfolio\React portfolio website with animation Full.mp4"
+                                    type="video/mp4">
+                                Your browser Does Not Support the Video file ...
+                            </video>
+                        </div>
+                         
+                        <!--  Course Requriments & Course Map & MyPortfolio Website  -->
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+                            <h3>Course Requirments : </h3>
+                            <ol style=" list-style: none;"  >
+                                <li> HTML </li>
+                                <li> CSS </li>
+                                <li> Bootstrap & React Bootstrap </li>
+                                <li> JS [advanced] => [ES6+] </li>
+                                <li> Node.js  </li>
+                            </ol>
+
+                            <h3> Course Map : </h3>
+                            <ol class="list-unstyled">
+                                <li> <a target="_blank"  href="course map/Node.js   course map.html"> Node.js  Course Map </a> </li>
+                            </ol>
+                             
+                            <h3> My portfolio website  : </h3>
+                            <ol class="list-unstyled">
+                                <li> <a  target="_blank" class='brand' href=" https://shindowpro.github.io/">  My Portfolio  </a> </li>
+                            </ol>
+                             
+                        </div>
+                    </div>
+            </div>
+        
+            
+        </div>
+ 
+        <i class="fas fa-gear fa-2x gear-option"></i>
+
+    </section>
+    <!-- ---------------------------------------------------------------------------------------------------- -->
+
+    <!-- About Section  -->
+    <section class="about text-center wow bounceInLeft" data-wow-duration="2s" id="about">
+        <div class="container">
+             <h2 class="h1" class="hidden-xs"> About Section =>  Adding the {JWT authentication}  tool  to       <span><strong>  { protect [the built route]     </strong> </span> </h2>
+            <h3 class="visible-xs"> About Section => This lesson about 
+              <strong> Building a [secured Authenticatoin] & [protected Routes]      </strong>  
+              <span>  with using  {JWT Authenticatoin} tool  within  {node.js} server and (express.js) Framework      </span> 
+            </h3>
+            <!-- <p class="lead"> This lesson is commands to handle Stashing-UnStashing] Files and then Pushing to Remote Repo Account by <span> <strong>  {CMD} </strong> </span> </p> -->
+        </div>
+    </section>
+    <!-- ---------------------------------------- -->
+
+    <!-- Footer Section -->
+    <section class="footer">
+
+        <div class="container">
+            <div class="row">
+                <!-- First Column {Site Map + Social Media} -->
+                <div class="col-lg-4 col-md-6">
+                    <!-- 1) Site Map  -->
+                    <h3> Site Map </h3>
+                    <ul class="list-unstyled three-columns">
+                        <li> <a href="#myslider"> Home </a> </li>
+                        <li> <a href="#about"> About </a> </li>
+                        <li> <a href="#"> Company </a> </li>
+                        <li> <a> Design </a> </li>
+                        <li> <a> Solutions </a> </li>
+                        <li herf="#"> <a> Contact </a> </li>
+                        <li> <a> Services </a> </li>
+                        <li> <a> Activities </a> </li>
+                        <li> <a> Featured </a> </li>
+                        <li> <a href="http://shindowpro.github.io">My Portfolio Website</a></li>
+                        <li> <a href="http://shadi-pro.epizy.com">My Refs</a></li>
+                        <li> <a href="http://gtmatrix.com"> GTmatrix.com [Testing website online ]</a></li>
+                        <li> <a href="https://github.com/shindowpro" target="self">My Github Repoes </a></li>
+                    </ul>
+
+                    <!-- 2) Social Media Links -->
+                    <ul class="list-unstyled social-list text-center">
+                        <li> <img src="img/social/facebook-48.png" alt="facebook"> </li>
+                        <li> <img src="img/social/twitter-48.png" alt="twitter"> </li>
+                        <li> <img src="img/social/whatsapp-48.png" alt="whatsapp"> </li>
+                        <li> <img src="img/social/google-plus-48.png" alt="google-plus"> </li>
+                        <li> <img src="img/social/linkedin-48.png" alt="linkedin"> </li>
+                        <li> <img src="img/social/tiktok-48.png" alt="tiktok"> </li>
+                        <li> <img src="img/social/mail-48.png" alt="mail"> </li>
+                        <li> <img src="img/social/instagram-48.png" alt="instagram"> </li>
+                        <li> <img src="img/social/rss-48.png" alt="rss"> </li>
+                        <li> <img src="img/social/myspace-48.png" alt="myspace"> </li>
+                        <li> <img src="img/social/bebo-48.png" alt="bebo"> </li>
+                    </ul>
+                </div>
+
+                <!-- Second column {Latest Articles} -->
+                <div class="col-lg-4 col-md-6">
+                    <h3> Latest Articles </h3>
+
+                    <!-- First media -->
+                    <div class="media">
+                        <a href="#" class="pull-left">
+                            <img src="img/social/bebo-48.png" class="media-object" alt="">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"> Programming </h4>
+                            This articles about the Programing and just for testing purposes for Display
+                        </div>
+                    </div>
+
+                    <!-- Second media -->
+                    <div class="media">
+                        <a href="#" class="pull-left">
+                            <img src="img/social/facebook-48.png" class="media-object" alt="">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"> Design </h4>
+                            This articles about the Design and just for testing purposes for Display
+                        </div>
+                    </div>
+
+                    <!-- Third media -->
+                    <div class="media">
+                        <a href="#" class="pull-left">
+                            <img src="img/social/tiktok-48.png" class="media-object" alt="">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"> Social </h4>
+                            This articles about the Social and just for testing purposes for Display
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Third column {Featured Works} -->
+                <div class="col-lg-4 col-md-12 text-center">
+                    <h3> Latest Articles </h3>
+                    <img src="img/footer/1.png" class="img-thumbnail" alt="image1">
+                    <img src="img/footer/2.png" class="img-thumbnail" alt="image2">
+                    <img src="img/footer/3.png" class="img-thumbnail" alt="image3">
+                    <img src="img/footer/4.png" class="img-thumbnail" alt="image4">
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- {copyright} -->
+        <div class="copyright1 text-center">
+            Copyright &copy; 2025 by <span> Shindow </span> lnc.
+        </div>
+
+    </section>
+    <!-- ---------------------------------------- -->
+ 
+   
+    <!-- ---------------------------------------- --> 
+    <div class="Post" id=post>
+        <Section id="MainC" class="MainC">
+            <header>
+               Node.js  [11 JWT Authentication  Node JS and Express tutorials for Beginners] Main Topics : <br>
+            </header>
+
+            <article>
+              <p> &gt; Main Subjects in this lesson will be about Adding   {JWT} Tool   to the previous (authorization) of the  [user & password authentication]  with using Express   ( framework  ) of [Node] server with    =>   as following : </p>
+
+              <h2> Main Subjects : </h2>
+
+              <ol type="A">
+                  <li> Main points of this lesson , practical application of adding the {JwT } building [user password Authentication and (authorization)]  into  express api route within  the currrent project node server by  : <br>
+                      <ol>
+                          <li> A]  The main concept of  {JWT} Routes protection strategy ,  contains  , Importance ,  requirments and properties  </li>
+                          
+                          <li> B] Main Practical steps of setting up and bulding the {JWT}  tool of protection of the project's routes + Roled bases authenticatoin  within the [MVC] , by applying the next steps : <br>
+                            <ol>
+                              <li>  1] Project file structure modifications , by  adding / modify next files :  <br>
+                                  <ul>  
+                                    <li> a- Inside the [controllers]  folder  : <br> 
+                                      <ol> 
+                                        <li> {authControllers.js}          => modify file  </li> 
+                                        <li> {refreshTokenControllers.js}  => new file </li> 
+                                        <li> {logoutControllers.js}        => new file </li> 
+                                        </ol>
+                                    </li>    <br>
+                                    <br>
+                                    <li> b- Inside the [routes]  folder  : <br> 
+                                      <ol> 
+                                        <li> [api/ {employess.js} ]  => modify file   </li> 
+                                        <li> {refresh.js}            =>  new file   </li> 
+                                        <li> {logout.js}             =>  new file   </li> 
+                                      </ol>
+                                    </li>   <br> 
+                                  
+                                    <li> c- Inside the [middleware]  folder  : <br> 
+                                      <ol> 
+                                        <li> {verifyJWT.js}            =>  new file   </li> 
+                                        <li> {credentials.js}          =>  new file   </li> 
+                                      </ol>
+                                    </li>   <br> 
+                                    
+                                    <li>  d- Inside the  main root : <br>         
+                                      <ol> 
+                                        <li> {server.js}   => several modifications in file     </li> 
+                                        <li> {.env}        => new file      </li> 
+                                        <li> {.gitignore}  => modify file      </li> 
+                                      </ol>
+                                    </li>
+
+                                    <li>   e- inside the [config]  folder :  <br> 
+                                        <p>  {allowedOrigns.js }  =>   new file     </p>
+                                        <p>  {corsOptions.js }    =>   modify file     </p>
+                                    </li>
+                                  </ul> 
+                              </li>  
+                              
+                              <li>  2] Authentication Process methodology modifications  : <br> 
+                                <ul> 
+                                  <li> a- {authControllers.js} [authenticaton process handling controling] file  : Modify the main Authtentication process methodology [by adding the main  {jwt}  methodology tool], including the next :  <br>
+                                      <ol>   
+                                        <li> define the main jwt (2) types of  [accces token] & [refresh token] </li> 
+                                        <li> saving the authorized  jwt (2) types of [accces token] & [refresh token] into the each type suitable location : <br>
+                                          <ul>
+                                              <li> 1- [access token]  =>   json response [accessible for  frontend]         </li>   
+                                              <li> 2- [refresh token]  =>  httpOnly cookie [Un-accessible for frontend]         </li>   
+                                          </ul>  
+                                        </li> 
+                                      </ol>  
+                                  </li>
+
+                                  <li> b- {verifyJWT.js} [Authentication Verification middleware] file : Create handling [authentication verification] , including : <br>   
+                                    <p> Event Middleware function definition , contains the next steps :  <br>  
+                                      <ol>   
+                                        <li>  Define the [Requested authorization Haeder]  variable </li>
+                                        <li>  Define the [Token] as modified splittted value from the recieved [authHeader]  </li>
+                                        <li>  Define the [JWT]  Verifying configuration object + assign its  parameters  </li>
+                                      </ol>                                       
+                                    </p>
+                                  </li>
+
+                                  <li> c- {server.js} the main server initial file : including the following modifications :  <br>
+                                    <ol>  
+                                        <li> Importing  defined  middleware  of the  [ Authentication  verfication] => [to be used in protecting routes ]        </li>
+                                        <li> Protecting the desired  routes using the general of define the route of [jwt verification  Middleware] before the desired routes [/employees] </li>
+                                    </ol>
+                                  </li>
+                                </ul>
+                              </li>  
+                              
+                              <li> 3] [Refresh Token handling] process , including the  next procedures  :  <br>                                
+                                <ul> 
+                                  <li>  a- {controllers /refreshTokenControllers.js} the [Refresh Token handling function] file =>  new file including the following  :  <br>  
+                                    <p>  This file will contains  defining [RefreshToken Handling] function , that will  include the  next steps :  
+                                      <ol>  
+                                        <li> 1- Checking  availability of the requested  [Cookies] & [jwt]   </li> 
+                                        <li> 2- Define  a [Refresh Token]  as a value extracted from the returned requested  [jwt of cookies]   </li> 
+                                        <li> 3- Checking if the requested [Refresh Token] is equal to the exsited value of the in the database {usersDB}   </li> 
+                                        <li> 4- Handling the Error of equlity of the requested [Refresh Token]  and the value in the database {usersDB}      </li> 
+                                        <li> 5- Starting  [jwt verfying]  process including the next  procedures  : <br>  
+                                          <p>  Verifying  the [jwt] is being implemented through assign  (3) parameters , as following  : <br>     
+                                            <ul> 
+                                              <li> a) Assign the name of jwt   ->  [ refreshToken ]    </li>
+                                              <li> b) Assign the value of the jwt -> [ process.env.REFRESH_TOKEN_SECRET ]  </li>
+                                              <li> c) Assign the  Jwt verificatoin  Callback function's  parameters handling  , as following :   <br> 
+                                                <ol>
+                                                    <li> 1) Handling the (err) parameter :   <br>  
+                                                      <p> Returning a Forbiden Error {403}in case of returend (err) parmater OR  or if uneaquality  beween the existed username in the DB & Decoded username </p> 
+                                                    </li> <br>
+
+                                                    <li> 2) Handling the (decoded) parameter  :  <br>      
+                                                      <p>  used within the Creating a [Access Token] - after the verfying  [refresh token]  , by using the     </p>
+                                                    </li>  <br>
+                                                    
+                                                    <li> 3) Sending the upper created [accessToken] jwt to the json response  </li> 
+                                                </ol>                                                
+                                              </li>    
+                                            </ul>
+                                          </p> 
+                                        </li>     
+                                      </ol>  
+                                    </p>
+                                  </li> <br> 
+                                  
+                                  <li>  b- {routes/api/refresh.js} the [refresh Token route file] , including next procedures  :  <br> 
+                                    <p> Define a route of [Get] Crud operation  => of getting obtained [Refresh Token] process according to the defined refresh token handling function  </p> 
+                                  </li>
+
+                                </ul>
+                                
+                              </li>
+                              
+                              <li> 4 ] [Logoff] || [Logout] process , including  the next procedures :  <br>
+                                <p>  This process is about deleting created existed [Refresh Token] that has been created within the previous step  of the  {Refresh Token handling} and prevent it for readcihg it's last perioed  , according to the nwxt (2) steps : <br>   
+                                  <ol>      
+                                    <li> Create the main method of the [logout process]  in ->  [logoutController.js] file         </li>  
+                                    <li> Apply the defined  logout process methood wthi the a new route {logout.js} file        </li>  
+                                    <li> assign the defined route of the [logout]  in the {server.js }  file before hte protector of route of the {verifyjwt} </li>  
+                                  </ol>  
+                                </p> 
+                              </li> 
+
+
+                              <li> 5] Fixing [cors credentials] issue of the server ,  by using the next procedurs  :   <br>
+                                <p> This issue might be pop-up within the server backend incase of using {fetch()} in the frontend , by the next steps : <br>  
+                                  <ol> 
+                                    <li>  {config/allowedOrigins.js}  => Create the defiend array of [allowedOrgins] in a seperated file {allowedOrigins.js } inside the [config] folder [to bve used from inside several files ] </li>
+                                    <li>  {middelware/credentials.js} => Define a new method of the middeleware of [credentials() ]  in a sepertatd file {crednetials.js } inside the [middleware] folder => to handle the issue of hte [access-control-allow-credentials]  to be used in the server intial  file  </li>
+                                    <li>  {server.js} =>  Import and use the defined method of {credentlials()} of the middeleware of [credentials.js]  file [before caling [corsdOption] -  [to solve the cors issue]  considering the onflow node reading mechanism - </li>
+                                  </ol>
+                                </p> 
+                              </li>
+                              
+                              
+                              <li> 6] Fixing [ sameSite: of NON  the same frntend and backend   host url  name ] issue of the server ,  by using the next procedurs  :   <br>
+                                <p> This issue might be pop-up within the server backend incase of using {fetch()} in the frontend , by the next steps : <br>  
+                                  <ol> 
+                                    <li>  {config/allowedOrigins.js}  => Create the defiend array of [allowedOrgins] in a seperated file {allowedOrigins.js } inside the [config] folder [to bve used from inside several files ] </li>
+                                    <li>  {middelware/credentials.js} => Define a new method of the middeleware of [credentials() ]  in a sepertatd file {crednetials.js } inside the [middleware] folder => to handle the issue of hte [access-control-allow-credentials]  to be used in the server intial  file  </li>
+                                    <li>  {server.js} =>  Import and use the defined method of {credentlials()} of the middeleware of [credentials.js]  file [before caling [corsdOption] -  [to solve the cors issue]  considering the onflow node reading mechanism - </li>
+                                  </ol>
+                                </p> 
+                              </li>
+
+                            </ol>                                                             
+                          </li>
+
+                          <li> C] Notes about building [JWT]  protection tool to our defined routes   within in the [MVC]  </li>
+                      </ol>
+                    </li> <br> <br>
+              </ol>
+            </article>
+        </Section>
+
+        <!------------------------------------------------------------------------------>
+        <!------------------------------------------------------------------------------>
+        <section class="JSDOMCon" id="JSDOMCon">
+            <header>
+                <h3> 11 JWT Authentication Node JS and Express tutorials for Beginners concept : </h3>
+            </header>
+ 
+          <h1> A] The main concept of {JWT} Routes protection strategy , [types of JWT contains] , Importance , [main procedures and steps of JWT working ] , requirments and properties : </h1> <br>
+            <ol>    
+              <li> 1] main concept : <br>
+                <p> It is strategy of protecting the defined project' Routes  </p>    
+                <p> It is a breviation of the [JSON web token] , which is can  be considered as form of  [user identification]  that issued after initial user identfication takes place   </p> 
+                <p> After the user is completed the login processs and being successfully Authenticated   ->  the [RestApi] is sending (2) types of Client applications  : [Access Token] & [Fresh  Token] </p> 
+              </li>
+              
+
+              <li> 2] {JWT}  strategy  types of JWT contains    :   <br>  
+                <p> [JWT] Strategy contains on (2) types of  protection  tools , as  following   :   <br>
+                    <ul> 
+                      <li> 1- [Access Token ] tool   => : <br>
+                        <ol> 
+                          <li> It gives a [short duration ]  after is being expired [5 min => 50 min]  </li>
+                          <li> It being [sent & recieved]  as a [json Token] format , from and to the {RestApi} => to avoid the previous types of the hazards ]  </li>
+                          <li> It is recommended  for the frontend client applications => to only store the [Acesss Token] in the memory -> to be lost  when the browser or the web app is closed  </li>
+                          <li> It is NOT recommended for the frontend client applications => to store the [Acesss Token] in the [localhost memory] or  [cookies]  -> to prevent it  from being obtained by hackers using  [JS]   </li>
+                          <li> we can use the current application statesot store it </li> 
+                        </ol>  
+                      </li>  <br> <br> 
+    
+                      <li> 2- [Refresh Token] tool =>  : <br> 
+                        <ol> 
+                          <li> It gives a [longer duration]  after is being expired [  7 hrs =>  1 day  => several days  ]  </li>
+                          <li> It is also being [sent & recieved]  as a [json Token] format , from and to the {RestApi} => [to avoid the previous types of the hazards ]  </li> 
+                          <li> It is being provided as only by [http cookies] format , which is NOT accessibe by the [JS]  </li>
+                          <li> This type of token need to expiary in some point, which need to login again   </li>
+                          <li> It should NOT have the ablility to issue another new Fresh token , to prevent different accessiblity to be abtained by a wrong hand </li>
+                        </ol>  
+                      </li>
+                    </ul>  
+                </p>                 
+              </li> 
+              
+              
+              <li> 3] Importance of using the  {JWT} as a protection  strategy  :    <br>  
+                <p> It is being used to provide extra protection  layer to the porject's  routes  , after the essential protection of default of authectcaion procedures       </p>
+                  <p> It is being adding some protection against the (2) types of Hazards     :   <br>  
+                    <ul> 
+                      <li>  {XSS}  =>  the cross side scripting   </li>
+                      <li>  {CSRF} =>  the cross side Request Forgery  </li>
+                    </ul>                    
+                  </p>                
+              </li>
+
+              <li> 4] Overall [Access Token] & [Refresh Token] main  mechanism steps  => <br>  
+                  <ol> 
+                      <li> Issuing  the [Access Token] [Refresh Token] during [User Authorization] process   </li>      
+                      <li> Access the  [RestApi protected Routes] by [user Application] using the given [Access Token] until it expires  </li>      
+                      <li> Our [Api] will verifty the [Access Token] by using the [Middelwrae] every time  the [Access Token] will be used to make a request </li>      
+                      <li> When the [Access Token]  does expired -> the [user Application] will need to send  the [RefFresh Token] to our [Api Refresh Endpoint] to get a new [Access Token]  </li>      
+                      <li> The [Refresh Token] which had issued during the  Authentication => will be verifed by the [RestApi Refresh Endpoint] and  cross the refernces of the [Refresh Token] to the database </li>      
+                      <li> Storing the  [Refresh Token] in the  database => will allow it to be terminated  if the user decieded to logout  </li>      
+                      <li> The [Refresh Token] need to be allowed to be expired => so different access will NOT be gained </li>        
+                  </ol>
+              </li>
+              
+              
+              <li> 5] Requirments of {JWT} Authentication  :  <br>  
+                  <ul> 
+                      <li> a] Adding the next packages libraries : <br> 
+                        <p> 1-  Install the source code of the previous project's libraries , by using the next code : <br>
+                          <code> 
+                            <span class=one> </span>  npm i  <br>
+                          </code>                     
+                        </p> <br><br>  
+                        
+                        <p> 2- Install all required libraries [in additon to the prevoius libraries] by  one line    : <br>
+                          <code> 
+                            <span class=one> </span>  npm i dotenv  jsonwebtoken cookie-parser  <br>
+                          </code>                     
+                          //  the installed libraries as following : <br>
+                           -- [dotenv] => allow to define and use the {.env} inner defined  variables  <br>
+                           -- [jsonwebtoken] => allow to define the [jwt] and [access Token] & [Reresh Token]     <br>  
+                           -- [cookie-parser] => allow to define and handle cookies wihtin authentication and cookies handling prcodures    <br>
+                        </p>  
+                      </li>  <br> <br>     
+                      
+                      
+                      <li> b] [Project files structure ] requriments modifications steps [briefly] :  <br>
+                        <ol>            
+                          <li> 1-  {.env} in the root => this file will lnclude the environment variables [all ikn uppershift letter case ] , as following :  <br>
+                            <code> 
+                              <span class = one ></span>  ACCESS_TOKEN_SECRET =   value (the hexal code we will retrive by using {crypto} in  the node CLI )    <br>
+                              <span class = one ></span>  REFRESH_TOKEN_SECRET =  value (the hexal code we will retrive by using {crypto} in  the node CLI )    <br>
+                            </code>                        
+                          </li> 
+                          
+                          <li> 2- Getting the encrypted values of  {Access Token} & {Refresh Token} , by  Running the node CLI (by typing the node ) => and running the next codes  :   <br>  
+                            <code> 
+                              <span class = one ></span> // enter the node CLI [ctrl+ `]   :    <br>
+                              <span class = one ></span> node    <br> <br>
+                              
+                              <span class = one ></span> [crypto] node core module  => [to a hex code for crypting {Access Token} & another one for  {Refresh Token} ]  :  <br>
+                              
+                              <span class = one ></span> require('crypto').randomBytes(64).toString('hex')     -> [this will give us a hexal code in the next line to be used  as the value of {ACCESS_TOKEN_SECRET}  variable defined inside the {.env} ]  <br> <br>
+                              <span class = one ></span> require('crypto').randomBytes(64).toString('hex')     -> [this will give us another hexal code in the next line to be used as the value of {REFREWSH_TOKEN_SECRET} variable defined inside the {.env} ]  <br> <br>
+                              
+                              <span class = one ></span>  Ctlr + c    <br> 
+                              <span class = one ></span>  Ctlr + c    <br> <br>
+                            </code>                                                    
+                          </li>   <br>  <hr> <br>  
+
+                          <li> 3- Adding the {.env}  file to the {.gitignore} file to NOT be shared with other in github  </li> 
+                          <br>  <hr> <br>
+                         
+                          <li> 4- Modify  the  {authController.js}  of the [Authentication process] including {JWT} steps codes as following :   <br>    
+                            I] Define  [datasoruce {users.json}] section : <br>  
+                             <code> 
+                               <span class = one ></span>  const  usersDB = {   <br>  
+                                <span class = two ></span> users : require('../model/users.json') ,   <br> 
+                                <span class = two ></span>  setUsers :  function (data) { this.users = data }   <br>  
+                                <span class = one ></span> }  <br>    
+                              </code>  <br> <br>     
+
+                              
+                            II ] Importing  required classes and libraries section : <br>  
+                              <code> 
+                                // 1- Define the [bcrypt] from the installed node custom module library  :   <br> 
+                                <span class = one ></span> const bcrypt = require('bcrypt') ;   <br>    
+                        
+                                // 2- Define the [JWT] from the installed {jsonwebtoken} node custom module library  :   <br>  
+                                <span class = one ></span> const jwt = require('jsonwebtoken');   <br>
+                              
+                                // 3- Imported {.env} file  and its configurations using the imported  [dotenv] library  : <br>    
+                                <span class = one ></span>  require('dotenv').config();  <br>  
+                              
+                                // 4- define the {fs} module [due we still need to write changes into a files , and not using the MongoDB or any other DB ] :   <br>    
+                                <span class = one ></span> const fsPromises = require('fs').promises;   <br>   
+                              
+                                // 5- define the {path} module  :   <br>  
+                                <span class = one ></span>  const path = require('path') ;   <br>                           
+                              </code>    <br> <br>     
+                            
+
+                              III] [Authentication Handling] function section   : <br>
+                                <p>  This is the  main [Authentication handling] function  including the [default authentication + JWT] :  </p>
+                                <code> 
+                                  <span class = one ></span> const handleLogin = async ( req  , res) => {  <br>
+                                    <span class = two ></span> 1- Define  both of the username and password as extreqacted values from requested object : <br>
+                                    <span class = two ></span> const {user , pwd  }  = req.body ; <br> <br>
+                                    
+                                    <span class = two ></span> 2-  Checking of the existancy of both defined  varaibles [user , pwd]  , and send an (400) Error + message  to the node server if it is NOT existed :  <br>
+                                    <span class = two ></span>  if (!user , !pwd) returnd res.status(400).json({'message' ; 'the username or/and password are required! ' })  ;  <br> <br>
+                                    
+                                    <span class = two ></span> 3-  Checking if the requested username of the user is equal to the one in the defined s datasource {usersDB.users} [  ]  :         <br> <br>
+                                    <span class = two></span>  const  foundUser  =  usersDB.users.find( person =>  person.username === user ) ;   <br>     <br>
+                                      
+                                    <span class = two ></span> 4- Sending an error of  [unAuthentications] to the node server   : <br>
+                                    <span class = two></span>  if (!foundUser)  return  res.sendStatus(401) ;   <br>  <br>
+                                      
+                                    <span class = two ></span> 5- Starting the password evaluation stage , by applying a compraison between the defined extreacted passworked[pwd]  & existed value of hte psswored in the defind datasource :  <br>
+                                    <span class = two></span>  const match = bcrypt.compare ( pwd , foundUser.password )  ;  //  [ if this variable has a value -> the passwoird is matched ]    <br>  <br>
+                                    
+                                    
+                                    <span class = two ></span> 6-  Starting  the [ JWT  Authentication proceduers] upon the upper defiend {match} variable if this  var has a value        : <br>
+                                    <span class = two></span>   if  (match)  {   <br>
+                                    
+                                      <span class = three></span> // a- Start creating the [JWT] configaration definitions of both [Access Token ]  &  [Refresh Token] :   <br>
+                                      <span class = three></span>  // 1) Creating [JWT] for the {Access Token}  [using the imported defined  {jwt} & username payload ] : <br>
+                                      <span class = three></span>  const  accessToken =  jwt.sign(   <br>
+                                        <span class = four></span>   {"usename" : founderUser.username} <br>
+                                        <span class = four></span>   process.env.ACCESS_TOKEN_SECRET , <br>
+                                        <span class = four></span>   {expiresIn : '30s'}  <br>
+                                      <span class = three></span>  ) ;  <br>   <br> 
+                                      
+                                       
+                                      <span class = three></span> // 2) Creating [JWT] for the {Refresh Token}  [using the imported defined  {jwt}  & payload of the username ]: <br>
+                                      <span class = three></span>  const  refreshToken =  jwt.sign(   <br>
+                                        <span class = four></span>   {"usename" : foundUser.username} <br>
+                                        <span class = four></span>   process.env.REFRESH_TOKEN_SECRET , <br>
+                                        <span class = four></span>   {expiresIn : '1d'}  <br>
+                                      <span class = three></span> ) ;   <br>  <br>  
+                                      
+                                         
+                                      <span class = three></span>   b - Start securing the {Refresh Token}  using  the  Fs files module method - instead of the using [MongoDb]  :    <br>   
+                                        <span class = four></span> // 1) Define the [otherUsers] (all users except the  current user) : <br>   
+                                        <span class = four></span>  const  otherUsers = usresDB.users.filter( person => person.usename !== foundUser.user ) ;  <br>    <br>  
+                                        
+                                        <span class = four></span> // 2) Re-Define {foundUser} object ,  by adding the [refresh token]  to it  - using the destructiuring  -    : <br>   
+                                        <span class = four></span>  const   currentUser = {  ...foundUser , refreshToken    }  ;  <br>  <br>   
+
+
+                                        <span class = four></span> // 3) Re-set the  main  [ usersDB ]  by adding the upper defined [currentUser] to the [otherUsers] : <br>   
+                                        <span class = four></span>   usersDB.users( [ ...otherUsers , currentUser ]  )    ;  <br>  <br>   
+
+                                        <span class = four></span> // 4) Saving the current final users by using the fs modlue [ for now , but will use the DongoDB mehod instead  ] : <br>   
+                                        <span class = four></span> await fsPromises.writeFile(   <br>  
+                                          <span class = five></span>   path.join( __dirname , '..' ,  'model' , 'users.json' )  <br>  
+                                          <span class = five></span>   JSON.stringfy( usersDB.users )   <br>  
+                                        <span class = four ></span> ) ;    <br>  <br>   
+                                        
+ 
+                                        <span class=four></span>   c-  Securing the [Refresh Token] by sending tyo he [http cookies]  ( whcih is completely secured with the  [JS]   )     <br>  
+                                        <span class=four></span>    res.cookie(                                          
+                                          <span class=five ></span>   'jwt' /// [the name of data sent to the  cookies]  <br>
+                                          <span class=five ></span>    refreshToken /// [the  data defined  variable sent to  the cookies]  <br>
+                                          <span class=five ></span>    { httpOnly : true , maxAge :  24 * 60 * 60 * 1000} /// [ cookies type and cookies duratoin ]  <br>
+                                        <span class=four></span> )  <br>   <br>  
+
+
+                                        <span class = four></span> // d- Securing by upper defined {Access Token } by Sending it json node response [ instead of the  message ] : <br>   
+                                        <span class = four></span>  res.json( accessToken ) ;    <br> <br>  
+                                        
+                                    <span class = two></span> } else {
+                                      <span class = three ></span> // Sending the [unauthoriozed error code ]  the server   [in case  of the null value  of the {match} variable ]   :  <br>  
+                                      <span class = three ></span>   res.sendStatus(401);    <br>  
+                                    <span class =  two></span>  }    <br>
+                                
+                                  <span class = one ></span>  } <br>
+                                </code>   <br> <br>  
+                                
+                                //  IV] Exporting the defined  {handleLogin} function :   <br> 
+                                <code> 
+                                  <span class = one ></span>   module.exports  =  { handleLogin  }  <br>
+                                </code>
+                          </li> 
+                          <br>  <hr> <br>
+                                                     
+                          <li> 5- Creating a new [middleware file] of (verfiying the [jwt]) within {verfiyJWT.js}  file :  <br>  
+                            <p>  This file will handle the varification of the defined {jwt} by executing the next tasks on both  the {Access Token} & {Refresh Token}  : <br> 
+                              <ol> 
+                                <li> Reciecving  </li>
+                                <li> Verifying </li>
+                                <li> Securing  </li>                                 
+                              </ol>  
+                            </p>  <br>
+
+                            <code>     
+                              // I]  Importing section :  <br>      
+                              <span class = one ></span>  // Define the {jwt} variable  using the {installed library of [jsonwebtoken]   } : <br>
+                              <span class = one ></span>    jwt  = require('jsonwebtoken')  ; <br> <br>
+
+                              <span class = one ></span>  // Importing the {.env} configruation   using the {installed library of [dotenv] }  : <br>
+                              <span class = one ></span>   require('dotenv').config() ;
+                              <br> <hr>  <br> 
+    
+    
+    
+                              // II]  Event Middleware function define   :  <br> 
+                              <span class = one ></span> const verifyJWT = (res ,req , next )  => {    <br>
+                                <span class = two ></span>  //  1-   Define the requested authorization value in a variable  :   <br>
+                                <span class = two ></span>  const authHeader  = req.headers['authorization'] ;   <br>  <br>  
+
+                                <span class = two ></span>  //  2-  Checking the defined  {authHeader} is not a null value [and sending an UnAuthorized code if it is null ]:   <br>
+                                <span class = two ></span>   if (!authHeader)    return res.sendStatus( 401 ) ; <br>  <br>  
+
+                                <span class = two ></span>  //  3- Testing print of the {authHeader}  value in the console  :   <br>
+                                <span class = two ></span>   console.log(authHeader)  ; <br>  <br>  
+                                
+                                
+                                <span class = two ></span>  //  4- Define a  variable  of modified splitted value  of the recieved requested  [authorized header]:    <br>
+                                <span class = two ></span> const  token   = authHeader.split(' ')[1] ;       <br>  <br>  
+
+
+                                <span class = two ></span>  //  5- Assign the {jwt} verfication parameters object :    <br>
+                                <span class = two ></span>  jwt.verify(   <br>  
+                                <span class = three ></span>    // a- [ assign the defiend token as the value of the  requested  { Acces Token } ]  : <br>  
+                                <span class = three ></span>  token ,   <br>  <br>
+                                
+                                <span class = three ></span>   // b- [ assign the main  defiend {Access Token}  that defiend in hte main {.env }]  :  <br>  
+                                <span class = three ></span>   process.env.ACESS_TOKEN_SECRET   ,    <br> <br>
+                                
+                                  <span class = three ></span>   // c- [ assign the inner tasks of callback function with (2) parameters  ]  :  <br>  
+                                  <span class = three ></span>   (  err , encoded  ) =>   {   <br>
+                                    <span class = four ></span>   ///  Handling hte invlid Token as [Forbided token]    <br>
+                                    <span class = four ></span>   if (err) return res.sendStatus(403) ;    <br> <br>
+                                    
+                                    <span class = four ></span>  ///  assign the requested [user] varible by the encoded username value : <br>
+                                    <span class = four ></span>   req.user  =   encoded.username ;    <br>  <br>
+                                    
+                                    <span class = four ></span> next() ;    <br>
+                                    
+                                    <span class = three ></span> } <br>
+
+                                <span class = two ></span>  ) ; <br>   
+
+                              <span class = one ></span> }     <br> <br>
+                              
+                              //  Exporting section  :      <br>
+                              <span class = one ></span>  module.exports = verifyJWT  ; <br>    
+                            </code>  
+                          </li> 
+                          <br>  <hr> <br>
+
+                          <li> 6- Using the imported defiend [Authentication JWT  verification] middleware  to protect the desired routes   :  <br>   
+                            <p> After we defined and verify our [JWT : {Access Token} & {Refresh Token } in the verify middleware file] , now we will be able to use it to protect our routes [by using one of next (2) methods  ] : <br>  
+                              <ol> 
+                                <li> a)  [Solo method ] within the api route's crud opts  definiton file controller file of auth {authControllers.js} , as following  : <br> 
+                                  <code>  
+                                    //  I] Importing section   : <br>   
+                                    <span class = one ></span>  // Impoprting the defined [jwt verifying Middleware] file : <br> 
+                                    <span class = one ></span>  const verifyJWT =  require('../../middleware/verifyJWT') ;  <br>   <br>  
+                                      
+                                    //  II] Define the main routes using the express router +   it's CRUD operations for each route   : <br>   
+                                    <span class = one ></span>  router.route('/')  <br> 
+                                      <span class = two ></span>  // get all elements operation [will be protected  using (verifyJWT)  -   according to  second method wihtn the main server file  -  ]  <br>  
+                                      <span class = two ></span>  .get(verifyJWT, employeesController.getAllEmployees) <br>    
+                                  </code>                                 
+                                </li>   <br>
+                                                        
+                                <li> b)  [public method ] within the  main server file befire the defined route to be protected  {server.js}  , as following  : <br> 
+                                  <code>  
+                                    //  I] Importing section   : <br>   
+                                    <span class = one ></span>  // Impoprting the defined [jwt verifying Middleware] file : <br> 
+                                    <span class = one ></span>  const verifyJWT =  require('../../middleware/verifyJWT') ;  <br>   <br>  
+                                      
+                                    //  II]  Calling the imoprted {jwtverfity} middleware before the defined route of {'/employees'}     : <br>   
+                                    <span class = one ></span>   app.use(jwtverify);  <br> 
+                                    <span class = one ></span>   app.use('/employees' , require('./routes/api/employees') ) ;        <br>  
+                                  </code>                                 
+                                </li>
+                              </ol>
+                            </p> 
+                          </li>
+
+                          <li> 7- [Log-off] process :  <br>
+                            <p>  After login successful process  with full authenticated with jwt proctected , we need to persue the [login off]  || [login out] process , by implmenting the  as following : <br>
+                              <ol> 
+                                  <li> Creating a new file within the [contrllers] folder  of the controling handling method of  [logout process] => {logoutController.js} </li>
+                                  <li> Creating a new route file wihtin th4e [routes] folder for the [logout] process that using the defined {logoutController.js}   </li>
+                                  <li> Adding the defined reoute inside the main server intial file as a non protected route (before hte protector  route of the {verifyJWT}  </li>
+                              </ol>
+                            </p>      
+                          </li>
+                      
+                          <li>  8- Solving the {cors} issue to be compatable with using the {fetch( )} method within the client side :  <br> 
+                            <p> To solve the [cors] of server response  & achieve the compatablity with the  using {fetch}  method of the client-side   , we ned to appluy 0hte next stpes  :   <br>  
+                              <ol> 
+                                <li>  Define array of [allowedOrigins]  in a seperated file {config/allowedOrigins.js}      </li>
+                                <li>  Define a new custom middleware method of handling the response origins and it's credentials  in seperated file  {middleware/credentials.js  }  </li>
+                                <li>  Assing and use the defined  {credentials} before the assigned   [ thrid-party of cors]  </li>
+                              </ol>
+                            </p>  
+                          </li>
+                          
+ 
+                        </ol>  
+                      </li>
+    
+                  </ul> 
+              </li>
+
+
+              <li>  6]  Sovling  some  isues  in the server    :   <br> 
+                <ol> 
+                  
+                  <li> a- [ {cors issue} of using the  [Credentials Custom Middleware] events     </li>  <br><br> 
+                  
+                  
+                  <li> b- [ Conflict between the frontend & backend hostname url  ] using some modifications in the [cookies Creating -> inside {authController.js}   ] and   [cookies  Clearing ->  {logoutControllers.js }   ]      </li>  <br><br>     
+                </ol>
+              </li>
+              
+            </ol>   
+           
+          <!--------------------------------------------------------  -->
+            
+          <h1>  B] Main Practical steps of setting up and building [user authurization] witin built express [api route] within the [MVC] , by applying the next  steps :   </h1>
+            <ol>          
+              <li> Project file structure modifications steps : <br> 
+                  <p>  Create new folders and files  : <br>
+                      <ul>
+                        <li> 1- inside [model] folder  :  <br>
+                          <p> create the new {users.json} file of users datasource [empty  array with a json format ] </p>
+                        </li> 
+                         <!-- -----------------------------------------  -->
+
+                        <li> 2- inside [controllers] folder  :   <br>
+                           <p> create new/modify of next controllers files :  <br>
+                            <ol>
+                              <li> a- { authController.js} modify file   => the [ Authentication Ckecking proeces + JWT ] Crud operations definition of authentication process :  <br>
+                                // I] Datasource definition section : <br>
+                                <code> 
+                                  //  1-  Define {users} DataBase's configuration object as an imported datasource array of objects   from the {model/users.json}   :   <br>
+                                  <span  class = one ></span> const  usersDB = { <br>
+                                    <span  class = two ></span>  // the initial value of the users datasource :     <br>
+                                    <span  class = two ></span>   users : require('../model/users.json') ,  <br>   <br> 
+                                  
+                                    <span  class = two ></span>  //  the setter function of the users datasource :  <br>
+                                    <span  class = two ></span>   setUsers :  function (data) { this.users = data } <br>
+                                  <span  class = one  ></span>  } <br>
+                                </code> <br>    <hr>   <br>  
+                            
+                                // II]  Importing  section : <br>
+                                <code> 
+                                  //  1-  Define the [bcrypt] from the installed node custom module library  :  <br>
+                                  <span  class = one ></span>   const bcrypt = require('bcrypt') ;  <br>  <br>  
+                                  
+                                  //  2- Define the [JWT] from the installed {jsonwebtoken} node custom module library   :  <br>
+                                  <span  class = one ></span>    const jwt = require('jsonwebtoken');   <br> <br>   
+                                  
+                                  //  3- Imported {.env} file  and its configurations using the imported  [dotenv] library :  <br>
+                                  <span  class = one ></span>   const bcrypt = require('bcrypt') ;  <br> <br> 
+                                  
+                                  //  4-   define the {fs} module [due we still need to write changes into a files , and not using the MongoDB or any other DB ]   :  <br>
+                                  <span  class = one ></span>    const fsPromises = require('fs').promises;   <br>  <br>  
+                                 
+                                  //  5-  define the {path} module    :  <br>
+                                  <span  class = one ></span>    const path = require('path') ;   <br>  <br>  
+                                 
+                                </code>  <br>    <hr>   <br>   
+ 
+                                // III]  [Authentication Handling] function section  : <br>
+                                <code> 
+                                  <span  class = one ></span>  const handleLogin =  async (req, res) => {  <br>
+                                      
+                                    // 1-  Define the [user] and [pwd] [as destructed varaibles from the requested object] of the retunred requested value from the user form to be checked later  : <br>
+                                    <span  class =two></span>  const  {user, pwd } =  req.body ;  <br>  <br>
+
+                                    // 2- Checking from the returned values username or password  if it is not existed + and send response error code + message  :  <br>
+                                    <span  class = two  ></span>  if ( !user || !pwd ) return res.status(400).json({ 'message' : 'User name or/and password are required !' }) ;   <br>  <br> 
+                              
+                                    // 3- Checking if the inserted/requested [ username] is existed in the [usersDB] , or not  :  <br>
+                                    <span  class = two  ></span>  const foundUser = usersDB.users.find( person => person.username  === user) ;  <br>  <br> 
+                              
+                                    // 4-  return an error of [unAuthurized code '401' ]  to the response if [foundUser] is not-existed (means that the usre has not found in the current database)  :  <br>
+                                    <span  class = two  ></span> if  (!foundUser) return res.sendStatus(401); <br>  <br>                               
+                                    
+                                     // 5-  Start [password evaluating] process (after passing the upperstep of : finding {username} is existed in the [usersDB] ) , according to next steps : <br>
+                                    // -- apply the {match} comparison method on the [requested password] with the existed [password] in the current DB , by using the {bcrypt} imported library :  <br> 
+                                    <span  class = two  ></span> const match = await bcrypt.compare( pwd , foundUser.password) ;     // [ if the match has a value => that means the password is found in DB]   <br></br>  
+
+                                    
+                                    // 6-  Start the [JWT authentication prcodrues] uppon the upper defined {match} variable - if this var has a value-   , according to the  next steps  : <br>
+                                    <span class=two></span> // [ if the {match} has a value => that means the password is found in DB]   <br>
+                                    <span class=two></span> if ( match) {    <br>
+                                      
+                                      <span class=three></span>  // a- starting creating the [JWT]  Authentication procedures - before persuing the login process : <br>
+                                      
+                                      <span class=three></span>  /// 1) Creating [JWTs] 's [access token] ->   [with passing the payload  inlcuding only the [userame] (NOT password) ] with both types of  access and refresh token : <br>
+                                      <span class=three></span>  const accessToken = jwt.sign( <br> 
+                                        <span class=four></span>    { "username" : foundUser.username } ,  // [This is the payload  by usign the  uername ] <br>
+                                        <span class=four></span>    process.env.ACCESS_TOKEN_SECRET ,    // [The access token value ]  <br>
+                                        <span class=four></span>    {expiresIn : '30s'}  // [  This is a very short duration , just for testing to be able to see the [access token] , in the real time : 5 - 50 min ]  <br>
+                                      <span class=three></span>  ) ;    <br> <br>    
+  
+                                      <span class=three></span>  /// 2) Create [JWTs]'s  [refresh token] :  <br>   
+                                      <span class= three></span> const refreshToken = jwt.sign(  <br>  
+                                        <span class=four></span>    { "username" : foundUser.username } ,   // [ passing through the username to be encoded by jwt later when verifying ]   <br>       
+                                        <span class=four></span>    process.env.REFRESH_TOKEN_SECRET ,   <br> 
+                                        <span class=four></span>    {expiresIn : '1d'}  // [ a testing duration time for [Refresh token]  , in the real time : 1 day  -  several days  ]  <br>
+                                      <span class=three></span>) ;  <br>  <hr>  <br>    
+                                  
+
+                                      <span class=three></span> // b-  Securing the [Refresh Token] to the file [ using the file system module instead of using  the real database - we will modify thses steps by taking the {MongoDB} - ] :   <br>
+                                      <span class=three></span> // The following step will allow secruting the refresh Token if the user logged out before the expiration duraton is up :  <br>
+
+                                      <span class=three></span> /// 1)  Define a {otherUsers } which is the  filtered  [users]  that get all users expect the current foundUser : <br>  
+                                      <span class=three></span> const otherUsers = usersDB.users.filter( person => person.username  !== foundUser.user ) ;  <br> <br>  
+                                  
+                                      <span class=three></span> /// 2) Re-define the current user by the foundUser that including the [Refresh Token] , by adding the defined [Refresh token] to the upper defiend [founduser : which is found user that inserted his value  ]  : <br>  
+                                      <span class=three></span>  const currentUser  =  { ...foundUser , refreshToken }  ; <br>   <br>
+                                  
+
+                                      <span class=three></span> /// 3) Re-set the main datasource [userDB] by adding both of upper defined [currentUser] & [otherUsers] -> by using  the {setter function} to the filtered new array of users [otherUsers]  :  <br> 
+                                      <span class=three></span> usersDB.setUsers( [...otherUsers , currentUser]  ) ;  <br> <br>   
+
+
+                                      <span class=three></span> /// 4) Saving the new [users ] [after upper modifications of adding the {access token}] into datasource json format {users.json} [instead of using a real Database for now ] :   <br>  
+                                      <span class=three></span> await fsPromises.writeFile(  <br>   
+                                        <span class=four></span>   path.join(__dirname , '..'  , 'model' ,  'users.json' )  ,   <br>  
+                                        <span class=four ></span>   JSON.stringify(usersDB.users) <br>
+                                      <span class=three></span> ) ; <br>  <br>  
+                                        
+                                        
+                                      <span class=three></span> // c-  Securing the [Refresh Token] , by sending it [http cookies]  ( to be NOT vulneriable to the JS )  with following configurations    : <br>   
+                                      <span class=three></span>  ///  [any cookie is being sent with each request , but [httpOnly cookie] is perfect secured and not matched by the js ]  :  <br>
+                                      <span class=three></span>  res.cookie(  <br>
+                                        <span class=four ></span>  'jwt' ,  // [the cookie name]   <br>     
+                                        <span class=four ></span>   refreshToken ,  // [cookie value ]  <br>  
+                                        <span class=four ></span>   { httpOnly: true ,  maxAge : 24 * 60 * 60  * 1000 }   // [ cookie type &  cookie [1 day] duration by the miliiseconds ] <br>
+                                      <span class=three ></span>  )  ;  <br><br>  
+                                  
+ 
+                                      <span class=three ></span>  // d- Securing the  [Access Token] , by sending it  to the secured node server memory JWT [this the user and frontend can grap] :   <br>
+                                      <span class=three ></span> res.json({ accessToken }) ;   <br>  <br> 
+
+ 
+                                    <span class=two></span>  } else {     <br>  
+                                        <span class=three ></span>  res.sendStatus(401) ;    // [sending the  {unAuthorized code} to the server if the upper {match} variable has no value]   <br> 
+                                    <span class=two></span> }   <br>                                
+                                </code>     <br>    <hr>   <br>  
+ 
+                                //  IV] Exporting section : <br>
+                                <code> 
+                                  // Exporting the defined function of handling the  process [handleLogin] as object to be able to pull/call the full name of the controller when is being used inside route file :    <br> 
+                                  <span  class = one ></span>  module.exports  =  {handleLogin}  ; <br>
+                                </code>
+                                 
+                              </li>
+                              <br> <hr> <br> 
+                              
+                              <li> b- { refreshTokenController.js}  new file   => the [Checking process] + [{post} Crud operation] definition of [regitration process] , including the next script :    <br> 
+                                  // I] Datasource definition section : <br>
+                                  <code> 
+                                    //  1-  Define {users} DataBase's configuration object as an imported datasource array of objects   from the {model/users.json}   :   <br>
+                                    <span  class = one ></span> const  usersDB = { <br>
+                                      <span  class = two ></span>  // the initial value of the users datasource :     <br>
+                                      <span  class = two ></span>   users : require('../model/users.json') ,  <br>   <br> 
+                                    
+                                      <span  class = two ></span>   //  the setter function of the users datasource :  <br>
+                                      <span  class = two ></span>   setUsers :  function (data) { this.users = data } <br>
+                                    <span  class = one  ></span>  } <br>
+                                  </code>  <br> <br>  
+                                                            
+                                  // II]  Importing  section : <br>
+                                  <code> 
+                                    //  1-  Define the [fs promises] as imported from the node module :   :   <br>
+                                    <span  class = one ></span>  const fsPromises = require('fs').promises() ;  <br>
+
+                                    //  2-  Define the [path]  from the node core  module :  <br>
+                                    <span  class = one ></span>  const path  = require('path') ;   <br>
+
+                                    //  3-  Define the [bcrypt] from the installed node custom module library  :  <br>
+                                    <span  class = one ></span>   const bcrypt = require('bcrypt') ;  <br>
+                                  </code>   <br>  <br> 
+  
+                                  // III]  [Registration Handling] function section  : <br>
+                                  <code> 
+                                      <span  class = one ></span>   const  handleNewUser =  async (req, res) => {  <br>
+                                      
+                                        // 1-  Define the [user] and [pwd] [as destructed values] of the retunred requested value from the user from to be checked later  : <br>
+                                        <span  class =two></span>  const  {user, pwd } =  req.body ;  <br>  <br>
+
+                                        // 2- Checking from the returned values username or password   if it is not existed + and send response error code + message  :  <br>
+                                        <span  class = two  ></span>  if ( !user || !pwd ) return res.status(400).json({ 'message' : 'User name or/and password are required !' }) ;   <br>  <br> 
+
+                                        // 3- Checking of the requested username value is duplicated value with the existed value in the current defined [usersDB]  [by using find() method to figure out if inserted user name by the user is equal to the username existed in usersDB ] :  <br>
+                                        <span  class = two ></span>  // if there is a value of duplicate varable => [that will mean there is a dubplciated value of the  username] :   <br>
+                                        <span  class = two ></span>  const  duplicate = usersDB.users.find( person => person.username === user );     <br> <br>
+
+                                        // 4- if there is a value of  the {duplicate}  => Sending an error code into the response of the conflict duplication [409] {if there is is a value of duplicate variable } :  <br>
+                                        <span  class = two ></span>  if (duplicate) return res.sendStatus(409);    <br> <br> 
+
+
+                                        // 5- Starting handling the [registration]  process after previous error handling using the [try-catch]  : <br>                                       
+                                        <span  class = two ></span>  try  {   <br>  
+                                          <span  class = three ></span> // a) Encrypting the [password] value using the imported library {bcrypt} (with using the await ) , by assigning (2) paramters  :  <br>
+                                              <span  class = four ></span> // [pwd] pramater   : the requested password value   <br>
+                                              <span  class = four  ></span> // [salt] rounds pramater  :  method used to encrypt the passowrd  - to make much harder to hackers to break - (10 : standerd value ) : <br>
+                                          <span  class = three ></span> const  hashedPwd = await bcrypt.hash( pwd  , 10 ) ;  <br>  <br>  
+                                          
+                                          <span  class = three ></span> // b) Creating/define the   [newUser] account as an object variable with [assign it's properties: 'username' ,  'password' by values of upper defined and checked values of requested varaiables [user , hashedPwd] ]  :  <br>
+                                          <span  class = three ></span> const newUser = {"username" : user   ,   "password" : hashedPwd  } ;   <br>   <br>
+                                          
+
+                                          <span  class = three ></span> // c) Storing a the created {newUser} varaible =>  into the [usersDB] confiuraton object     using the  [destructuring methodology  + setter function of the [usersDB]  :  <br>
+                                          <span  class = three ></span> usersDB.users  = ([...usersDB , newUser]) ;    <br>  <br>
+                                          
+                                          <span  class = three ></span> //  d) Writing the new object[users] after storing the {newUser}  in to the {users.json} main datasource file  [usign the defined {fsPromises} of writing file     ]  :  <br>  
+                                          <span  class = three ></span>  await fsPromises.writeFile(    <br>                                               
+                                              <span  class = four ></span> path.join(__dirname , '..'  , 'model' , 'users.json'), <br>
+                                              <span  class = four ></span> JSON.stringify(usersDB.users)      [// -> converting the object data into a strinified json fomrat ]  <br>
+                                          <span  class = three ></span> ) ;  <br><br>          
+                                          
+                                          
+                                          <span  class = three ></span>  // e) printing the new object {users} into the console   : <br> 
+                                          <span  class = three ></span> console.log(usersDB.users) ; <br><br>          
+                                          
+                                          <span  class = three ></span>  // f) Sending a successful process code [201] into the response  + json message [of newuser account creation confirmation ]  : <br> 
+                                          <span  class = three ></span> res.status(201).json({"success" :   `The new user ${user} Account has been creeted and  added into the DB`})   ;  <br><br>          
+
+                                        <span  class = two ></span> } catch (err) { <br>
+
+                                          <span  class = three ></span> // Catching the server error code (500) (the error type still need handling ) :<br> 
+                                          <span  class = three ></span> res.status(500).json({'message' : err.message }) ;  <br>
+
+                                        <span  class = two ></span>   }  <br>    
+                                      <span  class = one ></span>   }  <br>  <br>    
+                                  
+                                      // IV]  Exporting section : <br>
+                                      <span  class = one ></span> // Exporting the defined function of handling  the registration process [handleNewUser] as object to be able to pull/call the full name of the controller when is being used inside route file :  <br>
+                                      <span  class = one ></span>  module.exports = {handleNewUser}  ;  <br> 
+                                </code>   <br>    
+                              </li>
+                               <br> <hr> <br> 
+
+                              <li> c- {logoutController.js}  new file => the [Logout process] + [{get} Crud operation] definition of [ logout process] , including the next script :    <br> 
+                                  // I] Datasource definition section : <br>
+                                  <code> 
+                                    //  1-  Define {users} DataBase's configuration object as an imported datasource array of objects   from the {model/users.json}   :   <br>
+                                    <span  class = one ></span> const  usersDB = { <br>
+                                      <span  class = two ></span>  // the initial value of the users datasource :     <br>
+                                      <span  class = two ></span>   users : require('../model/users.json') ,  <br>   <br> 
+                                    
+                                      <span  class = two ></span>   //  the setter function of the users datasource :  <br>
+                                      <span  class = two ></span>   setUsers :  function (data) { this.users = data } <br>
+                                    <span  class = one  ></span>  } <br>
+                                  </code>  <br> <br>  
+                                                            
+                                  // II]  Importing  section : <br>
+                                  <code> 
+                                    //  1-  Define the [fs promises] as imported from the node module :   :   <br>
+                                    <span  class = one ></span>  const fsPromises = require('fs').promises ;  <br>
+
+                                    //  2-  Define the [path]  from the node core  module :  <br>
+                                    <span  class = one ></span>  const path  = require('path') ;   <br>
+                                  </code>   <br>  <br> 
+  
+                                  // III]  [ Logout  Handling] function section  : <br>
+                                  <code> 
+                                      <span  class = one ></span>   const  handleLogout    =  async (req, res) => {  <br>
+                                      
+                                        // 1-  Define the [user] and [pwd] [as destructed values] of the retunred requested value from the user from to be checked later  : <br>
+                                        <span  class =two></span>  const  {user, pwd } =  req.body ;  <br>  <br>
+
+                                        // 2- Checking from the returned values username or password   if it is not existed + and send response error code + message  :  <br>
+                                        <span  class = two  ></span>  if ( !user || !pwd ) return res.status(400).json({ 'message' : 'User name or/and password are required !' }) ;   <br>  <br> 
+
+                                        // 3- Checking of the requested username value is duplicated value with the existed value in the current defined [usersDB]  [by using find() method to figure out if inserted user name by the user is equal to the username existed in usersDB ] :  <br>
+                                        <span  class = two ></span>  // if there is a value of duplicate varable => [that will mean there is a dubplciated value of the  username] :   <br>
+                                        <span  class = two ></span>  const  duplicate = usersDB.users.find( person => person.username === user );     <br> <br>
+
+                                        // 4- if there is a value of  the {duplicate}  => Sending an error code into the response of the conflict duplication [409] {if there is is a value of duplicate variable } :  <br>
+                                        <span  class = two ></span>  if (duplicate) return res.sendStatus(409);    <br> <br> 
+
+
+                                        // 5- Starting handling the [registration]  process after previous error handling using the [try-catch]  : <br>                                       
+                                        <span  class = two ></span>  try  {   <br>  
+                                          <span  class = three ></span> // a) Encrypting the [password] value using the imported library {bcrypt} (with using the await ) , by assigning (2) paramters  :  <br>
+                                              <span  class = four ></span> // [pwd] pramater   : the requested password value   <br>
+                                              <span  class = four  ></span> // [salt] rounds pramater  :  method used to encrypt the passowrd  - to make much harder to hackers to break - (10 : standerd value ) : <br>
+                                          <span  class = three ></span> const  hashedPwd = await bcrypt.hash( pwd  , 10 ) ;  <br>  <br>  
+                                          
+                                          <span  class = three ></span> // b) Creating/define the   [newUser] account as an object variable with [assign it's properties: 'username' ,  'password' by values of upper defined and checked values of requested varaiables [user , hashedPwd] ]  :  <br>
+                                          <span  class = three ></span> const newUser = {"username" : user   ,   "password" : hashedPwd  } ;   <br>   <br>
+                                          
+
+                                          <span  class = three ></span> // c) Storing a the created {newUser} varaible =>  into the [usersDB] confiuraton object     using the  [destructuring methodology  + setter function of the [usersDB]  :  <br>
+                                          <span  class = three ></span> usersDB.users  = ([...usersDB , newUser]) ;    <br>  <br>
+                                          
+                                          <span  class = three ></span> //  d) Writing the new object[users] after storing the {newUser}  in to the {users.json} main datasource file  [usign the defined {fsPromises} of writing file     ]  :  <br>  
+                                          <span  class = three ></span>  await fsPromises.writeFile(    <br>                                               
+                                              <span  class = four ></span> path.join(__dirname , '..'  , 'model' , 'users.json'), <br>
+                                              <span  class = four ></span> JSON.stringify(usersDB.users)      [// -> converting the object data into a strinified json fomrat ]  <br>
+                                          <span  class = three ></span> ) ;  <br><br>          
+                                          
+                                          
+                                          <span  class = three ></span>  // e) printing the new object {users} into the console   : <br> 
+                                          <span  class = three ></span> console.log(usersDB.users) ; <br><br>          
+                                          
+                                          <span  class = three ></span>  // f) Sending a successful process code [201] into the response  + json message [of newuser account creation confirmation ]  : <br> 
+                                          <span  class = three ></span> res.status(201).json({"success" :   `The new user ${user} Account has been creeted and  added into the DB`})   ;  <br><br>          
+
+                                        <span  class = two ></span> } catch (err) { <br>
+
+                                          <span  class = three ></span> // Catching the server error code (500) (the error type still need handling ) :<br> 
+                                          <span  class = three ></span> res.status(500).json({'message' : err.message }) ;  <br>
+
+                                        <span  class = two ></span>   }  <br>    
+                                      <span  class = one ></span>   }  <br>  <br>    
+                                  
+                                      // IV]  Exporting section : <br>
+                                      <span  class = one ></span> // Exporting the defined function of handling  the registration process [handleNewUser] as object to be able to pull/call the full name of the controller when is being used inside route file :  <br>
+                                      <span  class = one ></span>  module.exports = {handleNewUser}  ;  <br> 
+                                  </code>   <br>    
+                              </li>
+                               <br> <hr> <br> 
+  
+ 
+                            </ol>   
+                          </p>
+                        </li>
+                        <!-- ----------------------------- -->
+                        
+                        <li> 3- inside [routes] folder  :   <br>
+                           <p> create new next routes files :  <br>
+                            <ol>
+                              <li> a- { refresh.js} route file   => the route for [refreshToken] by using the defiend {handleRefreshToken} method  , including  the next  script :  <br>
+                                  <code>
+                                    //  A] Importing section :   <br>
+                                    <span class = one > </span>   // 1- Import the express  :    <br> 
+                                    <span class = one > </span> const express = require('express');       <br>  <br>
+                                    
+                                    <span class = one > </span> // 2- Import the {Router} tool from express  : <br> 
+                                    <span class = one > </span> const router  = express.Router() ; <br>  <br>
+                                    
+                                    <span class = one > </span>  // 3- Import the file of defined registration function : <br> 
+                                    <span class = one > </span> const refershTokenController   = require('../controllers/refershTokenController')  ;  <br>  <br>
+                                    //  --------------------------------
+                                    <br> <hr> <br>
+
+                                    // B] Route Definition  section : 
+                                    <span class = one > </span>  // 1- Define Route of handling Get curd operation of [Refresh Token]   as following :  <br>
+                                      <span class = two > </span>  - Using the [get Crud operation](due we are getting the user [Refresh Token] that created via {handleRefreshToken()}  imported function from  -  {refershTokenController} file  - ) <br>  
+                                      <span class = two > </span>  - Assign the  defined and imported  {handleNewUsers} in router handling method : <br>
+                                    <span class = one > </span> router.get( '/' , refershTokenController.handleRefreshToken) ;
+                                    //-----------------------------                                    
+                                    <br> <hr> <br> 
+
+                                    // C] Exporting the upper defined [router] section :  <br>
+                                    <span class = one > </span>   module.exports  = router ; <br>
+                                    //-----------------------------                                    
+                                  </code>
+                                  <br> <hr> <br>
+                              </li>
+                                
+                              <li> b- { logout.js } route file =>  the route of the  [logout proces ]  by using the defined  [logoutController] method , including the next  script :  <br>
+                                <code>
+                                  //  A] Importing section :   <br>
+                                  <span class = one > </span>   // 1- Import the express  :    <br> 
+                                  <span class = one > </span> const express = require('express');       <br>  <br>
+                                  
+                                  <span class = one > </span> // 2- Import the {Router} tool from express  : <br> 
+                                  <span class = one > </span> const router  = express.Router() ; <br>  <br>
+                                  
+                                  <span class = one > </span>  // 3- Import the file of defined registration function : <br> 
+                                  <span class = one > </span> const logoutController   = require('../controllers/logoutController')  ;  <br>  <br>
+                                  //  --------------------------------
+                                  <br> <hr> <br>                                 
+  
+                                  // B] Route Definition  section :  <br>  
+                                  <span class = one > </span>  // 1- Define Route of handling Get curd operation of [Logout] as following :  <br>
+                                    <span class = two > </span>  - Assign the  defined and imported  {handleNewUsers} in router handling method : <br>
+                                  <span class = one > </span> router.get('/'  ,  logoutController.handleLogout );  <br>
+                                  //-----------------------------                                    
+                                  <br> <hr> <br> 
+
+                                  // C] Exporting the upper defined [router] section :  <br>
+                                  <span class = one > </span>   module.exports  = router ; <br>
+                                  //-----------------------------                                    
+                                </code>
+                                <br> <hr> <br>
+                              </li>
+                              <br><hr> <br>
+                            </ol>   
+                          </p>
+                        </li>
+                        <!-- ------------------------------- -->
+                        
+                        <li> 4-  [middleware]  folder   : <br>
+                          <p>  create new middleware file  : <br> 
+                            <ol>
+                               <li> a-  {verifyJWT.js} middleware =>  creating new file of handling the verification of the [JWT] as an event midleware   , including the next  script  : <br>
+                                <p>  This file will contains Recieving , verify , and securing  the [AccessToken] & [Refresh Token]  </p>
+                                  // I] Importing section   :  <br>
+                                  <code>    
+                                    <span class=one  ></span> // Define the [jwt] using the [jsonwebtoken] library :     <br>
+                                    <span class=one  ></span>   const jwt = require( 'jsonwebtoken' ) ;   <br>
+                                  
+                                    <span class=one  ></span> // importing the [.env]  file inner definitions using  [dotenv] library : <br>
+                                    <span class=one  ></span>  require('dotenv').config();  <br>                                
+                                  </code> 
+                                   <br> <br>  <br>   
+                                  
+                                  // II]  Event middleware function definition section   :  <br>
+                                  <code>    
+                                    <span class=one  ></span>  //  Define Event middleware function definition   :   <br>
+                                    <span class=one  ></span>  const verifyJWT= (res , req , next) => {   <br>
+                                  
+
+                                      <span class=two></span> // 1-  Getting the requested [authorization Haeder] value as a defined variable :  <br> 
+                                      <span class=two></span> const  authHeader = req.headers['authorization'] ;  <br>   <br>     
+                                       
+                                      <span class=two></span>  // 2-  Checking if defined recieved [authHeader] is not a null value  [send code error of [unAuthorized] to the server if it is not recived ] :  <br> 
+                                      <span class=two></span>  if (!authHeader)  return res.sendStatus(401) ;    // [ { 401 : Unauthorized error} ]      <br>      <br> 
+                                       
+                                      <span class=two></span>  // 3- Testing print of the recieved  [authHeader] to the console : <br> 
+                                      <span class=two></span>   console.log(authHeader) ;    // [ recieved as bearer token value  ]          <br> <br>     
+                                       
+                                      <span class=two></span>  // 3- Testing print of the recieved  [authHeader] to the console : <br> 
+                                      <span class=two></span>   console.log(authHeader) ;    // [ recieved as bearer token value  ] <br> <br>     
+                                       
+
+                                      <span class=two></span> // 4- Define the [Token] as modified splittted value  from the recieved [authHeader]  :  <br>  
+                                      <span class=two></span> // [by splitting the value of given [authorizedHeader] according the first char after the empty space] : <br>       
+                                      <span class=two></span>  const  token = authHeader.split(' ')[1] ; <br><br>   
+                                  
+                                      <span class=two></span>  // 5- Assign [JWT] Verifying configuration object parameters , by using the {.verify()} method : <br>  
+                                      <span class=two></span>   jwt.verify(    <br>   
+                                        <span class=three></span>  // a- assign the defined  [token] variable (as a modified value) of the requested [Access Token] :  <br> 
+                                        <span class=three></span>   token ,   <br> <br>         
+                                  
+                                        <span class=three></span>  // b- assign the main Access Token value : <br>   
+                                        <span class=three></span>  process.env.ACCESS_TOKEN_SECRET,  <br>    <br>
+                                      
+                                        <span class=three></span>  // c-  Assign the callback function inner (2) parameters of the {error} and {encoded}   :  <br>   
+                                        <span class=three></span>  (err , decoded )  => {  <br>
+                                          <span class=four></span>  // 1) Handling  [invalid Token error] => by Sending it  as [Forbiden error]  :  <br>  
+                                          <span class=four></span>  if  (err)  return  res.sendStatus(403) ;  // [ {403 : forbidden error} : means the user are forbidon from the access]  <br> <br> 
+                                            
+                                          <span class=four></span>  // 2) Set the [user] requested value with the (decoded) username value :  <br>
+                                          <span class=four></span>  req.user =  decoded.username ;  <br>   <br> 
+                                    
+                                          <span class=four></span> next();  <br>
+                                        <span class=three></span> }  <br>
+                                       
+                                      <span class=two></span>   ) ;    <br>   
+                                     
+                                    <span class=one  ></span>  }     <br>                                
+                                  </code>            
+                                  <br> <br>  <br>      
+                                  
+                                  // III]   Exporting section    : <br>  
+                                  <code> 
+                                    <span class="one"></span>     module.exports = verifyJWT ;  <br>   
+                                  </code>
+                                  <br> <br>  <br>      
+                              </li>
+                            </ol>
+                          </p>
+                        </li>
+                        <br> <br>  <br>      
+                        <!-- ----------------------------------------- -->
+                      
+                        <!-- ----------------------------------------- -->
+                        <li> *- inside [server.js ] file    :   <br>
+                           <p> Adding new both of route methods wihtin the express   :  <br>
+                            <ol>
+                              <li> a- Adding required imports :  <br>
+                                <ul> 
+                                  <li> 1)  Importing {verifyJWT} the middleware file to be used here for assing  the protecting routes : <br>   
+                                    <code>  
+                                      <span class=one  >  </span> const verifyJWT = require('./middleware/verifyJWT') ;       <br>     
+                                    </code> 
+                                  </li>  <br> 
+
+                                  <li> 2)  Importing {cookiesParser}  library : <br>   
+                                    <code>  
+                                      <span class=one  >  </span> const  cookiesParser  = require('cookie-parser') ;       <br>     
+                                    </code> 
+                                  </li>                                 
+                                </ul>
+                              </li>   <br><hr>  <br>   
+
+                              <li> b- Define the new required definition  :   <br> 
+                                <p> 1) define a extraced variable from the imported   [cookies]  :    <br>   
+                                    <code>
+                                      <span  class=one ></span>   app.use(cookiesParser()) ;  <br>
+                                    </code>        
+                                </p>
+                              </li>   
+                               <br><hr>  <br>   
+                              
+                              <li> c- Assign new routes  : <br > 
+                                <ol> 
+                                  <li> 1)  Assign the new route of the {refresh.js } that responsible for handling the [refresh token]  proces :  <br>
+                                    <code>  
+                                        <span class = one ></span> app.use('/refresh' , require('./routes/refresh') ) ; <br>
+                                    </code>                  
+                                  </li>  <br>
+                                  
+                                  <li> 2)  Assign the new route of the {logout.js } that responsible for hanlding the [ logout ]  process :  <br>
+                                    <code>  
+                                        <span class = one ></span> app.use('/logout ' , require('./routes/logout ') ) ; <br>
+                                    </code>                  
+                                  </li>  <br>
+                                 
+                                  <li> 3)  Assign the  (protector route) of the [middleware verify JWT] before the {employees}  route and after all other defined routes :  <br>
+                                    <p> This protector route should be located after non protected  & before the route desired to be protected  as  following  :    </p>
+                                    <code>  
+                                        
+                                        // Assign the first non-protected [main root   route  ]  :  <br> 
+                                        <span class = one ></span> app.use('/=' , require('./routes/root ') ) ; <br> <br>
+                                        
+                                        
+                                        //  Assign  second  non-protected  [sub route of  register ]  :  <br> 
+                                        <span class = one ></span> app.use('/refresh' , require('./routes/refresh') ) ; <br><br>  
+                                         
+                                        //  Assign  third  non-route [sub route of  authentication  ]        :  <br> 
+                                        <span class = one ></span> app.use('/auth' , require('./routes/auth') ) ; <br> <br>
+                                        
+
+                                        // Assign the protector route of [verifyJWT] middelweer    :  <br>
+                                        <span class = one ></span> app.use( verfiyJWT) ; <br><br>
+
+                                        // Assign the protected route of [employees]   :  <br>
+                                        <span class = one ></span> app.use(' /employees' , require('route/api/employees')   ) ; <br><br>
+
+                                    </code>                  
+                                  </li>
+
+                                </ol>
+                              </li> 
+
+                            </ol>   
+                          </p>
+                        </li>
+
+                    </ul>
+                  </p>
+ 
+                  <ul> 
+                    <li> a- {package.json} file  => with next modifications    :  <br>
+                      <ol> 
+                          <li> adding the [express] npm => "express": "^4.21.1"    </li> 
+                      </ol>                          
+                    </li>
+
+                    <li> b- inside  main root =>   including the next files and folders  :  <br>      
+                      <ol>   
+                        <li> [Files] inside the main root :   <br>
+                          <ul>  
+                            <li> 1-  {server.js} => <br> 
+                              <p> The main file to be run as default [as set in  package.json ] </p>
+                              <p> This file will include all Server configurations methods and procedures & steps   </p>
+                              <p> This file will include also importing and using of hte defeind {logEvent} methods and procedures practical steps   </p>
+                            </li>  <br>   
+                              
+                            <li> 2-  {package.json} : the manifest of application and libraries  </li>
+                            
+                            <li> 3-  {.gitignore} :  exectutive file include all ignored files and folders  </li>
+                          </ul> 
+                        </li>  <br>  <br>
+
+                        
+                        <li>  [Folders] inside the main root   : <br>
+                          <ul> 
+                            <li> 1- [views]  => the main server folder that will include all essential server files , as following  : <br> 
+                              <ol> 
+                                <li>  [subdir]  :   another  sub directory inside the [views], that include another inner {index.html} </li>
+                                <li>  {index.html}  : the main home html  page       </li>
+                                <li>  {new-page.html}  : a testitng html  page used to redirecting into it   by requestng a unexisted {old-page.html} </li>
+                                <li>  {404.html}  : the 404 Error html page       </li>
+                              </ol>
+                            </li>   <br>   
+                            
+                            <li> 2- [logs]  => the folder to include the log files that will by  created by Node server scripting , such as :    <br>
+                              <ul>
+                                <li>  {eventLog.txt} ->  to hold all written main default Logs records     </li>  
+                                <li>  {reqLog.txt}   ->  to hold all written request Logs records  </li>  
+                                <li>  {errLog.txt}   ->  to hold all written catched [erros Logs]  records  </li>  
+                              </ul>
+                            </li> <br> 
+                            
+                            <li> 3- [model] instead of [data] => and change inner file of  [data.json] -> [employees.json  ] : <br>
+                              <ul>
+                                <li>  { employees.json}  ->  a json file of testing object of data of employees data in form of a json format  </li>  
+                                <li>  { users.json}  ->  a json file of testing object of data of users  data in form of a json format  </li>  
+                              </ul>
+                            </li>    <br>  
+                              
+                            <li> 4- [middleware] : include the defined events files of the basuc methods and middelware methods     <br>
+                              <ul>
+                                <li>  { logEvents.js }     ->  include the main (2) Events methods of  : <br> 
+                                  <ol> 
+                                    <li>  { logEvents() } => Basic event method  </li>
+                                    <li>  { logger() }    => Custom Middleware event method </li>
+                                  </ol>                                                                              
+                                </li>  <br> 
+
+                                <li>  { errorHandler.js }  ->   include the main  custom middleware error method of the  [ errorHandler() ]    </li>  
+                              </ul>
+                            </li>    <br>  
+                              
+                            <li> 5- [public]  => this folder will hold all [public project server folders and files  ] such as :  <br>
+                              <ul>
+                                  <li>  [css]  => this  folder will hold all [ CSS styling files] such as :  <br>
+                                    <ul>
+                                      <li>  {style.css}  ->  a  css styling testing file   </li>  
+                                    </ul>
+                                  </li>    <br>  
+                                    
+                                  <li>  [img]  => this folder will hold all [ images files] such as :  <br>
+                                    <ul>
+                                      <li>  {1.jpg}  ->  testing image to be used inside a application      </li>  
+                                    </ul>
+                                  </li>    <br>  
+                                  
+                                  <li> [text]  => this folder will hold all [ texual files] such as :  <br>
+                                    <ul>
+                                      <li>  {data.txt}  ->  testing  textual data  </li>  
+                                    </ul>
+                                  </li>    <br>  
+
+                                </ul>
+                              </li>    <br>  
+                              
+                              <li> 6- [controllers]  => new folder that  will hold all defined contlllers metod of the our server hosts  , and include  following files :
+                                <ul> 
+                                  <li>   {employeesController.js} :    will include some of controling CRUD routes  methods that awill be used in the server      </li>
+                                  <li>   {authController.js}      :    will include all functions and methods responsible for [Authentication process] , which will be imported and used inside the {routes/auth.js} route file </li>
+                                  <li>   {registerController.js}  :    will include all functions and methods responsible for [Registration process] , which will be imported  and useds inside the  {routes/regsiter.js} route file </li>
+                                  <li>   {logoutController.js}    :    will include all functions and methods responsible for [ Logout process] , which will be imported and useds inside the  {routes/logout.js} route file </li>
+                                </ul>      
+                              </li>   <br>  
+                              
+                              <li> 7- [routes]  => new folder that will hold all defined routes and APIs logic files of the server , as following  : <br> 
+                                  <ol>
+                                    <li> [api] folder => include the [api] files => {employees.js} , which contain the following defintions   :   <br>    
+                                      <p> Express Routes definitions -> [defisned by the route  middlware method hanlders  </p>
+                                      <p> Each defined Express Route  include all  CRUD API operations : [get , post , put , delete]  </p>
+                                    </li>
+
+                                    <li> {root.js} file     => include the route defintion  of the main root route   </li>
+                                    <li> {auth.js} file     => Include the route defintion of the [Authentication ] route , by importing and using the defined related functions of authentcication  from {authControllers.js} </li>
+                                    <li> {register.js} file => Include the route defintion of the [Registration] route , by  importing  and using the defined related functions of regsitration from {regsiterControllers.js}    </li>
+                                    <li> {logout .js} file  => Include the route defintion of the [Logout] route , by  importing  and using the defined related functions  from {logoutControllers.js}    </li>
+                                </ol>                                    
+                              </li> <br>  
+                                
+                              <li> 8- [config]  => new folder that will hold   fiels for  more shorthand method  inside the  the  {server.js} file  , as following  : <br> 
+                                  <ol>
+                                    <li> {corsOptions.js} file => include defined methods used in the server file for more clean script     </li>
+                                </ol>                                    
+                              </li> <br>  
+                            
+                              <li> 9- [node_modules]  => the folder will hold all installed core and custom [ npm libaries ]   </li>    <br>  
+                                
+                          </ul>
+                        </li>
+                      </ol>
+                    
+                    </li>
+                  </ul>
+              </li> <br> <br>  
+
+              <li> Second/ Modifications in related files : <br>
+                  <ol> 
+                                        
+                    <li>  1- {server.js} file   :   <br>      
+                      <p> This the file of [server.js] , will be including Re-factoring of the express node server with   using  [MVC]  methodology  +  cleaning procedures of defined  Middlewares  ,  as folwoing    : <br> 
+                        <ol>  
+                          <li>  A] Importing Section :     <br>     
+                              <code> 
+                                // 1]  Importing for [node and express]   : <br> 
+                                  // a-  importing the {path} class from the  [node core common module]   :  <br>   
+                                    <span class="one " > </span>   const path = require('path') ;   <br>   <br>
+    
+                                  // b-  importing the {express} custom class from the  [node custom module] :     <br>
+                                  <span class="one " > </span>    const express  = require('express') ;    <br>   <br>
+                                  
+                                  // c-  importing the {express} custom class from the  [node custom module] :     <br>
+                                  <span class="one " > </span>     cookiesParser = require('cookie-parser') ; <br>   <br>
+                                  
+                                // 2]  Importing for [ Third-party Middleware ]   : <br> 
+                                  // a-  importing the {cors} library required for using the [third-party] type  ] :  <br>
+                                  <span class="one " > </span>    const cors  = require('cors') ;    <br>   <br>
+
+                                  // b-  importing the external  defined  third-party middleware method {corsOptions} =>  to use be able it here [as assigned method inside the {cors}  ] : <br>
+                                  <span class="one " > </span>    const corsOoptions  = require('config/corsOptions') ;    <br>   <br>
+
+                                // 3]  Importing the defined  Events [ Custom middleware ] : <br> 
+                                  // a-  importing the {Logger} defined Custom middleware method , and exproted class  from the {logEvents.js} file to be used and called  here inside express method - instead of defining it here     :  <br>
+                                  <span class="one " > </span>    const { logger } = require('./middleware/logEvents');    <br>   <br>
+
+                                  // b- importing {errorHandler} defined and exported function from the {errorHandler.js} file to be used  here [inside express method] - instead of define the custom middleware here : <br>
+                                  <span class="one " > </span>    const errorHandler = require('./middleware/errorHandler');  <br>   <br>
+
+                                  // c- Imporing the middleware  {verifyJWT} file to  be used in before  protected  the following defined route [employees]   : <br>
+                                  <span class="one " > </span>    const errorHandler = require('./middleware/errorHandler');  <br>   <br>
+
+                              </code>       
+                          </li>   <br><hr> <br>  <br>     
+                          
+                      
+                          <li>  B] [Express Server configuration  definitions ] section  :   <br>
+                            <ul>  
+                              <li> 1] Define the {port(s)} to be used for connecting with the [localhost] OR with other custom node  server {3500}  :   <br>
+                                <code>
+                                  <span  class=one > </span>    const PORT = process.env.PORT || 3500 ;  <br>  
+                                </code>
+                              </li>    <br> <br> 
+    
+                              <li> 2]  Define the {app} as extracted variable from the defined express  [instead of the   {server} defined variable ]  :   <br>
+                                <code>
+                                  <span  class=one > </span>  const app = express() ;  <br>  
+                                </code>
+                              </li>    <br> <br> 
+                            </ul> 
+                          </li>  <br><hr> <br>  <br>     
+    
+
+                          <li> C] Assign the imported {Events Handlers methods} of different middlewares types [custom  +  third-party]  :  <br> 
+                            <ul> 
+                                <li> I] {Logger} logging events [Custom Middleware] : <br>  
+                                  <code>  
+                                      <span   class-=one  ></span>  app.use(logger);  <br>
+                                  </code>
+                                </li>  <br>  <br>
+                              
+                                <li> II] {credentials } of solving the cors issue  events [Custom Middleware] : <br>  
+                                    <code>  
+                                        <span   class-=one  ></span>  app.use(credentials);  <br>
+                                    </code>
+                                </li>    <br> <br>                                      
+                            
+                                <li> III] { cors(corsOptions) } of Define the  [third-party middleware] of method of [Cros origins resouerce sharing  ]  : <br>  
+                                    <code>  
+                                        <span   class-=one  ></span>  app.use( cors(corsOptions ));  <br>
+                                    </code>
+                                </li> 
+                                      
+                            </ul>
+                          </li>  <br><hr> <br>  <br>     
+                            
+
+                          <li> D] Assign the imported   [Built-in middleware methods]  :  <br> 
+                            <ul> 
+                                <li> I] Built-in middleware to  handle urlencoded from data  [ content-type : application/x-www-form-urlnccoded ] : : <br>  
+                                  <code>  
+                                      <span class-=one ></span>   app.use(express.urlencoded({ extended: false }));  <br>
+                                  </code>
+                                </li>  <br>  <br>
+                              
+ 
+                                <li> II] Built-in middleware of handling  [json data] :<br>  
+                                    <code>  
+                                        <span   class-=one  ></span>  app.use(express.json());  <br>
+                                    </code>
+                                </li>    <br> <br>                                      
+                            
+                                <li> III]  Define a middleware for the [cookies]  : <br>  
+                                    <code>  
+                                        <span   class-=one  ></span>  app.use( cors(corsOptions ));  <br>
+                                    </code>
+                                </li>   <br> <br> 
+
+                                <li> IV] Define a [Custom middleware] for the [cookies]  : <br>  
+                                    <code>  
+                                        <span  class-=one  ></span>  app.use(cookiesParser()) ;  <br>
+                                    </code>
+                                </li>    <br> <br> 
+
+
+                                <li> V] Define the method of reading files from  [public] folder's  to be accessible for this [main root route]  : <br>  
+                                    <code>  
+                                        <span  class-=one  ></span>   app.use( '/' , express.static(path.join(__dirname, '/public')));  <br>
+                                    </code>
+                                </li>  <br> <br>
+                                
+                            </ul>
+                          </li>  <br><hr> <br>  <br>     
+                            
+                                                        
+                          <li> E] [Routes definition ] section :   <br> 
+                            <p> Calling main imported Routes's  related Defined crud opts +  handling return  -  (according to the express +  {mvc} )  => by Importing both : <br> 
+                                <code> 
+                                    //  1- Assign [Default Route] of the {'/'} : Define main index/home route + handling return , by calling the  main source of definition 'routes/root'  file :  <br>    
+                                    <span  class="one "></span>  app.use('/' , require('./routes/root') ) ;   <br> <br>  
+
+                                    //  2- Assign [Default Route] of the {'/register'} : Define  sub route of the [registration]  of posting crud opt  of creating a new user , by calling the  main source of definition 'routes/register.js'  file :   <br>
+                                    <span  class="one "></span>  app.use('/register' , require('./routes/register') ) ;    <br><br>
+                                    
+                                    //  3- Assign [Default Route] of the {'/auth'} : Define  sub route of the [Authentication] of posting crud opt of access the logged in a user , by calling the  main source of definition 'routes/auth.js'  file :  <br>  
+                                    <span  class="one "></span>  app.use('/auth' , require('./routes/auth') ) ;    <br><br>
+                                    
+                                    //  4- Assign [Default Route] of the {'/refresh'} : Define  sub route of the [refresh]  of posting crud opt  of creating a new user , by calling the  main source of definition 'routes/register.js'  file :   <br>
+                                    <span  class="one "></span>  app.use('/refresh' , require('./routes/refresh') ) ;    <br><br>
+                                    
+                                    //  5- Assign [Default Route] of the {'/logout} : Define sub route of the [logout]  of posting crud opt  of creating a new user , by calling the main source of definition 'routes/logout.js'  file :   <br>
+                                    <span  class="one "></span>  app.use('/logout' , require('./routes/logout') ) ;    <br><br>
+                                    
+                                    //  6- calling the [protectoro middleware] of the {'/verifyJWT}   of the [middleware ] of posting crud opt of creating a new user , by calling the main source of definition 'middleware/verifyJWt.js'  file :   <br>
+                                    <span  class="one "></span>  app.use(verifyJWt)  <br><br>
+                                    
+                                    //  7- Assign [Api Routes] of the {'/employees'} + routes's CRUD opts (by calling the  main source of definition 'routes/api/employees'  file  ) :  <br>  
+                                    <span  class="one "></span>  app.use('/employees' , require('./routes/api/employees') ) ;    <br><br>
+                                </code>
+                            </p>
+                          </li>    <br><hr> <br>  <br>     
+    
+
+                          <li> F] Default handles methods :  <br>
+                            <p>  Define the [route of non-defined requested route value (after all upper defined routes)] with using the [app.use()] of '*' and followed by any value => and display the inner 404 error page {404.html} incase of any No existed path is written  =>  <br>
+                              // by using the {app.all()} that used  more for routing error due accepting all of http methods , , and better than the other express  methods  as following   :  
+                              <ul>
+                                  <li> app.use() -> used for middleware definition , and not accepting the rejects </li> 
+                                  <li> app.all() -> used more for routing   with provides more features , such as : [accept all of 'http' methods ]  </li>  
+                              </ul>                          
+                            </p> <br>
+
+                              <p> the route scripts as following :   <br>
+                                <code> 
+                                  <span  class="one "></span>  app.all('*', (req, res) => {   <br>
+                                    <span  class="two "></span> // assign the current response with error code : <br>
+                                    <span  class="two"></span> res.status(404);  <br>
+                            
+                                    <span  class=" two  "></span> // define a condition of the returned extension  is [.html]  :     <br>   
+                                    <span  class="two "></span> if (req.accepts('html')) { <br>    
+                                      <span  class="three "></span>  // we need to use both the method of {statusCode} & {sendFile} in a chained to make the error page is not as [200]  <br>
+                                      <span  class="three "></span>   res.sendFile(path.join(__dirname, 'views', '404.html')); // we need to use both the method of {statusCode} & {sendFile} in a chained to make the error page is not as [200]  
+                            
+                                    <span  class="two "></span>  } else if (req.accepts('json')) {
+                                      <span  class="three "></span> // Send a json error if   error is type of json    <br>     
+                                      <span  class="three "></span>  res.json({ "error": "404 is not found! " }); <br>  
+                            
+                                    <span  class="two "></span> } else {  <br> 
+                                      <span  class="three "></span>  // Send an error if error is any type else <br>       
+                                      <span  class="three "></span>  res.type('txt').send('404 is not found! ');  <br>       
+                                    <span  class="two "></span>  } <br>  
+                                  <span  class="one"></span>  });    <br>
+                                </code>                               
+                              </p>
+                          </li>   <br> <hr> <br>  <br> 
+
+
+                          <li> G] [Custom Middleware] type  / 2] Define [Custom middleware method of Error Event log handler] by express method of calling the defined and imported middleware method   : <br> 
+                             <code> 
+                                <span  class=one  ></span> app.use(errorHandler);  <br>
+                              </code>
+                          </li>  <br> <hr> <br>  <br>  
+
+ 
+                          <li>  H] Launching the [Listen] process  of server [to be able to listen  its  request]  ->  [wiht using the app instead of the server ]:  <br>    
+                            <code> 
+                                <span  class="one "> </span>     app.listen(PORT , () => console.log(`Server running on port : ${PORT} `)  )   <br>
+                            </code>
+                          </li>  
+
+                          <br><hr>  <br>     
+                        </ol> 
+                      </p>
+                    </li>
+                  </ol>
+                
+              </li>
+
+            <!-- ----------------------------------------------------------                 -->
+            </ol>                              
+          <!-- ---------------------------------------------------------- -->
+
+         <h1>  C] Notes about  building [Authtinciacation] using {JWT} in  [express.js] Framework   :     </h1> 
+            <ul>                
+                
+              <li> This lesson is implementation of the [authentication] and [registration]  processes using default  express node web server      </li> 
+              
+              <li> the main status  code  to be used with  the node :  <br>
+                  <p>  the Access token  definition  by using defined varialbe {jwt} and {.sign()} extracted method   ,  as following   :   <br>
+                    <ol> 
+                      <li> Main concpt  :    <br>  
+                        <p> this method is being used to create  the both of  the [Acceas Token]  & [Refresh Token]  wtihin  the Authenctcatoin procudes and  before  the defautl authenticatoin </p>  <br> 
+                      </li>  <br> 
+                      
+                      <li> Main Syntax :  <br>  
+                        <code> 
+                          <span class=one  ></span>  jwt.sign( {payload} ,  {accessToken || refreshToken} var defined in the {.env} file  , expiration duration pararamtner )    <br>  
+                        </code > 
+                      </li> 
+                    </ol>
+                   </p>                 
+              </li>
+
+               <li> The differnce between the {res.status(code)} &  {res.sendStatus(code)}  :   <br>
+                  <ol>    
+                    <li>   {.status(code)}      =>  is changable method  => some extension is comming after it   , such as :    <br>
+                      <code>    
+                          <span  class=one></span>  // Sending a node server error of [Un-authoriazed] + messseg to the response      :  <br> 
+                          <span  class=one></span> res.status(401).json({  "message" : "error text message "   })   ;    <br> 
+                      </code>                        
+                    </li>
+                      <br>  <hr> <br>  
+                      
+                      
+                    <li>   {.sendStatus(code)}  =>   is NOT changable   method => No other extensions method will come after it , suchas  : <br>
+                      <code> 
+                        <span  class=one></span>  // Sending a node server error of [Un-authoriazed] to the response :           <br> 
+                        <span  class=one></span> res.sendStatus(401) ;    <br> 
+                      </code>  
+                    </li>
+                  </ol>
+              </li>   <br>  <hr> <br>  
+                
+                <li> to  implement the proper effect of  cors and defind  credential , it must be asdined before the cors witn9 inte server file , as next code : <br>
+                  <code> 
+                    <span  class=one></span>  // calling the deined and imopted file of the  [crednetials middleware]  :   <br> 
+                    <span  class=one></span> app.use(credentials) ;       <br>   <br>                    
+                    
+                    <span  class=one></span>  // calling the deined and imopted file of the  [cors third-party middleware] :  <br> 
+                    <span  class=one></span> app.use( cors( corsOptions)) ;       <br> 
+                  </code>  
+                </li>   
+                    
+                <li> The differece between the [creating Cookie] an [clearing Cookie]   ,  as following   : <br>
+                  <ol> 
+                    <li> a- [creating Cookie] => {res.cookie('cookie Name' , cookie Method value ,  {cookie creating configurtion object -including all props-  } )} :    <br>
+                        <p> this method is being implemented within the JWT & RefreshToken securing procedure inside the  {authController.js} inside the {handleLogin} , as extracted method from the {res}     </p>
+                        <p> this method need for the full properties , as following :  <br>
+                          <code> 
+                            <span  class=one></span>  res.cookie(   <br> 
+                              <span  class=two></span>  'jwt',          // [the cookie name]    <br> 
+                              <span  class=two></span>   refreshToken,  // [cookie method  value ]      <br> 
+                                <span  class=three></span>   {   <br>  
+                                  <span  class=four ></span>   httpOnly: true,     // [ cookie type ]   <br>  
+                                  <span  class=four ></span>   sameSite : 'None',  // [ solving the issue of the different [frontend] and [backend api]  ]   <br>  
+                                  <span  class=four ></span>   secure : true ,     // [ Turning the securing property to true to solve the 'https'  ]   <br>  
+                                  <span  class=four ></span>   maxAge: 24 * 60 * 60 * 1000   // [ cookie duration [1 day] duration by the miliiseconds ,this property does NOT need to be assinged when deleting/clearing the cookies within the logout process ]  <br>  
+                                <span  class=three></span>  }    <br> 
+                                <span  class=two></span>   );    <br>  
+                              <span  class=one ></span>   );  <br>
+                          </code>  
+                        </p>                        
+                    </li>   <br>  <br> 
+                      
+                      
+                    <li> b- [clearing cookie ]  => {res.clearCookie( 'cookie Name' ,  {cookie  clearing  configurtion object - except both of ( maxAge , expiresIn )  -  } )}} :  <br>   
+                        <p> this method is being implemented within the [logout process] by  Deleting the defined cookie procedure , inside the {logoutController.js} file  in {handleLogout()}  method , as extracted method from the {res}  </p>
+                        <p> this method need for some of properties  [Except both of 'maxAge' , 'expiresIn'  , 'cookie method ' ] , as following :  <br>
+                          <code> 
+                            <span  class=one></span>  res.cookie(   <br> 
+                              <span  class=two></span>  'jwt',  // [the cookie name]    <br> 
+                                <span  class=three></span>   {   <br>  
+                                  <span  class=four ></span>   httpOnly: true,     // [ cookie type ]   <br>  
+                                  <span  class=four ></span>   sameSite : 'None',  // [ solving the issue of the different [frontend] and [backend api]  ]   <br>  
+                                  <span  class=four ></span>   secure : true ,     // [ Turning the securing property to true to solve the 'https'  ]   <br>  
+                                <span  class=three></span>   }    <br> 
+                              <span  class=two></span>   );    <br>  
+                            <span  class=one ></span>  );  <br>
+                          </code>  
+                        </p>        
+                    </li>
+                  </ol>                  
+                </li>   
+
+              <li> This lesson in this course of  the Node.js backend , but in real project we might need to link both the created  backend mehtodologies with forntend tools , such as the lgoout proecess ->  [we need to conect the backend proeces and the frontend  event of [button]   </li> 
+            </ul>  <br>   <hr>  <br> 
+            
+          <p>  Next lesson  =>  {Roled based JWT Authentication} methodlogy with the node and express          </p> 
+ 
+           <!----------------------------------------------  -->
+
+             <h3> Source code  scripts files of this  lesson as following : </h3> <br>
+
+             <ol class="codes">
+                <li> Page Sources : </li>
+                
+                <h3> A]  Frontend Section  : </h3>
+                <!-- <code>       
+
+                   <h4> (1) Project  files of  main [React-Vite] system :     </h4>
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/index.html">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js   Source code of public HTML file  [index.html] file </button>
+                    </a> <br> <hr> <br> 
+                    
+                    
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/main.jsx">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js  Source code of  wrapping application [main] file JS [main.jsx] file </button>
+                    </a> <br> <hr> <br> 
+
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/App.jsx">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js  Source code of main [App] file {Main Component} [App.jsx] file </button>
+                    </a> <br> <hr> <br> 
+                     
+
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/index.css">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js  Source code of main formating css properties file JS [index.css] file </button>
+                    </a> <br> <hr> <br> 
+
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/public/style.css">  
+                        <button id=btn class="btn0" onclick="display()">    Moon icons library  Source code of  [ all icons in the project ]  formating  file JS [style.css] file </button>
+                    </a> <br> <hr> <hr> <br> 
+                     
+
+                    <h4> (2) Project files of main Components :  </h4>
+                       <h5> (a) First Header section child  Compoents {TopBar} :  </h5>
+                       <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/TopBar.jsx">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js  Source code of First part of Header [TopBar] child component JS [TopBar.jsx] file </button>
+                       </a> <br> <hr> <br> 
+    
+                       
+                       <h5> (b) Second Header section child  Compoents {SideBar} :  </h5>
+                       <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/SideBar.jsx">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js  Source code of Second part of Header [SideBar] child component JS [SideBar.jsx] file </button>
+                       </a> <br> <hr> <br> 
+                       
+
+                       
+                       <h5> (b) Hero section Compoents  : </h5>
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/2-hero/Hero.jsx">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js  Source code of Second  [Hero] child  component JS [Hero.jsx] file </button>
+                       </a> <br> <hr> <br>  
+   
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/2-hero/hero.css">  
+                           <button id=btn class="btn0" onclick="display()">  CSS code of formating Second [Hero] child  component JS [hero.css] file </button>
+                       </a> <br> <hr> <br>   
+
+                       <h5> (c) Main section Components  :     </h5>
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/3-main/Main.jsx">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js  Source code of Third [Main] child  component JS [Main.jsx] file </button>
+                       </a> <br> <hr> <br>  
+                       
+                    
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/3-main/main.css">  
+                           <button id=btn class="btn0" onclick="display()">  CSS code of formating Third [Main] child  component JS [main.css] file </button>
+                       </a> <br> <hr> <br>   
+                       
+ 
+                       <h5> (d) Contact-us section Compoent  :     </h5>
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/4-contact/Contact.jsx">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js  Source code of Fourth  [Contact] child  component JS [Contact.jsx] file </button>
+                       </a> <br> <hr> <br>  
+   
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/4-contact/contact.css">  
+                           <button id=btn class="btn0" onclick="display()">  CSS code of formating Fourth  [Contact] child  component JS [contact.css] file </button>
+                       </a> <br> <hr> <br>  
+                        
+                    
+                       <h5> (e) Footer section Compoent  :     </h5> 
+                         <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/5-footer/Footer.jsx">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js  Source code of Fifth [Footer] child  component JS [Footer.jsx] file </button>
+                       </a> <br> <hr> <br>   
+
+                        <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/src/components/5-footer/footer.css">  
+                           <button id=btn class="btn0" onclick="display()">  CSS code of formating Fifth [Footer] child  component JS [footer.css] file </button>
+                       </a> <br> <hr> <br>  
+                    
+                    
+                    
+                    <h4>  (3) Project backend files of all downloaded and setup libraries of  main React project  :  </h4>     
+                        <h5> (a)  RTK Query files [inside the  src / Redux ]   :     </h5> 
+                         <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/frontend/src/Redux/product.js">  
+                            <button id=btn class="btn0" onclick="display()">  Node.js   Source code of main RTk Query () system file in the  [product.js] file </button>
+                        </a> <br> <hr> <br> 
+                          
+                         <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/frontend/src/Redux/store.js">  
+                            <button id=btn class="btn0" onclick="display()">  Node.js   Source code of main RTk Query (store) system file in the  [store.js] file </button>
+                        </a> <br> <hr> <br>  
+                            
+                   <h4>  (4) Project files of all downloaded and setup libraries of  main React project  :  </h4>    
+                       
+                       <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/package.json">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js   Source code of main configuration file [package.json] file </button>
+                       </a> <br> <hr> <br> 
+                             
+                       <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../React Admin Dashboard/admin dashboard/jsconfig.json">  
+                           <button id=btn class="btn0" onclick="display()">  Node.js   Source code of JS custom  configuration file [jsconfig.json] file </button>
+                       </a> <br> <hr> <hr> <br>
+                      
+                </code> -->
+                <hr> <br> <br> 
+                <!-- -------------------------------------------------------- -->
+
+                <h3> B] Backend Section  : </h3>
+                <code>
+
+                   <!-- <h4> (1) Project files of main configuration  of [Strapi] system :     </h4>
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/backend/package.json">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js   Source code of Backend strapi's package file [package.json] file </button>
+                    </a> <br> <hr>  <br><br>  -->
+                       
+                   
+                   <!-- <h4> (2) Project files of main [config] folder  of [Strapi] backend  system :     </h4>
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/backend/config/plugins.js">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js   Source code of strapi's plugins file [plugins.js] file </button>
+                    </a> <br> <hr> <br> 
+                     
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/backend/config/database.js">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js   Source code of  strapi's  database file [database.js] file </button>
+                    </a> <br> <hr> <br>  
+                     
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/backend/config/middlewares.js">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js   Source code of  strapi's  middlewares file [middlewares.js] file </button>
+                    </a> <br> <hr> <br> 
+           
+                    
+                   <h4> (3) Project files of database structure  [] folder  of [Strapi] backend  system :     </h4>
+                    <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/backend/src/api/product/content-types/product/schema.json">  
+                        <button id=btn class="btn0" onclick="display()">  Node.js   Source code of strapi's database schema structure  file [schema.json] file </button>
+                    </a> <br> <hr> <br>  -->
+                     
+                     
+                 </code>
+
+               <!-- -------------------------------------------------------- -->
+
+               <!-- <h3> C] General Deployment Framework  Section  : </h3>
+                   <code>      
+                       <h4>  (1) Project files of all downloaded and setup libraries of  main React project  :  </h4>    
+                       
+                       <a id="btnCont" data-wow-duration="2s" class = "btn wow bounceInRight" target="_blank" href="../../E-commerce App/E-commerce Work/package.json">  
+                          <button id=btn class="btn0" onclick="display()">  Node.js   Source code of main Deployment Framework configuration file [package.json] file </button>
+                       </a> <br> <hr> <br>  
+                            
+                   </code> -->
+
+            </ol>             
+            <br> <hr>
+        </section>
+
+        <!------------------------------------------------------------------------------------------------------>
+        <!------------------------------------------------------------------------------------------------------>
+
+        <section class="JSDOMImp" id="JSDOMImp">
+            <header>
+                <h3> [11 JWT Authentication  Node JS and Express tutorials for Beginners] Importance & Benefits : </h3>
+            </header>
+            <ul>
+
+            </ul>
+        </section>
+
+        <!------------------------------------------------------------------------------------------------------>
+
+        <section class="JSDOMSyntx" id="JSDOMSyntx">
+            <header>
+                <h3> [11 JWT Authentication  Node JS and Express tutorials for Beginners] Syntax & Methods: </h3>
+            </header>
+
+            <p> =&gt; Scenario Procedures : </p>
+
+            <hr>
+        </section>
+
+        <!------------------------------------------------------------------------------------------------------>
+        <section class="JSDOMPract container" id="JSDOMPract">
+            <header>
+                <h3> CMD [11 JWT Authentication  Node JS and Express tutorials for Beginners] => {this lesson can be accessed through the github repo [webpages] } </h3>
+            </header>
+
+
+        </section>
+
+        <!-- <button type="button" class="btn" onclick="myTest()"> Click to Start [ (this) operator testing with both functions ] method  Application </button> -->
+
+        <script src="main.js"></script>
+
+        <br><br><br>
+
+        <div id="note" class="dis"></div> <br><br><br><br>
+
+        <!-- <button class="btn" id="elem" onclick="display()"> Click to activate {this} operator dispalying value  </button> <br>              -->
+
+
+        <!-- <button id=btn class="btn0" onclick="display()">Display JS Code [plugins.js] file </button> -->
+        <!------------------------------------------------------------------------------------->
+        <!---------------------------------------------------------------------------------------->
+
+        <footer id="footer" class="footer0">
+            All right reserved by &nbsp; &copy; &nbsp; Initiated by <a target='_self'  class="brand" href="https://shandowpro.github.io/"> ShandowPro </a> &trade;
+        </footer>
+    
+    </div>
+    <!------------------------------------------------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------------>
+    
+    <!-- Here is the Aside  -->
+    
+    <div class="Clear"></div>
+    <!-------------------------------------------------------------------------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------------->
+
+    <dialog class="Note" open>
+        <details>
+            <summary> Hypernate Links: </summary>
+            <ul>
+                <li> <a href="http://shindowpro.github.io" target="_self">My Portfolio website </a></li>
+                <li> <a href="https://github.com/shindowpro/git-course" target="_self">My Github Repo </a></li>
+            </ul>
+        </details>
+    </dialog>
+
+
+    <!-- loading overlay  -->
+    <section class="loading-overlay">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </section>
+
+    <!-- <script src="main.js">
+    </script> -->
+
+
+    <!-- Scrolling top button -->
+    <section id="scroll-top">
+        <i class="fas fa-chevron-up fa-2x fa-align-center"></i>
+    </section>
+
+    <script>
+        alert("Welcome to 11 JWT Authentication  Node JS and Express tutorials for Beginners");
+    </script>
+
+    <!-- Resources files -->
+    <script src="js/jquery-1.12.4.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/plugins.js"></script>
+
+    <script src="js/myplugins.js"></script>
+
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+
+    <script src="js/jquery.nicescroll.min.js"></script>
+
+</body>
+
+</html>
+
+
+ 
