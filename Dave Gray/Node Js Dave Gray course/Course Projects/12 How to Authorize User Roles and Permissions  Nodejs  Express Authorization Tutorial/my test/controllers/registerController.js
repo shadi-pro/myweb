@@ -1,7 +1,8 @@
 
 //  This file inlcude all functions and methods responsible for [Registration process] , with the next properties   :
   // 1- the defined functions here  will require the defined datasource of the  "users.json"  from [model]      :      
-  // 2-  all defined functions here will be called by the defined route of registration  {routes/register.js}    
+  // 2-  all defined functions here will be called by the defined route of registration  {routes/register.js}     
+  // 3-  all roles users will be used form the  inmported  {config/roles_list.js}     
 // 
 
 // [Registration] conceptual  steps :
@@ -9,6 +10,7 @@
   // -- b- Checking for the duplicated [username] value  
   // -- c- Ecrypting the [password] value  
   // -- d- creating the new user according to upper inserted defined and checked values of [username] & [password]    
+  // -- e-  Adding  user roles according to the defined [roles list]  by creagin a new user        
 // -------------------------------------------------------------------------
 
 
@@ -47,7 +49,7 @@
         // if there is a value of duplicate varable => [there is a duplicated value of the username]  :
         const  duplicate = usersDB.users.find( person => person.username === user );  
 
-        // 4- Sending the error code of the conflict [duplication error code '409' ] {if theris is a value of duplicate variable } :
+        // 4- Sending the error code of the (conflict) [duplication error code '409' ] {if theris is a value of duplicate variable } :
         if (duplicate) return res.sendStatus(409);   
 
         // 5- Starting handling the [registration]  process after previous error handling :
@@ -57,8 +59,13 @@
             // [salt] rounds paramter  : method used to encrypt the passowrd  - to make much harder to hackers to break - (10 : standerd value)   
             const  hashedPwd = await bcrypt.hash( pwd  , 10 ) ;
                   
-          // b) Creating/define the   [newUser] account as an object variable  [according to the upper checked  parameters  of  [user , hashedPwd]  : 
-            const newUser = {"username" : user , "password" : hashedPwd };      
+          // b) Creating/define  a default user [newUser] account as an object variable :
+          //  [according to the upper checked  parameters  of  [user , hashedPwd] & including  ["role" according to the imported  roles list file ]   : 
+            const newUser = {
+              "username" : user , 
+              roles:{ "user"  : 2001} , //   [this object represent the availabe roles object value  of this user  ]
+              "password" : hashedPwd 
+            };      
           
           // c) Storing a the created {newUser} varaible =>  into the [usersDB]   using the  [destructuring methodology + setter function of the [usersDB]  :
             usersDB.setUsers([...usersDB.users , newUser ])  ;                 
@@ -73,7 +80,7 @@
             console.log(usersDB.users) ;
 
           // f)  Sending a successful process code [201] into the response  + json message [of newuser account creation confirmation ]  :
-            res.status(201).json({"success" :   `The new user ${user} Account has been creeted and  added into the DB`})    ; 
+            res.status(201).json({"success" :   `The new user ${user} Account has been creeted and added into the DB`})    ; 
 
         }  catch(err)  {
             // Catching the server error code  (500) + ( message of the catched  error type  ) : 

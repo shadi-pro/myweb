@@ -26,7 +26,7 @@ const handleRefreshToken = (req, res) => {
 
   // 2- Checking if there is a [cookie & jwt] , and return an error of [UnAuthorized]  if there is NOT returned value of the [cookies] or [jwt] or both : 
   if (!cookies?.jwt) return res.sendStatus(401);
-
+  
   // 3- Testing print of the retured value of  {cookies.jwt}] :      
   // console.log(cookies.jwt);
 
@@ -39,22 +39,34 @@ const handleRefreshToken = (req, res) => {
   // 6- Return an error of [Forbiden code '403' ]  to the response if [foundUser] is NOT-existed  [means the [refreshToken] of this user has not found ] : 
   if (!foundUser) return res.sendStatus(403);
 
-  // 7- Start [jwt verfying ] process (after passing the upperstep of : finding {refreshToken} is existed in the [usersDB] for this user) , according to next steps :
-  jwt.verfy(
-     refreshToken,
+  // 7- Start [jwt verfying ] process (after passing the upperstep of : finding {refreshToken} is existed in the [usersDB] for this user) , according to next steps 
+  // this method will  include (3)  main parmaters as main properiters of the  jwt verficatoin    :
+  jwt.verify(
+    refreshToken,
     process.env.REFRESH_TOKEN_SECRET,
     (err, decoded) => {
-      // a- send an error of [Forbiden code '403'] if there is a return error  or the username is not equal the encoced value  :
-      if (err || foundUser.username !== decoded.username) return res.sendStatus(403);
 
-      // b- Creating a [Access Token] - after the [refresh token] has verfied in upper steps  -   :
+      // a- send an error of [Forbiden code '403'] if there is a return error  or the username is not equal the encoced value  :
+      if (err || foundUser.username !== decoded.username) return res.sendStatus(403) ;
+
+      // b- Defined the [roles] as extracted from the defined [foundUser] variable :
+      const roles = Object.values(foundUser.roles)  ;     
+
+
+      // c- Creating a [Access Token] - after the [refresh token] has verfied in upper steps - including the defiend roles    :
       const accessToken = jwt.sign(
-        { "username": decoded.username },
+        //   assign an object of the [useInfo] including both  [username] and [roles]  accordgin to the [private JWT]   method :   
+        {  
+            "UserInfo" : {
+              "username": decoded.username  , 
+              "roles":  roles 
+            }            
+        } ,  
         process.env.ACCESS_TOKEN_SECRET,
         { expiresIn: '30s' }
       );
 
-      // c- Sending the upper created  [accessToken] jwt to the json respsone  :          
+      // d- Sending the upper created and verified [accessToken] jwt to the json respsone  :          
       res.json({ accessToken })
     }
   );
@@ -63,4 +75,4 @@ const handleRefreshToken = (req, res) => {
 
 // IV] Exporting section    :  
 // Exporting the defined function of handling the  process [handleRefreshToken] as object to be able to pull/call the full name of the controller when is being used inside route file :
-module.exports = { handleRefreshToken }
+module.exports = { handleRefreshToken } 

@@ -5,7 +5,7 @@
 // 
 
 // [Authenctication] conceptual  steps :
-// a-- Checking for the existancey of [username] and  [password] values  in the current defined imported     
+// a-- Checking for the existancey of [username] ,  [user role]   , [password] values  in the current defined imported     
 // b-- sending a server error if the [username] is NOT existed   
 // c-- Persuing a success Login process if the requrested password is matched with the existed passwaord in the [usersDB]    
 // d-- Sending an server Error if the requrested password is  NOT matched with the existed passwaord in the [usersDB]           
@@ -60,17 +60,29 @@ const handleLogin = async (req, res) => {
   const match = await bcrypt.compare(pwd, foundUser.password);     // [ if the match has a value => that means the password is found in DB]
 
 
-  // 6- Start the [JWT authentication prcodrues] uppon the upper defined {match} variable - if this var has a value-   :  
+  // 6- Start the [JWT authentication prcodures] uppon the upper defined {match} variable - if this var has a value-   :  
   if (match) {
     // a- starting creating the [JWT]  Authenctication procedures - before persuing the login process : 
-    /// 1) Creating [JWTs] 's [access token] ->   [with passing the payload  inlcuding only the [userame] (NOT password) ] with both types of  access and refresh token    :
+
+    //   Getting the  [roles] property value as a defined  main users json object of the upper deifned {foundUser}  : 
+    const roles = Object.values(foundUser.roles);
+
+
+    /// 1) Creating [JWTs] 's [access token] ->   [with passing the payload  inlcuding  both of the [userame] & [roles] (NOT password) ] with both types of access and refresh token  :
     const accessToken = jwt.sign(
-      { "username": foundUser.username },  // [This is the payload]
-      process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: '30s' }  // [  This is a very short duration , just for testing to be able to see the [access token] , in the real time : 5 - 50 min ] 
+        // [This is the payload object will also include user payload information of (username , roles) us9ng the private method  ] 
+        {  "UserInfo"  :    // [ this is a better for a [prviate JWT]  not a [public JWT in other cases ]  
+            { 
+                "username": foundUser.username, 
+                "roles": roles    // [here we are sending  the {role code} , not the { role keyname}  ]
+            }  
+        } ,
+        process.env.ACCESS_TOKEN_SECRET,
+        { expiresIn: '30s' }  // [  This is a very short duration , just for testing to be able to see the [access token] , in the real time : 5 - 50 min ] 
+      
     );
 
-    /// 2) Create [JWTs] Creation our [refresh token]   :
+    /// 2) Create [JWTs] Creation our [refresh token] {will not include  'roles' becaue it just defind for verfiying ability to give the [Access Token]   }  :
     const refreshToken = jwt.sign(
       { "username": foundUser.username },   // [ passing through the username to be encoded by jwt later when verifying ]
       process.env.REFRESH_TOKEN_SECRET,
@@ -81,7 +93,7 @@ const handleLogin = async (req, res) => {
     // b-  Securing the [Refresh Token] + save it in the file [ using the file system module instead of using  the real database - we will modify thses steps by taking the {MongoDB} - ] :
     // The following step will allow secruting the refresh Token if the user logged out before the expiration duraton is up  :  
     /// 1)  Define a {otherUsers } which is the  filtered  [users]  that get all users expect the current foundUser    :
-    const otherUsers = usersDB.users.filter(person => person.username !== foundUser.user);
+    const otherUsers = usersDB.users.filter(person => person.username !== foundUser.username);
 
     /// 2) Re-define the current user by the foundUser that including the [Refresh Token] , by adding the defined [Refresh token] to the upper defiend [founduser : which is found user that inserted his value  ]  :
     const currentUser = { ...foundUser, refreshToken };
@@ -101,7 +113,13 @@ const handleLogin = async (req, res) => {
     res.cookie(
       'jwt',   // [the cookie name] 
       refreshToken,  // [cookie value ]  
-      { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }   // [ cookie type &  cookie [1 day] duration by the miliiseconds ] 
+      {
+        httpOnly: true,     // [ cookie type ]
+        sameSite: 'None',  // [ solving the issue of the different [frontend] and [backend api]  ]
+        secure: true,     // [ Turning the securing property to true to solve the 'https'  ]
+        //  this property does NOT need to be assinged when deleting/.clearing the cookies within the logout process ] 
+        maxAge: 24 * 60 * 60 * 1000   // [ cookie duration [1 day] duration by the miliiseconds :
+      }
     );
 
 

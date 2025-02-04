@@ -9,9 +9,9 @@
    //  the following hosts will be allowed to be access our backend , which can be classified into   :
       //  [your localhost]   [yourdomain] [virtual cutom server]       
 const  allowedOrigins  = [
-  'https://www.yourdomain.com' , 
-  'http://localhost:3500' , 
-  'http://127.0.0.1:5000' 
+  'https://www.yoursite.com' , 
+  'http://127.0.0.1:5500' , 
+  'http://localhost:3500'  
 ]
 
 // ---------------------

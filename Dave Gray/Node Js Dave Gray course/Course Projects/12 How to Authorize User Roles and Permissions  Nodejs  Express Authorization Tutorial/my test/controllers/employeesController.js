@@ -51,7 +51,7 @@
   
       // a- define an object of a new employee [ including the incomming each field value of request new element] :
       const newEmployee = {
-        id: data.employees[data.employees.length - 1].id + 1 || 1,
+        id: data.employees?.length? data.employees[data.employees.length - 1].id + 1 : 1,
         firstname: req.body.firstname,
         lastname: req.body.lastname
       }
@@ -133,7 +133,7 @@
 
 
       // d- set/assign  the upper defined [filtered array] of all existed elements (only)  inside  the data  [ using the setter function  +  destrucurtring method] :
-      data.setEmployee([...filterArray]);
+      data.setEmployees([...filterArray]);
 
 
       // e- sending the [employees] property object (after being filled with filterd array ) into the  response parameter :  
@@ -154,7 +154,7 @@
 
       // b- handling Error of the requested element [id] unexisted/not found  , by Sending an error status code (400) :
       if (!employee) {
-        return res.status(400).json({ "message": `Employee  ID ${req.body.id} not found ! ` });
+        return res.status(400).json({ "message": `Employee  ID ${req.params.id} not found ! ` });
       }
 
       // c- sending the [requested obtained employee only ]  after being  found  into the response parameter as json format :  

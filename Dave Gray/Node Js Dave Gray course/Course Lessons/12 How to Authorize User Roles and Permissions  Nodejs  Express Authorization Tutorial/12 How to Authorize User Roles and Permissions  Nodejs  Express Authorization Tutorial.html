@@ -528,12 +528,12 @@
               <ol type="A">
                   <li> Main points of this lesson , practical application of adding the { Roled User Authorization } procedures to the [proctected JWT  Authentication ]  into express node by  : <br>
                       <ol>
-                        <li> A]  The main  concept of [Roled based Authorization]  :    <br>
-                          <ul>    
-                             <li> 1] The main difference between the [Authentication] and [Authorization]    </li>
-                             <li> 2] The main concept of [User Roles  and permissions ]  </li>
-                          </ul>
-                        </li>
+                          <li> A]  The main  concept of [Roled based Authorization]  :    <br>
+                            <ul>    
+                              <li> 1] The main difference between the [Authentication] and [Authorization]    </li>
+                              <li> 2] The main concept of [User Roles  and permissions ]  </li>
+                            </ul>
+                          </li>
                       
                           
                            <li> B] Main Practical steps of setting up and bulding the {JWT}  tool of protection of the project's routes + Roled bases authenticatoin  within the [MVC] , by applying the next steps : <br>  
@@ -579,20 +579,168 @@
                                   </ul> 
                               </li>  
                               
-                              <li>  2] Authentication Process methodology modifications  : <br> 
+                              <li>  2] Authentication and Authorization Process with using the [users roles]  methodology  : <br> 
                                 <ul> 
-                                  <li> a- {roles_list.js} [ define the main structure of the users roles ] file  :  <br>
-                                      <ol>   
-                                        <li> define obtject of roles availabe for users to be used in registraion and login   </li> 
-                                      </ol>  
+                                  <li> a-  inside the [config] folder => {roles_list.js} file :   [define the main structure of the users roles ]  :  <br>
+                                      <p> Define object of roles availabe for users to be used in registration and login  </p>                                    
                                   </li>
- 
+
+                                  <li> b- inside the [controllers] folder   : [ Modify several of the controller files by adding the defind users roles ]  =>  including  the  next files  :  <br>
+                                      <p>  1- {AuthController.js} =>  modify the defined [JWT's access token] by adding  the 'roles' as a new payload  property </p>    
+                                      <p>  2- {refreshToken.js} =>  modify the defined [evaltuated JWT] inside the verfied jwt's calback function property by adding  the 'roles' as a new payload  property </p>    
+                                      <p>  3- { registrationController.js} =>  modify the defined [newuser ] variable by adding the ['roles'] property as an object of [ default user role value {user :' 2001'} ]          </p>    
+                                  </li>
+
+                                  <li> c- inside the [ middleware] folder   : [ Modify several of the  middleware   files by adding the defind users roles ]  =>  including the  next files  :  <br>
+                                      <p>  1- {verfiyJWT.js} =>  modify the defined [ handling method of the verfiying jwt] by  : 
+                                        <ul> 
+                                            <li>  modify the [authHaeader]  variable  </li> 
+                                            <li>  adding chained condition to the checked [authHaeader]  + adding the (startsWith by 'Bearer')  ->   to be suit using the [users roles]   </li> 
+                                            <li>  Redefine both of  the requested user and requested  roles to be called  (by using the 'UserInfo' parent property    )    </li> 
+                                          </ul>                                 
+                                      </p>    
+  
+                                      <p>  2- { verifyRoles.js} =>   new file about handling  the [requested roles] and [allowed roles]   by  :   <br>   
+                                          <ul> 
+                                              <li>  Define the main middleware  method with using the [rest operator]   to recieve as many roles       </li> 
+                                              <li>  Checking of non  requests become  or   roles sent      </li> 
+                                              <li>  Define an array of  [ allowed roles ]    </li> 
+                                              <li>  mapping and matching for [ allowed roles] among [requested role]        </li> 
+                                              <li>  handling error of non resulted value of NON allowed result  </li> 
+                                          </ul>                                 
+                                      </p>    
+                                  </li>
+
+                                  <li> d- inside the  [routes/api] => {employees.js} :    <br>
+                                    <p>  importing and using the defined {ROLES_LIST} the main json sturcture  file          </p>  
+                                    <p>  importing and using the defined {verifyRoles()} the main defined middleware file to handle users roles , thoruh usning it inside the route  defintions </p>  
+                                    <p>  using the defined  {verifyRoles()} with asssigning the desired [users roles] within the  desired rouet's crud operation  [  post , put/update , delete  ]  </p>  
+                                  </li>  
                                 </ul>
-                              </li>     
+                              </li>                               
+  
+ 
+                              <li> 3] using the [Thunder Client] live server to  Server testing the project's server backend [authentication] and [authorization] including the {testing different users with different roles} , by using next steps :  <br>
+                                <ol> 
+                                   <li> ['dave1']  => this is a [default User] ( NOT  Admin , Not Editor  ):  <br>
+                                    <p> This user can only access to data of the employees , but can NOT  post/add , put/update  , delete  from  the  { employees} </p>
+                                    <p> Testing the user [login Authenction] and returned result and  provided Authorized Crud opterations to the [employee] , using  the next steps : 
+                                      <ul> 
+                                         <li> 1-  Testing [login Authentication] :  <br>
+                                            <p> test this user [login] operation into the [users] DB  by using :  <br>
+                                              <ol> 
+                                                <li> [inside the {body} tab] => { username: 'dave1'} & {password : assinged by the  project source code}  </li>
+                                                <li> API path {'https://localhost:3500/auth'}    </li>
+                                                <li> Crud opertion :  [post] </li> 
+                                              </ol> 
+                                            </p>
+                                          </li> <br> 
+                                          
+                                          <li> 2- Testing the [available Crud operations] for this user :  <br>    
+                                            <p> After [success login] operation , we gonna test diffrent types of Crud operations provided for this user (within the available duration period) , by using the next steps :   <br> 
+                                              <ol> 
+                                                <li> using  the generated  [accessToken]  value to log into the [employees API] ,  as following : <br>  
+                                                  <ol> 
+                                                    <li> [inside the {response} panel ] => copy the given [access token ]  </li>
+                                                    <li>  API path {'https://localhost:3500/employees'}    </li>
+                                                    <li> [inside the {auth} tab] => pasting the copied [access token] to access by into the [employees]   </li>
+                                                    <li> Testing crud operations :  <br> 
+                                                      <ul>
+                                                        <li> [GET] result -> normal access to data via [due to this is a normal user  -  authorizerd to access tho the [employees] -  ]   </li>
+                                                        <li> [Post] & [Put]  & [Delete]   result ->  NOT provided  access to data via [due to this is a normal user  -  NOT  authorizerd to  post , update , delete  form the [employees] -  ]   </li> 
+                                                      </ul>
+                                                    </li>
+                                                     
+                                                  </ol>  
+                                                </li>
+                                              </ol>                                        
+                                            </p>   
+                                          </li>
+                                      </ul>
+                                    </p>
+                                  </li> <br><br> 
+                                  
+                                  <li>  ['walt2'] =>  this is a [Editor User ]   (   NOT Admin )   :  <br>
+                                    <p>  This user can [access , post/add , put/update] to data of the employees , ( (but can NOT delete ) )  from the { employees}  </p>
+                                      <ul> 
+                                        <li> 1- Testing [login Authentication] :  <br>
+                                            <p> test this user [login] operation into the [users] DB  by using :  <br>
+                                              <ol> 
+                                                <li> [inside the {body} tab] => { username: 'walt2'} & {password : assinged by the  project source code}  </li>
+                                                <li> API path {'https://localhost:3500/auth'}    </li>
+                                                <li> Crud opertion :  [post] </li> 
+                                              </ol> 
+                                            </p>
+                                          </li> <br> 
+                                          
+                                          <li> 2- Testing the [available Crud operations] for this user :  <br>    
+                                            <p> After [success login] operation , we gonna test diffrent types of Crud operations provided for this user (within the available duration period) , by using the next steps :   <br> 
+                                              <ol> 
+                                                <li> using  the generated  [accessToken]  value to log into the [employees API] ,  as following : <br>  
+                                                  <ol> 
+                                                    <li> [inside the {response} panel ] => copy the given [access token]  </li>
+                                                    <li> API path {'https://localhost:3500/employees'}    </li>
+                                                    <li> [inside the {auth} tab] => pasting the copied [access token] to access by into the [employees] </li>
+                                                    <li> Testing crud operations :  <br> 
+                                                      <ul>
+                                                        <li> [GET] result  -> normal access to data via [due to this is a normal user  -  authorizerd to access tho the [employees] DB -  ]   </li>
+                                                        <li> [Post] result -> normal access to data via [due to this is a normal user  -  authorizerd to pot into the [employees] DB -  ]   </li>
+                                                        <li> [Put] result  -> normal access to data via [due to this is a normal user  -  authorizerd to  update  tho the [employees] DB -  ]   </li>
+                                                        <li> [Delete] result  ->  unAthoirazted access error [401]  -  NOT authorizerd to delete from the [employees] DB -  ]   </li>
+                                                      </ul>
+                                                    </li>                    
+                                                  </ol>  
+                                                </li>
+                                              </ol>                                        
+                                            </p>   
+                                          </li>
+                                      </ul>
+                                    </p>                                  
+                                  </li> <br> <br>  
+                                   
+                                  <li> ['walt1'] =>  this is a [Editor User] & [Admin user]  (full authorized for all CRUD opts) : <br>
+                                    <p>  This user can [access , post/add , put/update , delete ] from data of the employees :  
+                                      <ul> 
+                                        <li> 1- Testing [login Authentication] :  <br>
+                                            <p> test this user [login] operation into the [users] DB  by using :  <br>
+                                              <ol> 
+                                                <li> [inside the {body} tab] => { username: 'walt2'} & {password : assinged by the  project source code}  </li>
+                                                <li> API path {'https://localhost:3500/auth'}    </li>
+                                                <li> Crud opertion :  [post] </li> 
+                                              </ol> 
+                                            </p>
+                                        </li> <br> 
+                                          
+                                        <li> 2- Testing the [available Crud operations] for this user :  <br>    
+                                          <p> After [success login] operation , we gonna test diffrent types of Crud operations provided for this user (within the available duration period) , by using the next steps :   <br> 
+                                            <ol> 
+                                              <li> using the generated [accessToken] value to log into the [employees API] ,  as following : <br>  
+                                                <ol> 
+                                                  <li> [inside the {response} panel ] => copy the given [access token]  </li>
+                                                  <li> API path {'https://localhost:3500/employees'}    </li>
+                                                  <li> [inside the {auth} tab] => pasting the copied [access token] to access by into the [employees] </li>
+                                                  <li> Testing crud operations :  <br> 
+                                                    <ul>
+                                                      <li> [GET] result  -> Norml access to data via [due to this is a [Editor] & [Admin] user  -  authorizerd to access tho the [employees] DB -  ]   </li>
+                                                      <li> [Post] result -> normal access to data via [due to this is a [Editor] & [Admin] user  -  authorizerd to pot into the [employees] DB -  ]   </li>
+                                                      <li> [Put] result  -> normal access to data via [due to this is a [Editor] & [Admin] user  -  authorizerd to  update  tho the [employees] DB -  ]   </li>
+                                                      <li> [Delete] result ->  normal access to data via [due to this is a [Editor] & [Admin] user  - authorizerd to delete from the [employees] DB -  ]   </li>
+                                                    </ul>
+                                                  </li>                    
+                                                </ol>  
+                                              </li>
+                                            </ol>                                        
+                                          </p>   
+                                        </li>
+                                      </ul>                            
+                                    </p>
+                                  </li>
+                                </ol>                        
+                              </li> 
                             </ol>                                                             
                           </li> 
 
-                          <li> C] Notes about building [ roles based Authorization   ]  protection tool to our defined routes within in the [MVC]  </li>/
+                          <li> C] Notes about building [ roles based Authorization   ]  protection tool to our defined routes within in the express and  [MVC]  </li> 
                       </ol>
                     </li> <br> <br>
               </ol>
@@ -1288,24 +1436,24 @@
                                                                     
                                     <span  class=one ></span>  // 1- [first route :  main employees  ] :  Define all CRUD opts of the main index || home page route - to access DB datasource 'employees.json'  : <br> 
                                       <span  class=two ></span>  router.route('/')     <br>  
-                                        <span  class=three ></span> // get all elements operation [will be protected  using (verifyJWT) -according to second method wihtn the main server file  -  Not need verify user role here (any user type can log)] : <br> 
+                                        <span  class=three ></span> // get all elements operation [will be protected  using (verifyJWT) -according to second method within the main server file  -  Not need verify user role here (any user type can log)] : <br> 
                                         <span  class= three></span> .get(employeesController.getAllEmployees)     <br>
-                                        <span  class= three></span>  // create new element  operation + [will use the verify role here : only [[Admin]] & [[Editor]] user can reach employees and create new employee (posting)- ] : <br>
+                                        <span  class= three></span>  // create new element  operation + [will use the verify user role here as : only [[Admin]] & [[Editor]] user can reach employees and create new employee (posting)- ] : <br>
                                         <span  class= three ></span>  .post( verifyRoles(ROLES_LIST.Admin , ROLES_LIST.Editor ) ,  employeesController.createNewEmployee)    <br>
-                                        <span  class= three ></span> // update an existed entry + [ will use the verify role here : only [[Admin]]  + [[Editor]] user can update in the database ] : <br>  
+                                        <span  class= three ></span> // update an existed entry + [ will use the  verify user role here as  : only [[Admin]]  + [[Editor]] user can update in the database ] : <br>  
                                         <span  class= three ></span> .put(verifyRoles(ROLES_LIST.Admin , ROLES_LIST.Editor ) , employeesController.updateEmployee)  <br>  
-                                        <span  class= three ></span>  // delete a certain element [  only the admin can delete the from database]  :  <br>
+                                        <span  class= three ></span>  // delete a certain element [ verify user role here as : only the admin can delete the from database]  :  <br>
                                         <span  class= three ></span>   .delete(verifyRoles(ROLES_LIST.Admin) , employeesController.deleteEmployee) ; <br>
-                                      <span  class=one ></span>   ------------------------------------------------- <br>  <br>   
+                                    <span  class=one ></span>   ------------------------------------------------- <br>  <br>   
 
  
-                                      <span  class=one ></span> // 2-  [second route] : dynamic route of getting data upon the assinged [id] , wity using het one  {get} :<br>   
+                                      <span  class=one ></span> // 2-  [second route] : dynamic route of getting data upon the assinged [id] , with using the one {get} :<br>   
                                       <span  class=one ></span>   router.route('/:id')   <br>
                                         <span  class=two  ></span> .get(employeesController.getEmployee) ;   <br>     
                                     <span  class=one  ></span>  ----------------------------------------------   <br>     
                                         
                                       
-                                        //  III]  Exporting the  defined  router      :    <br>  
+                                    //  III]  Exporting the  defined  router  :    <br>  
                                       <span  class=one  ></span>    module.exports =  router ;      <br>    
                                   </code> 
                                                                 
